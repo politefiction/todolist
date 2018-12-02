@@ -1,3 +1,10 @@
+@mixin vertical-align {
+    position: relative;
+    top: 45%;
+    transform: translateY(50%);
+    transform: translateX(5%);
+}
+
 #header {
     display: block;
     border: 2px solid blue;
@@ -6,34 +13,37 @@
 }
 
 #sidebar {
+    position: relative;
     float: left;
     margin-top: 10px;
     border: 2px solid red;
     width: 200px;
-    height: 500px;
+    height: 70vh;
+    padding: 1%;
     p {
         display: block;
     }
 }
 
-
 #sidebar-list {
     display: block;
-    border: 1px solid purple;
-    margin: 10px;
+    border: 1px solid purple; 
+    padding: 0 5px;
 }
 
 #calendar-box {
+    display: block;
     border: 1px solid orange;
     width: 175px;
     height: 175px;
-    margin: 30px auto auto auto;
+    @include vertical-align();
 }
 
 #container {
-    display: inline-flex;
+    float: left;
     border: 2px solid green;
-    width: 450px;
-    height: 500px;
+    width: 70vw;
+    height: 70vh;
     margin: 10px;
+    padding-left: 5px;
 }
