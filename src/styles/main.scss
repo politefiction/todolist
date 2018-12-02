@@ -1,0 +1,39 @@
+#header {
+    display: block;
+    border: 2px solid blue;
+    width: auto;
+    padding: 5px;
+}
+
+#sidebar {
+    float: left;
+    margin-top: 10px;
+    border: 2px solid red;
+    width: 200px;
+    height: 500px;
+    p {
+        display: block;
+    }
+}
+
+
+#sidebar-list {
+    display: block;
+    border: 1px solid purple;
+    margin: 10px;
+}
+
+#calendar-box {
+    border: 1px solid orange;
+    width: 175px;
+    height: 175px;
+    margin: 30px auto auto auto;
+}
+
+#container {
+    display: inline-flex;
+    border: 2px solid green;
+    width: 450px;
+    height: 500px;
+    margin: 10px;
+}
