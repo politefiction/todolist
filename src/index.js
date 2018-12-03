@@ -1,8 +1,10 @@
 import './styles/main.scss';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 
-const showDate = () => {
-    return format(new Date(2014, 20, 2), 'MMMM Do, YYYY');
+const showDate = (date) => {
+    const heading = document.querySelector("#cont-heading");
+    let dateDisplay = date ? date : new Date();
+    return heading.textContent = format(dateDisplay, 'MMMM Do, YYYY');
 }
 
-console.log(showDate());
+showDate();
