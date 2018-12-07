@@ -1,13 +1,11 @@
-// find a way to implement dynamic names, so I can actually retrieve this stuff
-// task array and project array; then it can be filtered, too
 const taskList = [];
 const projectList = [];
 
-const Task = (title, description, date, priority="low", projectId) => {
+const Task = (title, description, date, priority, projectId) => {
     return { title, description, date, priority, projectId }
 }
 
-const Project = (title, description, date, priority="low", tasks=[], projectId=projectList.length ) => {
+const Project = (title, description, date, priority, tasks=[], projectId=projectList.length ) => {
     return { title, description, date, priority, tasks, projectId }
 }
 
