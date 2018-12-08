@@ -9,7 +9,7 @@ const Project = (title, description, date, priority, tasks=[], projectId=project
     return { title, description, date, priority, tasks, projectId }
 }
 
-const Planner = (() => {
+const manageList = (() => {
     const addTask = (t) => taskList.push(t)
     const addProject = (p) => projectList.push(p)
     const addTaskToProject = (p, t) => {
@@ -21,4 +21,4 @@ const Planner = (() => {
     return { addTask, addProject, addTaskToProject }
 })();
 
-export default { Task, Project, Planner };
+export { Task, Project, manageList, taskList, projectList };
