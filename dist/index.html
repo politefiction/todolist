@@ -6,18 +6,15 @@
             <h1>To-Do List Page</h1>
         </div>
         <div id="sidebar">
-            <p>Tasks over here</p>
+            <h3>Upcoming Tasks</h3>
             <div id="sidebar-list">
-                <p>List of Tasks</p>
-                <ul>
-                    <li>Task</li>
-                    <li>Task</li>
-                    <li>Task</li>
+                <h4 id="date"></h4>
+                <ul id="tasks-today">
                 </ul>
                 <button id="add-task">Add New Task</button>
                 <form>
                     <label for="Date">Date</label>
-                    <input type="date" name="date">
+                    <input type="datetime-local" name="date">
                     <label for="Priority">Priority</label>
                     <select name="priority">
                         <option>Low</option>
