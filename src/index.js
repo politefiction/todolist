@@ -8,8 +8,8 @@ const showDate = (e, date) => {
 }
 
 const addTaskButton = document.querySelector("#add-task");
+const form = document.querySelector("form");
 addTaskButton.onclick = () => {
-    const form = document.querySelector("form");
     form.style.display = (form.style.display === "none" ? "block" : "none")
 }
 
@@ -18,24 +18,32 @@ const getValue = (name) => {
 }
 
 const tasksToday = document.querySelector("#tasks-today")
-const compileList = (task) => {
-    let item = document.createElement('li');
-    item.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-    tasksToday.appendChild(item);
+const compileList = () => {
+    while (tasksToday.firstChild) {
+        tasksToday.firstChild.remove();
+    }
+    JSON.parse(window.localStorage.getItem('taskList')).map((task) => {
+        let item = document.createElement('li');
+        item.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
+        tasksToday.appendChild(item);
+    })
 }
 
 const saveTaskButton = document.querySelector("#save-task");
 saveTaskButton.onclick = (e) => {
     e.preventDefault();
-    let title = getValue("title");
-    let description = getValue("description");
-    let date = new Date(getValue("date"));
-    let priority = getValue("priority");
-    let task = Task(title, description, date, priority);
+    let task = Task(
+        getValue("title"),
+        getValue("description"),
+        new Date(getValue("date")),
+        getValue("priority")
+    );
     manageList.addTask(task);
-    compileList(task);
+    form.style.display = "none";
+    compileList();
 }
 
 
 showDate(document.querySelector("#cont-heading"));
 showDate(document.querySelector("#date"));
+compileList();
