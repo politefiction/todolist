@@ -1,11 +1,8 @@
 import './styles/main.scss';
 import { format, isValid, compareAsc, compareDesc, addDays } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
+import { compileList, showDate } from './modules/pageDisplay'
 
-const showDate = (e, date) => {
-    let dateDisplay = date ? date : new Date();
-    return e.textContent = format(dateDisplay, 'MMMM Do, YYYY');
-}
 
 const addTaskButton = document.querySelector("#add-task");
 const form = document.querySelector("form");
@@ -15,18 +12,6 @@ addTaskButton.onclick = () => {
 
 const getValue = (name) => {
     return document.getElementsByName(name)[0].value;
-}
-
-const tasksToday = document.querySelector("#tasks-today")
-const compileList = () => {
-    while (tasksToday.firstChild) {
-        tasksToday.firstChild.remove();
-    }
-    JSON.parse(window.localStorage.getItem('taskList')).map((task) => {
-        let item = document.createElement('li');
-        item.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-        tasksToday.appendChild(item);
-    })
 }
 
 const saveTaskButton = document.querySelector("#save-task");
@@ -46,4 +31,4 @@ saveTaskButton.onclick = (e) => {
 
 showDate(document.querySelector("#cont-heading"));
 showDate(document.querySelector("#date"));
-compileList();
+if (window.localStorage.getItem('taskList')) { compileList() };

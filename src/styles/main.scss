@@ -29,6 +29,7 @@
     display: block;
     border: 1px solid purple; 
     padding: 0 5px 5px 5px;
+    margin-bottom: 20px;
 }
 
 #tasks-today li {
@@ -53,7 +54,7 @@ form input, select {
     border: 1px solid orange;
     width: 175px;
     height: 175px;
-    @include vertical-align();
+    margin-left: 20px auto 10px auto;
 }
 
 #container {
