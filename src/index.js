@@ -1,7 +1,7 @@
 import './styles/main.scss';
 import { format, isValid, compareAsc, compareDesc, addDays } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
-import { compileList, showDate } from './modules/pageDisplay'
+import { compileList, showDate, sortTasks } from './modules/pageDisplay'
 
 
 const addTaskButton = document.querySelector("#add-task");
@@ -25,10 +25,13 @@ saveTaskButton.onclick = (e) => {
     );
     manageList.addTask(task);
     form.style.display = "none";
-    compileList();
+    //compileList();
 }
 
 
 showDate(document.querySelector("#cont-heading"));
-showDate(document.querySelector("#date"));
-if (window.localStorage.getItem('taskList')) { compileList() };
+//showDate(document.querySelector("#date"));
+if (window.localStorage.getItem('taskList')) { 
+    //compileList();
+    sortTasks();
+ };

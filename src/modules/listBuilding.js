@@ -20,7 +20,6 @@ const manageList = (() => {
         addTask(t);
         p.tasks.push(t)
     }
-    // window.localStorage.setItem('taskList', JSON.stringify(taskList))
 
     return { addTask, addProject, addTaskToProject }
 })();
