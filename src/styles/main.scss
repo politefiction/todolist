@@ -65,3 +65,31 @@ form input, select {
     margin: 10px;
     padding-left: 5px;
 }
+
+#calendar {
+    display: block;
+    border: 1px solid teal;
+    width: 70vw;
+}
+
+#cal-heading {
+    text-align: center;
+}
+
+#weekdays {
+    display: inline-flex;
+    div {
+        display: inline-block;
+        border: 1px solid black;
+        height: 20px;
+        width: 93px;
+        text-align: center;
+    }
+}
+
+.calendar-day {
+    display: inline-flex;
+    width: 93px;
+    height: 100px;
+    border: 1px solid black;
+}
