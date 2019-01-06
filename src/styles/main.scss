@@ -5,12 +5,18 @@
     transform: translateX(5%);
 }
 
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 #header {
     display: block;
     border: 2px solid blue;
     width: auto;
     padding: 5px;
 }
+
+/* sidebar */
 
 #sidebar {
     position: relative;
@@ -57,6 +63,9 @@ form input, select {
     margin-left: 20px auto 10px auto;
 }
 
+
+/* main calendar */
+
 #container {
     float: left;
     border: 2px solid green;
@@ -66,10 +75,11 @@ form input, select {
     padding-left: 5px;
 }
 
+
 #calendar {
     display: block;
     border: 1px solid teal;
-    width: 70vw;
+    width: 700px;
 }
 
 #cal-heading {
@@ -89,7 +99,25 @@ form input, select {
 
 .calendar-day {
     display: inline-flex;
-    width: 93px;
+    width: 87px;
     height: 100px;
     border: 1px solid black;
+    padding: 3px;
+}
+
+#today, #selected-date {
+    font-weight: bold;
+}
+
+#today {
+    background-color: #f2efc1;
+}
+
+#selected-date {
+    background-color: #2484b7;
+    color: white;
+}
+
+.diff-month {
+    background-color: rgba(128, 128, 128, 0.452);
 }

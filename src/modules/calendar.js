@@ -1,26 +1,49 @@
-import { format, isValid, getDaysInMonth } from 'date-fns'
+import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } from 'date-fns'
+
+let selectedDate = startOfToday();
 
 const displayMonth = (date) => {
     const calHeading = document.querySelector("#cal-heading");
-    let display = date ? date : new Date();
-    calHeading.textContent = format(display, 'MMMM YYYY');
+    calHeading.textContent = format(selectedDate, 'MMMM YYYY');
 }
 
-// note, will need to keep track of current day/month/year
-
 const calendar = document.querySelector("#calendar");
-const addCalendarDay = (num) => {
+const addCalendarDay = (date) => {
     let calDay = document.createElement("div");
     calDay.setAttribute("class", "calendar-day");
-    calDay.textContent = num;
+    calDay.setAttribute("name", date);
+    if (isToday(date)) { calDay.setAttribute("id", "today") }
+    if (date.getTime() == selectedDate.getTime()) { 
+        calDay.setAttribute("id", "selected-date") 
+    }
+    if (date.getMonth() != selectedDate.getMonth()) {
+        calDay.setAttribute("class", "calendar-day diff-month");
+    }
+    calDay.textContent = date.getDate();
     calendar.appendChild(calDay);
 }
 
+// calendar too short for most months starting Fri/Sat; fix
+const renderCalender = () => {
+    clearCalendar();
+    displayMonth();
+    let weekStart = 1 - getDay(startOfMonth(selectedDate));
+    for (let i=weekStart; i<=34+weekStart; i++) {
+        addCalendarDay(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i))
+    }
+}
 
-export { displayMonth, addCalendarDay }
+const clearCalendar = () => {
+    calendar.querySelectorAll(".calendar-day").forEach(day => {
+        calendar.removeChild(day);
+    })
+}
 
-/*
-calHeading.textContent = format(
-    (date && isValid(date)) ? (date, 'MMMM') : (new Date(), 'MMMM')
-)
-*/
+// onclick, only re-renders calendar once
+const selectDate = (date) => {
+    selectedDate = new Date(date.getAttribute("name"));
+    date.setAttribute("id", "selected-date") 
+    renderCalender();
+}
+
+export { selectedDate, selectDate, renderCalender }

@@ -8,6 +8,7 @@ const showDate = (e, date) => {
 }
 
 const tasksToday = document.querySelector("#tasks-today")
+
 const compileList = () => {
     while (tasksToday.firstChild) {
         tasksToday.firstChild.remove();
