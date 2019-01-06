@@ -2,6 +2,11 @@ import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } f
 
 let selectedDate = startOfToday();
 
+const selectDate = (date) => {
+    selectedDate = new Date(date.getAttribute("name"));
+    renderCalender();
+}
+
 const displayMonth = (date) => {
     const calHeading = document.querySelector("#cal-heading");
     calHeading.textContent = format(selectedDate, 'MMMM YYYY');
@@ -17,20 +22,10 @@ const addCalendarDay = (date) => {
         calDay.setAttribute("id", "selected-date") 
     }
     if (date.getMonth() != selectedDate.getMonth()) {
-        calDay.setAttribute("class", "calendar-day diff-month");
+        calDay.className += " diff-month";
     }
     calDay.textContent = date.getDate();
     calendar.appendChild(calDay);
-}
-
-// calendar too short for most months starting Fri/Sat; fix
-const renderCalender = () => {
-    clearCalendar();
-    displayMonth();
-    let weekStart = 1 - getDay(startOfMonth(selectedDate));
-    for (let i=weekStart; i<=34+weekStart; i++) {
-        addCalendarDay(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i))
-    }
 }
 
 const clearCalendar = () => {
@@ -39,11 +34,30 @@ const clearCalendar = () => {
     })
 }
 
-// onclick, only re-renders calendar once
-const selectDate = (date) => {
-    selectedDate = new Date(date.getAttribute("name"));
-    date.setAttribute("id", "selected-date") 
-    renderCalender();
+const calculateCalendarDays = () => {
+    return (getDay(startOfMonth(selectedDate)) > 4 
+            && getDaysInMonth(selectedDate) > 29) ?
+            41 : 34
 }
+
+const addDateSelection = () => {
+    const dates = document.querySelectorAll(".calendar-day")
+    dates.forEach(date => {
+        date.onclick = () => {
+            selectDate(date);
+        }
+    })
+}
+
+const renderCalender = () => {
+    clearCalendar();
+    displayMonth();
+    let weekStart = 1 - getDay(startOfMonth(selectedDate));
+    for (let i=weekStart; i<=(calculateCalendarDays()+weekStart); i++) {
+        addCalendarDay(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i))
+    }
+    addDateSelection();
+}
+
 
 export { selectedDate, selectDate, renderCalender }

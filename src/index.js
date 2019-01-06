@@ -31,10 +31,3 @@ saveTaskButton.onclick = (e) => {
 
 //compileList();
 renderCalender();
-
-const dates = document.querySelectorAll(".calendar-day")
-dates.forEach(date => {
-    date.onclick = () => {
-        selectDate(date);
-    }
-})

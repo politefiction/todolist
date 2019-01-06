@@ -70,7 +70,7 @@ form input, select {
     float: left;
     border: 2px solid green;
     width: 70vw;
-    height: 70vh;
+    height: auto;
     margin: 10px;
     padding-left: 5px;
 }
@@ -79,11 +79,26 @@ form input, select {
 #calendar {
     display: block;
     border: 1px solid teal;
-    width: 700px;
+    width: 665px;
+}
+
+#caldendar-heading {
+    border: 1px solid coral;
+    height: 20px;
 }
 
 #cal-heading {
     text-align: center;
+}
+
+#back-date {
+    position: relative;
+    float: left;
+}
+
+#forward-date {
+    position: relative;
+    float: right;
 }
 
 #weekdays {
@@ -119,5 +134,6 @@ form input, select {
 }
 
 .diff-month {
-    background-color: rgba(128, 128, 128, 0.452);
+    background-color: darkgray;
+    border: 1px solid rgba(29, 28, 28, 0.418);
 }
