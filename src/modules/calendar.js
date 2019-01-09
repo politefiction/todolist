@@ -2,14 +2,23 @@ import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } f
 
 let selectedDate = startOfToday();
 
-const selectDate = (date) => {
-    selectedDate = new Date(date.getAttribute("name"));
-    renderCalender();
+const firstWeekday = () => {
+    return getDay(startOfMonth(selectedDate));
 }
 
 const displayMonth = (date) => {
-    const calHeading = document.querySelector("#cal-heading");
-    calHeading.textContent = format(selectedDate, 'MMMM YYYY');
+    const calTitle = document.querySelector("#cal-title");
+    calTitle.textContent = format(selectedDate, 'MMMM YYYY');
+}
+
+const setSpecAttrs = (calDay, date) => {
+    if (isToday(date)) { calDay.setAttribute("id", "today") }
+    if (date.getTime() === selectedDate.getTime()) { 
+        calDay.setAttribute("id", "selected-date") 
+    }
+    if (date.getMonth() != selectedDate.getMonth()) {
+        calDay.className += " diff-month";
+    }
 }
 
 const calendar = document.querySelector("#calendar");
@@ -17,13 +26,7 @@ const addCalendarDay = (date) => {
     let calDay = document.createElement("div");
     calDay.setAttribute("class", "calendar-day");
     calDay.setAttribute("name", date);
-    if (isToday(date)) { calDay.setAttribute("id", "today") }
-    if (date.getTime() == selectedDate.getTime()) { 
-        calDay.setAttribute("id", "selected-date") 
-    }
-    if (date.getMonth() != selectedDate.getMonth()) {
-        calDay.className += " diff-month";
-    }
+    setSpecAttrs(calDay, date);
     calDay.textContent = date.getDate();
     calendar.appendChild(calDay);
 }
@@ -34,10 +37,41 @@ const clearCalendar = () => {
     })
 }
 
+const changeMonthYear = () => {
+    document.querySelector("#year-back").onclick = () => {
+        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()-12);
+        renderCalender();
+    }
+    document.querySelector("#month-back").onclick = () => {
+        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()-1);
+        renderCalender();
+    }
+    document.querySelector("#year-forward").onclick = () => {
+        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+12);
+        renderCalender();
+    }
+    document.querySelector("#month-forward").onclick = () => {
+        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+1);
+        renderCalender();
+    }
+}
+
+const isExtendedMonth = () => {
+    return ((getDaysInMonth(selectedDate) > 29 && firstWeekday() > 5) || 
+    (getDaysInMonth(selectedDate) > 30 && firstWeekday() > 4))
+}
+
 const calculateCalendarDays = () => {
-    return (getDay(startOfMonth(selectedDate)) > 4 
-            && getDaysInMonth(selectedDate) > 29) ?
-            41 : 34
+    if (getDaysInMonth(selectedDate) < 29 && firstWeekday() < 1) {
+        return 27
+    } else {
+        return isExtendedMonth() ? 41 : 34; 
+    }
+}
+
+const selectDate = (date) => {
+    selectedDate = new Date(date.getAttribute("name"));
+    renderCalender();
 }
 
 const addDateSelection = () => {
@@ -57,7 +91,8 @@ const renderCalender = () => {
         addCalendarDay(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i))
     }
     addDateSelection();
+    changeMonthYear();
 }
 
 
-export { selectedDate, selectDate, renderCalender }
+export { selectedDate, renderCalender }

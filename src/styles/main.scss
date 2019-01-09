@@ -68,7 +68,7 @@ form input, select {
 
 #container {
     float: left;
-    border: 2px solid green;
+    /*border: 2px solid green;*/
     width: 70vw;
     height: auto;
     margin: 10px;
@@ -83,21 +83,28 @@ form input, select {
 }
 
 #caldendar-heading {
+    display: inline-flex;
     border: 1px solid coral;
     height: 20px;
 }
 
-#cal-heading {
+#cal-title {
     text-align: center;
 }
 
+#back-date, #forward-date {
+    display: inline-flex;
+    div {
+        font-size: 1.5em;
+        margin: 5px;
+    }
+}
+
 #back-date {
-    position: relative;
     float: left;
 }
 
 #forward-date {
-    position: relative;
     float: right;
 }
 

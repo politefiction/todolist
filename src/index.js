@@ -2,7 +2,7 @@ import './styles/main.scss';
 import { format, isValid, compareAsc, compareDesc, startOfMonth, getDay, getDaysInMonth, startOfDay } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
 import { compileList, showDate, sortTasks } from './modules/pageDisplay';
-import { selectedDate, selectDate, renderCalender } from './modules/calendar';
+import { selectedDate, renderCalender } from './modules/calendar';
 
 
 const addTaskButton = document.querySelector("#add-task");
