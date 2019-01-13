@@ -1,4 +1,4 @@
-import { format, compareAsc } from 'date-fns';
+import { format, compareAsc, startOfToday } from 'date-fns';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 
@@ -7,16 +7,16 @@ const showDate = (e, date) => {
     return e.textContent = format(dateDisplay, 'MMMM Do, YYYY');
 }
 
-const tasksToday = document.querySelector("#tasks-today")
+const taskList = document.querySelector("#task-list")
 
 const compileList = () => {
-    while (tasksToday.firstChild) {
-        tasksToday.firstChild.remove();
+    while (taskList.firstChild) {
+        taskList.firstChild.remove();
     }
     JSON.parse(window.localStorage.getItem('taskList')).map((task) => {
         let item = document.createElement('li');
         item.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-        tasksToday.appendChild(item);
+        taskList.appendChild(item);
     })
 }
 
@@ -31,7 +31,7 @@ const sortTasks = () => {
     let dates = [];
     tasks.map((task) => { 
         let date = task.date.split('T')[0]
-        if (!dates.includes(date)) { dates.push(date) };
+        if (!dates.includes(date) && new Date(date) > startOfToday()) { dates.push(date) };
         dates = dates.sort(compareAsc);
     });
     dates.map((date) => {

@@ -1,6 +1,7 @@
 import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } from 'date-fns'
 
 let selectedDate = startOfToday();
+const calendar = document.querySelector("#calendar");
 
 const firstWeekday = () => {
     return getDay(startOfMonth(selectedDate));
@@ -21,13 +22,15 @@ const setSpecAttrs = (calDay, date) => {
     }
 }
 
-const calendar = document.querySelector("#calendar");
 const addCalendarDay = (date) => {
     let calDay = document.createElement("div");
     calDay.setAttribute("class", "calendar-day");
     calDay.setAttribute("name", date);
     setSpecAttrs(calDay, date);
-    calDay.textContent = date.getDate();
+    //let textDate = document.createElement("p")
+    //textDate.textContent = date.getDate();
+    calDay.innerHTML = `<p>${date.getDate()}</p>`;
+    //calDay.appendChild(textDate);
     calendar.appendChild(calDay);
 }
 

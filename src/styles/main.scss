@@ -18,7 +18,7 @@ body {
 
 /* sidebar */
 
-#sidebar {
+aside {
     position: relative;
     float: left;
     margin-top: 10px;
@@ -125,6 +125,11 @@ form input, select {
     height: 100px;
     border: 1px solid black;
     padding: 3px;
+    p {
+        display: grid;
+        margin-top: -2px;
+        width: 100%;
+    }
 }
 
 #today, #selected-date {
@@ -143,4 +148,10 @@ form input, select {
 .diff-month {
     background-color: darkgray;
     border: 1px solid rgba(29, 28, 28, 0.418);
+}
+
+.task-div {
+    z-index: 50;
+    background-color: rgba(128, 128, 128, 0.253);
+    font-size: 12px;
 }
