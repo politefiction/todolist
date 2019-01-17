@@ -68,23 +68,20 @@ form input, select {
 
 #container {
     float: left;
-    /*border: 2px solid green;*/
-    width: 70vw;
+    width: 80vh;
     height: auto;
     margin: 10px;
-    padding-left: 5px;
+    padding-left: 10px; // use to limit width?
 }
-
 
 #calendar {
-    display: block;
     border: 1px solid teal;
-    width: 665px;
+    margin: 0 20px;
 }
+
 
 #caldendar-heading {
     display: inline-flex;
-    border: 1px solid coral;
     height: 20px;
 }
 
@@ -109,20 +106,20 @@ form input, select {
 }
 
 #weekdays {
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-flow: dense;
     div {
-        display: inline-block;
         border: 1px solid black;
         height: 20px;
-        width: 93px;
+        width: auto;
         text-align: center;
     }
 }
 
 .calendar-day {
-    display: inline-flex;
-    width: 87px;
-    height: 100px;
+    width: auto;
+    height: 12vh;
     border: 1px solid black;
     padding: 3px;
     p {
@@ -154,4 +151,11 @@ form input, select {
     z-index: 50;
     background-color: rgba(128, 128, 128, 0.253);
     font-size: 12px;
+}
+
+/* testing other calendar */
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-flow: dense;
 }

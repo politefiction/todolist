@@ -2,7 +2,7 @@ import './styles/main.scss';
 import { format, isValid, compareAsc, compareDesc, startOfMonth, getDay, getDaysInMonth, startOfDay, parse } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
 import { compileList, showDate, sortTasks } from './modules/pageDisplay';
-import { selectedDate, renderCalender } from './modules/calendar';
+import { selectedDate, renderCalendar, altRenderCalendar } from './modules/calendar';
 
 
 const addTaskButton = document.querySelector("#add-task");
@@ -29,9 +29,10 @@ saveTaskButton.onclick = (e) => {
     //compileList();
 }
 
-renderCalender();
+renderCalendar();
 sortTasks();
 
+/*
 const calendarDays = document.querySelectorAll(".calendar-day");
 calendarDays.forEach(calendarDay => {
     if (new Date(calendarDay.getAttribute("name")).getTime() === parse(taskList[3].date.split('T')[0]).getTime()) {
