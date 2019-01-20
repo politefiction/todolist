@@ -1,5 +1,6 @@
-import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } from 'date-fns'
+import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday, parse } from 'date-fns'
 
+let calTaskList = JSON.parse(window.localStorage.getItem('taskList')) || [];
 let selectedDate = startOfToday();
 const calendar = document.querySelector("#calendar");
 
@@ -37,23 +38,19 @@ const clearCalendar = () => {
     })
 }
 
-const changeMonthYear = () => {
-    document.querySelector("#year-back").onclick = () => {
-        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()-12);
+const changeMonthYear = ((id, timeDiff) => {
+    let element = document.querySelector(id);
+    element.onclick = () => {
+        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+timeDiff)
         renderCalendar();
     }
-    document.querySelector("#month-back").onclick = () => {
-        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()-1);
-        renderCalendar();
-    }
-    document.querySelector("#year-forward").onclick = () => {
-        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+12);
-        renderCalendar();
-    }
-    document.querySelector("#month-forward").onclick = () => {
-        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+1);
-        renderCalendar();
-    }
+})
+
+const addMYSelection = () => {
+    changeMonthYear("#year-back", -12)
+    changeMonthYear("#month-back", -1)
+    changeMonthYear("#year-forward", +12)
+    changeMonthYear("#month-forward", +1)
 }
 
 const isExtendedMonth = () => {
@@ -83,11 +80,7 @@ const addDateSelection = () => {
     })
 }
 
-const weeksInCalendar = (weekStart) => {
-    return (calculateCalendarDays()+1)/7;
-}
-
-const addWeek = () => {
+const addWeeks = () => {
     let calendar = document.querySelector("#calendar");
     for (let i=0; i<(calculateCalendarDays()+1)/7; i++) {
         let week = document.createElement("div");
@@ -96,22 +89,25 @@ const addWeek = () => {
     }
 }
 
-const altRenderCalendar = () => {
-    clearCalendar();
-    displayMonth();
-    let weekStart = 1 - getDay(startOfMonth(selectedDate));
-    for (let i=weekStart; i<=(calculateCalendarDays()+weekStart); i++) {
-        addCalendarDay(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), i))
-    }
-    addDateSelection();
-    changeMonthYear();
-    addWeek();
+const displayCalTasks = () => {
+    const calendarDays = document.querySelectorAll(".calendar-day");
+    calTaskList.forEach(task => {
+        calendarDays.forEach(calendarDay => {
+            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(task.date.split('T')[0]).getTime()) {
+            let taskDiv = document.createElement("div");
+            taskDiv.setAttribute("class", "task-div");
+            taskDiv.className += ` ${task.priority.toLowerCase()}`;
+            taskDiv.textContent = task.title;
+            calendarDay.appendChild(taskDiv);
+            }
+        })
+    })
 }
 
 const renderCalendar = () => {
     clearCalendar();
     displayMonth();
-    addWeek();
+    addWeeks();
     let weeks = document.querySelectorAll(".week");
     let weekStart = 1 - getDay(startOfMonth(selectedDate));
     let d = 0;
@@ -121,8 +117,9 @@ const renderCalendar = () => {
         d++;
     }
     addDateSelection();
-    changeMonthYear();
+    addMYSelection();
+    displayCalTasks();
 }
 
 
-export { selectedDate, renderCalendar, altRenderCalendar }
+export { renderCalendar, calTaskList }

@@ -68,7 +68,7 @@ form input, select {
 
 #container {
     float: left;
-    width: 80vh;
+    width: 70vw;
     height: auto;
     margin: 10px;
     padding-left: 10px; // use to limit width?
@@ -105,17 +105,21 @@ form input, select {
     float: right;
 }
 
-#weekdays {
+.week, #weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-auto-flow: dense;
-    div {
-        border: 1px solid black;
-        height: 20px;
-        width: auto;
-        text-align: center;
-    }
 }
+
+#weekdays div {
+    border: 1px solid black;
+    height: 20px;
+    width: auto;
+    text-align: center;
+}
+
+
+/* Calendar days */
 
 .calendar-day {
     width: auto;
@@ -144,18 +148,25 @@ form input, select {
 
 .diff-month {
     background-color: darkgray;
-    border: 1px solid rgba(29, 28, 28, 0.418);
+    border: 1px solid rgba(28, 29, 29, 0.418);
 }
 
 .task-div {
-    z-index: 50;
-    background-color: rgba(128, 128, 128, 0.253);
     font-size: 12px;
+    padding: 2px 5px;
+    margin: 2px 0;
+    color: cornsilk;
+    border-radius: 3px;
 }
 
-/* testing other calendar */
-.week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-auto-flow: dense;
+.low {
+    background-color: rgba(0, 128, 0, 0.712);
+}
+
+.medium {
+    background-color: rgb(209, 137, 43);
+}
+
+.high {
+    background-color: rgba(206, 35, 35, 0.781);
 }
