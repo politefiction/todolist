@@ -1,12 +1,12 @@
 import './styles/main.scss';
 import { format, isValid, compareAsc, compareDesc, startOfMonth, getDay, getDaysInMonth, startOfDay, parse } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
-import { compileList, showDate, sortTasks } from './modules/pageDisplay';
-import { renderCalendar, calTaskList } from './modules/calendar';
+import { compileList, showDate, sortUpcomingTasks } from './modules/pageDisplay';
+import { renderCalendar } from './modules/calendar';
 
 
 const addTaskButton = document.querySelector("#add-task");
-const form = document.querySelector("form");
+const form = document.querySelector("#new-task");
 addTaskButton.onclick = () => {
     form.style.display = (form.style.display === "none" ? "block" : "none")
 }
@@ -19,6 +19,7 @@ const saveTaskButton = document.querySelector("#save-task");
 saveTaskButton.onclick = (e) => {
     e.preventDefault();
     let task = Task(
+        `t${taskList.length}`,
         getValue("title"),
         getValue("description"),
         new Date(getValue("date")),
@@ -30,26 +31,7 @@ saveTaskButton.onclick = (e) => {
 }
 
 renderCalendar();
-//displayTasks();
-sortTasks();
+sortUpcomingTasks();
 
 /*
-calendarDays.filter(calendarDay => {
-    console.log(new Date(calendarDay.getAttribute("name")) === new Date(taskList[3].date.split('T')[0]))
-})
-//console.log(taskList[3])
-
-const displayTasks = () => {
-    const calendarDays = document.querySelectorAll(".calendar-day");
-    taskList.forEach(task => {
-        calendarDays.forEach(calendarDay => {
-            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(task.date.split('T')[0]).getTime()) {
-            let taskDiv = document.createElement("div");
-            taskDiv.setAttribute("class", "task-div");
-            taskDiv.textContent = task.title;
-            calendarDay.appendChild(taskDiv);
-            }
-        })
-    })
-}
 */

@@ -1,6 +1,6 @@
-import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday, parse } from 'date-fns'
+import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } from 'date-fns'
+import { displayCalTasks, setElemWithAttrs } from './pageDisplay'
 
-let calTaskList = JSON.parse(window.localStorage.getItem('taskList')) || [];
 let selectedDate = startOfToday();
 const calendar = document.querySelector("#calendar");
 
@@ -13,10 +13,10 @@ const displayMonth = (date) => {
     calTitle.textContent = format(selectedDate, 'MMMM YYYY');
 }
 
-const setSpecAttrs = (calDay, date) => {
-    if (isToday(date)) { calDay.setAttribute("id", "today") }
+const setCalDayAttrs = (calDay, date) => {
+    if (isToday(date)) { calDay.setAttribute("id", "today"); }
     if (date.getTime() === selectedDate.getTime()) { 
-        calDay.setAttribute("id", "selected-date") 
+        calDay.setAttribute("id", "selected-date"); 
     }
     if (date.getMonth() != selectedDate.getMonth()) {
         calDay.className += " diff-month";
@@ -24,10 +24,8 @@ const setSpecAttrs = (calDay, date) => {
 }
 
 const addCalendarDay = (date, week) => {
-    let calDay = document.createElement("div");
-    calDay.setAttribute("class", "calendar-day");
-    calDay.setAttribute("name", date);
-    setSpecAttrs(calDay, date);
+    let calDay = setElemWithAttrs("div", [["class", "calendar-day"], ["name", date]])
+    setCalDayAttrs(calDay, date);
     calDay.innerHTML = `<p>${date.getDate()}</p>`;
     week.appendChild(calDay);
 }
@@ -74,8 +72,10 @@ const selectDate = (date) => {
 const addDateSelection = () => {
     const dates = document.querySelectorAll(".calendar-day")
     dates.forEach(date => {
-        date.onclick = () => {
-            selectDate(date);
+        if (selectedDate.getTime() != new Date(date.getAttribute("name")).getTime()) {
+            date.onclick = () => {
+                selectDate(date);
+            }
         }
     })
 }
@@ -83,25 +83,9 @@ const addDateSelection = () => {
 const addWeeks = () => {
     let calendar = document.querySelector("#calendar");
     for (let i=0; i<(calculateCalendarDays()+1)/7; i++) {
-        let week = document.createElement("div");
-        week.setAttribute("class", "week");
+        let week = setElemWithAttrs("div", [["class", "week"]])
         calendar.appendChild(week);
     }
-}
-
-const displayCalTasks = () => {
-    const calendarDays = document.querySelectorAll(".calendar-day");
-    calTaskList.forEach(task => {
-        calendarDays.forEach(calendarDay => {
-            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(task.date.split('T')[0]).getTime()) {
-            let taskDiv = document.createElement("div");
-            taskDiv.setAttribute("class", "task-div");
-            taskDiv.className += ` ${task.priority.toLowerCase()}`;
-            taskDiv.textContent = task.title;
-            calendarDay.appendChild(taskDiv);
-            }
-        })
-    })
 }
 
 const renderCalendar = () => {
@@ -122,4 +106,4 @@ const renderCalendar = () => {
 }
 
 
-export { renderCalendar, calTaskList }
+export { renderCalendar }

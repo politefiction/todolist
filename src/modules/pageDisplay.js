@@ -1,53 +1,122 @@
-import { format, compareAsc, startOfToday } from 'date-fns';
+import { format, compareAsc, startOfToday, parse } from 'date-fns';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
+const taskList = document.querySelector("#task-list");
 
 const showDate = (e, date) => {
     let dateDisplay = date ? date : new Date();
     return e.textContent = format(dateDisplay, 'MMMM Do, YYYY');
 }
 
-const taskList = document.querySelector("#task-list")
+/*
+const setAttributes = (e, attrs) => {
+    attrs.forEach(attr => {
+        e.setAttribute(attr[0], attr[1]);
+    })
+}
+*/
+
+const setElemWithAttrs = (tag, attrs) => {
+    let e = document.createElement(tag);
+    attrs.forEach(attr => {
+        e.setAttribute(attr[0], attr[1]);
+    })
+    return e;
+}
 
 const compileList = () => {
     while (taskList.firstChild) {
         taskList.firstChild.remove();
     }
-    JSON.parse(window.localStorage.getItem('taskList')).map((task) => {
+    tasks.map((task) => {
         let item = document.createElement('li');
         item.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
         taskList.appendChild(item);
     })
 }
 
-const getTasksForDay = function(date) {
-    let list = tasks.filter(function(task) {
+const getTasksForDay = (date) => {
+    let list = tasks.filter(task => {
         return task.date.split('T')[0] === date;
     })
-    return list
+    return list;
 }
 
-const sortTasks = () => {
+const collectTaskDates = () => {
     let dates = [];
-    tasks.map((task) => { 
-        let date = task.date.split('T')[0]
-        if (!dates.includes(date) && new Date(date) > startOfToday()) { dates.push(date) };
-        dates = dates.sort(compareAsc);
+    tasks.map(task => { 
+        let date = task.date.split('T')[0];
+        if (!dates.includes(date) && new Date(date) >= startOfToday()) { dates.push(date) };
     });
-    dates.map((date) => {
+    return dates.sort(compareAsc);
+}
+
+const sortUpcomingTasks = () => {
+    let dates = collectTaskDates();
+    dates.map(date => {
         let dateForDisplay = document.createElement('h4');
         showDate(dateForDisplay, date);
-        document.querySelector('#task-list').appendChild(dateForDisplay);
+        taskList.appendChild(dateForDisplay);
 
-        let list = document.createElement('ul')
-        document.querySelector('#task-list').appendChild(list);
+        let list = document.createElement('ul');
+        taskList.appendChild(list);
 
         getTasksForDay(date).map((task) => {
-            let item = document.createElement('li')
+            let item = document.createElement('li');
             item.innerHTML = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-            list.appendChild(item)
+            list.appendChild(item);
         })
     })
 }
 
-export { compileList, showDate, sortTasks }
+const displayCalTasks = () => {
+    const calendarDays = document.querySelectorAll(".calendar-day");
+    tasks.forEach(task => {
+        let idName = task.taskID;
+        let taskDiv = setElemWithAttrs("div", [
+            ["class", `task-div ${task.priority.toLowerCase()}`]
+        ])
+        taskDiv.textContent = task.title;
+        calendarDays.forEach(calendarDay => {
+            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(task.date.split('T')[0]).getTime()) {
+                calendarDay.appendChild(taskDiv);
+                addTaskModal(taskDiv, idName); 
+                taskDiv.onclick = () => {
+                    openModal(idName);
+                }
+            }
+        })
+    })
+}
+
+const addTaskModal = (e, idName) => {
+    let modal = setElemWithAttrs("div", [
+        ["class", "task-modal"],
+        ["id", idName]
+    ]);
+    let modalContent = setElemWithAttrs("div", [["class", "task-modal-content"]]);
+    let closer = setElemWithAttrs("span", [["class", "close-modal"]]);
+    closer.innerHTML = "&times<br><br>";
+    //closer.onclick = () => { closeModal() }
+    modalContent.appendChild(closer);
+    modalContent.innerHTML += "Testing, testing";
+    modal.appendChild(modalContent);
+    e.appendChild(modal);
+    modal.firstChild.firstChild.addEventListener("click", () => {
+        event.stopPropagation();
+        modal.style.display = "none";
+    })
+}
+
+const openModal = (idName) => {
+    let modal = document.querySelector(`#${idName}`);
+    modal.style.display = "block";
+    console.log(modal.firstChild.firstChild)
+}
+
+const closeModal = (closer) => {
+    closer.parentElement.parentElement.style.display = "none";
+    console.log("hello?");
+}
+
+export { compileList, showDate, sortUpcomingTasks, displayCalTasks, setElemWithAttrs }

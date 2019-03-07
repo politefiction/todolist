@@ -1,11 +1,12 @@
 let taskList = JSON.parse(window.localStorage.getItem('taskList')) || [];
 const projectList = [];
 
-const Task = (title, description, date, priority, projectId) => {
-    return { title, description, date, priority, projectId }
+const Task = (taskID, title, description, date, priority, projectId) => {
+    return { taskID, title, description, date, priority, projectId }
 }
 
-const Project = (title, description, date, priority, tasks=[], projectId=projectList.length ) => {
+//projectID should probably be alphanumeric
+const Project = (projectId, title, description, date, priority, tasks=[] ) => {
     return { title, description, date, priority, tasks, projectId }
 }
 
