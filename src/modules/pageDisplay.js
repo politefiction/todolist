@@ -1,4 +1,4 @@
-import { compareAsc, format, isFuture, parse, startOfToday } from 'date-fns';
+import { compareAsc, format, isFuture, isValid, parse, startOfToday } from 'date-fns';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
@@ -113,6 +113,8 @@ const setModalText = (modal) => {
         if (t.taskID === modal.id) { return t } 
     })[0]
     modal.firstChild.innerHTML += `<p>Title: ${task.title}</p>
+        <p>Start Date: ${format(task.date, 'MMMM Do, YYYY')}</p>
+        <p>Due Date: ${ task.dueDate ? format(task.dueDate, 'MMMM Do, YYYY') : "---" }</p>
         <p>Description: ${task.description}</p>`;
 }
 

@@ -23,6 +23,7 @@ saveTaskButton.onclick = (e) => {
         getValue("title"),
         getValue("description"),
         new Date(getValue("date")),
+        new Date(getValue("due-date")),
         getValue("priority")
     );
     manageList.addTask(task);

@@ -11,19 +11,22 @@
                 <div id="task-list"></div>
                 <button id="add-task">Add New Task</button>
                 <form id="new-task">
-                    <label for="Date">Date</label>
+                    <label for="Date">Start Date</label>
                     <input type="datetime-local" name="date">
                     <label for="Priority">Priority</label>
                     <select name="priority">
                         <option>Low</option>
                         <option>Medium</option>
                         <option>High</option>
-                    </select><br />
+                    </select><br>
+
+                    <label for="Date">Due Date</label>
+                    <input type="datetime-local" name="due-date"><br>
 
                     <label for="Title">Title</label>
-                    <input type="text" name="title"><br />
+                    <input type="text" name="title"><br>
                     <label for="Description">Description</label>
-                    <input type="text" name="description"><br />
+                    <input type="text" name="description"><br>
                     <button id="save-task">Save Task</button>
                 </form>
             </div>
