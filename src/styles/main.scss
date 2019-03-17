@@ -1,9 +1,11 @@
+/*
 @mixin vertical-align {
     position: relative;
     top: 45%;
     transform: translateY(50%);
     transform: translateX(5%);
 }
+*/
 
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -171,6 +173,8 @@ form {
 .high {
     background-color: rgba(206, 35, 35, 0.781);
 }
+
+/* Task Modal */
 
 .task-modal {
     display: none;

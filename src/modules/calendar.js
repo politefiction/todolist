@@ -1,4 +1,4 @@
-import { format, getDay, getDaysInMonth, startOfMonth, isToday, startOfToday } from 'date-fns'
+import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns'
 import { displayCalTasks, setElemWithAttrs } from './pageDisplay'
 
 let selectedDate = startOfToday();
@@ -8,14 +8,14 @@ const firstWeekday = () => {
     return getDay(startOfMonth(selectedDate));
 }
 
-const displayMonth = (date) => {
+const displayMonthYear = () => {
     const calTitle = document.querySelector("#cal-title");
     calTitle.textContent = format(selectedDate, 'MMMM YYYY');
 }
 
 const setCalDayAttrs = (calDay, date) => {
     if (isToday(date)) { calDay.setAttribute("id", "today"); }
-    if (date.getTime() === selectedDate.getTime()) { 
+    if (isSameDay(date, selectedDate)) { 
         calDay.setAttribute("id", "selected-date"); 
     }
     if (date.getMonth() != selectedDate.getMonth()) {
@@ -72,7 +72,7 @@ const selectDate = (date) => {
 const addDateSelection = () => {
     const dates = document.querySelectorAll(".calendar-day")
     dates.forEach(date => {
-        if (selectedDate.getTime() != new Date(date.getAttribute("name")).getTime()) {
+        if (!isSameDay(selectedDate, date.getAttribute("name"))) {
             date.onclick = () => {
                 selectDate(date);
             }
@@ -88,9 +88,8 @@ const addWeeks = () => {
     }
 }
 
-const renderCalendar = () => {
-    clearCalendar();
-    displayMonth();
+const setCurrentMonth = () => {
+    displayMonthYear();
     addWeeks();
     let weeks = document.querySelectorAll(".week");
     let weekStart = 1 - getDay(startOfMonth(selectedDate));
@@ -100,6 +99,11 @@ const renderCalendar = () => {
         addCalendarDay(date, weeks[Math.floor(d/7)]);
         d++;
     }
+}
+
+const renderCalendar = () => {
+    clearCalendar();
+    setCurrentMonth();
     addDateSelection();
     addMYSelection();
     displayCalTasks();

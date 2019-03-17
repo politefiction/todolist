@@ -1,4 +1,4 @@
-import { format, compareAsc, startOfToday, parse } from 'date-fns';
+import { compareAsc, format, isFuture, parse, startOfToday } from 'date-fns';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
@@ -46,7 +46,7 @@ const collectTaskDates = () => {
     let dates = [];
     tasks.map(task => { 
         let date = task.date.split('T')[0];
-        if (!dates.includes(date) && new Date(date) >= startOfToday()) { dates.push(date) };
+        if (!dates.includes(date) && isFuture(date)) { dates.push(date) };
     });
     return dates.sort(compareAsc);
 }
@@ -58,13 +58,13 @@ const sortUpcomingTasks = () => {
         showDate(dateForDisplay, date);
         taskList.appendChild(dateForDisplay);
 
-        let list = document.createElement('ul');
-        taskList.appendChild(list);
+        let dayList = document.createElement('ul');
+        taskList.appendChild(dayList);
 
         getTasksForDay(date).map((task) => {
             let item = document.createElement('li');
             item.innerHTML = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-            list.appendChild(item);
+            dayList.appendChild(item);
         })
     })
 }
@@ -81,9 +81,7 @@ const displayCalTasks = () => {
             if (new Date(calendarDay.getAttribute("name")).getTime() === parse(task.date.split('T')[0]).getTime()) {
                 calendarDay.appendChild(taskDiv);
                 addTaskModal(taskDiv, idName); 
-                taskDiv.onclick = () => {
-                    openModal(idName);
-                }
+                taskDiv.onclick = () => { openModal(idName); }
             }
         })
     })
@@ -94,18 +92,20 @@ const addTaskModal = (e, idName) => {
         ["class", "task-modal"],
         ["id", idName]
     ]);
+    addModalContent(modal);
+    e.appendChild(modal);
+    modal.firstChild.firstChild.onclick = () => {
+        closeModal(modal);
+    }
+}
+
+const addModalContent = (modal) => {
     let modalContent = setElemWithAttrs("div", [["class", "task-modal-content"]]);
     let closer = setElemWithAttrs("span", [["class", "close-modal"]]);
     closer.innerHTML = "&times<br><br>";
-    //closer.onclick = () => { closeModal() }
     modalContent.appendChild(closer);
     modalContent.innerHTML += "Testing, testing";
     modal.appendChild(modalContent);
-    e.appendChild(modal);
-    modal.firstChild.firstChild.addEventListener("click", () => {
-        event.stopPropagation();
-        modal.style.display = "none";
-    })
 }
 
 const openModal = (idName) => {
@@ -114,9 +114,9 @@ const openModal = (idName) => {
     console.log(modal.firstChild.firstChild)
 }
 
-const closeModal = (closer) => {
-    closer.parentElement.parentElement.style.display = "none";
-    console.log("hello?");
+const closeModal = (modal) => {
+    event.stopPropagation();
+    modal.style.display = "none";
 }
 
 export { compileList, showDate, sortUpcomingTasks, displayCalTasks, setElemWithAttrs }

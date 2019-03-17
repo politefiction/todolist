@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import { format, isValid, compareAsc, compareDesc, startOfMonth, getDay, getDaysInMonth, startOfDay, parse } from 'date-fns';
+//import { format, isValid, compareAsc, compareDesc, startOfMonth, getDay, getDaysInMonth, startOfDay, parse } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
 import { compileList, showDate, sortUpcomingTasks } from './modules/pageDisplay';
 import { renderCalendar } from './modules/calendar';
@@ -27,11 +27,7 @@ saveTaskButton.onclick = (e) => {
     );
     manageList.addTask(task);
     form.style.display = "none";
-    //renderCalendar();
 }
 
 renderCalendar();
 sortUpcomingTasks();
-
-/*
-*/
