@@ -104,14 +104,22 @@ const addModalContent = (modal) => {
     let closer = setElemWithAttrs("span", [["class", "close-modal"]]);
     closer.innerHTML = "&times<br><br>";
     modalContent.appendChild(closer);
-    modalContent.innerHTML += "Testing, testing";
     modal.appendChild(modalContent);
+    setModalText(modal);
+}
+
+const setModalText = (modal) => {
+    let task = tasks.filter(t => { 
+        if (t.taskID === modal.id) { return t } 
+    })[0]
+    modal.firstChild.innerHTML += `<p>Title: ${task.title}</p>
+        <p>Description: ${task.description}</p>`;
 }
 
 const openModal = (idName) => {
     let modal = document.querySelector(`#${idName}`);
     modal.style.display = "block";
-    console.log(modal.firstChild.firstChild)
+    //setModalText(modal);
 }
 
 const closeModal = (modal) => {

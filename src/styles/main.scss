@@ -78,6 +78,8 @@ form {
 #calendar {
     border: 1px solid teal;
     margin: 0 20px;
+    min-width: 756px;
+    max-width: 966px;
 }
 
 
@@ -157,6 +159,7 @@ form {
 .task-div {
     font-size: 12px;
     padding: 2px 5px;
+    width: auto;
     margin: 2px 0;
     color: cornsilk;
     border-radius: 3px;
