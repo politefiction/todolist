@@ -1,17 +1,23 @@
 import './styles/main.scss';
-//import { format, isValid, compareAsc, compareDesc, startOfMonth, getDay, getDaysInMonth, startOfDay, parse } from 'date-fns';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
-import { compileList, showDate, sortUpcomingTasks } from './modules/pageDisplay';
+import { sortUpcomingTasks, openModal, closeModal } from './modules/pageDisplay';
 import { renderCalendar } from './modules/calendar';
+import { generateForm } from './modules/forms';
 
 const getValue = (name) => {
     return document.getElementsByName(name)[0].value;
 }
 
-const addTaskButton = document.querySelector("#add-task");
-const taskForm = document.querySelector("#new-task");
-addTaskButton.onclick = () => {
-    taskForm.style.display = (taskForm.style.display === "none" ? "block" : "none")
+generateForm("Task", "t");
+generateForm("Project", "p");
+
+const newTaskButton = document.querySelector("#add-task");
+const taskForm = document.querySelector("#task-form-modal");
+newTaskButton.onclick = () => {
+    openModal("task-form-modal");
+}
+taskForm.firstElementChild.firstElementChild.onclick = () => {
+    closeModal(taskForm);
 }
 
 const saveTaskButton = document.querySelector("#save-task");
@@ -26,20 +32,23 @@ saveTaskButton.onclick = (e) => {
         getValue("t-priority")
     );
     manageList.addTask(task);
-    taskForm.style.display = "none";
+    closeModal(taskForm);
 }
 
-const addProjectButton = document.querySelector("#add-project");
-const projectForm = document.querySelector("#new-project");
-addProjectButton.onclick = () => {
-    projectForm.style.display = (projectForm.style.display === "none" ? "block" : "none")
+const newProjectButton = document.querySelector("#add-project");
+const projectForm = document.querySelector("#project-form-modal");
+newProjectButton.onclick = () => {
+    openModal("project-form-modal");
+}
+projectForm.firstElementChild.firstElementChild.onclick = () => {
+    closeModal(projectForm);
 }
 
 const saveProjectButton = document.querySelector("#save-project");
 saveProjectButton.onclick = (e) => {
     e.preventDefault();
     let project = Project(
-        `t${projectList.length}`,
+        `p${projectList.length}`,
         getValue("p-title"),
         getValue("p-description"),
         new Date(getValue("p-date")),
@@ -47,7 +56,7 @@ saveProjectButton.onclick = (e) => {
         getValue("p-priority")
     );
     manageList.addProject(project);
-    projectForm.style.display = "none";
+    closeModal(projectForm);
 }
 
 renderCalendar();

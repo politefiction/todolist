@@ -8,20 +8,18 @@ const showDate = (e, date) => {
     return e.textContent = format(dateDisplay, 'MMMM Do, YYYY');
 }
 
-/*
-const setAttributes = (e, attrs) => {
-    attrs.forEach(attr => {
-        e.setAttribute(attr[0], attr[1]);
-    })
-}
-*/
-
 const setElemWithAttrs = (tag, attrs) => {
     let e = document.createElement(tag);
     attrs.forEach(attr => {
         e.setAttribute(attr[0], attr[1]);
     })
     return e;
+}
+
+const appendChildren = (e, children) => {
+    children.forEach(child => {
+        e.appendChild(child);
+    })
 }
 
 const compileList = () => {
@@ -89,7 +87,7 @@ const displayCalTasks = () => {
 
 const addTaskModal = (e, idName) => {
     let modal = setElemWithAttrs("div", [
-        ["class", "task-modal"],
+        ["class", "modal"],
         ["id", idName]
     ]);
     addModalContent(modal);
@@ -121,7 +119,6 @@ const setModalText = (modal) => {
 const openModal = (idName) => {
     let modal = document.querySelector(`#${idName}`);
     modal.style.display = "block";
-    //setModalText(modal);
 }
 
 const closeModal = (modal) => {
@@ -129,4 +126,4 @@ const closeModal = (modal) => {
     modal.style.display = "none";
 }
 
-export { compileList, showDate, sortUpcomingTasks, displayCalTasks, setElemWithAttrs }
+export { appendChildren, compileList, showDate, sortUpcomingTasks, displayCalTasks, setElemWithAttrs, openModal, closeModal }
