@@ -1,8 +1,11 @@
 import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns'
-import { displayCalTasks, setElemWithAttrs } from './pageDisplay'
+import { setElemWithAttrs, displayCalItems } from './pageDisplay'
 
 let selectedDate = startOfToday();
 const calendar = document.querySelector("#calendar");
+
+const tasks = JSON.parse(window.localStorage.getItem('taskList'));
+const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
 const firstWeekday = () => {
     return getDay(startOfMonth(selectedDate));
@@ -106,7 +109,8 @@ const renderCalendar = () => {
     setCurrentMonth();
     addDateSelection();
     addMYSelection();
-    displayCalTasks();
+    displayCalItems(tasks);
+    displayCalItems(projects);
 }
 
 

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <title>To-Do List</title>
+    </head>
     <body>
         <div id="header">
-            <h2>To-Do List Page</h2>
+            <h2>To-Do List of Sorts</h2>
         </div>
         <aside>
             <h3>Upcoming Tasks</h3>
@@ -11,20 +13,19 @@
                 <div id="task-list"></div>
                 <button id="add-task">Add New Task</button>
                 <div class="modal" id="task-form-modal">
-                    <form id="new-task">
+                    <div class="modal-content">
                         <span class="close-modal">&times</span>
-                    </form>
+                        <form id="new-task"></form>
+                    </div>
                 </div>
                 <br><br>
                 <button id="add-project">Add New Project</button>
                 <div class="modal" id="project-form-modal">
-                    <form id="new-project">
+                    <div class="modal-content">
                         <span class="close-modal">&times</span>
-                    </form>
+                        <form id="new-project"></form>
+                    </div>
                 </div>
-            </div>
-            <div id="calendar-box">
-                <p>Calendar here?</p>
             </div>
         </aside>
         <div id="container">

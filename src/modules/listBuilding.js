@@ -14,7 +14,10 @@ const manageList = (() => {
         taskList.push(t)
         window.localStorage.setItem('taskList', JSON.stringify(taskList))
     }
-    const addProject = (p) => projectList.push(p)
+    const addProject = (p) => {
+        projectList.push(p)
+        window.localStorage.setItem('projectList', JSON.stringify(projectList))
+    }
     const addTaskToProject = (p, t) => {
         t.projectId = p.projectId;
         addTask(t);

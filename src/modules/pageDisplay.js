@@ -3,6 +3,8 @@ import { compareAsc, format, isFuture, isValid, parse, startOfToday } from 'date
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
 
+const projects = JSON.parse(window.localStorage.getItem('projectList'));
+
 const showDate = (e, date) => {
     let dateDisplay = date ? date : new Date();
     return e.textContent = format(dateDisplay, 'MMMM Do, YYYY');
@@ -67,25 +69,26 @@ const sortUpcomingTasks = () => {
     })
 }
 
-const displayCalTasks = () => {
+const displayCalItems = (list) => {
     const calendarDays = document.querySelectorAll(".calendar-day");
-    tasks.forEach(task => {
-        let idName = task.taskID;
-        let taskDiv = setElemWithAttrs("div", [
-            ["class", `task-div ${task.priority.toLowerCase()}`]
+    list.forEach(item => {
+        let idName = (item.taskID || item.projectId);
+        let className = (item.taskID ? "task-div" : "project-div");
+        let itemDiv = setElemWithAttrs("div", [
+            ["class", `${className} ${item.priority.toLowerCase()}`]
         ])
-        taskDiv.textContent = task.title;
+        itemDiv.textContent = item.title;
         calendarDays.forEach(calendarDay => {
-            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(task.date.split('T')[0]).getTime()) {
-                calendarDay.appendChild(taskDiv);
-                addTaskModal(taskDiv, idName); 
-                taskDiv.onclick = () => { openModal(idName); }
+            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(item.date.split('T')[0]).getTime()) {
+                calendarDay.appendChild(itemDiv);
+                addModal(itemDiv, idName); 
+                itemDiv.onclick = () => { openModal(idName); }
             }
         })
     })
 }
 
-const addTaskModal = (e, idName) => {
+const addModal = (e, idName) => {
     let modal = setElemWithAttrs("div", [
         ["class", "modal"],
         ["id", idName]
@@ -98,22 +101,25 @@ const addTaskModal = (e, idName) => {
 }
 
 const addModalContent = (modal) => {
-    let modalContent = setElemWithAttrs("div", [["class", "task-modal-content"]]);
+    let modalContent = setElemWithAttrs("div", [["class", "modal-content"]]);
     let closer = setElemWithAttrs("span", [["class", "close-modal"]]);
     closer.innerHTML = "&times<br><br>";
     modalContent.appendChild(closer);
     modal.appendChild(modalContent);
-    setModalText(modal);
+    modal.id[0] === "t" ? 
+        setModalText(modal, tasks) : 
+        setModalText(modal, projects);
+    // add method/button for adding tasks to project
 }
 
-const setModalText = (modal) => {
-    let task = tasks.filter(t => { 
-        if (t.taskID === modal.id) { return t } 
+const setModalText = (modal, list) => {
+    let item = list.filter(i => { 
+        if (modal.id === (i.taskID || i.projectId) ) { return i } 
     })[0]
-    modal.firstChild.innerHTML += `<p>Title: ${task.title}</p>
-        <p>Start Date: ${format(task.date, 'MMMM Do, YYYY')}</p>
-        <p>Due Date: ${ task.dueDate ? format(task.dueDate, 'MMMM Do, YYYY') : "---" }</p>
-        <p>Description: ${task.description}</p>`;
+    modal.firstChild.innerHTML += `<p>Title: ${item.title}</p>
+        <p>Start Date: ${format(item.date, 'MMMM Do, YYYY')}</p>
+        <p>Due Date: ${ item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---" }</p>
+        <p>Description: ${item.description}</p>`;
 }
 
 const openModal = (idName) => {
@@ -126,4 +132,4 @@ const closeModal = (modal) => {
     modal.style.display = "none";
 }
 
-export { appendChildren, compileList, showDate, sortUpcomingTasks, displayCalTasks, setElemWithAttrs, openModal, closeModal }
+export { appendChildren, compileList, showDate, sortUpcomingTasks, displayCalItems, setElemWithAttrs, openModal, closeModal }

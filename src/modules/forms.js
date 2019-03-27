@@ -23,6 +23,12 @@ const placeBreak = (form) => {
     form.innerHTML += `<br>`;
 }
 
+const addSaveButton = (form, objName) => {
+    const saveButton = setElemWithAttrs("button", [["id", `save-${objName.toLowerCase()}`]]);
+    saveButton.textContent = `Save ${objName}`;
+    form.appendChild(saveButton);
+}
+
 const generateForm = (objName, prefix) => {
     let form = document.querySelector(`#new-${objName.toLowerCase()}`);
     addLabelInput(form, objName, "text", `${prefix}-title`);
@@ -36,9 +42,7 @@ const generateForm = (objName, prefix) => {
     placeBreak(form);
     addLabelInput(form, "Description", "text", `${prefix}-description`);
     placeBreak(form);
-    const saveButton = setElemWithAttrs("button", [["id", `save-${objName.toLowerCase()}`]]);
-    saveButton.textContent = `Save ${objName}`;
-    form.appendChild(saveButton);
+    addSaveButton(form, objName);
 }
 
 export { generateForm };
