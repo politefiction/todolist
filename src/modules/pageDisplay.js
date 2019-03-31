@@ -70,21 +70,34 @@ const sortUpcomingTasks = () => {
 }
 
 const displayCalItems = (list) => {
-    const calendarDays = document.querySelectorAll(".calendar-day");
     list.forEach(item => {
         let idName = (item.taskID || item.projectId);
-        let className = (item.taskID ? "task-div" : "project-div");
-        let itemDiv = setElemWithAttrs("div", [
-            ["class", `${className} ${item.priority.toLowerCase()}`]
-        ])
-        itemDiv.textContent = item.title;
-        calendarDays.forEach(calendarDay => {
-            if (new Date(calendarDay.getAttribute("name")).getTime() === parse(item.date.split('T')[0]).getTime()) {
-                calendarDay.appendChild(itemDiv);
-                addModal(itemDiv, idName); 
-                itemDiv.onclick = () => { openModal(idName); }
-            }
-        })
+        let startDiv = createItemDiv(item);
+        let dueDiv = createItemDiv(item);
+        addToCalendar(item, startDiv, idName);
+        if (item.dueDate) { 
+            addToCalendar(item, dueDiv, idName, true); 
+        }
+    })
+}
+
+const createItemDiv = (item) => {
+    let className = (item.taskID ? "task-div" : "project-div");
+    return setElemWithAttrs("div", [
+        ["class", `${className} ${item.priority.toLowerCase()}`]
+    ])
+}
+
+const addToCalendar = (item, itemDiv, idName, due=false) => {
+    const calendarDays = document.querySelectorAll(".calendar-day");
+    itemDiv.textContent = (due ? `DUE: ${item.title}` : item.title);
+    let itemDate = (due ? item.dueDate : item.date);
+    calendarDays.forEach(calendarDay => {
+        if (new Date(calendarDay.getAttribute("name")).getTime() === parse(itemDate.split('T')[0]).getTime()) {
+            calendarDay.appendChild(itemDiv);
+            addModal(itemDiv, idName); 
+            itemDiv.onclick = () => { openModal(idName); }
+        }
     })
 }
 
@@ -150,11 +163,3 @@ const addTaskButton = (modal) => {
 }
 
 export { appendChildren, compileList, showDate, sortUpcomingTasks, displayCalItems, setElemWithAttrs, openModal, closeModal }
-
-/*
-let project = () => {
-    if (modal.id[0] === "t") { return projects.filter(p => {
-        if (item.projectId === p.projectId) { p }
-    })[0] }
-}
-*/
