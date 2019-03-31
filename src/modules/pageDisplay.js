@@ -109,17 +109,24 @@ const addModalContent = (modal) => {
     modal.id[0] === "t" ? 
         setModalText(modal, tasks) : 
         setModalText(modal, projects);
-    // add method/button for adding tasks to project
 }
 
 const setModalText = (modal, list) => {
     let item = list.filter(i => { 
-        if (modal.id === (i.taskID || i.projectId) ) { return i } 
+        if (modal.id === (i.taskID || i.projectId) ) { return i; } 
     })[0]
+
+    let project;
+    if (modal.id[0] === "t") { projects.filter(p => {
+        if (item.projectId === p.projectId) { return project = p.title; }
+    }) }
+
     modal.firstChild.innerHTML += `<p>Title: ${item.title}</p>
+        <p>Larger Project: ${project ? project : "---"} </p>
         <p>Start Date: ${format(item.date, 'MMMM Do, YYYY')}</p>
-        <p>Due Date: ${ item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---" }</p>
-        <p>Description: ${item.description}</p>`;
+        <p>Due Date: ${item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---"}</p>
+        <p>Description: ${item.description ? item.description : "---"}</p>`;
+    if (modal.id[0] === "p") { addTaskButton(modal); }
 }
 
 const openModal = (idName) => {
@@ -132,4 +139,22 @@ const closeModal = (modal) => {
     modal.style.display = "none";
 }
 
+const addTaskButton = (modal) => {
+    let newTask = setElemWithAttrs("button", ["class", "add-task"]);
+    newTask.textContent = "Add New Task";
+    modal.firstChild.appendChild(newTask);
+    newTask.onclick = () => {
+        closeModal(modal);
+        openModal("task-form-modal");
+    }
+}
+
 export { appendChildren, compileList, showDate, sortUpcomingTasks, displayCalItems, setElemWithAttrs, openModal, closeModal }
+
+/*
+let project = () => {
+    if (modal.id[0] === "t") { return projects.filter(p => {
+        if (item.projectId === p.projectId) { p }
+    })[0] }
+}
+*/

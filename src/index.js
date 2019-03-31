@@ -11,7 +11,7 @@ const getValue = (name) => {
 generateForm("Task", "t");
 generateForm("Project", "p");
 
-const newTaskButton = document.querySelector("#add-task");
+const newTaskButton = document.querySelector(".add-task");
 const taskForm = document.querySelector("#task-form-modal");
 newTaskButton.onclick = () => {
     openModal("task-form-modal");
@@ -27,11 +27,12 @@ saveTaskButton.onclick = (e) => {
         `t${taskList.length}`,
         getValue("t-title"),
         getValue("t-description"),
-        new Date(getValue("t-date")),
+        new Date(`${getValue("t-date")} ${getValue("t-time")}`),
         new Date(getValue("t-due-date")),
-        getValue("t-priority")
+        getValue("t-priority"),
+        getValue("t-project")
     );
-    manageList.addTask(task);
+    manageList.addTaskToProject(task);
     closeModal(taskForm);
 }
 
