@@ -1,12 +1,12 @@
 let taskList = JSON.parse(window.localStorage.getItem('taskList')) || [];
 let projectList = JSON.parse(window.localStorage.getItem('projectList')) || [];
 
-const Task = (taskID, title, description, date, dueDate, priority, projectId) => {
-    return { taskID, title, description, date, dueDate, priority, projectId }
+const Task = (id, title, description, date, dueDate, priority, projectId) => {
+    return { id, title, description, date, dueDate, priority, projectId }
 }
 
-const Project = (projectId, title, description, date, dueDate, priority, tasks=[] ) => {
-    return { projectId, title, description, date, dueDate, priority, tasks }
+const Project = (id, title, description, date, dueDate, priority, tasks=[] ) => {
+    return { id, title, description, date, dueDate, priority, tasks }
 }
 
 const manageList = (() => {
@@ -19,7 +19,6 @@ const manageList = (() => {
         window.localStorage.setItem('projectList', JSON.stringify(projectList))
     }
     const addTaskToProject = (p, t) => {
-        t.projectId = p.projectId;
         addTask(t);
         p.tasks.push(t)
         window.localStorage.setItem('projectList', JSON.stringify(projectList))

@@ -71,18 +71,18 @@ const sortUpcomingTasks = () => {
 
 const displayCalItems = (list) => {
     list.forEach(item => {
-        let idName = (item.taskID || item.projectId);
+        let idName = item.id;
         let startDiv = createItemDiv(item);
-        let dueDiv = createItemDiv(item);
         addToCalendar(item, startDiv, idName);
         if (item.dueDate) { 
+            let dueDiv = createItemDiv(item);
             addToCalendar(item, dueDiv, idName, true); 
         }
     })
 }
 
 const createItemDiv = (item) => {
-    let className = (item.taskID ? "task-div" : "project-div");
+    let className = (item.id[0] === "t" ? "task-div" : "project-div");
     return setElemWithAttrs("div", [
         ["class", `${className} ${item.priority.toLowerCase()}`]
     ])
@@ -126,16 +126,19 @@ const addModalContent = (modal) => {
 
 const setModalText = (modal, list) => {
     let item = list.filter(i => { 
-        if (modal.id === (i.taskID || i.projectId) ) { return i; } 
+        if (modal.id === i.id) { return i; } 
     })[0]
 
     let project;
-    if (modal.id[0] === "t") { projects.filter(p => {
-        if (item.projectId === p.projectId) { return project = p.title; }
-    }) }
+    if (item.projectId) { 
+        project = projects.filter(p => 
+            p.id === item.projectId
+        )[0] 
+    } 
+    
 
     modal.firstChild.innerHTML += `<p>Title: ${item.title}</p>
-        <p>Larger Project: ${project ? project : "---"} </p>
+        <p>Larger Project: ${project ? project.title : "---"} </p>
         <p>Start Date: ${format(item.date, 'MMMM Do, YYYY')}</p>
         <p>Due Date: ${item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---"}</p>
         <p>Description: ${item.description ? item.description : "---"}</p>`;

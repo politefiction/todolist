@@ -2,9 +2,11 @@ import { setElemWithAttrs, appendChildren } from './pageDisplay';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
-const addLabelInput = (form, f, t, name) => {
+const addLabelInput = (form, f, t, name, required) => {
     let label = setElemWithAttrs("label", [["for", f]]);
-    let input = setElemWithAttrs("input", [["type", t],["name", name]]);
+    let input = setElemWithAttrs("input", [
+        ["type", t], ["name", name], [required, ""]
+    ]);
     label.textContent = f;
     appendChildren(form, [label, input]);
 }
@@ -25,12 +27,18 @@ const addProjectList = (form) => {
     let label = setElemWithAttrs ("label", [["for", "Projects"]]);
     label.textContent = "Choose Project";
     let select = setElemWithAttrs("select", [["name", "t-project"]]);
-    projectList.forEach(item => {
-        let option = setElemWithAttrs("option", [["value", `${item.projectId}`]])
-        option.textContent = item.title;
+    if (projectList) {
+        projectList.forEach(item => {
+            let option = setElemWithAttrs("option", [["value", `${item.id}`]])
+            option.textContent = item.title;
+            select.appendChild(option);
+        })
+    } else {
+        let option = document.createElement("option");
+        option.textContent = "[none]";
         select.appendChild(option);
-    })
-    appendChildren(form, [label, select])
+    }
+    appendChildren(form, [label, select]);
 }
 
 const placeBreak = (form) => {
@@ -45,17 +53,18 @@ const addSaveButton = (form, objName) => {
 
 const generateForm = (objName, prefix) => {
     let form = document.querySelector(`#new-${objName.toLowerCase()}`);
+    let dueBool = (prefix === "p" ? "required" : undefined);
     if (objName === "Task") {
-        addProjectList(form)
-        placeBreak(form)
+        addProjectList(form);
+        placeBreak(form);
     }
-    addLabelInput(form, objName, "text", `${prefix}-title`);
+    addLabelInput(form, objName, "text", `${prefix}-title`, "required");
     addPriorityList(form, `${prefix}-priority`);
     placeBreak(form);
-    addLabelInput(form, "Start Date", "date", `${prefix}-date`);
+    addLabelInput(form, "Start Date", "date", `${prefix}-date`, "required");
     addLabelInput(form, "Time", "time", `${prefix}-time`);
     placeBreak(form);
-    addLabelInput(form, "Due Date", "date", `${prefix}-due-date`);
+    addLabelInput(form, "Due Date", "date", `${prefix}-due-date`, dueBool);
     addLabelInput(form, "Due Time", "time", `${prefix}-due-time`);
     placeBreak(form);
     addLabelInput(form, "Description", "text", `${prefix}-description`);

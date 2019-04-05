@@ -109,9 +109,9 @@ const renderCalendar = () => {
     setCurrentMonth();
     addDateSelection();
     addMYSelection();
-    displayCalItems(tasks);
-    displayCalItems(projects);
+    if (tasks) displayCalItems(tasks);
+    if (projects) displayCalItems(projects);
 }
 
 
-export { renderCalendar }
+export { renderCalendar, selectDate }

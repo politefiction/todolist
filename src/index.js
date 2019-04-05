@@ -1,7 +1,7 @@
 import './styles/main.scss';
 import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
 import { sortUpcomingTasks, openModal, closeModal } from './modules/pageDisplay';
-import { renderCalendar } from './modules/calendar';
+import { renderCalendar, selectDate } from './modules/calendar';
 import { generateForm } from './modules/forms';
 
 const getValue = (name) => {
@@ -14,15 +14,19 @@ generateForm("Project", "p");
 const newTaskButton = document.querySelector(".add-task");
 const taskForm = document.querySelector("#task-form-modal");
 newTaskButton.onclick = () => {
-    openModal("task-form-modal");
+    (projectList === undefined || projectList.length === 0) ? 
+        alert("Please start a new project first.") :
+        openModal("task-form-modal");
 }
 taskForm.firstElementChild.firstElementChild.onclick = () => {
     closeModal(taskForm);
 }
 
-const saveTaskButton = document.querySelector("#save-task");
-saveTaskButton.onclick = (e) => {
-    e.preventDefault();
+taskForm.onsubmit = (e) => {
+    //e.preventDefault();
+    let project = projectList.filter(p => 
+        getValue("t-project") === p.id
+    )[0];
     let task = Task(
         `t${taskList.length}`,
         getValue("t-title"),
@@ -30,11 +34,12 @@ saveTaskButton.onclick = (e) => {
         new Date(`${getValue("t-date")} ${getValue("t-time")}`),
         new Date(getValue("t-due-date")),
         getValue("t-priority"),
-        getValue("t-project")
+        project.id
     );
-    manageList.addTaskToProject(task);
+    manageList.addTaskToProject(project, task);
     closeModal(taskForm);
 }
+
 
 const newProjectButton = document.querySelector("#add-project");
 const projectForm = document.querySelector("#project-form-modal");
@@ -45,9 +50,8 @@ projectForm.firstElementChild.firstElementChild.onclick = () => {
     closeModal(projectForm);
 }
 
-const saveProjectButton = document.querySelector("#save-project");
-saveProjectButton.onclick = (e) => {
-    e.preventDefault();
+projectForm.onsubmit = (e) => {
+    //e.preventDefault();
     let project = Project(
         `p${projectList.length}`,
         getValue("p-title"),
@@ -58,6 +62,7 @@ saveProjectButton.onclick = (e) => {
     );
     manageList.addProject(project);
     closeModal(projectForm);
+    selectDate(project.date);
 }
 
 renderCalendar();
