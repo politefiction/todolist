@@ -23,7 +23,6 @@ taskForm.firstElementChild.firstElementChild.onclick = () => {
 }
 
 taskForm.onsubmit = (e) => {
-    //e.preventDefault();
     let project = projectList.filter(p => 
         getValue("t-project") === p.id
     )[0];
@@ -31,8 +30,8 @@ taskForm.onsubmit = (e) => {
         `t${taskList.length}`,
         getValue("t-title"),
         getValue("t-description"),
-        new Date(`${getValue("t-date")} ${getValue("t-time")}`),
-        new Date(getValue("t-due-date")),
+        `${getValue("t-date")} ${getValue("t-time")}`,
+        getValue("t-due-date"),
         getValue("t-priority"),
         project.id
     );
@@ -51,13 +50,12 @@ projectForm.firstElementChild.firstElementChild.onclick = () => {
 }
 
 projectForm.onsubmit = (e) => {
-    //e.preventDefault();
     let project = Project(
         `p${projectList.length}`,
         getValue("p-title"),
         getValue("p-description"),
-        new Date(getValue("p-date")),
-        new Date(getValue("p-due-date")),
+        `${getValue("p-date")} ${getValue("t-time")}`,
+        getValue("p-due-date"),
         getValue("p-priority")
     );
     manageList.addProject(project);

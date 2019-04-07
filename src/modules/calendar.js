@@ -109,8 +109,8 @@ const renderCalendar = () => {
     setCurrentMonth();
     addDateSelection();
     addMYSelection();
-    if (tasks) displayCalItems(tasks);
     if (projects) displayCalItems(projects);
+    if (tasks) displayCalItems(tasks);
 }
 
 
