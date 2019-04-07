@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import { Task, Project, manageList, taskList, projectList } from './modules/listBuilding';
+import { Task, Project, manageList, taskList, projectList, taskCount, projectCount } from './modules/listBuilding';
 import { sortUpcomingTasks, openModal, closeModal } from './modules/pageDisplay';
 import { renderCalendar, selectDate } from './modules/calendar';
 import { generateForm } from './modules/forms';
@@ -27,7 +27,7 @@ taskForm.onsubmit = () => {
         getValue("t-project") === p.id
     )[0];
     let task = Task(
-        `t${taskList.length}`,
+        `t${taskCount}`,
         getValue("t-title"),
         getValue("t-description"),
         `${getValue("t-date")} ${getValue("t-time")}`,
@@ -51,7 +51,7 @@ projectForm.firstElementChild.firstElementChild.onclick = () => {
 
 projectForm.onsubmit = () => {
     let project = Project(
-        `p${projectList.length}`,
+        `p${projectCount}`,
         getValue("p-title"),
         getValue("p-description"),
         `${getValue("p-date")} ${getValue("p-time")}`,
