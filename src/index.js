@@ -22,7 +22,7 @@ taskForm.firstElementChild.firstElementChild.onclick = () => {
     closeModal(taskForm);
 }
 
-taskForm.onsubmit = (e) => {
+taskForm.onsubmit = () => {
     let project = projectList.filter(p => 
         getValue("t-project") === p.id
     )[0];
@@ -49,12 +49,12 @@ projectForm.firstElementChild.firstElementChild.onclick = () => {
     closeModal(projectForm);
 }
 
-projectForm.onsubmit = (e) => {
+projectForm.onsubmit = () => {
     let project = Project(
         `p${projectList.length}`,
         getValue("p-title"),
         getValue("p-description"),
-        `${getValue("p-date")} ${getValue("t-time")}`,
+        `${getValue("p-date")} ${getValue("p-time")}`,
         getValue("p-due-date"),
         getValue("p-priority")
     );

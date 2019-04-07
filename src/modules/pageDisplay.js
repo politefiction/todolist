@@ -36,9 +36,9 @@ const compileList = () => {
 }
 
 const getTasksForDay = (date) => {
-    let list = tasks.filter(task => {
-        return task.date.split('T')[0] === date;
-    })
+    let list = tasks.filter(task => 
+        task.date.split('T')[0] === date
+    )
     return list;
 }
 
@@ -93,7 +93,7 @@ const addToCalendar = (item, itemDiv, idName, due=false) => {
     itemDiv.textContent = (due ? `DUE: ${item.title}` : item.title);
     let itemDate = (due ? item.dueDate : item.date);
     calendarDays.forEach(calendarDay => {
-        if (new Date(calendarDay.getAttribute("name")).getTime() === parse(itemDate.split('T')[0]).getTime()) {
+        if (new Date(calendarDay.getAttribute("name")).getTime() === parse(itemDate.split(' ')[0]).getTime()) {
             calendarDay.appendChild(itemDiv);
             addModal(itemDiv, idName); 
             itemDiv.onclick = () => { openModal(idName); }
