@@ -17,18 +17,30 @@ const manageList = (() => {
         localStorage.setItem('taskList', JSON.stringify(taskList));
         localStorage.setItem('taskCount', taskCount+1);
     }
+
     const addProject = (p) => {
         projectList.push(p);
         localStorage.setItem('projectList', JSON.stringify(projectList));
         localStorage.setItem('projectCount', projectCount+1);
     }
+
     const addTaskToProject = (p, t) => {
         addTask(t);
         p.tasks.push(t);
         localStorage.setItem('projectList', JSON.stringify(projectList));
     }
 
-    return { addTask, addProject, addTaskToProject }
+    const deleteTask = (id) => {
+        let newTaskList = taskList.filter(task => task.id != id);
+        localStorage.setItem('taskList', JSON.stringify(newTaskList));
+    }
+
+    const deleteProject = (id) => {
+        let newProjList = projectList.filter(project => project.id != id);
+        localStorage.setItem('projectList', JSON.stringify(newProjList));
+    }
+
+    return { addProject, addTaskToProject, deleteTask, deleteProject }
 })();
 
 export { Task, Project, manageList, taskList, projectList, taskCount, projectCount };

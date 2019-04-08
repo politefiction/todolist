@@ -1,4 +1,5 @@
 import { compareAsc, format, isFuture, isValid, parse, startOfToday } from 'date-fns';
+import { manageList } from './listBuilding'
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
@@ -143,6 +144,7 @@ const setModalText = (modal, list) => {
         <p>Due Date: ${item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---"}</p>
         <p>Description: ${item.description ? item.description : "---"}</p>`;
     if (modal.id[0] === "p") { addTaskButton(modal); }
+    addDeleteButton(modal);
 }
 
 const openModal = (idName) => {
@@ -156,12 +158,26 @@ const closeModal = (modal) => {
 }
 
 const addTaskButton = (modal) => {
-    let newTask = setElemWithAttrs("button", ["class", "add-task"]);
+    let newTask = setElemWithAttrs("button", [["class", "add-task"]]);
     newTask.textContent = "Add New Task";
     modal.firstChild.appendChild(newTask);
     newTask.onclick = () => {
         closeModal(modal);
         openModal("task-form-modal");
+    }
+}
+
+const addDeleteButton = (modal) => {
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = `Delete ${(modal.id[0] === "t" ? "Task" : "Project")}`
+    modal.firstChild.appendChild(deleteButton)
+    deleteButton.onclick = () => {
+        if (confirm("Are you sure you want to delete?")) {
+            modal.id[0] === "t" ? 
+                manageList.deleteTask(modal.id) : 
+                manageList.deleteProject(modal.id);
+            location.reload(false);
+        }
     }
 }
 
