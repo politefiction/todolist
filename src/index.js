@@ -1,12 +1,9 @@
 import './styles/main.scss';
-import { Task, Project, manageList, taskList, projectList, taskCount, projectCount } from './modules/listBuilding';
-import { sortUpcomingTasks, openModal, closeModal } from './modules/pageDisplay';
-import { renderCalendar, selectDate } from './modules/calendar';
+import { Task, Project, manageList, projectList, taskCount, projectCount } from './modules/listBuilding';
+import { sortUpcomingTasks, getValue, getTime } from './modules/miscTools';
 import { generateForm } from './modules/forms';
-
-const getValue = (name) => {
-    return document.getElementsByName(name)[0].value;
-}
+import { openModal, closeModal } from './modules/modals';
+import { renderCalendar, selectDate } from './modules/calendar';
 
 generateForm("Task", "t");
 generateForm("Project", "p");
@@ -26,12 +23,13 @@ taskForm.onsubmit = () => {
     let project = projectList.filter(p => 
         getValue("t-project") === p.id
     )[0];
+    
     let task = Task(
         `t${taskCount}`,
         getValue("t-title"),
         getValue("t-description"),
-        `${getValue("t-date")} ${getValue("t-time")}`,
-        getValue("t-due-date"),
+        `${getValue("t-date")} ${getTime("t-time")}`,
+        `${getValue("t-due-date")} ${getTime("t-due-time")}`,
         getValue("t-priority"),
         project.id
     );
@@ -54,8 +52,8 @@ projectForm.onsubmit = () => {
         `p${projectCount}`,
         getValue("p-title"),
         getValue("p-description"),
-        `${getValue("p-date")} ${getValue("p-time")}`,
-        getValue("p-due-date"),
+        `${getValue("p-date")} ${getTime("p-time")}`,
+        `${getValue("p-due-date")} ${getTime("p-due-time")}`,
         getValue("p-priority")
     );
     manageList.addProject(project);

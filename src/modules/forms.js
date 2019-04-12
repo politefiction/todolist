@@ -1,4 +1,4 @@
-import { setElemWithAttrs, appendChildren } from './pageDisplay';
+import { setElemWithAttrs, appendChildren } from './miscTools';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
