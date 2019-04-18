@@ -3,7 +3,9 @@ import { compareAsc, format, isFuture } from 'date-fns';
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
 
-//const projects = JSON.parse(window.localStorage.getItem('projectList'));
+const capitalize = (string) => {
+    return string[0].toUpperCase() + string.slice(1);
+}
 
 const showDate = (e, date) => {
     let dateDisplay = date ? date : new Date();
@@ -19,9 +21,12 @@ const setElemWithAttrs = (tag, attrs) => {
 }
 
 const appendChildren = (e, children) => {
-    children.forEach(child => {
-        e.appendChild(child);
-    })
+    children.forEach(child => e.appendChild(child) );
+}
+
+const insertAfter = (e, classOrId) => {
+    let referenceNode = document.querySelector(classOrId);
+    referenceNode.parentNode.insertBefore(e, referenceNode.nextSibling);
 }
 
 const getValue = (name) => {
@@ -77,4 +82,4 @@ const sortUpcomingTasks = () => {
     })
 }
 
-export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, getValue, getTime }
+export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, getValue, getTime, insertAfter, capitalize }

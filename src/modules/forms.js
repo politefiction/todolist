@@ -1,4 +1,6 @@
-import { setElemWithAttrs, appendChildren } from './miscTools';
+import { Task, Project, taskCount, projectCount, manageList } from './listBuilding';
+import { setElemWithAttrs, appendChildren, insertAfter, capitalize, getValue, getTime } from './miscTools';
+import { createModal, closeModal } from './modals';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
@@ -7,8 +9,9 @@ const addLabelInput = (form, f, t, name, required) => {
     let input = setElemWithAttrs("input", [
         ["type", t], ["name", name], [required, ""]
     ]);
-    label.textContent = f;
+    label.textContent = capitalize(f);
     appendChildren(form, [label, input]);
+    if (t != "text" && t != "date") { placeBreak(form) };
 }
 
 const addPriorityList = (form, name) => {
@@ -21,6 +24,7 @@ const addPriorityList = (form, name) => {
         select.appendChild(option);
     })
     appendChildren(form, [label, select]);
+    placeBreak(form);
 }
 
 const addProjectList = (form) => {
@@ -39,37 +43,74 @@ const addProjectList = (form) => {
         select.appendChild(option);
     }
     appendChildren(form, [label, select]);
+    placeBreak(form);
 }
 
-const placeBreak = (form) => {
-    form.innerHTML += `<br>`;
-}
+const placeBreak = (form) => form.innerHTML += `<br>`;
 
 const addSaveButton = (form, objName) => {
-    const saveButton = setElemWithAttrs("button", [["id", `save-${objName.toLowerCase()}`]]);
-    saveButton.textContent = `Save ${objName}`;
+    const saveButton = setElemWithAttrs("button", [["id", `save-${objName}`]]);
+    saveButton.textContent = `Save ${capitalize(objName)}`;
+    placeBreak(form);
     form.appendChild(saveButton);
 }
 
-const generateForm = (objName, prefix) => {
-    let form = document.querySelector(`#new-${objName.toLowerCase()}`);
-    let dueBool = (prefix === "p" ? "required" : undefined);
-    if (objName === "Task") {
-        addProjectList(form);
-        placeBreak(form);
-    }
-    addLabelInput(form, objName, "text", `${prefix}-title`, "required");
-    addPriorityList(form, `${prefix}-priority`);
-    placeBreak(form);
-    addLabelInput(form, "Start Date", "date", `${prefix}-date`, "required");
-    addLabelInput(form, "Time", "time", `${prefix}-time`);
-    placeBreak(form);
-    addLabelInput(form, "Due Date", "date", `${prefix}-due-date`, dueBool);
-    addLabelInput(form, "Due Time", "time", `${prefix}-due-time`);
-    placeBreak(form);
-    addLabelInput(form, "Description", "text", `${prefix}-description`);
-    placeBreak(form);
-    addSaveButton(form, objName);
+const addForm = (form) => {
+    let item = form.id.slice(4);
+    let modal = createModal(`${item}-form-modal`, "form", form);
+    insertAfter(modal, `.add-${item}`);
 }
 
-export { generateForm };
+const generateForm = (objName) => {
+    let form = setElemWithAttrs("form", [["id", `new-${objName}`]]);
+    let dueBool = (objName === "project" ? "required" : undefined);
+    if (objName === "task") { addProjectList(form); }
+    addLabelInput(form, objName, "text", `${objName[0]}-title`, "required");
+    addPriorityList(form, `${objName[0]}-priority`);
+    addLabelInput(form, "Start Date", "date", `${objName[0]}-date`, "required");
+    addLabelInput(form, "Time", "time", `${objName[0]}-time`);
+    addLabelInput(form, "Due Date", "date", `${objName[0]}-due-date`, dueBool);
+    addLabelInput(form, "Due Time", "time", `${objName[0]}-due-time`);
+    addLabelInput(form, "Description", "text", `${objName[0]}-description`);
+    addSaveButton(form, objName);
+    addForm(form)
+}
+
+
+const addSubmitToForm = (form) => {
+    form.onsubmit = () => {
+        form.id === "new-task" ? saveTask() : saveProject();
+        closeModal(form);
+    }
+}
+
+const saveTask = () => {
+    let project = projectList.filter(p => 
+        getValue("t-project") === p.id
+    )[0];
+    
+    let task = Task(
+        `t${taskCount}`,
+        getValue("t-title"),
+        getValue("t-description"),
+        `${getValue("t-date")} ${getTime("t-time")}`,
+        `${getValue("t-due-date")} ${getTime("t-due-time")}`,
+        getValue("t-priority"),
+        project.id
+    );
+    manageList.addTaskToProject(project, task);
+}
+
+const saveProject = () => {
+    let project = Project(
+        `p${projectCount}`,
+        getValue("p-title"),
+        getValue("p-description"),
+        `${getValue("p-date")} ${getTime("p-time")}`,
+        `${getValue("p-due-date")} ${getTime("p-due-time")}`,
+        getValue("p-priority")
+    );
+    manageList.addProject(project);
+}
+
+export { generateForm, addSubmitToForm };

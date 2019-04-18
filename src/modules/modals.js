@@ -5,55 +5,58 @@ import { manageList } from './listBuilding'
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
-const addModal = (e, idName) => {
+const createModal = (idName, type, form=undefined) => {
     let modal = setElemWithAttrs("div", [
         ["class", "modal"],
         ["id", idName]
     ]);
-    addModalContent(modal);
-    e.appendChild(modal);
+    addModalContent(modal, type, form);
     modal.firstChild.firstChild.onclick = () => {
         closeModal(modal);
     }
+    return modal;
 }
 
-const addModalContent = (modal) => {
+const addModalContent = (modal, type, form) => {
     let modalContent = setElemWithAttrs("div", [["class", "modal-content"]]);
     let closer = setElemWithAttrs("span", [["class", "close-modal"]]);
     closer.innerHTML = "&times<br><br>";
     modalContent.appendChild(closer);
     modal.appendChild(modalContent);
-    modal.id[0] === "t" ? 
-        setModalText(modal, tasks) : 
-        setModalText(modal, projects);
+    type === "item" ? setItemContent(modal) : modalContent.appendChild(form);
 }
 
-const setModalText = (modal, list) => {
-    let item = list.filter(i => { 
-        if (modal.id === i.id) { return i; } 
-    })[0]
+const findItem = (modal, list) => {
+    return list.filter(i =>  modal.id === i.id)[0];
+}
 
-    let project;
+const findProject = (item) => {
     if (item.projectId) { 
-        project = projects.filter(p => 
+        return projects.filter(p => 
             p.id === item.projectId
         )[0] 
     } 
+}
 
-    modal.firstChild.innerHTML += `<p>Title: ${item.title}</p>
-        <p>Larger Project: ${project ? project.title : "---"} </p>
-        <p>Start Date: ${format(item.date, 'MMMM Do, YYYY')}</p>
-        <p>Due Date: ${item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---"}</p>
-        <p>Description: ${item.description ? item.description : "---"}</p>`;
+const setItemContent = (modal) => {
+    let list = (modal.id[0] === "t" ? tasks : projects)
+    let item = findItem(modal, list);
+    modal.firstChild.innerHTML += setItemText(item);
     if (modal.id[0] === "p") { addTaskButton(modal); }
     addEditButton(modal);
     addDeleteButton(modal);
 }
 
-const openModal = (idName) => {
-    let modal = document.querySelector(`#${idName}`);
-    modal.style.display = "block";
+const setItemText = (item) => {
+    let project = findProject(item);
+    return `<p>Title: ${item.title}</p>
+    <p>Larger Project: ${project ? project.title : "---"} </p>
+    <p>Start Date: ${format(item.date, 'MMMM Do, YYYY')}</p>
+    <p>Due Date: ${item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---"}</p>
+    <p>Description: ${item.description ? item.description : "---"}</p>`;
 }
+
+const openModal = (modal) => modal.style.display = "block";
 
 const closeModal = (modal) => {
     event.stopPropagation();
@@ -66,13 +69,14 @@ const addTaskButton = (modal) => {
     modal.firstChild.appendChild(newTask);
     newTask.onclick = () => {
         closeModal(modal);
-        openModal("task-form-modal");
+        openModal(document.querySelector("#task-form-modal"));
     }
 }
 
 const addEditButton = (modal) => {
     let editButton = document.createElement("button");
-    editButton.textContent = `Edit ${(modal.id[0] === "t" ? "Task" : "Project")}`
+    editButton.textContent = `Edit ${(modal.id[0] === "t" ? "Task" : "Project")}`;
+    modal.firstChild.appendChild(editButton);
 }
 
 const addDeleteButton = (modal) => {
@@ -89,4 +93,4 @@ const addDeleteButton = (modal) => {
     }
 }
 
-export { addModal, openModal, closeModal }
+export { createModal, openModal, closeModal }

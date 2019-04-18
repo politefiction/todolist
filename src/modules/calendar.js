@@ -1,6 +1,6 @@
 import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns';
 import { setElemWithAttrs } from './miscTools';
-import { addModal, openModal } from './modals';
+import { createModal, openModal } from './modals';
 
 let selectedDate = startOfToday();
 const calendar = document.querySelector("#calendar");
@@ -77,9 +77,7 @@ const addDateSelection = () => {
     const dates = document.querySelectorAll(".calendar-day")
     dates.forEach(date => {
         if (!isSameDay(selectedDate, date.getAttribute("name"))) {
-            date.onclick = () => {
-                selectDate(date);
-            }
+            date.onclick = () => selectDate(date);
         }
     })
 }
@@ -119,8 +117,9 @@ const addToCalendar = (item, itemDiv, idName, due=false) => {
     calendarDays.forEach(calendarDay => {
         if (new Date(calendarDay.getAttribute("name")).getTime() === new Date(compDate).getTime()) {
             calendarDay.appendChild(itemDiv);
-            addModal(itemDiv, idName); 
-            itemDiv.onclick = () => { openModal(idName); }
+            let modal = createModal(idName, "item"); 
+            itemDiv.appendChild(modal);
+            itemDiv.onclick = () => openModal(modal);
         }
     })
 }
