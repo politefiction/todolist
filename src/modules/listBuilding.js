@@ -16,7 +16,9 @@ const manageList = (() => {
     const addTask = (t) => {
         taskList.push(t);
         localStorage.setItem('taskList', JSON.stringify(taskList));
-        localStorage.setItem('taskCount', taskCount+1);
+        if (parseInt(t.id.slice(1)) == taskCount) {
+            localStorage.setItem('taskCount', taskCount+1);
+        }
     }
 
     const addProject = (p) => {

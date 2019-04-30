@@ -1,5 +1,10 @@
 import { compareAsc, format, isFuture } from 'date-fns';
 
+
+// const selectQuery = (target) => {
+//    document.querySelector(target)
+// }
+
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
 
@@ -24,17 +29,20 @@ const appendChildren = (e, children) => {
     children.forEach(child => e.appendChild(child) );
 }
 
-const insertAfter = (e, classOrId) => {
-    let referenceNode = document.querySelector(classOrId);
+const insertAfter = (e, referenceNode) => {
     referenceNode.parentNode.insertBefore(e, referenceNode.nextSibling);
+}
+
+const setValue = (name, val) => {
+    document.getElementsByName(name)[0].value = val;
 }
 
 const getValue = (name) => {
     return document.getElementsByName(name)[0].value;
 }
 
-const getTime = (attr) => {
-    return getValue(attr).length === 0 ? `00:00` : getValue(attr);
+const getTime = (name) => {
+    return getValue(name).length === 0 ? `00:00` : getValue(name);
 }
 
 const compileList = () => {
@@ -57,7 +65,7 @@ const getTasksForDay = (date) => {
 
 const collectTaskDates = () => {
     let dates = [];
-    tasks.map(task => { 
+    tasks.map=(task => { 
         let date = task.date.split('T')[0];
         if (!dates.includes(date) && isFuture(date)) { dates.push(date) };
     });
@@ -82,4 +90,4 @@ const sortUpcomingTasks = () => {
     })
 }
 
-export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, getValue, getTime, insertAfter, capitalize }
+export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize }

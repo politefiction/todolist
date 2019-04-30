@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
-import { setElemWithAttrs } from './miscTools';
+import { setElemWithAttrs, capitalize, setValue } from './miscTools';
 import { manageList } from './listBuilding'
+import { populateForm } from './forms';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
@@ -43,7 +44,7 @@ const setItemContent = (modal) => {
     let item = findItem(modal, list);
     modal.firstChild.innerHTML += setItemText(item);
     if (modal.id[0] === "p") { addTaskButton(modal); }
-    addEditButton(modal);
+    addEditButton(modal, list);
     addDeleteButton(modal);
 }
 
@@ -69,14 +70,24 @@ const addTaskButton = (modal) => {
     modal.firstChild.appendChild(newTask);
     newTask.onclick = () => {
         closeModal(modal);
+        document.querySelector("#new-task").reset();
+        setValue("t-project", modal.id);
         openModal(document.querySelector("#task-form-modal"));
     }
 }
 
-const addEditButton = (modal) => {
-    let editButton = document.createElement("button");
-    editButton.textContent = `Edit ${(modal.id[0] === "t" ? "Task" : "Project")}`;
+const addEditButton = (modal, list) => {
+    let obj = list.filter(item => item.id === modal.id)[0];
+    let objName = (modal.id[0] === "t" ? "task" : "project");
+    let editButton = setElemWithAttrs("button", [["class", `edit-${objName}`]]);
+    let form = document.querySelector(`#new-${objName}`)
+    editButton.textContent = `Edit ${capitalize(objName)}`;
     modal.firstChild.appendChild(editButton);
+    editButton.onclick = () => {
+        closeModal(modal);
+        openModal(form.parentNode.parentNode);
+        populateForm(obj);
+    }
 }
 
 const addDeleteButton = (modal) => {

@@ -1,8 +1,9 @@
 import { Task, Project, taskCount, projectCount, manageList } from './listBuilding';
-import { setElemWithAttrs, appendChildren, insertAfter, capitalize, getValue, getTime } from './miscTools';
+import { setElemWithAttrs, appendChildren, insertAfter, capitalize, setValue, getValue, getTime } from './miscTools';
 import { createModal, closeModal } from './modals';
 
-let projectList = JSON.parse(window.localStorage.getItem('projectList'));
+let tasks = JSON.parse(window.localStorage.getItem('taskList'));
+let projects = JSON.parse(window.localStorage.getItem('projectList'));
 
 const addLabelInput = (form, f, t, name, required) => {
     let label = setElemWithAttrs("label", [["for", f]]);
@@ -31,10 +32,10 @@ const addProjectList = (form) => {
     let label = setElemWithAttrs ("label", [["for", "Projects"]]);
     label.textContent = "Choose Project";
     let select = setElemWithAttrs("select", [["name", "t-project"]]);
-    if (projectList) {
-        projectList.forEach(item => {
-            let option = setElemWithAttrs("option", [["value", `${item.id}`]])
-            option.textContent = item.title;
+    if (projects) {
+        projects.forEach(project => {
+            let option = setElemWithAttrs("option", [["value", `${project.id}`]])
+            option.textContent = project.title;
             select.appendChild(option);
         })
     } else {
@@ -55,16 +56,21 @@ const addSaveButton = (form, objName) => {
     form.appendChild(saveButton);
 }
 
-const addForm = (form) => {
-    let item = form.id.slice(4);
-    let modal = createModal(`${item}-form-modal`, "form", form);
-    insertAfter(modal, `.add-${item}`);
+const addForm = (form, button) => {
+    let obj = form.id.split("-")[1];
+    let modal = createModal(`${obj}-form-modal`, "form", form);
+    insertAfter(modal, button);
 }
 
-const generateForm = (objName) => {
+const generateForm = (objName, button) => {
     let form = setElemWithAttrs("form", [["id", `new-${objName}`]]);
     let dueBool = (objName === "project" ? "required" : undefined);
-    if (objName === "task") { addProjectList(form); }
+    let hiddenId = setElemWithAttrs("input", [
+        ["type", "hidden"], ["name", `${objName[0]}-id`]
+    ])
+    form.appendChild(hiddenId);
+
+    if (objName === "task") addProjectList(form);
     addLabelInput(form, objName, "text", `${objName[0]}-title`, "required");
     addPriorityList(form, `${objName[0]}-priority`);
     addLabelInput(form, "Start Date", "date", `${objName[0]}-date`, "required");
@@ -73,36 +79,22 @@ const generateForm = (objName) => {
     addLabelInput(form, "Due Time", "time", `${objName[0]}-due-time`);
     addLabelInput(form, "Description", "text", `${objName[0]}-description`);
     addSaveButton(form, objName);
-    addForm(form)
+    addForm(form, button);
 }
 
-
-const addSubmitToForm = (form) => {
-    form.onsubmit = () => {
-        form.id === "new-task" ? saveTask() : saveProject();
-        closeModal(form);
-    }
-}
-
-const saveTask = () => {
-    let project = projectList.filter(p => 
-        getValue("t-project") === p.id
-    )[0];
-    
-    let task = Task(
-        `t${taskCount}`,
+const createTask = () => {
+    return Task(`t${taskCount}`,
         getValue("t-title"),
         getValue("t-description"),
         `${getValue("t-date")} ${getTime("t-time")}`,
         `${getValue("t-due-date")} ${getTime("t-due-time")}`,
         getValue("t-priority"),
-        project.id
+        getValue("t-project")
     );
-    manageList.addTaskToProject(project, task);
 }
 
-const saveProject = () => {
-    let project = Project(
+const createProject = () => {
+    return Project(
         `p${projectCount}`,
         getValue("p-title"),
         getValue("p-description"),
@@ -110,7 +102,60 @@ const saveProject = () => {
         `${getValue("p-due-date")} ${getTime("p-due-time")}`,
         getValue("p-priority")
     );
+}
+
+const editObj = (obj) => {
+    let pf = obj.id[0];
+    let list = (pf === "t" ? tasks : projects);
+    let lsList = (pf === "t" ? 'taskList' : 'projectList');
+
+    obj.title = getValue(`${pf}-title`);
+    obj.description = getValue(`${pf}-description`);
+    obj.date = `${getValue(`${pf}-date`)} ${getTime(`${pf}-time`)}`;
+    obj.dueDate = `${getValue(`${pf}-due-date`)} ${getTime(`${pf}-due-time`)}`;
+    obj.priority = getValue(`${pf}-priority`);
+    if (pf === "t") obj.projectId = getValue(`${pf}-project`);
+    localStorage.setItem(lsList, JSON.stringify(list));
+}
+
+const saveTask = () => {
+    if (tasks) {
+        let task = tasks.filter(task => task.id === getValue("t-id"))[0];
+        if (task) return editObj(task);
+    }
+
+    let project = projects.filter(p => p.id === getValue("t-project"))[0];
+    let task = createTask();
+    manageList.addTaskToProject(project, task);
+}
+
+const saveProject = () => {
+    if (projects) {
+        let project = projects.filter(p => p.id === getValue("p-id"))[0];
+        if (project) return editObj(project);
+    }
+    let project = createProject();
     manageList.addProject(project);
 }
 
-export { generateForm, addSubmitToForm };
+const addFormSubmission = (form) => {
+    form.onsubmit = () => {
+        form.id === "new-task" ? saveTask() : saveProject();
+        closeModal(form.parentElement.parentElement);
+    }
+}
+
+const populateForm = (obj) => {
+    let pf = obj.id[0]
+    setValue(`${pf}-id`, obj.id);
+    if (pf === "t") setValue(`${pf}-project`, obj.projectId);
+    setValue(`${pf}-priority`, obj.priority);
+    setValue(`${pf}-title`, obj.title);
+    setValue(`${pf}-description`, obj.description);
+    setValue(`${pf}-date`, obj.date.split(" ")[0]);
+    setValue(`${pf}-time`, obj.date.split(" ")[1]);
+    setValue(`${pf}-due-date`, obj.dueDate.split(" ")[0]);
+    setValue(`${pf}-due-time`, obj.dueDate.split(" ")[1]);
+}
+
+export { generateForm, addFormSubmission, populateForm };
