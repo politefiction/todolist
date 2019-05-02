@@ -16,9 +16,7 @@ const manageList = (() => {
     const addTask = (t) => {
         taskList.push(t);
         localStorage.setItem('taskList', JSON.stringify(taskList));
-        if (parseInt(t.id.slice(1)) == taskCount) {
-            localStorage.setItem('taskCount', taskCount+1);
-        }
+        localStorage.setItem('taskCount', taskCount+1);
     }
 
     const addProject = (p) => {
@@ -27,8 +25,9 @@ const manageList = (() => {
         localStorage.setItem('projectCount', projectCount+1);
     }
 
-    const addTaskToProject = (p, t) => {
+    const addTaskToProject = (t) => {
         addTask(t);
+        let p = projectList.filter(p => p.id === t.projectId)[0];
         p.tasks.push(t);
         localStorage.setItem('projectList', JSON.stringify(projectList));
     }
@@ -39,6 +38,7 @@ const manageList = (() => {
     }
 
     const deleteProject = (id) => {
+        // does not delete associated tasks
         let newProjList = projectList.filter(project => project.id != id);
         localStorage.setItem('projectList', JSON.stringify(newProjList));
     }
@@ -47,3 +47,12 @@ const manageList = (() => {
 })();
 
 export { Task, Project, manageList, taskCount, projectCount };
+
+/*
+    const deleteProject = (id) => {
+        let p = projectList.filter(project => project.id === id);
+        p.tasks.forEach(task =>  deleteTask(task.id));
+        let newProjList = projectList.filter(project => project.id != p.id);
+        localStorage.setItem('projectList', JSON.stringify(newProjList));
+    }
+*/

@@ -123,10 +123,8 @@ const saveTask = () => {
         let task = tasks.filter(task => task.id === getValue("t-id"))[0];
         if (task) return editObj(task);
     }
-
-    let project = projects.filter(p => p.id === getValue("t-project"))[0];
     let task = createTask();
-    manageList.addTaskToProject(project, task);
+    manageList.addTaskToProject(task);
 }
 
 const saveProject = () => {
@@ -139,7 +137,8 @@ const saveProject = () => {
 }
 
 const addFormSubmission = (form) => {
-    form.onsubmit = () => {
+    form.onsubmit = (e) => {
+        //e.preventDefault()
         form.id === "new-task" ? saveTask() : saveProject();
         closeModal(form.parentElement.parentElement);
     }

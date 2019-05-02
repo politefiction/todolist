@@ -17,10 +17,11 @@ const projectForm = document.querySelector("#new-project");
 const pfModal = document.querySelector("#project-form-modal");
 
 newTaskButton.onclick = () => {
-    (projectList === null || projectList.length === 0) ? 
-        alert("Please start a new project first.") :
-        taskForm.reset();
-        openModal(tfModal);
+    if (projectList === null || projectList.length === 0) {
+        return alert("Please start a new project first.") 
+    }
+    taskForm.reset();
+    openModal(tfModal);
 }
 
 newProjectButton.onclick = () => {
