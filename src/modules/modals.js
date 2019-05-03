@@ -99,7 +99,7 @@ const addDeleteButton = (modal) => {
             modal.id[0] === "t" ? 
                 manageList.deleteTask(modal.id) : 
                 manageList.deleteProject(modal.id);
-            location.reload(false);
+            location.reload();
         }
     }
 }

@@ -137,8 +137,7 @@ const saveProject = () => {
 }
 
 const addFormSubmission = (form) => {
-    form.onsubmit = (e) => {
-        //e.preventDefault()
+    form.onsubmit = () => {
         form.id === "new-task" ? saveTask() : saveProject();
         closeModal(form.parentElement.parentElement);
     }

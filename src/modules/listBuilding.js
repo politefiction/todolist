@@ -33,14 +33,15 @@ const manageList = (() => {
     }
 
     const deleteTask = (id) => {
-        let newTaskList = taskList.filter(task => task.id != id);
-        localStorage.setItem('taskList', JSON.stringify(newTaskList));
+        taskList = taskList.filter(t => t.id === id);
+        localStorage.setItem('taskList', JSON.stringify(taskList));
     }
 
     const deleteProject = (id) => {
-        // does not delete associated tasks
-        let newProjList = projectList.filter(project => project.id != id);
-        localStorage.setItem('projectList', JSON.stringify(newProjList));
+        let p = projectList.filter(project => project.id === id)[0];
+        p.tasks.forEach(task =>  deleteTask(task.id));
+        projectList = projectList.filter(project => project.id != id);
+        localStorage.setItem('projectList', JSON.stringify(projectList));
     }
 
     return { addProject, addTaskToProject, deleteTask, deleteProject }
