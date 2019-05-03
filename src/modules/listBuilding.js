@@ -33,7 +33,7 @@ const manageList = (() => {
     }
 
     const deleteTask = (id) => {
-        taskList = taskList.filter(t => t.id === id);
+        taskList = taskList.filter(t => t.id != id);
         localStorage.setItem('taskList', JSON.stringify(taskList));
     }
 
@@ -48,12 +48,3 @@ const manageList = (() => {
 })();
 
 export { Task, Project, manageList, taskCount, projectCount };
-
-/*
-    const deleteProject = (id) => {
-        let p = projectList.filter(project => project.id === id);
-        p.tasks.forEach(task =>  deleteTask(task.id));
-        let newProjList = projectList.filter(project => project.id != p.id);
-        localStorage.setItem('projectList', JSON.stringify(newProjList));
-    }
-*/
