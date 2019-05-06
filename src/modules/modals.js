@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { setElemWithAttrs, capitalize, setValue } from './miscTools';
+import { setElemWithAttrs, capitalize, setValue, selectQuery } from './miscTools';
 import { manageList } from './listBuilding'
 import { populateForm } from './forms';
 
@@ -24,38 +24,40 @@ const addModalContent = (modal, type, form) => {
     closer.innerHTML = "&times<br><br>";
     modalContent.appendChild(closer);
     modal.appendChild(modalContent);
-    type === "item" ? setItemContent(modal) : modalContent.appendChild(form);
+    type === "obj" ? setObjContent(modal) : modalContent.appendChild(form);
 }
 
-const findItem = (modal, list) => {
+const findObj = (modal, list) => {
     return list.filter(i =>  modal.id === i.id)[0];
 }
 
-const findProject = (item) => {
-    if (item.projectId) { 
+const findProject = (obj) => {
+    if (obj.projectId) { 
         return projects.filter(p => 
-            p.id === item.projectId
+            p.id === obj.projectId
         )[0] 
     } 
 }
 
-const setItemContent = (modal) => {
+const setObjContent = (modal) => {
     let list = (modal.id[0] === "t" ? tasks : projects)
-    let item = findItem(modal, list);
-    modal.firstChild.innerHTML += setItemText(item);
+    let obj = findObj(modal, list);
+    modal.firstChild.innerHTML += setObjText(obj);
     if (modal.id[0] === "p") { addTaskButton(modal); }
     addEditButton(modal, list);
     addDeleteButton(modal);
 }
 
-const setItemText = (item) => {
-    let project = findProject(item);
-    return `<p>Title: ${item.title}</p>
+const setObjText = (obj) => {
+    let project = findProject(obj);
+    return `<p>Title: ${obj.title}</p>
     <p>Larger Project: ${project ? project.title : "---"} </p>
-    <p>Start Date: ${format(item.date, 'MMMM Do, YYYY')}</p>
-    <p>Due Date: ${item.dueDate ? format(item.dueDate, 'MMMM Do, YYYY') : "---"}</p>
-    <p>Description: ${item.description ? item.description : "---"}</p>`;
+    <p>Start Date: ${format(obj.date, 'MMMM Do, YYYY')}</p>
+    <p>Due Date: ${obj.dueDate ? format(obj.dueDate, 'MMMM Do, YYYY') : "---"}</p>
+    <p>Description: ${obj.description ? obj.description : "---"}</p>`;
 }
+
+const setObjChecklist = (obj) => {}
 
 const openModal = (modal) => modal.style.display = "block";
 
@@ -70,17 +72,17 @@ const addTaskButton = (modal) => {
     modal.firstChild.appendChild(newTask);
     newTask.onclick = () => {
         closeModal(modal);
-        document.querySelector("#new-task").reset();
+        selectQuery("#new-task").reset();
         setValue("t-project", modal.id);
-        openModal(document.querySelector("#task-form-modal"));
+        openModal(selectQuery("#task-form-modal"));
     }
 }
 
 const addEditButton = (modal, list) => {
-    let obj = list.filter(item => item.id === modal.id)[0];
+    let obj = list.filter(obj => obj.id === modal.id)[0];
     let objName = (modal.id[0] === "t" ? "task" : "project");
     let editButton = setElemWithAttrs("button", [["class", `edit-${objName}`]]);
-    let form = document.querySelector(`#new-${objName}`)
+    let form = selectQuery(`#new-${objName}`)
     editButton.textContent = `Edit ${capitalize(objName)}`;
     modal.firstChild.appendChild(editButton);
     editButton.onclick = () => {

@@ -1,47 +1,47 @@
-let taskList = JSON.parse(window.localStorage.getItem('taskList')) || [];
+let tasks = JSON.parse(window.localStorage.getItem('taskList')) || [];
 let taskCount = parseInt(window.localStorage.getItem('taskCount')) || 0;
 
-let projectList = JSON.parse(window.localStorage.getItem('projectList')) || [];
+let projects = JSON.parse(window.localStorage.getItem('projectList')) || [];
 let projectCount = parseInt(window.localStorage.getItem('projectCount')) || 0;
 
-const Task = (id, title, description, date, dueDate, priority, projectId) => {
-    return { id, title, description, date, dueDate, priority, projectId }
+const Task = (id, title, description, date, dueDate, priority, projectId, completed=false) => {
+    return { id, title, description, date, dueDate, priority, projectId, completed }
 }
 
-const Project = (id, title, description, date, dueDate, priority, tasks=[] ) => {
-    return { id, title, description, date, dueDate, priority, tasks }
+const Project = (id, title, description, date, dueDate, priority, tasks=[], completed=false ) => {
+    return { id, title, description, date, dueDate, priority, tasks, completed }
 }
 
 const manageList = (() => {
     const addTask = (t) => {
-        taskList.push(t);
-        localStorage.setItem('taskList', JSON.stringify(taskList));
+        tasks.push(t);
+        localStorage.setItem('taskList', JSON.stringify(tasks));
         localStorage.setItem('taskCount', taskCount+1);
     }
 
     const addProject = (p) => {
-        projectList.push(p);
-        localStorage.setItem('projectList', JSON.stringify(projectList));
+        projects.push(p);
+        localStorage.setItem('projectList', JSON.stringify(projects));
         localStorage.setItem('projectCount', projectCount+1);
     }
 
     const addTaskToProject = (t) => {
         addTask(t);
-        let p = projectList.filter(p => p.id === t.projectId)[0];
+        let p = projects.filter(p => p.id === t.projectId)[0];
         p.tasks.push(t);
-        localStorage.setItem('projectList', JSON.stringify(projectList));
+        localStorage.setItem('projectList', JSON.stringify(projects));
     }
 
     const deleteTask = (id) => {
-        taskList = taskList.filter(t => t.id != id);
-        localStorage.setItem('taskList', JSON.stringify(taskList));
+        tasks = tasks.filter(t => t.id != id);
+        localStorage.setItem('taskList', JSON.stringify(tasks));
     }
 
     const deleteProject = (id) => {
-        let p = projectList.filter(project => project.id === id)[0];
+        let p = projects.filter(project => project.id === id)[0];
         p.tasks.forEach(task =>  deleteTask(task.id));
-        projectList = projectList.filter(project => project.id != id);
-        localStorage.setItem('projectList', JSON.stringify(projectList));
+        projects = projects.filter(project => project.id != id);
+        localStorage.setItem('projectList', JSON.stringify(projects));
     }
 
     return { addProject, addTaskToProject, deleteTask, deleteProject }

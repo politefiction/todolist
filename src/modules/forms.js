@@ -19,11 +19,7 @@ const addPriorityList = (form, name) => {
     let label = setElemWithAttrs("label", [["for", "Priority"]]);
     label.textContent = "Priority";
     let select = setElemWithAttrs("select", [["name", name]]);
-    ["Low", "Medium", "High"].forEach(priority => {
-        let option = document.createElement("option");
-        option.textContent = priority;
-        select.appendChild(option);
-    })
+    ["Low", "Medium", "High"].map(prty => setOptionFor(select, prty))
     appendChildren(form, [label, select]);
     placeBreak(form);
 }
@@ -33,18 +29,21 @@ const addProjectList = (form) => {
     label.textContent = "Choose Project";
     let select = setElemWithAttrs("select", [["name", "t-project"]]);
     if (projects) {
-        projects.forEach(project => {
-            let option = setElemWithAttrs("option", [["value", `${project.id}`]])
-            option.textContent = project.title;
-            select.appendChild(option);
-        })
-    } else {
-        let option = document.createElement("option");
-        option.textContent = "[none]";
-        select.appendChild(option);
+        projects.map(p => setOptionFor(select, p));
     }
     appendChildren(form, [label, select]);
     placeBreak(form);
+}
+
+const setOptionFor = (select, obj) => {
+    let option = document.createElement("option");
+    if (obj.id) {
+        option.setAttribute("value", `${obj.id}`);
+        option.textContent = obj.title;
+    } else {
+        option.textContent = obj;
+    }
+    return select.appendChild(option);
 }
 
 const placeBreak = (form) => form.innerHTML += `<br>`;
@@ -104,7 +103,20 @@ const createProject = () => {
     );
 }
 
-const editObj = (obj) => {
+const populateForm = (obj) => {
+    let pf = obj.id[0]
+    setValue(`${pf}-id`, obj.id);
+    if (pf === "t") setValue(`${pf}-project`, obj.projectId);
+    setValue(`${pf}-priority`, obj.priority);
+    setValue(`${pf}-title`, obj.title);
+    setValue(`${pf}-description`, obj.description);
+    setValue(`${pf}-date`, obj.date.split(" ")[0]);
+    setValue(`${pf}-time`, obj.date.split(" ")[1]);
+    setValue(`${pf}-due-date`, obj.dueDate.split(" ")[0]);
+    setValue(`${pf}-due-time`, obj.dueDate.split(" ")[1]);
+}
+
+const updateObj = (obj) => {
     let pf = obj.id[0];
     let list = (pf === "t" ? tasks : projects);
     let lsList = (pf === "t" ? 'taskList' : 'projectList');
@@ -120,8 +132,8 @@ const editObj = (obj) => {
 
 const saveTask = () => {
     if (tasks) {
-        let task = tasks.filter(task => task.id === getValue("t-id"))[0];
-        if (task) return editObj(task);
+        let task = tasks.filter(t => t.id === getValue("t-id"))[0];
+        if (task) return updateObj(task);
     }
     let task = createTask();
     manageList.addTaskToProject(task);
@@ -130,7 +142,7 @@ const saveTask = () => {
 const saveProject = () => {
     if (projects) {
         let project = projects.filter(p => p.id === getValue("p-id"))[0];
-        if (project) return editObj(project);
+        if (project) return updateObj(project);
     }
     let project = createProject();
     manageList.addProject(project);
@@ -141,19 +153,6 @@ const addFormSubmission = (form) => {
         form.id === "new-task" ? saveTask() : saveProject();
         closeModal(form.parentElement.parentElement);
     }
-}
-
-const populateForm = (obj) => {
-    let pf = obj.id[0]
-    setValue(`${pf}-id`, obj.id);
-    if (pf === "t") setValue(`${pf}-project`, obj.projectId);
-    setValue(`${pf}-priority`, obj.priority);
-    setValue(`${pf}-title`, obj.title);
-    setValue(`${pf}-description`, obj.description);
-    setValue(`${pf}-date`, obj.date.split(" ")[0]);
-    setValue(`${pf}-time`, obj.date.split(" ")[1]);
-    setValue(`${pf}-due-date`, obj.dueDate.split(" ")[0]);
-    setValue(`${pf}-due-time`, obj.dueDate.split(" ")[1]);
 }
 
 export { generateForm, addFormSubmission, populateForm };

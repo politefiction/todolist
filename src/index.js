@@ -1,20 +1,20 @@
 import './styles/main.scss';
-import { sortUpcomingTasks } from './modules/miscTools';
+import { sortUpcomingTasks, selectQuery } from './modules/miscTools';
 import { generateForm, addFormSubmission } from './modules/forms';
 import { openModal } from './modules/modals';
 import { renderCalendar } from './modules/calendar';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
-const newTaskButton = document.querySelector(".add-task");
+let newTaskButton = selectQuery(".add-task");
 generateForm("task", newTaskButton);
-const taskForm = document.querySelector("#new-task");
-const tfModal = document.querySelector("#task-form-modal");
+const taskForm = selectQuery("#new-task");
+const tfModal = selectQuery("#task-form-modal");
 
-const newProjectButton = document.querySelector("#add-project");
+const newProjectButton = selectQuery("#add-project");
 generateForm("project", newProjectButton);
-const projectForm = document.querySelector("#new-project");
-const pfModal = document.querySelector("#project-form-modal");
+const projectForm = selectQuery("#new-project");
+const pfModal = selectQuery("#project-form-modal");
 
 newTaskButton.onclick = () => {
     if (projectList === null || projectList.length === 0) {

@@ -1,9 +1,9 @@
 import { compareAsc, format, isFuture } from 'date-fns';
 
 
-// const selectQuery = (target) => {
-//    document.querySelector(target)
-// }
+const selectQuery = (target) => {
+    return document.querySelector(target);
+}
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const taskList = document.querySelector("#task-list");
@@ -50,9 +50,9 @@ const compileList = () => {
         taskList.firstChild.remove();
     }
     tasks.map((task) => {
-        let item = document.createElement('li');
-        item.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-        taskList.appendChild(item);
+        let obj = document.createElement('li');
+        obj.textContent = `${format(task.date, 'hh:mm a')}: ${task.title}`;
+        taskList.appendChild(obj);
     })
 }
 
@@ -65,7 +65,7 @@ const getTasksForDay = (date) => {
 
 const collectTaskDates = () => {
     let dates = [];
-    tasks.map=(task => { 
+    tasks.map = (task => { 
         let date = task.date.split('T')[0];
         if (!dates.includes(date) && isFuture(date)) { dates.push(date) };
     });
@@ -83,11 +83,11 @@ const sortUpcomingTasks = () => {
         taskList.appendChild(dayList);
 
         getTasksForDay(date).map((task) => {
-            let item = document.createElement('li');
-            item.innerHTML = `${format(task.date, 'hh:mm a')}: ${task.title}`;
-            dayList.appendChild(item);
+            let obj = document.createElement('li');
+            obj.innerHTML = `${format(task.date, 'hh:mm a')}: ${task.title}`;
+            dayList.appendChild(obj);
         })
     })
 }
 
-export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize }
+export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize, selectQuery }

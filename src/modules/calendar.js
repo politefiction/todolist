@@ -1,9 +1,9 @@
 import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns';
-import { setElemWithAttrs } from './miscTools';
+import { setElemWithAttrs, selectQuery } from './miscTools';
 import { createModal, openModal } from './modals';
 
 let selectedDate = startOfToday();
-const calendar = document.querySelector("#calendar");
+const calendar = selectQuery("#calendar");
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
@@ -13,12 +13,12 @@ const firstWeekday = () => {
 }
 
 const displayMonthYear = () => {
-    const calTitle = document.querySelector("#cal-title");
+    const calTitle = selectQuery("#cal-title");
     calTitle.textContent = format(selectedDate, 'MMMM YYYY');
 }
 
 const setCalDayAttrs = (calDay, date) => {
-    if (isToday(date)) { calDay.setAttribute("id", "today"); }
+    if (isToday(date)) calDay.setAttribute("id", "today"); 
     if (isSameDay(date, selectedDate)) { 
         calDay.setAttribute("id", "selected-date"); 
     }
@@ -41,7 +41,7 @@ const clearCalendar = () => {
 }
 
 const changeMonthYear = ((id, timeDiff) => {
-    let element = document.querySelector(id);
+    let element = selectQuery(id);
     element.onclick = () => {
         selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+timeDiff)
         renderCalendar();
@@ -57,7 +57,7 @@ const addMYSelection = () => {
 
 const isExtendedMonth = () => {
     return ((getDaysInMonth(selectedDate) > 29 && firstWeekday() > 5) || 
-    (getDaysInMonth(selectedDate) > 30 && firstWeekday() > 4));
+        (getDaysInMonth(selectedDate) > 30 && firstWeekday() > 4));
 }
 
 const calculateCalendarDays = () => {
@@ -83,43 +83,43 @@ const addDateSelection = () => {
 }
 
 const addWeeks = () => {
-    let calendar = document.querySelector("#calendar");
+    let calendar = selectQuery("#calendar");
     for (let i=0; i<(calculateCalendarDays()+1)/7; i++) {
         let week = setElemWithAttrs("div", [["class", "week"]]);
         calendar.appendChild(week);
     }
 }
 
-const displayCalItems = (list) => {
-    list.forEach(item => {
-        let idName = item.id;
-        let startDiv = createItemDiv(item);
-        addToCalendar(item, startDiv, idName);
-        if (item.dueDate) { 
-            let dueDiv = createItemDiv(item);
-            addToCalendar(item, dueDiv, idName, true); 
+const displayOnCal = (list) => {
+    list.forEach(obj => {
+        let idName = obj.id;
+        let startDiv = createObjDiv(obj);
+        addToCalendar(obj, startDiv, idName);
+        if (obj.dueDate) { 
+            let dueDiv = createObjDiv(obj);
+            addToCalendar(obj, dueDiv, idName, true); 
         }
     })
 }
 
-const createItemDiv = (item) => {
-    let className = (item.id[0] === "t" ? "task-div" : "project-div");
+const createObjDiv = (obj) => {
+    let className = (obj.id[0] === "t" ? "task-div" : "project-div");
     return setElemWithAttrs("div", [
-        ["class", `${className} ${item.priority.toLowerCase()}`]
+        ["class", `${className} ${obj.priority.toLowerCase()}`]
     ])
 }
 
-const addToCalendar = (item, itemDiv, idName, due=false) => {
+const addToCalendar = (obj, objDiv, idName, due=false) => {
     const calendarDays = document.querySelectorAll(".calendar-day");
-    itemDiv.textContent = (due ? `DUE: ${item.title}` : item.title);
-    let itemDate = (due ? item.dueDate : item.date);
-    let compDate = new Date(itemDate.split(' ')[0]).setHours(24);
+    objDiv.textContent = (due ? "DUE: " : "") + obj.title;
+    let objDate = (due ? obj.dueDate : obj.date);
+    let compDate = new Date(objDate.split(' ')[0]).setHours(24);
     calendarDays.forEach(calendarDay => {
         if (new Date(calendarDay.getAttribute("name")).getTime() === new Date(compDate).getTime()) {
-            calendarDay.appendChild(itemDiv);
-            let modal = createModal(idName, "item"); 
-            itemDiv.appendChild(modal);
-            itemDiv.onclick = () => openModal(modal);
+            calendarDay.appendChild(objDiv);
+            let modal = createModal(idName, "obj"); 
+            objDiv.appendChild(modal);
+            objDiv.onclick = () => openModal(modal);
         }
     })
 }
@@ -142,8 +142,8 @@ const renderCalendar = () => {
     setCurrentMonth();
     addDateSelection();
     addMYSelection();
-    if (projects) displayCalItems(projects);
-    if (tasks) displayCalItems(tasks);
+    if (projects) displayOnCal(projects);
+    if (tasks) displayOnCal(tasks);
 }
 
 
