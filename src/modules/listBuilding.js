@@ -1,11 +1,17 @@
+let subtaskCount = parseInt(window.localStorage.getItem('subtaskCount')) || 0;
+
 let tasks = JSON.parse(window.localStorage.getItem('taskList')) || [];
 let taskCount = parseInt(window.localStorage.getItem('taskCount')) || 0;
 
 let projects = JSON.parse(window.localStorage.getItem('projectList')) || [];
 let projectCount = parseInt(window.localStorage.getItem('projectCount')) || 0;
 
-const Task = (id, title, description, date, dueDate, priority, projectId, completed=false) => {
-    return { id, title, description, date, dueDate, priority, projectId, completed }
+const Subtask = (id, title, taskId, completed=false) => {
+    return { id, title, taskId, completed };
+}
+
+const Task = (id, title, description, date, dueDate, priority, subtasks=[], projectId, completed=false) => {
+    return { id, title, description, date, dueDate, priority, subtasks, projectId, completed }
 }
 
 const Project = (id, title, description, date, dueDate, priority, tasks=[], completed=false ) => {
@@ -32,6 +38,12 @@ const manageList = (() => {
         localStorage.setItem('projectList', JSON.stringify(projects));
     }
 
+    const addSubtaskToTask = (s) => {
+        let t = tasks.filter(t => t.id === s.taskId)[0];
+        t.subtasks.push(s);
+        localStorage.setItem('subtaskCount', subtaskCount+1)
+    }
+
     const deleteTask = (id) => {
         tasks = tasks.filter(t => t.id != id);
         localStorage.setItem('taskList', JSON.stringify(tasks));
@@ -44,7 +56,7 @@ const manageList = (() => {
         localStorage.setItem('projectList', JSON.stringify(projects));
     }
 
-    return { addProject, addTaskToProject, deleteTask, deleteProject }
+    return { addProject, addTaskToProject, addSubtaskToTask, deleteTask, deleteProject }
 })();
 
-export { Task, Project, manageList, taskCount, projectCount };
+export { Task, Project, Subtask, manageList, taskCount, projectCount, subtaskCount };

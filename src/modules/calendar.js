@@ -117,7 +117,7 @@ const addToCalendar = (obj, objDiv, idName, due=false) => {
     calendarDays.forEach(calendarDay => {
         if (new Date(calendarDay.getAttribute("name")).getTime() === new Date(compDate).getTime()) {
             calendarDay.appendChild(objDiv);
-            let modal = createModal(idName, "obj"); 
+            let modal = createModal(idName); 
             objDiv.appendChild(modal);
             objDiv.onclick = () => openModal(modal);
         }

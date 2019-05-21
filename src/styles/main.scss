@@ -33,20 +33,23 @@ aside {
     border: 1px solid purple; 
     padding: 0 5px 5px 5px;
     margin-bottom: 20px;
+    #new-subtask-button {
+        display: none;
+    }
 }
 
 #tasks-today li {
     font-size: 14px;
 }
 
-form {
+#task-form, #project-form, #subtask-form {
     z-index: 1;
     margin: 5% 10% 10% 10%; 
     padding: 5px;
     width: 80%;
     height: auto;
     background: white;
-    border: 3px solid darkolivegreen;
+    border: 3px solid gray;
     input, select {
         margin: 10px 15px;
         height: 25px;
@@ -153,7 +156,7 @@ form {
 }
 
 
-/* Calendar tasks and projects */
+/* Tasks and projects */
 
 .task-div, .project-div {
     font-size: 12px;
@@ -218,4 +221,28 @@ form {
     margin: -25px -25px 0 0;
     z-index: 5;
     cursor: pointer;
+}
+
+.checklist {
+    li {
+        list-style-type: none;
+        border: 1px solid lightgray;
+    }
+}
+
+.checked {
+    color: red;
+}
+
+.checked:before {
+    content: '✓';
+}
+
+
+/* test */
+
+.tester {
+    height: 40px;
+    width: 150px;
+    border: 1px solid rgb(20, 58, 73);
 }

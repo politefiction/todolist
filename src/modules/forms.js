@@ -1,4 +1,4 @@
-import { Task, Project, taskCount, projectCount, manageList } from './listBuilding';
+import { Task, Project, taskCount, projectCount, manageList, subtaskCount } from './listBuilding';
 import { setElemWithAttrs, appendChildren, insertAfter, capitalize, setValue, getValue, getTime } from './miscTools';
 import { createModal, closeModal } from './modals';
 
@@ -46,7 +46,7 @@ const setOptionFor = (select, obj) => {
     return select.appendChild(option);
 }
 
-const placeBreak = (form) => form.innerHTML += `<br>`;
+const placeBreak = (form) => form.innerHTML += "<br>";
 
 const addSaveButton = (form, objName) => {
     const saveButton = setElemWithAttrs("button", [["id", `save-${objName}`]]);
@@ -56,13 +56,13 @@ const addSaveButton = (form, objName) => {
 }
 
 const addForm = (form, button) => {
-    let obj = form.id.split("-")[1];
-    let modal = createModal(`${obj}-form-modal`, "form", form);
+    let obj = form.id.split("-")[0];
+    let modal = createModal(`${obj}-form-modal`, form);
     insertAfter(modal, button);
 }
 
 const generateForm = (objName, button) => {
-    let form = setElemWithAttrs("form", [["id", `new-${objName}`]]);
+    let form = setElemWithAttrs("form", [["id", `${objName}-form`]]);
     let dueBool = (objName === "project" ? "required" : undefined);
     let hiddenId = setElemWithAttrs("input", [
         ["type", "hidden"], ["name", `${objName[0]}-id`]
@@ -79,6 +79,18 @@ const generateForm = (objName, button) => {
     addLabelInput(form, "Description", "text", `${objName[0]}-description`);
     addSaveButton(form, objName);
     addForm(form, button);
+}
+
+const generateSubtaskForm = (button) => {
+    let form = setElemWithAttrs("form", [["id", "subtask-form"]]);
+    let hiddenTaskId = setElemWithAttrs("input", [
+        ["type", "hidden"], ["name", "s-taskId"]
+    ]);
+    form.appendChild(hiddenTaskId);
+    addLabelInput(form, "subtask", "text", "s-title", "required");
+    placeBreak(form);
+    addSaveButton(form, "subtask");
+    addForm(form, button)
 }
 
 const createTask = () => {
@@ -148,11 +160,20 @@ const saveProject = () => {
     manageList.addProject(project);
 }
 
+const saveSubtask = () => {
+    let subtask = Subtask(
+        `s${subtaskCount}`,
+        getValue("s-title"),
+        getValue("s-taskId")
+    )
+    manageList.addSubtaskToTask(subtask);
+}
+
 const addFormSubmission = (form) => {
     form.onsubmit = () => {
-        form.id === "new-task" ? saveTask() : saveProject();
+        form.id === "task-form" ? saveTask() : saveProject();
         closeModal(form.parentElement.parentElement);
     }
 }
 
-export { generateForm, addFormSubmission, populateForm };
+export { generateForm, generateSubtaskForm, addFormSubmission, populateForm };
