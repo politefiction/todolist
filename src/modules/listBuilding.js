@@ -10,8 +10,8 @@ const Subtask = (id, title, taskId, completed=false) => {
     return { id, title, taskId, completed };
 }
 
-const Task = (id, title, description, date, dueDate, priority, subtasks=[], projectId, completed=false) => {
-    return { id, title, description, date, dueDate, priority, subtasks, projectId, completed }
+const Task = (id, title, description, date, dueDate, priority, projectId, subtasks=[],completed=false) => {
+    return { id, title, description, date, dueDate, priority, projectId, subtasks,completed }
 }
 
 const Project = (id, title, description, date, dueDate, priority, tasks=[], completed=false ) => {
@@ -42,6 +42,7 @@ const manageList = (() => {
         let t = tasks.filter(t => t.id === s.taskId)[0];
         t.subtasks.push(s);
         localStorage.setItem('subtaskCount', subtaskCount+1)
+        localStorage.setItem('taskList', JSON.stringify(tasks));
     }
 
     const deleteTask = (id) => {

@@ -1,4 +1,4 @@
-import { Task, Project, taskCount, projectCount, manageList, subtaskCount } from './listBuilding';
+import { Task, Project, Subtask, taskCount, projectCount, manageList, subtaskCount } from './listBuilding';
 import { setElemWithAttrs, appendChildren, insertAfter, capitalize, setValue, getValue, getTime } from './miscTools';
 import { createModal, closeModal } from './modals';
 
@@ -161,17 +161,24 @@ const saveProject = () => {
 }
 
 const saveSubtask = () => {
+    console.log("saving as subtask")
     let subtask = Subtask(
         `s${subtaskCount}`,
         getValue("s-title"),
         getValue("s-taskId")
     )
     manageList.addSubtaskToTask(subtask);
+    console.log(subtask)
 }
 
 const addFormSubmission = (form) => {
     form.onsubmit = () => {
-        form.id === "task-form" ? saveTask() : saveProject();
+        if (form.id === "subtask-form") {
+            saveSubtask();
+        } else { 
+            form.id === "task-form" ? saveTask() : saveProject();
+        }
+        console.log(form.id === "subtask-form");
         closeModal(form.parentElement.parentElement);
     }
 }

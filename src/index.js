@@ -17,6 +17,7 @@ const projectForm = selectQuery("#project-form");
 const pfModal = selectQuery("#project-form-modal");
 
 const newSubtaskButton = selectQuery("#new-subtask-button");
+//const subtaskForm = selectQuery("#subtask-form")
 generateSubtaskForm(newSubtaskButton);
 
 newTaskButton.onclick = () => {
@@ -34,6 +35,8 @@ newProjectButton.onclick = () => {
 
 addFormSubmission(taskForm);
 addFormSubmission(projectForm);
+//addFormSubmission(subtaskForm);
+addFormSubmission(selectQuery("#subtask-form"));
 
 renderCalendar();
 //sortUpcomingTasks();
