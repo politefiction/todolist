@@ -1,12 +1,19 @@
 import { compareAsc, format, isFuture } from 'date-fns';
 
+const getLS = (listName) => {
+    return JSON.parse(window.localStorage.getItem(listName));
+}
+
+const setLS = (listName, list) => {
+    return localStorage.setItem(listName, JSON.stringify(list));
+}
 
 const selectQuery = (target) => {
     return document.querySelector(target);
 }
 
-const tasks = JSON.parse(window.localStorage.getItem('taskList'));
-const taskList = document.querySelector("#task-list");
+const tasks = getLS('taskList');
+const taskList = selectQuery("#task-list");
 
 const capitalize = (string) => {
     return string[0].toUpperCase() + string.slice(1);
@@ -90,4 +97,4 @@ const sortUpcomingTasks = () => {
     })
 }
 
-export { appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize, selectQuery }
+export { selectQuery, getLS, setLS, appendChildren, compileList, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize }

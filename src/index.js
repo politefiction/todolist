@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import { sortUpcomingTasks, selectQuery } from './modules/miscTools';
+import { selectQuery } from './modules/miscTools';
 import { generateForm, generateSubtaskForm, addFormSubmission } from './modules/forms';
 import { openModal } from './modules/modals';
 import { renderCalendar } from './modules/calendar';
@@ -17,8 +17,8 @@ const projectForm = selectQuery("#project-form");
 const pfModal = selectQuery("#project-form-modal");
 
 const newSubtaskButton = selectQuery("#new-subtask-button");
-//const subtaskForm = selectQuery("#subtask-form")
 generateSubtaskForm(newSubtaskButton);
+const subtaskForm = selectQuery("#subtask-form")
 
 newTaskButton.onclick = () => {
     if (projectList === null || projectList.length === 0) {
@@ -35,11 +35,10 @@ newProjectButton.onclick = () => {
 
 addFormSubmission(taskForm);
 addFormSubmission(projectForm);
-//addFormSubmission(subtaskForm);
-addFormSubmission(selectQuery("#subtask-form"));
+addFormSubmission(subtaskForm);
 
 renderCalendar();
-//sortUpcomingTasks();
+
 
 /*
 

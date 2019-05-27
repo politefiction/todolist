@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { setElemWithAttrs, capitalize, setValue, selectQuery, appendChildren } from './miscTools';
+import { setElemWithAttrs, capitalize, setValue, selectQuery, setLS } from './miscTools';
 import { manageList } from './listBuilding'
 import { populateForm } from './forms';
 
@@ -27,21 +27,17 @@ const addModalContent = (modal, form) => {
     form ? modalContent.appendChild(form) : setObjContent(modal);
 }
 
-const findObj = (modal) => {
-    let list = (modal.id[0] === "t" ? tasks : projects)
-    return list.filter(i =>  modal.id === i.id)[0];
+const findObj = (id) => {
+    let list = (id[0] === "t" ? tasks : projects);
+    return list.find(obj => id === obj.id);
 }
 
 const findProject = (obj) => {
-    if (obj.projectId) { 
-        return projects.filter(p => 
-            p.id === obj.projectId
-        )[0] 
-    } 
+    if (obj.projectId) findObj(obj.projectId);
 }
 
 const setObjContent = (modal) => {
-    let obj = findObj(modal);
+    let obj = findObj(modal.id);
     modal.firstChild.innerHTML += setObjText(obj);
     setObjChecklist(modal, obj);
     modal.id[0] === "p" ? addTaskButton(modal) : addSubtaskButton(modal, obj);
@@ -60,16 +56,39 @@ const setObjText = (obj) => {
     <p>To Do:</p>`;
 }
 
+const projTasks = (project) => {
+    let list = [];
+    project.tasks.map(task => {
+        list.push(tasks.find(t => task.id === t.id));
+    })
+    return list;
+}
+
+const isCompleted = (item) => item.completed === true;
+
+const setStatus = (checkbox, item) => {
+    checkbox.innerHTML = (item.completed ? "&#9745 " : "&#9744 ") + item.title;
+}
+
+const resetLists = () => {
+    setLS('taskList', tasks);
+    setLS('projectList', projects);
+}
+
 const setObjChecklist = (modal, obj) => {
-    if (obj.tasks) {
+    let list = obj.subtasks || projTasks(obj);
+    if (list[0]) {
         let checklist = setElemWithAttrs("ul", [["class", "checklist"]]);
-        obj.tasks.forEach(task => {
+        list.map(st => {
+            let i = (st.projectId ? findObj(st.id) : st);
             let checkbox = setElemWithAttrs("li", [["class", "checkbox"]]);
-            checkbox.innerHTML = (task.completed ? "&#9745 " : "&#9744 ") + task.title;
+            setStatus(checkbox, i);
             checklist.appendChild(checkbox);
             checkbox.onclick = () => { 
-                task.completed = !task.completed;
-                checkbox.innerHTML = (task.completed ? "&#9745 " : "&#9744 ") + task.title;
+                i.completed = !i.completed;
+                setStatus(checkbox, i);
+                obj.completed = list.every(isCompleted);
+                resetLists();
             }
         })
         modal.firstChild.appendChild(checklist);
@@ -121,7 +140,7 @@ const addSubtaskButton = (modal, task) => {
 const addEditButton = (modal, obj) => {
     let objName = (modal.id[0] === "t" ? "task" : "project");
     let editButton = createButton(modal, "edit");
-    let form = selectQuery(`#${objName}-form`)
+    let form = selectQuery(`#${objName}-form`);
     editButton.textContent = `Edit ${capitalize(objName)}`;
     editButton.onclick = () => {
         closeModal(modal);

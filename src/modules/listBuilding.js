@@ -33,13 +33,13 @@ const manageList = (() => {
 
     const addTaskToProject = (t) => {
         addTask(t);
-        let p = projects.filter(p => p.id === t.projectId)[0];
+        let p = projects.find(p => p.id === t.projectId);
         p.tasks.push(t);
         localStorage.setItem('projectList', JSON.stringify(projects));
     }
 
     const addSubtaskToTask = (s) => {
-        let t = tasks.filter(t => t.id === s.taskId)[0];
+        let t = tasks.find(t => t.id === s.taskId);
         t.subtasks.push(s);
         localStorage.setItem('subtaskCount', subtaskCount+1)
         localStorage.setItem('taskList', JSON.stringify(tasks));
@@ -51,7 +51,7 @@ const manageList = (() => {
     }
 
     const deleteProject = (id) => {
-        let p = projects.filter(project => project.id === id)[0];
+        let p = projects.find(project => project.id === id);
         p.tasks.forEach(task =>  deleteTask(task.id));
         projects = projects.filter(project => project.id != id);
         localStorage.setItem('projectList', JSON.stringify(projects));

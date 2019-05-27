@@ -227,22 +227,8 @@ aside {
     li {
         list-style-type: none;
         border: 1px solid lightgray;
+        width: 250px;
+        margin-left: -10px;
+        padding: 5px 5px;
     }
-}
-
-.checked {
-    color: red;
-}
-
-.checked:before {
-    content: '✓';
-}
-
-
-/* test */
-
-.tester {
-    height: 40px;
-    width: 150px;
-    border: 1px solid rgb(20, 58, 73);
 }
