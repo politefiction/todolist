@@ -3,6 +3,7 @@ import { selectQuery } from './modules/miscTools';
 import { generateForm, generateSubtaskForm, addFormSubmission } from './modules/forms';
 import { openModal } from './modules/modals';
 import { renderCalendar } from './modules/calendar';
+import { compileOngoingPL } from './modules/sidebar';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
@@ -37,9 +38,5 @@ addFormSubmission(taskForm);
 addFormSubmission(projectForm);
 addFormSubmission(subtaskForm);
 
+compileOngoingPL();
 renderCalendar();
-
-
-/*
-
-*/
