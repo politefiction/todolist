@@ -7,7 +7,7 @@ const tasks = getLS('taskList');
 const projects = getLS('projectList');
 
 const compileOngoingPL = () => {
-    let list = selectQuery("#task-list");
+    let list = selectQuery("#project-list");
     let ongoingPL = projects.filter(p => isFuture(p.dueDate)).sort((a, b) => { 
         return new Date(a.date) - new Date(b.date); 
     });

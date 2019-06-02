@@ -38,5 +38,11 @@ addFormSubmission(taskForm);
 addFormSubmission(projectForm);
 addFormSubmission(subtaskForm);
 
+const calViewBtn = selectQuery("#calendar-view");
+calViewBtn.onclick = () => { 
+    console.log("firing now");
+    renderCalendar(); 
+}
+
 compileOngoingPL();
 renderCalendar();

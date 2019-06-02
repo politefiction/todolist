@@ -1,12 +1,61 @@
 import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns';
-import { setElemWithAttrs, selectQuery } from './miscTools';
+import { setElemWithAttrs, selectQuery, appendChildren } from './miscTools';
 import { createModal, openModal } from './modals';
 
 let selectedDate = startOfToday();
-const calendar = selectQuery("#calendar");
-
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
+
+const generateCalendar = () => {
+    const container = selectQuery("#container");
+    const calendar = setElemWithAttrs("article", [["id", "calendar"]]);
+    const calHeading = generateCalHeading();
+    const weekdays = generateWeekdays();
+
+    appendChildren(calendar, [calHeading, weekdays]);
+    container.appendChild(calendar);
+}
+
+const generateCalHeading = () => {
+    const calHeading = setElemWithAttrs("section", [["id", "calendar-heading"]]);
+    const backDate = generateDateControls("back");
+    const fwdDate = generateDateControls("forward");
+    const calTitle = setElemWithAttrs("h2", [["id", "cal-title"]]);
+    calTitle.textContent = format(selectedDate, 'MMMM YYYY');
+
+    appendChildren(calHeading, [backDate, fwdDate, calTitle]);
+    return calHeading;
+}
+
+const generateDateControls = (dir) => {
+    let controller = setElemWithAttrs("div", [["id", `${dir}-date`]])
+    let yearControl = setElemWithAttrs("div", [["id", `year-${dir}`]])
+    let monthControl = setElemWithAttrs("div", [["id", `month-${dir}`]])
+    if (dir === "back") {
+        yearControl.innerHTML = "&#60&#60";
+        monthControl.innerHTML = "&#60";
+        appendChildren(controller, [yearControl, monthControl]);
+    } else {
+        monthControl.innerHTML = "&#62";
+        yearControl.innerHTML = "&#62&#62";
+        appendChildren(controller, [monthControl, yearControl]);
+    }
+    return controller;
+}
+
+const generateWeekdays = () => {
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+    const weekdays = setElemWithAttrs("div", [["id", "weekdays"]]);
+    dayNames.forEach(name => {
+        let day = document.createElement("div");
+        day.textContent = name;
+        weekdays.appendChild(day);
+    })
+    return weekdays;
+}
+
+generateCalendar();
+const calendar = selectQuery("#calendar");
 
 const firstWeekday = () => {
     return getDay(startOfMonth(selectedDate));
