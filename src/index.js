@@ -2,8 +2,9 @@ import './styles/main.scss';
 import { selectQuery } from './modules/miscTools';
 import { generateForm, generateSubtaskForm, addFormSubmission } from './modules/forms';
 import { openModal } from './modules/modals';
-import { renderCalendar } from './modules/calendar';
+import { renderCalendar, clearCalendar } from './modules/calendar';
 import { compileOngoingPL } from './modules/sidebar';
+import { generateListView, clearList } from './modules/list';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
@@ -38,10 +39,16 @@ addFormSubmission(taskForm);
 addFormSubmission(projectForm);
 addFormSubmission(subtaskForm);
 
-const calViewBtn = selectQuery("#calendar-view");
+const calViewBtn = selectQuery("#calendar-view-btn");
 calViewBtn.onclick = () => { 
-    console.log("firing now");
+    clearList();
     renderCalendar(); 
+}
+
+const listViewBtn = selectQuery("#list-view-btn");
+listViewBtn.onclick = () => {
+    clearCalendar();
+    generateListView();
 }
 
 compileOngoingPL();

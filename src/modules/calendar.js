@@ -2,18 +2,18 @@ import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, start
 import { setElemWithAttrs, selectQuery, appendChildren } from './miscTools';
 import { createModal, openModal } from './modals';
 
-let selectedDate = startOfToday();
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
-const generateCalendar = () => {
-    const container = selectQuery("#container");
-    const calendar = setElemWithAttrs("article", [["id", "calendar"]]);
+let selectedDate = startOfToday();
+const container = selectQuery("#container");
+const calendar = setElemWithAttrs("article", [["id", "calendar"]]);
+container.appendChild(calendar);
+
+const generateCalTop = () => {
     const calHeading = generateCalHeading();
     const weekdays = generateWeekdays();
-
     appendChildren(calendar, [calHeading, weekdays]);
-    container.appendChild(calendar);
 }
 
 const generateCalHeading = () => {
@@ -54,16 +54,8 @@ const generateWeekdays = () => {
     return weekdays;
 }
 
-generateCalendar();
-const calendar = selectQuery("#calendar");
-
 const firstWeekday = () => {
     return getDay(startOfMonth(selectedDate));
-}
-
-const displayMonthYear = () => {
-    const calTitle = selectQuery("#cal-title");
-    calTitle.textContent = format(selectedDate, 'MMMM YYYY');
 }
 
 const setCalDayAttrs = (calDay, date) => {
@@ -84,6 +76,10 @@ const addCalendarDay = (date, week) => {
 }
 
 const clearCalendar = () => {
+    if (calendar.firstChild) {
+        calendar.removeChild(calendar.firstChild)
+        calendar.removeChild(calendar.firstChild)
+    }
     calendar.querySelectorAll(".week").forEach(week => {
         calendar.removeChild(week);
     })
@@ -174,7 +170,6 @@ const addToCalendar = (obj, objDiv, idName, due=false) => {
 }
 
 const setCurrentMonth = () => {
-    displayMonthYear();
     addWeeks();
     let weeks = document.querySelectorAll(".week");
     let weekStart = 1 - getDay(startOfMonth(selectedDate));
@@ -188,6 +183,7 @@ const setCurrentMonth = () => {
 
 const renderCalendar = () => {
     clearCalendar();
+    generateCalTop();
     setCurrentMonth();
     addDateSelection();
     addMYSelection();
@@ -196,4 +192,11 @@ const renderCalendar = () => {
 }
 
 
-export { renderCalendar, selectDate }
+export { renderCalendar, selectDate, clearCalendar }
+
+/*
+const displayMonthYear = () => {
+    const calTitle = selectQuery("#cal-title");
+    calTitle.textContent = format(selectedDate, 'MMMM YYYY');
+}
+*/
