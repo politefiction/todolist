@@ -4,7 +4,7 @@ import { generateForm, generateSubtaskForm, addFormSubmission } from './modules/
 import { openModal } from './modules/modals';
 import { renderCalendar, clearCalendar } from './modules/calendar';
 import { compileOngoingPL } from './modules/sidebar';
-import { generateListView, clearList } from './modules/list';
+import { renderList, clearList } from './modules/list';
 
 let projectList = JSON.parse(window.localStorage.getItem('projectList'));
 
@@ -48,7 +48,7 @@ calViewBtn.onclick = () => {
 const listViewBtn = selectQuery("#list-view-btn");
 listViewBtn.onclick = () => {
     clearCalendar();
-    generateListView();
+    renderList();
 }
 
 compileOngoingPL();

@@ -14,6 +14,14 @@ button {
     cursor: pointer;
 }
 
+#container {
+    float: left;
+    width: 70vw;
+    height: auto;
+    margin: 10px;
+    padding-left: 10px;
+}
+
 /* sidebar */
 
 aside {
@@ -69,14 +77,6 @@ aside {
 }
 
 /* main calendar */
-
-#container {
-    float: left;
-    width: 70vw;
-    height: auto;
-    margin: 10px;
-    padding-left: 10px;
-}
 
 #calendar {
     border: 1px solid teal;
@@ -156,6 +156,11 @@ aside {
     border: 1px solid rgba(28, 29, 29, 0.418);
 }
 
+/* List view */
+
+.project-list {
+    margin: 0 20px;
+}
 
 /* Tasks and projects */
 
@@ -170,6 +175,10 @@ aside {
 
 .project-div {
     border: 2px solid black;
+}
+
+.project-entry {
+    font-size: 18px;
 }
 
 .low {

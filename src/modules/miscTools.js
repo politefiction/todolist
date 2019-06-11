@@ -52,6 +52,18 @@ const getTime = (name) => {
     return getValue(name).length === 0 ? `00:00` : getValue(name);
 }
 
-export { selectQuery, getLS, setLS, appendChildren, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize, compileOngoingPL }
+const sortByDate = (list) => {
+    return list.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+    })
+}
+
+export { selectQuery, getLS, setLS, appendChildren, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize, compileOngoingPL, sortByDate }
+
+/*
+let ongoingPL = projects.filter(p => isFuture(p.dueDate)).sort((a, b) => { 
+        return new Date(a.date) - new Date(b.date); 
+    });
+*/
 
 

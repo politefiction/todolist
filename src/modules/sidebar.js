@@ -1,5 +1,5 @@
 import { format, isFuture } from 'date-fns';
-import { setElemWithAttrs, getLS, selectQuery, appendChildren } from './miscTools'
+import { setElemWithAttrs, getLS, selectQuery, appendChildren, sortByDate } from './miscTools'
 import { openModal, createModal } from './modals';
 
 
@@ -8,9 +8,7 @@ const projects = getLS('projectList');
 
 const compileOngoingPL = () => {
     let list = selectQuery("#project-list");
-    let ongoingPL = projects.filter(p => isFuture(p.dueDate)).sort((a, b) => { 
-        return new Date(a.date) - new Date(b.date); 
-    });
+    let ongoingPL = sortByDate(projects.filter(p => isFuture(p.dueDate)))
     ongoingPL.forEach(p => {
         let projectEntry = createEntry(p, "h4");
         let ogList = selectQuery("#ongoing-list");

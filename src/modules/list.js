@@ -1,5 +1,6 @@
-import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns';
-import { setElemWithAttrs, selectQuery } from './miscTools';
+import { format, getDay, isToday, isSameDay, startOfToday, isSameMonth } from 'date-fns';
+import { setElemWithAttrs, selectQuery, appendChildren, sortByDate } from './miscTools';
+import { openModal } from './modals';
 
 let selectedDate = startOfToday();
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
@@ -10,16 +11,46 @@ let list = setElemWithAttrs("article", [["id", "list-view"]]);
 container.appendChild(list);
 
 const generateListView = () => {
-    let heading = document.createElement("h3");
+    let heading = document.createElement("h2");
     heading.style.textAlign = "center";
     heading.textContent = format(selectedDate, "MMMM YYYY");
     list.appendChild(heading);
 }
 
 const clearList = () => {
-    for (let i=0; i<list.children.length; i++) {
+    if (list.firstChild) {
+        list.removeChild(list.firstChild);
         list.removeChild(list.firstChild);
     }
+
 }
 
-export { generateListView, clearList }
+const displayProjects = () => {
+    let projList = setElemWithAttrs("section", [["class", "project-list"]]);
+    let selectedProjects = sortByDate(projects.filter(p => {
+        return isSameMonth(new Date(p.date), selectedDate);
+     }))
+     selectedProjects.forEach(p => {
+         projList.appendChild(createProjEntry(p));
+     })
+     list.appendChild(projList);
+}
+
+const createProjEntry = (p) => {
+    let entry = setElemWithAttrs("div", [["class", "project-entry"]]);
+    let dot = setElemWithAttrs("div", [["class", `dot ${p.priority.toLowerCase()}`]])
+    let title = document.createElement("div");
+    title.textContent = p.title;
+    appendChildren(entry, [dot, title]);
+
+    entry.onclick = () => openModal(selectQuery(`#${p.id}`))
+    return entry;
+}
+
+const renderList = () => {
+    clearList();
+    generateListView();
+    displayProjects();
+}
+
+export { renderList, clearList }
