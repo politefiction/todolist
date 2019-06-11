@@ -1,6 +1,6 @@
 import { format, getDay, isToday, isSameDay, startOfToday, isSameMonth } from 'date-fns';
 import { setElemWithAttrs, selectQuery, appendChildren, sortByDate } from './miscTools';
-import { openModal } from './modals';
+import { createModal, openModal } from './modals';
 
 let selectedDate = startOfToday();
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
@@ -42,8 +42,14 @@ const createProjEntry = (p) => {
     let title = document.createElement("div");
     title.textContent = p.title;
     appendChildren(entry, [dot, title]);
-
-    entry.onclick = () => openModal(selectQuery(`#${p.id}`))
+    entry.onclick = () => {
+        let modal = selectQuery(`#${p.id}`);
+        if (!modal) { 
+            modal = createModal(`${p.id}`); 
+            entry.appendChild(modal);
+        }
+        openModal(modal);
+    }
     return entry;
 }
 
