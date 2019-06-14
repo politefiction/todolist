@@ -60,10 +60,3 @@ const sortByDate = (list) => {
 
 export { selectQuery, getLS, setLS, appendChildren, showDate, sortUpcomingTasks, setElemWithAttrs, setValue, getValue, getTime, insertAfter, capitalize, compileOngoingPL, sortByDate }
 
-/*
-let ongoingPL = projects.filter(p => isFuture(p.dueDate)).sort((a, b) => { 
-        return new Date(a.date) - new Date(b.date); 
-    });
-*/
-
-

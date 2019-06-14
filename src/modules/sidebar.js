@@ -19,7 +19,7 @@ const compileOngoingPL = () => {
 
 const createEntry = (obj, elem) => {
     let objName = (obj.id[0] === "p" ? "project" : "task");
-    let entry = setElemWithAttrs("div", [["class", `${objName}-entry`]]);
+    let entry = setElemWithAttrs("div", [["class", `${objName}-entry-sidebar`]]);
     let priority = setElemWithAttrs("div", [["class", `dot ${obj.priority.toLowerCase()}`]]);
     let heading = document.createElement(`${elem}`);
     heading.textContent = obj.title;
