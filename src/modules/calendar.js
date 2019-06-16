@@ -1,5 +1,5 @@
 import { format, getDay, getDaysInMonth, isToday, isSameDay, startOfMonth, startOfToday } from 'date-fns';
-import { setElemWithAttrs, selectQuery, appendChildren } from './miscTools';
+import { setElemWithAttrs, selectQuery, appendChildren, generateDateControls, addMYSelection } from './miscTools';
 import { createModal, openModal } from './modals';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
@@ -25,22 +25,6 @@ const generateCalHeading = () => {
 
     appendChildren(calHeading, [backDate, fwdDate, calTitle]);
     return calHeading;
-}
-
-const generateDateControls = (dir) => {
-    let controller = setElemWithAttrs("div", [["id", `${dir}-date`]])
-    let yearControl = setElemWithAttrs("div", [["id", `year-${dir}`]])
-    let monthControl = setElemWithAttrs("div", [["id", `month-${dir}`]])
-    if (dir === "back") {
-        yearControl.innerHTML = "&#60&#60";
-        monthControl.innerHTML = "&#60";
-        appendChildren(controller, [yearControl, monthControl]);
-    } else {
-        monthControl.innerHTML = "&#62";
-        yearControl.innerHTML = "&#62&#62";
-        appendChildren(controller, [monthControl, yearControl]);
-    }
-    return controller;
 }
 
 const generateWeekdays = () => {
@@ -83,21 +67,6 @@ const clearCalendar = () => {
     calendar.querySelectorAll(".week").forEach(week => {
         calendar.removeChild(week);
     })
-}
-
-const changeMonthYear = ((id, timeDiff) => {
-    let element = selectQuery(id);
-    element.onclick = () => {
-        selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+timeDiff)
-        renderCalendar();
-    }
-})
-
-const addMYSelection = () => {
-    changeMonthYear("#year-back", -12);
-    changeMonthYear("#month-back", -1);
-    changeMonthYear("#year-forward", +12);
-    changeMonthYear("#month-forward", +1);
 }
 
 const isExtendedMonth = () => {
@@ -181,22 +150,16 @@ const setCurrentMonth = () => {
     }
 }
 
-const renderCalendar = () => {
+const renderCalendar = (date=undefined) => {
+    if (date) selectedDate = date;
     clearCalendar();
     generateCalTop();
     setCurrentMonth();
     addDateSelection();
-    addMYSelection();
+    addMYSelection(selectedDate, renderCalendar);
     if (projects) displayOnCal(projects);
     if (tasks) displayOnCal(tasks);
 }
 
 
 export { renderCalendar, selectDate, clearCalendar }
-
-/*
-const displayMonthYear = () => {
-    const calTitle = selectQuery("#cal-title");
-    calTitle.textContent = format(selectedDate, 'MMMM YYYY');
-}
-*/
