@@ -1,55 +1,63 @@
 import './styles/main.scss';
-import { selectQuery } from './modules/miscTools';
-import { generateForm, generateSubtaskForm, addFormSubmission } from './modules/forms';
+import { selectQuery, getLS, setSelDate, addMYSelection, updateMonth } from './modules/miscTools';
+import {
+  generateForm,
+  generateSubtaskForm,
+  addFormSubmission
+} from './modules/forms';
 import { openModal } from './modules/modals';
-import { renderCalendar, clearCalendar } from './modules/calendar';
+import { renderCalendar } from './modules/calendar';
 import { compileOngoingPL } from './modules/sidebar';
-import { renderList, clearList } from './modules/list';
+import { renderList } from './modules/list';
 
-let projectList = JSON.parse(window.localStorage.getItem('projectList'));
+let projectList = getLS('projectList');
 
-let newTaskButton = selectQuery("#new-task-button");
-generateForm("task", newTaskButton);
-const taskForm = selectQuery("#task-form");
-const tfModal = selectQuery("#task-form-modal");
+const newTaskButton = selectQuery('#new-task-button');
+generateForm('task', newTaskButton);
+const taskForm = selectQuery('#task-form');
+const tfModal = selectQuery('#task-form-modal');
 
-const newProjectButton = selectQuery("#new-project-button");
-generateForm("project", newProjectButton);
-const projectForm = selectQuery("#project-form");
-const pfModal = selectQuery("#project-form-modal");
+const newProjectButton = selectQuery('#new-project-button');
+generateForm('project', newProjectButton);
+const projectForm = selectQuery('#project-form');
+const pfModal = selectQuery('#project-form-modal');
 
-const newSubtaskButton = selectQuery("#new-subtask-button");
+const newSubtaskButton = selectQuery('#new-subtask-button');
 generateSubtaskForm(newSubtaskButton);
-const subtaskForm = selectQuery("#subtask-form")
+const subtaskForm = selectQuery('#subtask-form');
 
 newTaskButton.onclick = () => {
-    if (projectList === null || projectList.length === 0) {
-        return alert("Please start a new project first.") 
-    }
-    taskForm.reset();
-    openModal(tfModal);
-}
+  if (projectList === null || projectList.length === 0) {
+    return alert('Please start a new project first.');
+  }
+  taskForm.reset();
+  openModal(tfModal);
+};
 
 newProjectButton.onclick = () => {
-    projectForm.reset();
-    openModal(pfModal);
-}
+  projectForm.reset();
+  openModal(pfModal);
+};
 
 addFormSubmission(taskForm);
 addFormSubmission(projectForm);
 addFormSubmission(subtaskForm);
 
-const calViewBtn = selectQuery("#calendar-view-btn");
-calViewBtn.onclick = () => { 
-    clearList();
-    renderCalendar(); 
-}
+const changeViewBtn = selectQuery('#change-view-btn');
+const articles = document.querySelectorAll('article');
 
-const listViewBtn = selectQuery("#list-view-btn");
-listViewBtn.onclick = () => {
-    clearCalendar();
-    renderList();
-}
+changeViewBtn.onclick = () => {
+  changeViewBtn.textContent =
+    changeViewBtn.textContent === 'List View' ? 'Calendar View' : 'List View';
+  articles.forEach(art => art.classList.toggle('hidden'));
+};
+
+setSelDate();
+updateMonth();
+// works with calendar! not with list though
+addMYSelection([renderCalendar, renderList])
+
 
 compileOngoingPL();
+renderList();
 renderCalendar();
