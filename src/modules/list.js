@@ -12,6 +12,8 @@ import { createModal, openModal } from './modals';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
+const modalDiv = selectQuery('#modal-div');
+//const modals = document.querySelectorAll('.modals');
 
 const container = selectQuery('#container');
 let listView = setElemWithAttrs('article', [['id', 'list-view'], ['class', 'hidden']]);
@@ -19,22 +21,21 @@ container.appendChild(listView);
 
 const clearList = () => {
   if (listView.firstChild) {
-    for (let i = 0; i < 3; i++) {
-      listView.removeChild(listView.firstChild);
-    }
+    let children = Array.from(listView.children);
+    children.map(child => listView.removeChild(child));
   }
 };
 
 const displayProjects = () => {
   let startHeading = setElemWithText('h3', 'Projects Starting This Month');
   let startList = setElemWithAttrs('section', [['class', 'project-list']]);
-  let selectedProjects = sortByDate(
+  let startingProjects = sortByDate(
     projects.filter(p => {
       return isSameMonth(new Date(p.date), getSelDate());
     })
   );
   startList.appendChild(startHeading);
-  selectedProjects.forEach(p => startList.appendChild(createObjEntry(p)));
+  startingProjects.forEach(p => startList.appendChild(createObjEntry(p)));
 
   let dueHeading = setElemWithText('h3', 'Projects Due This Month');
   let dueList = setElemWithAttrs('section', [['class', 'project-list']]);
@@ -49,12 +50,9 @@ const displayProjects = () => {
   appendChildren(listView, [startList, dueList]);
 };
 
-const addModal = (id, entry) => {
-  let modal = selectQuery(`#${id}`);
-  if (!modal) {
-    modal = createModal(`${id}`);
-    entry.appendChild(modal);
-  }
+const addModal = (id) => {
+  let modal = createModal(`${id}`);
+  modalDiv.appendChild(modal);
   return modal;
 };
 
@@ -74,10 +72,9 @@ const createObjEntry = (obj, mainEntry = undefined) => {
     ['class', `dot ${obj.priority.toLowerCase()}`]
   ]);
   let title = setElemWithAttrs('div', [['class', 'title']], obj.title);
-  let modal = addModal(obj.id, entry);
+  let modal = selectQuery(`.modal ${obj.id}`) || addModal(obj.id);
   if (new Date(obj.dueDate) != 'Invalid Date')
     title.textContent += ` (Due ${format(obj.dueDate, 'M/DD/YY')})`;
-
   appendChildren(entry, [dot, title]);
 
   title.onclick = () => openModal(modal);
@@ -98,3 +95,11 @@ const renderList = (date = undefined) => {
 };
 
 export { renderList, clearList };
+
+/*
+const sortProjects = (due=false) => {
+  sortByDate(projects.filter(p => {
+      return isSameMonth(new Date((due ? p.dueDate : p.date)), getSelDate());
+    }))
+}
+*/

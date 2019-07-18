@@ -12,8 +12,14 @@ import { populateForm } from './forms';
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
-const createModal = (idName, form = undefined) => {
-  let modal = setElemWithAttrs('div', [['class', 'modal'], ['id', idName]]);
+const getObjId = modal => {
+  return modal.classList[1];
+}
+
+const createModal = (objId, form = undefined) => {
+  let modal = form ? 
+    setElemWithAttrs('div', [['class', 'modal'], ['id', objId]]) :
+    setElemWithAttrs('div', [['class', `modal ${objId}`]])
   addModalContent(modal, form);
   modal.firstChild.firstChild.onclick = () => {
     closeModal(modal);
@@ -40,10 +46,10 @@ const findProject = obj => {
 };
 
 const setObjContent = modal => {
-  let obj = findObj(modal.id);
+  let obj = findObj(getObjId(modal));
   modal.firstChild.innerHTML += setObjText(obj);
   addObjChecklist(modal, obj);
-  addObjButton(modal.id[0] === 'p' ? modal : modal, obj);
+  addObjButton(getObjId(modal)[0] === 'p' ? modal : modal, obj);
   addEditButton(modal, obj);
   addDeleteButton(modal);
 };
@@ -112,9 +118,9 @@ const closeModal = modal => {
 
 const createButton = (modal, action) => {
   let objName;
-  if (modal.id[0] === 't') {
+  if (getObjId(modal)[0] === 't') {
     objName = 'task';
-  } else if (modal.id[0] === 'p') {
+  } else if (getObjId(modal)[0] === 'p') {
     objName = 'project';
   } else {
     objName = 'subtask';
@@ -127,7 +133,7 @@ const createButton = (modal, action) => {
 };
 
 const addObjButton = (modal, task=undefined) => {
-  let objName = (modal.id[0] === 'p' ? 'task' : 'subtask');
+  let objName = (getObjId(modal)[0] === 'p' ? 'task' : 'subtask');
   let button = createButton(modal, 'add');
   button.textContent = `Add ${capitalize(objName)}`
   button.onclick = () => {
@@ -142,7 +148,7 @@ const addObjButton = (modal, task=undefined) => {
 }
 
 const addEditButton = (modal, obj) => {
-  let objName = modal.id[0] === 't' ? 'task' : 'project';
+  let objName = getObjId(modal)[0] === 't' ? 'task' : 'project';
   let editButton = createButton(modal, 'edit');
   let form = selectQuery(`#${objName}-form`);
   editButton.onclick = () => {
@@ -156,9 +162,9 @@ const addDeleteButton = modal => {
   let deleteButton = createButton(modal, 'delete');
   deleteButton.onclick = () => {
     if (confirm('Are you sure you want to delete?')) {
-      modal.id[0] === 't'
-        ? manageList.deleteTask(modal.id)
-        : manageList.deleteProject(modal.id);
+      getObjId(modal)[0] === 't'
+        ? manageList.deleteTask(getObjId(modal))
+        : manageList.deleteProject(getObjId(modal));
       location.reload();
     }
   };

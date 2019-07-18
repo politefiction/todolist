@@ -81,6 +81,11 @@ const sortByDate = list => {
   });
 };
 
+const clearModalDiv = () => {
+  const modalDiv = selectQuery('#modal-div');
+  Array.from(modalDiv.children).map(child => modalDiv.removeChild(child));
+}
+
 const changeMonthYear = (attr, timeDiff, callbacks) => {
   let element = selectQuery(attr);
   element.onclick = () => {
@@ -115,7 +120,8 @@ export {
   addMYSelection,
   getSelDate,
   setSelDate,
-  updateMonth
+  updateMonth,
+  clearModalDiv
 };
 
 /*

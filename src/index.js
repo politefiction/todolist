@@ -54,10 +54,8 @@ changeViewBtn.onclick = () => {
 
 setSelDate();
 updateMonth();
-// works with calendar! not with list though
 addMYSelection([renderCalendar, renderList])
 
-
 compileOngoingPL();
-renderList();
 renderCalendar();
+renderList();

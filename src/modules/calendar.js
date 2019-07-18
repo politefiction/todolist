@@ -14,11 +14,13 @@ import {
   getSelDate,
   setSelDate,
   updateMonth,
+  clearModalDiv,
 } from './miscTools';
 import { createModal, openModal } from './modals';
 
 const tasks = getLS('taskList');
 const projects = getLS('projectList');
+const modalDiv = selectQuery('#modal-div');
 
 const container = selectQuery('#container');
 const calendar = setElemWithAttrs('article', [['id', 'calendar']]);
@@ -124,7 +126,7 @@ const displayOnCal = list => {
 const createObjDiv = obj => {
   let className = obj.id[0] === 't' ? 'task-div' : 'project-div';
   return setElemWithAttrs('div', [
-    ['class', `${className} ${obj.priority.toLowerCase()}`]
+    ['class', `${className} ${obj.priority.toLowerCase()} ${obj.id}`]
   ]);
 };
 
@@ -137,7 +139,7 @@ const addToCalendar = (obj, objDiv, idName, due = false) => {
     if (new Date(getDateFor(calDay)).getTime() === new Date(compDate).getTime()) {
       calDay.appendChild(objDiv);
       let modal = createModal(idName);
-      objDiv.appendChild(modal);
+      modalDiv.appendChild(modal);
       objDiv.onclick = () => openModal(modal);
     }
   });
@@ -158,6 +160,7 @@ const setCurrentMonth = () => {
 const renderCalendar = (date=undefined) => {
   if (date) setSelDate(date);
   clearCalendar();
+  clearModalDiv();
   generateCalTop();
   setCurrentMonth();
   addDateSelection();
