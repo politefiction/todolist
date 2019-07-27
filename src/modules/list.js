@@ -6,9 +6,10 @@ import {
   appendChildren,
   sortByDate,
   setSelDate,
-  getSelDate
+  getSelDate,
+  clearChildrenFrom
 } from './miscTools';
-import { createModal, openModal } from './modals';
+import { generateModal } from './modals';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
@@ -20,10 +21,8 @@ let listView = setElemWithAttrs('article', [['id', 'list-view'], ['class', 'hidd
 container.appendChild(listView);
 
 const clearList = () => {
-  if (listView.firstChild) {
-    let children = Array.from(listView.children);
-    children.map(child => listView.removeChild(child));
-  }
+  clearChildrenFrom(listView);
+  clearChildrenFrom(modalDiv)
 };
 
 const displayProjects = () => {
@@ -50,12 +49,6 @@ const displayProjects = () => {
   appendChildren(listView, [startList, dueList]);
 };
 
-const addModal = (id) => {
-  let modal = createModal(`${id}`);
-  modalDiv.appendChild(modal);
-  return modal;
-};
-
 const addTaskList = (obj, entry) => {
   let listOfTasks = setElemWithAttrs('div', [['class', 'task-list']]);
   obj.tasks.forEach(task => {
@@ -72,12 +65,15 @@ const createObjEntry = (obj, mainEntry = undefined) => {
     ['class', `dot ${obj.priority.toLowerCase()}`]
   ]);
   let title = setElemWithAttrs('div', [['class', 'title']], obj.title);
-  let modal = selectQuery(`.modal ${obj.id}`) || addModal(obj.id);
+
   if (new Date(obj.dueDate) != 'Invalid Date')
     title.textContent += ` (Due ${format(obj.dueDate, 'M/DD/YY')})`;
   appendChildren(entry, [dot, title]);
 
-  title.onclick = () => openModal(modal);
+  title.onclick = () => {
+    clearChildrenFrom(selectQuery('.modal-text'))
+    generateModal(obj.id);
+  }
 
   if (mainEntry) {
     return mainEntry.lastChild.appendChild(entry);
@@ -95,11 +91,3 @@ const renderList = (date = undefined) => {
 };
 
 export { renderList, clearList };
-
-/*
-const sortProjects = (due=false) => {
-  sortByDate(projects.filter(p => {
-      return isSameMonth(new Date((due ? p.dueDate : p.date)), getSelDate());
-    }))
-}
-*/

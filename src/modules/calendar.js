@@ -14,9 +14,9 @@ import {
   getSelDate,
   setSelDate,
   updateMonth,
-  clearModalDiv,
+  clearChildrenFrom,
 } from './miscTools';
-import { createModal, openModal } from './modals';
+import { generateModal } from './modals';
 
 const tasks = getLS('taskList');
 const projects = getLS('projectList');
@@ -62,13 +62,8 @@ const addCalendarDay = (date, week) => {
 };
 
 const clearCalendar = () => {
-  if (calendar.firstChild) {
-    calendar.removeChild(calendar.firstChild);
-    calendar.removeChild(calendar.firstChild);
-  }
-  calendar.querySelectorAll('.week').forEach(week => {
-    calendar.removeChild(week);
-  });
+  clearChildrenFrom(calendar);
+  clearChildrenFrom(modalDiv);
 };
 
 const firstWeekday = () => getDay(startOfMonth(getSelDate()));
@@ -138,9 +133,10 @@ const addToCalendar = (obj, objDiv, idName, due = false) => {
   calendarDays.forEach(calDay => {
     if (new Date(getDateFor(calDay)).getTime() === new Date(compDate).getTime()) {
       calDay.appendChild(objDiv);
-      let modal = createModal(idName);
-      modalDiv.appendChild(modal);
-      objDiv.onclick = () => openModal(modal);
+      objDiv.onclick = () => { 
+        clearChildrenFrom(selectQuery(".modal-text"));
+        generateModal(objDiv.classList[2]); 
+      }
     }
   });
 };
@@ -160,7 +156,6 @@ const setCurrentMonth = () => {
 const renderCalendar = (date=undefined) => {
   if (date) setSelDate(date);
   clearCalendar();
-  clearModalDiv();
   generateCalTop();
   setCurrentMonth();
   addDateSelection();

@@ -12,6 +12,13 @@ import { populateForm } from './forms';
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
+const generateModal = (objId) => {
+  let modal = selectQuery("#tp-modal");
+  setObjContent(modal, objId);
+  openModal(modal);
+  modal.firstElementChild.firstElementChild.onclick = () => closeModal(modal);
+}
+
 const getObjId = modal => {
   return modal.classList[1];
 }
@@ -45,13 +52,15 @@ const findProject = obj => {
   if (obj.projectId) findObj(obj.projectId);
 };
 
-const setObjContent = modal => {
-  let obj = findObj(getObjId(modal));
-  modal.firstChild.innerHTML += setObjText(obj);
-  addObjChecklist(modal, obj);
-  addObjButton(getObjId(modal)[0] === 'p' ? modal : modal, obj);
+const setObjContent = (modal, objId) => {
+  let obj = findObj(objId);
+  let otherObj = (objId[0] === 't' ? obj : undefined);
+  let modalText = selectQuery(".modal-text");
+  modalText.innerHTML += setObjText(obj);
+  addObjChecklist(obj);
+  addObjButton(objId, modal, otherObj);
   addEditButton(modal, obj);
-  addDeleteButton(modal);
+  addDeleteButton(objId, modal);
 };
 
 const setObjText = obj => {
@@ -86,11 +95,12 @@ const resetLists = () => {
   setLS('projectList', projects);
 };
 
-const addObjChecklist = (modal, obj) => {
+const addObjChecklist = (obj) => {
+  let modalText = selectQuery(".modal-text");
   let list = obj.subtasks || projTasks(obj);
   let checklist = setElemWithAttrs('ul', [['class', 'checklist']]);
   if (list[0]) buildChecklist(obj, list, checklist);
-  modal.firstChild.appendChild(checklist);
+  modalText.appendChild(checklist);
 };
 
 const buildChecklist = (obj, list, checklist) => {
@@ -116,11 +126,12 @@ const closeModal = modal => {
   modal.style.display = 'none';
 };
 
-const createButton = (modal, action) => {
+const createButton = (objId, modal, action) => {
   let objName;
-  if (getObjId(modal)[0] === 't') {
+  let modalText = selectQuery(".modal-text")
+  if (objId[0] === 't') {
     objName = 'task';
-  } else if (getObjId(modal)[0] === 'p') {
+  } else if (objId[0] === 'p') {
     objName = 'project';
   } else {
     objName = 'subtask';
@@ -128,13 +139,13 @@ const createButton = (modal, action) => {
   let button = setElemWithAttrs('button', 
     [['class', `${action}-${objName}`]],
     `${capitalize(action)} ${capitalize(objName)}`);
-  modal.firstChild.appendChild(button);
+  modalText.appendChild(button);
   return button;
 };
 
-const addObjButton = (modal, task=undefined) => {
-  let objName = (getObjId(modal)[0] === 'p' ? 'task' : 'subtask');
-  let button = createButton(modal, 'add');
+const addObjButton = (objId, modal, task=undefined) => {
+  let objName = (objId[0] === 'p' ? 'task' : 'subtask');
+  let button = createButton(objId, modal, 'add');
   button.textContent = `Add ${capitalize(objName)}`
   button.onclick = () => {
     closeModal(modal);
@@ -148,8 +159,8 @@ const addObjButton = (modal, task=undefined) => {
 }
 
 const addEditButton = (modal, obj) => {
-  let objName = getObjId(modal)[0] === 't' ? 'task' : 'project';
-  let editButton = createButton(modal, 'edit');
+  let objName = obj.id[0] === 't' ? 'task' : 'project';
+  let editButton = createButton(obj.id, modal, 'edit');
   let form = selectQuery(`#${objName}-form`);
   editButton.onclick = () => {
     closeModal(modal);
@@ -158,16 +169,16 @@ const addEditButton = (modal, obj) => {
   };
 };
 
-const addDeleteButton = modal => {
-  let deleteButton = createButton(modal, 'delete');
+const addDeleteButton = (objId, modal) => {
+  let deleteButton = createButton(objId, modal, 'delete');
   deleteButton.onclick = () => {
     if (confirm('Are you sure you want to delete?')) {
       getObjId(modal)[0] === 't'
-        ? manageList.deleteTask(getObjId(modal))
-        : manageList.deleteProject(getObjId(modal));
+        ? manageList.deleteTask(objId)
+        : manageList.deleteProject(objId);
       location.reload();
     }
   };
 };
 
-export { createModal, openModal, closeModal };
+export { createModal, openModal, closeModal, generateModal };

@@ -81,9 +81,21 @@ const sortByDate = list => {
   });
 };
 
+const clearChildrenFrom = element => {
+  let children = Array.from(element.children);
+  children.map(child => element.removeChild(child));
+}
+
+/*
+on clicking change view button? nah, that won't work
+document.on...change? onclick? idk {
+  clearModalDiv();
+  refill with modals based on selDate();
+}
+*/
+
 const clearModalDiv = () => {
-  const modalDiv = selectQuery('#modal-div');
-  Array.from(modalDiv.children).map(child => modalDiv.removeChild(child));
+  clearChildrenFrom(selectQuery('#modal-div'))
 }
 
 const changeMonthYear = (attr, timeDiff, callbacks) => {
@@ -121,7 +133,8 @@ export {
   getSelDate,
   setSelDate,
   updateMonth,
-  clearModalDiv
+  clearModalDiv,
+  clearChildrenFrom
 };
 
 /*
