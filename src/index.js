@@ -1,4 +1,4 @@
-import './styles/main.scss';
+import './styles/style.scss';
 import { selectQuery, getLS, setSelDate, addMYSelection, updateMonth } from './modules/miscTools';
 import {
   generateForm,

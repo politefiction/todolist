@@ -16,7 +16,7 @@ import {
   getValue,
   getTime
 } from './miscTools';
-import { createModal, closeModal } from './modals';
+import { createFormModal, closeModal } from './modals';
 
 let tasks = JSON.parse(window.localStorage.getItem('taskList'));
 let projects = JSON.parse(window.localStorage.getItem('projectList'));
@@ -73,7 +73,7 @@ const addSaveButton = (form, objName) => {
 
 const addForm = (form, button) => {
   let obj = form.id.split('-')[0];
-  let modal = createModal(`${obj}-form-modal`, form);
+  let modal = createFormModal(`${obj}-form-modal`, form);
   insertAfter(modal, button);
 };
 

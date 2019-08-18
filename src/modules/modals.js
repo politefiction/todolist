@@ -23,10 +23,9 @@ const getObjId = modal => {
   return modal.classList[1];
 }
 
-const createModal = (objId, form = undefined) => {
-  let modal = form ? 
-    setElemWithAttrs('div', [['class', 'modal'], ['id', objId]]) :
-    setElemWithAttrs('div', [['class', `modal ${objId}`]])
+// revise form modals to make these couple of methods obsolete?
+const createFormModal = (objId, form) => {
+  let modal = setElemWithAttrs('div', [['class', 'modal'], ['id', objId]])
   addModalContent(modal, form);
   modal.firstChild.firstChild.onclick = () => {
     closeModal(modal);
@@ -40,7 +39,7 @@ const addModalContent = (modal, form) => {
   closer.innerHTML = '&times<br><br>';
   modalContent.appendChild(closer);
   modal.appendChild(modalContent);
-  form ? modalContent.appendChild(form) : setObjContent(modal);
+  modalContent.appendChild(form)
 };
 
 const findObj = id => {
@@ -181,4 +180,15 @@ const addDeleteButton = (objId, modal) => {
   };
 };
 
-export { createModal, openModal, closeModal, generateModal };
+export { createFormModal, openModal, closeModal, generateModal };
+
+/*
+const addModalContent = (modal, form) => {
+  let modalContent = setElemWithAttrs('div', [['class', 'modal-content']]);
+  let closer = setElemWithAttrs('span', [['class', 'close-modal']]);
+  closer.innerHTML = '&times<br><br>';
+  modalContent.appendChild(closer);
+  modal.appendChild(modalContent);
+  form ? modalContent.appendChild(form) : setObjContent(modal);
+};
+*/

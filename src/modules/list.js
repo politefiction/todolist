@@ -3,6 +3,7 @@ import {
   setElemWithAttrs,
   setElemWithText,
   selectQuery,
+  capitalize,
   appendChildren,
   sortByDate,
   setSelDate,
@@ -13,39 +14,29 @@ import { generateModal } from './modals';
 
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
-const modalDiv = selectQuery('#modal-div');
-//const modals = document.querySelectorAll('.modals');
 
 const container = selectQuery('#container');
 let listView = setElemWithAttrs('article', [['id', 'list-view'], ['class', 'hidden']]);
 container.appendChild(listView);
 
-const clearList = () => {
-  clearChildrenFrom(listView);
-  clearChildrenFrom(modalDiv)
-};
+const generateProjList = (status) => {
+  let heading = setElemWithText('h3', `Projects ${capitalize(status)} This Month`);
+  let projSection = setElemWithAttrs('section', [['class', 'project-list']]);
+  let projList = sortByDate(
+    projects.filter(p => {
+      return isSameMonth(
+        new Date(status === "starting" ? p.date : p.dueDate), 
+        getSelDate());
+    })
+  )
+  projSection.appendChild(heading)
+  projList.forEach(p => projSection.appendChild(createObjEntry(p)));
+  return projSection;
+}
 
 const displayProjects = () => {
-  let startHeading = setElemWithText('h3', 'Projects Starting This Month');
-  let startList = setElemWithAttrs('section', [['class', 'project-list']]);
-  let startingProjects = sortByDate(
-    projects.filter(p => {
-      return isSameMonth(new Date(p.date), getSelDate());
-    })
-  );
-  startList.appendChild(startHeading);
-  startingProjects.forEach(p => startList.appendChild(createObjEntry(p)));
-
-  let dueHeading = setElemWithText('h3', 'Projects Due This Month');
-  let dueList = setElemWithAttrs('section', [['class', 'project-list']]);
-  let dueProjects = sortByDate(
-    projects.filter(p => {
-      return isSameMonth(new Date(p.dueDate), getSelDate());
-    })
-  );
-  dueList.appendChild(dueHeading);
-  dueProjects.forEach(p => dueList.appendChild(createObjEntry(p)));
-
+  let startList = generateProjList('starting');
+  let dueList = generateProjList('due');
   appendChildren(listView, [startList, dueList]);
 };
 
@@ -75,19 +66,17 @@ const createObjEntry = (obj, mainEntry = undefined) => {
     generateModal(obj.id);
   }
 
-  if (mainEntry) {
-    return mainEntry.lastChild.appendChild(entry);
-  } else {
+  mainEntry ?
+    mainEntry.lastChild.appendChild(entry) : 
     addTaskList(obj, entry);
-  }
 
   return entry;
 };
 
 const renderList = (date = undefined) => {
   if (date) setSelDate(date);
-  clearList();
+  clearChildrenFrom(listView);
   displayProjects();
 };
 
-export { renderList, clearList };
+export { renderList };

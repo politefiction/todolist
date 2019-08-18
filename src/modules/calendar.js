@@ -20,7 +20,6 @@ import { generateModal } from './modals';
 
 const tasks = getLS('taskList');
 const projects = getLS('projectList');
-const modalDiv = selectQuery('#modal-div');
 
 const container = selectQuery('#container');
 const calendar = setElemWithAttrs('article', [['id', 'calendar']]);
@@ -59,11 +58,6 @@ const addCalendarDay = (date, week) => {
   setCalDayAttrs(calDay, date);
   calDay.innerHTML = `<p>${date.getDate()}</p>`;
   week.appendChild(calDay);
-};
-
-const clearCalendar = () => {
-  clearChildrenFrom(calendar);
-  clearChildrenFrom(modalDiv);
 };
 
 const firstWeekday = () => getDay(startOfMonth(getSelDate()));
@@ -113,7 +107,7 @@ const displayOnCal = list => {
     let idName = obj.id;
     addToCalendar(obj, createObjDiv(obj), idName);
     if (obj.dueDate) {
-      addToCalendar(obj, createObjDiv(obj), idName, true);
+      addToCalendar(obj, createObjDiv(obj), idName, "due");
     }
   });
 };
@@ -155,7 +149,7 @@ const setCurrentMonth = () => {
 
 const renderCalendar = (date=undefined) => {
   if (date) setSelDate(date);
-  clearCalendar();
+  clearChildrenFrom(calendar);
   generateCalTop();
   setCurrentMonth();
   addDateSelection();
@@ -163,4 +157,4 @@ const renderCalendar = (date=undefined) => {
   if (tasks) displayOnCal(tasks);
 };
 
-export { renderCalendar, clearCalendar };
+export { renderCalendar };
