@@ -93,7 +93,33 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Add the specified number of days to the given date.\n *\n * @description\n * Add the specified number of days to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of days to be added\n * @returns {Date} the new date with the days added\n *\n * @example\n * // Add 10 days to 1 September 2014:\n * var result = addDays(new Date(2014, 8, 1), 10)\n * //=> Thu Sep 11 2014 00:00:00\n */\nfunction addDays (dirtyDate, dirtyAmount) {\n  var date = parse(dirtyDate)\n  var amount = Number(dirtyAmount)\n  date.setDate(date.getDate() + amount)\n  return date\n}\n\nmodule.exports = addDays\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_days/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Add the specified number of days to the given date.
+ *
+ * @description
+ * Add the specified number of days to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be added
+ * @returns {Date} the new date with the days added
+ *
+ * @example
+ * // Add 10 days to 1 September 2014:
+ * var result = addDays(new Date(2014, 8, 1), 10)
+ * //=> Thu Sep 11 2014 00:00:00
+ */
+function addDays (dirtyDate, dirtyAmount) {
+  var date = parse(dirtyDate)
+  var amount = Number(dirtyAmount)
+  date.setDate(date.getDate() + amount)
+  return date
+}
+
+module.exports = addDays
+
 
 /***/ }),
 
@@ -104,7 +130,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ \"./node_modules/date-fns/add_milliseconds/index.js\")\n\nvar MILLISECONDS_IN_HOUR = 3600000\n\n/**\n * @category Hour Helpers\n * @summary Add the specified number of hours to the given date.\n *\n * @description\n * Add the specified number of hours to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of hours to be added\n * @returns {Date} the new date with the hours added\n *\n * @example\n * // Add 2 hours to 10 July 2014 23:00:00:\n * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)\n * //=> Fri Jul 11 2014 01:00:00\n */\nfunction addHours (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)\n}\n\nmodule.exports = addHours\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_hours/index.js?");
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+var MILLISECONDS_IN_HOUR = 3600000
+
+/**
+ * @category Hour Helpers
+ * @summary Add the specified number of hours to the given date.
+ *
+ * @description
+ * Add the specified number of hours to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of hours to be added
+ * @returns {Date} the new date with the hours added
+ *
+ * @example
+ * // Add 2 hours to 10 July 2014 23:00:00:
+ * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
+ * //=> Fri Jul 11 2014 01:00:00
+ */
+function addHours (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)
+}
+
+module.exports = addHours
+
 
 /***/ }),
 
@@ -115,7 +167,34 @@ eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\")\nvar setISOYear = __webpack_require__(/*! ../set_iso_year/index.js */ \"./node_modules/date-fns/set_iso_year/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Add the specified number of ISO week-numbering years to the given date.\n *\n * @description\n * Add the specified number of ISO week-numbering years to the given date.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of ISO week-numbering years to be added\n * @returns {Date} the new date with the ISO week-numbering years added\n *\n * @example\n * // Add 5 ISO week-numbering years to 2 July 2010:\n * var result = addISOYears(new Date(2010, 6, 2), 5)\n * //=> Fri Jun 26 2015 00:00:00\n */\nfunction addISOYears (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount)\n}\n\nmodule.exports = addISOYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_iso_years/index.js?");
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var setISOYear = __webpack_require__(/*! ../set_iso_year/index.js */ "./node_modules/date-fns/set_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Add the specified number of ISO week-numbering years to the given date.
+ *
+ * @description
+ * Add the specified number of ISO week-numbering years to the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of ISO week-numbering years to be added
+ * @returns {Date} the new date with the ISO week-numbering years added
+ *
+ * @example
+ * // Add 5 ISO week-numbering years to 2 July 2010:
+ * var result = addISOYears(new Date(2010, 6, 2), 5)
+ * //=> Fri Jun 26 2015 00:00:00
+ */
+function addISOYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount)
+}
+
+module.exports = addISOYears
+
 
 /***/ }),
 
@@ -126,7 +205,32 @@ eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Millisecond Helpers\n * @summary Add the specified number of milliseconds to the given date.\n *\n * @description\n * Add the specified number of milliseconds to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of milliseconds to be added\n * @returns {Date} the new date with the milliseconds added\n *\n * @example\n * // Add 750 milliseconds to 10 July 2014 12:45:30.000:\n * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)\n * //=> Thu Jul 10 2014 12:45:30.750\n */\nfunction addMilliseconds (dirtyDate, dirtyAmount) {\n  var timestamp = parse(dirtyDate).getTime()\n  var amount = Number(dirtyAmount)\n  return new Date(timestamp + amount)\n}\n\nmodule.exports = addMilliseconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_milliseconds/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Add the specified number of milliseconds to the given date.
+ *
+ * @description
+ * Add the specified number of milliseconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be added
+ * @returns {Date} the new date with the milliseconds added
+ *
+ * @example
+ * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
+ * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:30.750
+ */
+function addMilliseconds (dirtyDate, dirtyAmount) {
+  var timestamp = parse(dirtyDate).getTime()
+  var amount = Number(dirtyAmount)
+  return new Date(timestamp + amount)
+}
+
+module.exports = addMilliseconds
+
 
 /***/ }),
 
@@ -137,7 +241,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ \"./node_modules/date-fns/add_milliseconds/index.js\")\n\nvar MILLISECONDS_IN_MINUTE = 60000\n\n/**\n * @category Minute Helpers\n * @summary Add the specified number of minutes to the given date.\n *\n * @description\n * Add the specified number of minutes to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of minutes to be added\n * @returns {Date} the new date with the minutes added\n *\n * @example\n * // Add 30 minutes to 10 July 2014 12:00:00:\n * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)\n * //=> Thu Jul 10 2014 12:30:00\n */\nfunction addMinutes (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)\n}\n\nmodule.exports = addMinutes\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_minutes/index.js?");
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+
+/**
+ * @category Minute Helpers
+ * @summary Add the specified number of minutes to the given date.
+ *
+ * @description
+ * Add the specified number of minutes to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of minutes to be added
+ * @returns {Date} the new date with the minutes added
+ *
+ * @example
+ * // Add 30 minutes to 10 July 2014 12:00:00:
+ * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
+ * //=> Thu Jul 10 2014 12:30:00
+ */
+function addMinutes (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
+}
+
+module.exports = addMinutes
+
 
 /***/ }),
 
@@ -148,7 +278,41 @@ eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar getDaysInMonth = __webpack_require__(/*! ../get_days_in_month/index.js */ \"./node_modules/date-fns/get_days_in_month/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Add the specified number of months to the given date.\n *\n * @description\n * Add the specified number of months to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of months to be added\n * @returns {Date} the new date with the months added\n *\n * @example\n * // Add 5 months to 1 September 2014:\n * var result = addMonths(new Date(2014, 8, 1), 5)\n * //=> Sun Feb 01 2015 00:00:00\n */\nfunction addMonths (dirtyDate, dirtyAmount) {\n  var date = parse(dirtyDate)\n  var amount = Number(dirtyAmount)\n  var desiredMonth = date.getMonth() + amount\n  var dateWithDesiredMonth = new Date(0)\n  dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)\n  dateWithDesiredMonth.setHours(0, 0, 0, 0)\n  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)\n  // Set the last day of the new month\n  // if the original date was the last day of the longer month\n  date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))\n  return date\n}\n\nmodule.exports = addMonths\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_months/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var getDaysInMonth = __webpack_require__(/*! ../get_days_in_month/index.js */ "./node_modules/date-fns/get_days_in_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Add the specified number of months to the given date.
+ *
+ * @description
+ * Add the specified number of months to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be added
+ * @returns {Date} the new date with the months added
+ *
+ * @example
+ * // Add 5 months to 1 September 2014:
+ * var result = addMonths(new Date(2014, 8, 1), 5)
+ * //=> Sun Feb 01 2015 00:00:00
+ */
+function addMonths (dirtyDate, dirtyAmount) {
+  var date = parse(dirtyDate)
+  var amount = Number(dirtyAmount)
+  var desiredMonth = date.getMonth() + amount
+  var dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  // Set the last day of the new month
+  // if the original date was the last day of the longer month
+  date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))
+  return date
+}
+
+module.exports = addMonths
+
 
 /***/ }),
 
@@ -159,7 +323,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMonths = __webpack_require__(/*! ../add_months/index.js */ \"./node_modules/date-fns/add_months/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Add the specified number of year quarters to the given date.\n *\n * @description\n * Add the specified number of year quarters to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of quarters to be added\n * @returns {Date} the new date with the quarters added\n *\n * @example\n * // Add 1 quarter to 1 September 2014:\n * var result = addQuarters(new Date(2014, 8, 1), 1)\n * //=> Mon Dec 01 2014 00:00:00\n */\nfunction addQuarters (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  var months = amount * 3\n  return addMonths(dirtyDate, months)\n}\n\nmodule.exports = addQuarters\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_quarters/index.js?");
+var addMonths = __webpack_require__(/*! ../add_months/index.js */ "./node_modules/date-fns/add_months/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Add the specified number of year quarters to the given date.
+ *
+ * @description
+ * Add the specified number of year quarters to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of quarters to be added
+ * @returns {Date} the new date with the quarters added
+ *
+ * @example
+ * // Add 1 quarter to 1 September 2014:
+ * var result = addQuarters(new Date(2014, 8, 1), 1)
+ * //=> Mon Dec 01 2014 00:00:00
+ */
+function addQuarters (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  var months = amount * 3
+  return addMonths(dirtyDate, months)
+}
+
+module.exports = addQuarters
+
 
 /***/ }),
 
@@ -170,7 +359,31 @@ eval("var addMonths = __webpack_require__(/*! ../add_months/index.js */ \"./node
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ \"./node_modules/date-fns/add_milliseconds/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Add the specified number of seconds to the given date.\n *\n * @description\n * Add the specified number of seconds to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of seconds to be added\n * @returns {Date} the new date with the seconds added\n *\n * @example\n * // Add 30 seconds to 10 July 2014 12:45:00:\n * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)\n * //=> Thu Jul 10 2014 12:45:30\n */\nfunction addSeconds (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMilliseconds(dirtyDate, amount * 1000)\n}\n\nmodule.exports = addSeconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_seconds/index.js?");
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Add the specified number of seconds to the given date.
+ *
+ * @description
+ * Add the specified number of seconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of seconds to be added
+ * @returns {Date} the new date with the seconds added
+ *
+ * @example
+ * // Add 30 seconds to 10 July 2014 12:45:00:
+ * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * //=> Thu Jul 10 2014 12:45:30
+ */
+function addSeconds (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, amount * 1000)
+}
+
+module.exports = addSeconds
+
 
 /***/ }),
 
@@ -181,7 +394,32 @@ eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addDays = __webpack_require__(/*! ../add_days/index.js */ \"./node_modules/date-fns/add_days/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Add the specified number of weeks to the given date.\n *\n * @description\n * Add the specified number of week to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of weeks to be added\n * @returns {Date} the new date with the weeks added\n *\n * @example\n * // Add 4 weeks to 1 September 2014:\n * var result = addWeeks(new Date(2014, 8, 1), 4)\n * //=> Mon Sep 29 2014 00:00:00\n */\nfunction addWeeks (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  var days = amount * 7\n  return addDays(dirtyDate, days)\n}\n\nmodule.exports = addWeeks\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_weeks/index.js?");
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Add the specified number of weeks to the given date.
+ *
+ * @description
+ * Add the specified number of week to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of weeks to be added
+ * @returns {Date} the new date with the weeks added
+ *
+ * @example
+ * // Add 4 weeks to 1 September 2014:
+ * var result = addWeeks(new Date(2014, 8, 1), 4)
+ * //=> Mon Sep 29 2014 00:00:00
+ */
+function addWeeks (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  var days = amount * 7
+  return addDays(dirtyDate, days)
+}
+
+module.exports = addWeeks
+
 
 /***/ }),
 
@@ -192,7 +430,31 @@ eval("var addDays = __webpack_require__(/*! ../add_days/index.js */ \"./node_mod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMonths = __webpack_require__(/*! ../add_months/index.js */ \"./node_modules/date-fns/add_months/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Add the specified number of years to the given date.\n *\n * @description\n * Add the specified number of years to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of years to be added\n * @returns {Date} the new date with the years added\n *\n * @example\n * // Add 5 years to 1 September 2014:\n * var result = addYears(new Date(2014, 8, 1), 5)\n * //=> Sun Sep 01 2019 00:00:00\n */\nfunction addYears (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMonths(dirtyDate, amount * 12)\n}\n\nmodule.exports = addYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/add_years/index.js?");
+var addMonths = __webpack_require__(/*! ../add_months/index.js */ "./node_modules/date-fns/add_months/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Add the specified number of years to the given date.
+ *
+ * @description
+ * Add the specified number of years to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be added
+ * @returns {Date} the new date with the years added
+ *
+ * @example
+ * // Add 5 years to 1 September 2014:
+ * var result = addYears(new Date(2014, 8, 1), 5)
+ * //=> Sun Sep 01 2019 00:00:00
+ */
+function addYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMonths(dirtyDate, amount * 12)
+}
+
+module.exports = addYears
+
 
 /***/ }),
 
@@ -203,7 +465,51 @@ eval("var addMonths = __webpack_require__(/*! ../add_months/index.js */ \"./node
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Range Helpers\n * @summary Is the given date range overlapping with another date range?\n *\n * @description\n * Is the given date range overlapping with another date range?\n *\n * @param {Date|String|Number} initialRangeStartDate - the start of the initial range\n * @param {Date|String|Number} initialRangeEndDate - the end of the initial range\n * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with\n * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with\n * @returns {Boolean} whether the date ranges are overlapping\n * @throws {Error} startDate of a date range cannot be after its endDate\n *\n * @example\n * // For overlapping date ranges:\n * areRangesOverlapping(\n *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)\n * )\n * //=> true\n *\n * @example\n * // For non-overlapping date ranges:\n * areRangesOverlapping(\n *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)\n * )\n * //=> false\n */\nfunction areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {\n  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()\n  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()\n  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()\n  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()\n\n  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {\n    throw new Error('The start of the range cannot be after the end of the range')\n  }\n\n  return initialStartTime < comparedEndTime && comparedStartTime < initialEndTime\n}\n\nmodule.exports = areRangesOverlapping\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/are_ranges_overlapping/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Range Helpers
+ * @summary Is the given date range overlapping with another date range?
+ *
+ * @description
+ * Is the given date range overlapping with another date range?
+ *
+ * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
+ * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
+ * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
+ * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
+ * @returns {Boolean} whether the date ranges are overlapping
+ * @throws {Error} startDate of a date range cannot be after its endDate
+ *
+ * @example
+ * // For overlapping date ranges:
+ * areRangesOverlapping(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
+ * )
+ * //=> true
+ *
+ * @example
+ * // For non-overlapping date ranges:
+ * areRangesOverlapping(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
+ * )
+ * //=> false
+ */
+function areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
+  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
+  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
+  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
+  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+
+  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
+    throw new Error('The start of the range cannot be after the end of the range')
+  }
+
+  return initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+}
+
+module.exports = areRangesOverlapping
+
 
 /***/ }),
 
@@ -214,7 +520,56 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Return an index of the closest date from the array comparing to the given date.\n *\n * @description\n * Return an index of the closest date from the array comparing to the given date.\n *\n * @param {Date|String|Number} dateToCompare - the date to compare with\n * @param {Date[]|String[]|Number[]} datesArray - the array to search\n * @returns {Number} an index of the date closest to the given date\n * @throws {TypeError} the second argument must be an instance of Array\n *\n * @example\n * // Which date is closer to 6 September 2015?\n * var dateToCompare = new Date(2015, 8, 6)\n * var datesArray = [\n *   new Date(2015, 0, 1),\n *   new Date(2016, 0, 1),\n *   new Date(2017, 0, 1)\n * ]\n * var result = closestIndexTo(dateToCompare, datesArray)\n * //=> 1\n */\nfunction closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {\n  if (!(dirtyDatesArray instanceof Array)) {\n    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')\n  }\n\n  var dateToCompare = parse(dirtyDateToCompare)\n  var timeToCompare = dateToCompare.getTime()\n\n  var result\n  var minDistance\n\n  dirtyDatesArray.forEach(function (dirtyDate, index) {\n    var currentDate = parse(dirtyDate)\n    var distance = Math.abs(timeToCompare - currentDate.getTime())\n    if (result === undefined || distance < minDistance) {\n      result = index\n      minDistance = distance\n    }\n  })\n\n  return result\n}\n\nmodule.exports = closestIndexTo\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/closest_index_to/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return an index of the closest date from the array comparing to the given date.
+ *
+ * @description
+ * Return an index of the closest date from the array comparing to the given date.
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @returns {Number} an index of the date closest to the given date
+ * @throws {TypeError} the second argument must be an instance of Array
+ *
+ * @example
+ * // Which date is closer to 6 September 2015?
+ * var dateToCompare = new Date(2015, 8, 6)
+ * var datesArray = [
+ *   new Date(2015, 0, 1),
+ *   new Date(2016, 0, 1),
+ *   new Date(2017, 0, 1)
+ * ]
+ * var result = closestIndexTo(dateToCompare, datesArray)
+ * //=> 1
+ */
+function closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {
+  if (!(dirtyDatesArray instanceof Array)) {
+    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
+  }
+
+  var dateToCompare = parse(dirtyDateToCompare)
+  var timeToCompare = dateToCompare.getTime()
+
+  var result
+  var minDistance
+
+  dirtyDatesArray.forEach(function (dirtyDate, index) {
+    var currentDate = parse(dirtyDate)
+    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (result === undefined || distance < minDistance) {
+      result = index
+      minDistance = distance
+    }
+  })
+
+  return result
+}
+
+module.exports = closestIndexTo
+
 
 /***/ }),
 
@@ -225,7 +580,54 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Return a date from the array closest to the given date.\n *\n * @description\n * Return a date from the array closest to the given date.\n *\n * @param {Date|String|Number} dateToCompare - the date to compare with\n * @param {Date[]|String[]|Number[]} datesArray - the array to search\n * @returns {Date} the date from the array closest to the given date\n * @throws {TypeError} the second argument must be an instance of Array\n *\n * @example\n * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?\n * var dateToCompare = new Date(2015, 8, 6)\n * var result = closestTo(dateToCompare, [\n *   new Date(2000, 0, 1),\n *   new Date(2030, 0, 1)\n * ])\n * //=> Tue Jan 01 2030 00:00:00\n */\nfunction closestTo (dirtyDateToCompare, dirtyDatesArray) {\n  if (!(dirtyDatesArray instanceof Array)) {\n    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')\n  }\n\n  var dateToCompare = parse(dirtyDateToCompare)\n  var timeToCompare = dateToCompare.getTime()\n\n  var result\n  var minDistance\n\n  dirtyDatesArray.forEach(function (dirtyDate) {\n    var currentDate = parse(dirtyDate)\n    var distance = Math.abs(timeToCompare - currentDate.getTime())\n    if (result === undefined || distance < minDistance) {\n      result = currentDate\n      minDistance = distance\n    }\n  })\n\n  return result\n}\n\nmodule.exports = closestTo\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/closest_to/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return a date from the array closest to the given date.
+ *
+ * @description
+ * Return a date from the array closest to the given date.
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @returns {Date} the date from the array closest to the given date
+ * @throws {TypeError} the second argument must be an instance of Array
+ *
+ * @example
+ * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
+ * var dateToCompare = new Date(2015, 8, 6)
+ * var result = closestTo(dateToCompare, [
+ *   new Date(2000, 0, 1),
+ *   new Date(2030, 0, 1)
+ * ])
+ * //=> Tue Jan 01 2030 00:00:00
+ */
+function closestTo (dirtyDateToCompare, dirtyDatesArray) {
+  if (!(dirtyDatesArray instanceof Array)) {
+    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
+  }
+
+  var dateToCompare = parse(dirtyDateToCompare)
+  var timeToCompare = dateToCompare.getTime()
+
+  var result
+  var minDistance
+
+  dirtyDatesArray.forEach(function (dirtyDate) {
+    var currentDate = parse(dirtyDate)
+    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (result === undefined || distance < minDistance) {
+      result = currentDate
+      minDistance = distance
+    }
+  })
+
+  return result
+}
+
+module.exports = closestTo
+
 
 /***/ }),
 
@@ -236,7 +638,58 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Compare the two dates and return -1, 0 or 1.\n *\n * @description\n * Compare the two dates and return 1 if the first date is after the second,\n * -1 if the first date is before the second or 0 if dates are equal.\n *\n * @param {Date|String|Number} dateLeft - the first date to compare\n * @param {Date|String|Number} dateRight - the second date to compare\n * @returns {Number} the result of the comparison\n *\n * @example\n * // Compare 11 February 1987 and 10 July 1989:\n * var result = compareAsc(\n *   new Date(1987, 1, 11),\n *   new Date(1989, 6, 10)\n * )\n * //=> -1\n *\n * @example\n * // Sort the array of dates:\n * var result = [\n *   new Date(1995, 6, 2),\n *   new Date(1987, 1, 11),\n *   new Date(1989, 6, 10)\n * ].sort(compareAsc)\n * //=> [\n * //   Wed Feb 11 1987 00:00:00,\n * //   Mon Jul 10 1989 00:00:00,\n * //   Sun Jul 02 1995 00:00:00\n * // ]\n */\nfunction compareAsc (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var timeLeft = dateLeft.getTime()\n  var dateRight = parse(dirtyDateRight)\n  var timeRight = dateRight.getTime()\n\n  if (timeLeft < timeRight) {\n    return -1\n  } else if (timeLeft > timeRight) {\n    return 1\n  } else {\n    return 0\n  }\n}\n\nmodule.exports = compareAsc\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/compare_asc/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Compare the two dates and return -1, 0 or 1.
+ *
+ * @description
+ * Compare the two dates and return 1 if the first date is after the second,
+ * -1 if the first date is before the second or 0 if dates are equal.
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Number} the result of the comparison
+ *
+ * @example
+ * // Compare 11 February 1987 and 10 July 1989:
+ * var result = compareAsc(
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * )
+ * //=> -1
+ *
+ * @example
+ * // Sort the array of dates:
+ * var result = [
+ *   new Date(1995, 6, 2),
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * ].sort(compareAsc)
+ * //=> [
+ * //   Wed Feb 11 1987 00:00:00,
+ * //   Mon Jul 10 1989 00:00:00,
+ * //   Sun Jul 02 1995 00:00:00
+ * // ]
+ */
+function compareAsc (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var timeLeft = dateLeft.getTime()
+  var dateRight = parse(dirtyDateRight)
+  var timeRight = dateRight.getTime()
+
+  if (timeLeft < timeRight) {
+    return -1
+  } else if (timeLeft > timeRight) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+module.exports = compareAsc
+
 
 /***/ }),
 
@@ -247,7 +700,58 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.\n *\n * @description\n * Compare the two dates and return -1 if the first date is after the second,\n * 1 if the first date is before the second or 0 if dates are equal.\n *\n * @param {Date|String|Number} dateLeft - the first date to compare\n * @param {Date|String|Number} dateRight - the second date to compare\n * @returns {Number} the result of the comparison\n *\n * @example\n * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:\n * var result = compareDesc(\n *   new Date(1987, 1, 11),\n *   new Date(1989, 6, 10)\n * )\n * //=> 1\n *\n * @example\n * // Sort the array of dates in reverse chronological order:\n * var result = [\n *   new Date(1995, 6, 2),\n *   new Date(1987, 1, 11),\n *   new Date(1989, 6, 10)\n * ].sort(compareDesc)\n * //=> [\n * //   Sun Jul 02 1995 00:00:00,\n * //   Mon Jul 10 1989 00:00:00,\n * //   Wed Feb 11 1987 00:00:00\n * // ]\n */\nfunction compareDesc (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var timeLeft = dateLeft.getTime()\n  var dateRight = parse(dirtyDateRight)\n  var timeRight = dateRight.getTime()\n\n  if (timeLeft > timeRight) {\n    return -1\n  } else if (timeLeft < timeRight) {\n    return 1\n  } else {\n    return 0\n  }\n}\n\nmodule.exports = compareDesc\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/compare_desc/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
+ *
+ * @description
+ * Compare the two dates and return -1 if the first date is after the second,
+ * 1 if the first date is before the second or 0 if dates are equal.
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Number} the result of the comparison
+ *
+ * @example
+ * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
+ * var result = compareDesc(
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * )
+ * //=> 1
+ *
+ * @example
+ * // Sort the array of dates in reverse chronological order:
+ * var result = [
+ *   new Date(1995, 6, 2),
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * ].sort(compareDesc)
+ * //=> [
+ * //   Sun Jul 02 1995 00:00:00,
+ * //   Mon Jul 10 1989 00:00:00,
+ * //   Wed Feb 11 1987 00:00:00
+ * // ]
+ */
+function compareDesc (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var timeLeft = dateLeft.getTime()
+  var dateRight = parse(dirtyDateRight)
+  var timeRight = dateRight.getTime()
+
+  if (timeLeft > timeRight) {
+    return -1
+  } else if (timeLeft < timeRight) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+module.exports = compareDesc
+
 
 /***/ }),
 
@@ -258,7 +762,48 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\")\n\nvar MILLISECONDS_IN_MINUTE = 60000\nvar MILLISECONDS_IN_DAY = 86400000\n\n/**\n * @category Day Helpers\n * @summary Get the number of calendar days between the given dates.\n *\n * @description\n * Get the number of calendar days between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of calendar days\n *\n * @example\n * // How many calendar days are between\n * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?\n * var result = differenceInCalendarDays(\n *   new Date(2012, 6, 2, 0, 0),\n *   new Date(2011, 6, 2, 23, 0)\n * )\n * //=> 366\n */\nfunction differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {\n  var startOfDayLeft = startOfDay(dirtyDateLeft)\n  var startOfDayRight = startOfDay(dirtyDateRight)\n\n  var timestampLeft = startOfDayLeft.getTime() -\n    startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE\n  var timestampRight = startOfDayRight.getTime() -\n    startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE\n\n  // Round the number of days to the nearest integer\n  // because the number of milliseconds in a day is not constant\n  // (e.g. it's different in the day of the daylight saving time clock shift)\n  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)\n}\n\nmodule.exports = differenceInCalendarDays\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_days/index.js?");
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+var MILLISECONDS_IN_DAY = 86400000
+
+/**
+ * @category Day Helpers
+ * @summary Get the number of calendar days between the given dates.
+ *
+ * @description
+ * Get the number of calendar days between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar days
+ *
+ * @example
+ * // How many calendar days are between
+ * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * var result = differenceInCalendarDays(
+ *   new Date(2012, 6, 2, 0, 0),
+ *   new Date(2011, 6, 2, 23, 0)
+ * )
+ * //=> 366
+ */
+function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
+  var startOfDayLeft = startOfDay(dirtyDateLeft)
+  var startOfDayRight = startOfDay(dirtyDateRight)
+
+  var timestampLeft = startOfDayLeft.getTime() -
+    startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfDayRight.getTime() -
+    startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a day is not constant
+  // (e.g. it's different in the day of the daylight saving time clock shift)
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)
+}
+
+module.exports = differenceInCalendarDays
+
 
 /***/ }),
 
@@ -269,7 +814,49 @@ eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\")\n\nvar MILLISECONDS_IN_MINUTE = 60000\nvar MILLISECONDS_IN_WEEK = 604800000\n\n/**\n * @category ISO Week Helpers\n * @summary Get the number of calendar ISO weeks between the given dates.\n *\n * @description\n * Get the number of calendar ISO weeks between the given dates.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of calendar ISO weeks\n *\n * @example\n * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?\n * var result = differenceInCalendarISOWeeks(\n *   new Date(2014, 6, 21),\n *   new Date(2014, 6, 6)\n * )\n * //=> 3\n */\nfunction differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {\n  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)\n  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)\n\n  var timestampLeft = startOfISOWeekLeft.getTime() -\n    startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE\n  var timestampRight = startOfISOWeekRight.getTime() -\n    startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE\n\n  // Round the number of days to the nearest integer\n  // because the number of milliseconds in a week is not constant\n  // (e.g. it's different in the week of the daylight saving time clock shift)\n  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)\n}\n\nmodule.exports = differenceInCalendarISOWeeks\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_iso_weeks/index.js?");
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category ISO Week Helpers
+ * @summary Get the number of calendar ISO weeks between the given dates.
+ *
+ * @description
+ * Get the number of calendar ISO weeks between the given dates.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar ISO weeks
+ *
+ * @example
+ * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
+ * var result = differenceInCalendarISOWeeks(
+ *   new Date(2014, 6, 21),
+ *   new Date(2014, 6, 6)
+ * )
+ * //=> 3
+ */
+function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
+  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
+  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+
+  var timestampLeft = startOfISOWeekLeft.getTime() -
+    startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfISOWeekRight.getTime() -
+    startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
+}
+
+module.exports = differenceInCalendarISOWeeks
+
 
 /***/ }),
 
@@ -280,7 +867,35 @@ eval("var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Get the number of calendar ISO week-numbering years between the given dates.\n *\n * @description\n * Get the number of calendar ISO week-numbering years between the given dates.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of calendar ISO week-numbering years\n *\n * @example\n * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?\n * var result = differenceInCalendarISOYears(\n *   new Date(2012, 0, 1),\n *   new Date(2010, 0, 1)\n * )\n * //=> 2\n */\nfunction differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight) {\n  return getISOYear(dirtyDateLeft) - getISOYear(dirtyDateRight)\n}\n\nmodule.exports = differenceInCalendarISOYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_iso_years/index.js?");
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the number of calendar ISO week-numbering years between the given dates.
+ *
+ * @description
+ * Get the number of calendar ISO week-numbering years between the given dates.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar ISO week-numbering years
+ *
+ * @example
+ * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
+ * var result = differenceInCalendarISOYears(
+ *   new Date(2012, 0, 1),
+ *   new Date(2010, 0, 1)
+ * )
+ * //=> 2
+ */
+function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight) {
+  return getISOYear(dirtyDateLeft) - getISOYear(dirtyDateRight)
+}
+
+module.exports = differenceInCalendarISOYears
+
 
 /***/ }),
 
@@ -291,7 +906,39 @@ eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Get the number of calendar months between the given dates.\n *\n * @description\n * Get the number of calendar months between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of calendar months\n *\n * @example\n * // How many calendar months are between 31 January 2014 and 1 September 2014?\n * var result = differenceInCalendarMonths(\n *   new Date(2014, 8, 1),\n *   new Date(2014, 0, 31)\n * )\n * //=> 8\n */\nfunction differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()\n  var monthDiff = dateLeft.getMonth() - dateRight.getMonth()\n\n  return yearDiff * 12 + monthDiff\n}\n\nmodule.exports = differenceInCalendarMonths\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_months/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the number of calendar months between the given dates.
+ *
+ * @description
+ * Get the number of calendar months between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar months
+ *
+ * @example
+ * // How many calendar months are between 31 January 2014 and 1 September 2014?
+ * var result = differenceInCalendarMonths(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 0, 31)
+ * )
+ * //=> 8
+ */
+function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  var monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+
+  return yearDiff * 12 + monthDiff
+}
+
+module.exports = differenceInCalendarMonths
+
 
 /***/ }),
 
@@ -302,7 +949,40 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getQuarter = __webpack_require__(/*! ../get_quarter/index.js */ \"./node_modules/date-fns/get_quarter/index.js\")\nvar parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Get the number of calendar quarters between the given dates.\n *\n * @description\n * Get the number of calendar quarters between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of calendar quarters\n *\n * @example\n * // How many calendar quarters are between 31 December 2013 and 2 July 2014?\n * var result = differenceInCalendarQuarters(\n *   new Date(2014, 6, 2),\n *   new Date(2013, 11, 31)\n * )\n * //=> 3\n */\nfunction differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()\n  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)\n\n  return yearDiff * 4 + quarterDiff\n}\n\nmodule.exports = differenceInCalendarQuarters\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_quarters/index.js?");
+var getQuarter = __webpack_require__(/*! ../get_quarter/index.js */ "./node_modules/date-fns/get_quarter/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Get the number of calendar quarters between the given dates.
+ *
+ * @description
+ * Get the number of calendar quarters between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar quarters
+ *
+ * @example
+ * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
+ * var result = differenceInCalendarQuarters(
+ *   new Date(2014, 6, 2),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 3
+ */
+function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+
+  return yearDiff * 4 + quarterDiff
+}
+
+module.exports = differenceInCalendarQuarters
+
 
 /***/ }),
 
@@ -313,7 +993,59 @@ eval("var getQuarter = __webpack_require__(/*! ../get_quarter/index.js */ \"./no
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ \"./node_modules/date-fns/start_of_week/index.js\")\n\nvar MILLISECONDS_IN_MINUTE = 60000\nvar MILLISECONDS_IN_WEEK = 604800000\n\n/**\n * @category Week Helpers\n * @summary Get the number of calendar weeks between the given dates.\n *\n * @description\n * Get the number of calendar weeks between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Number} the number of calendar weeks\n *\n * @example\n * // How many calendar weeks are between 5 July 2014 and 20 July 2014?\n * var result = differenceInCalendarWeeks(\n *   new Date(2014, 6, 20),\n *   new Date(2014, 6, 5)\n * )\n * //=> 3\n *\n * @example\n * // If the week starts on Monday,\n * // how many calendar weeks are between 5 July 2014 and 20 July 2014?\n * var result = differenceInCalendarWeeks(\n *   new Date(2014, 6, 20),\n *   new Date(2014, 6, 5),\n *   {weekStartsOn: 1}\n * )\n * //=> 2\n */\nfunction differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {\n  var startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)\n  var startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)\n\n  var timestampLeft = startOfWeekLeft.getTime() -\n    startOfWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE\n  var timestampRight = startOfWeekRight.getTime() -\n    startOfWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE\n\n  // Round the number of days to the nearest integer\n  // because the number of milliseconds in a week is not constant\n  // (e.g. it's different in the week of the daylight saving time clock shift)\n  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)\n}\n\nmodule.exports = differenceInCalendarWeeks\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_weeks/index.js?");
+var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category Week Helpers
+ * @summary Get the number of calendar weeks between the given dates.
+ *
+ * @description
+ * Get the number of calendar weeks between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Number} the number of calendar weeks
+ *
+ * @example
+ * // How many calendar weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInCalendarWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5)
+ * )
+ * //=> 3
+ *
+ * @example
+ * // If the week starts on Monday,
+ * // how many calendar weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInCalendarWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5),
+ *   {weekStartsOn: 1}
+ * )
+ * //=> 2
+ */
+function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
+  var startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
+
+  var timestampLeft = startOfWeekLeft.getTime() -
+    startOfWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfWeekRight.getTime() -
+    startOfWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
+}
+
+module.exports = differenceInCalendarWeeks
+
 
 /***/ }),
 
@@ -324,7 +1056,36 @@ eval("var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ \".
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Get the number of calendar years between the given dates.\n *\n * @description\n * Get the number of calendar years between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of calendar years\n *\n * @example\n * // How many calendar years are between 31 December 2013 and 11 February 2015?\n * var result = differenceInCalendarYears(\n *   new Date(2015, 1, 11),\n *   new Date(2013, 11, 31)\n * )\n * //=> 2\n */\nfunction differenceInCalendarYears (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  return dateLeft.getFullYear() - dateRight.getFullYear()\n}\n\nmodule.exports = differenceInCalendarYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_calendar_years/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the number of calendar years between the given dates.
+ *
+ * @description
+ * Get the number of calendar years between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar years
+ *
+ * @example
+ * // How many calendar years are between 31 December 2013 and 11 February 2015?
+ * var result = differenceInCalendarYears(
+ *   new Date(2015, 1, 11),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 2
+ */
+function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  return dateLeft.getFullYear() - dateRight.getFullYear()
+}
+
+module.exports = differenceInCalendarYears
+
 
 /***/ }),
 
@@ -335,7 +1096,46 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ \"./node_modules/date-fns/difference_in_calendar_days/index.js\")\nvar compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ \"./node_modules/date-fns/compare_asc/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Get the number of full days between the given dates.\n *\n * @description\n * Get the number of full days between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of full days\n *\n * @example\n * // How many full days are between\n * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?\n * var result = differenceInDays(\n *   new Date(2012, 6, 2, 0, 0),\n *   new Date(2011, 6, 2, 23, 0)\n * )\n * //=> 365\n */\nfunction differenceInDays (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  var sign = compareAsc(dateLeft, dateRight)\n  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))\n  dateLeft.setDate(dateLeft.getDate() - sign * difference)\n\n  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full\n  // If so, result must be decreased by 1 in absolute value\n  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign\n  return sign * (difference - isLastDayNotFull)\n}\n\nmodule.exports = differenceInDays\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_days/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Get the number of full days between the given dates.
+ *
+ * @description
+ * Get the number of full days between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full days
+ *
+ * @example
+ * // How many full days are between
+ * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * var result = differenceInDays(
+ *   new Date(2012, 6, 2, 0, 0),
+ *   new Date(2011, 6, 2, 23, 0)
+ * )
+ * //=> 365
+ */
+function differenceInDays (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  dateLeft.setDate(dateLeft.getDate() - sign * difference)
+
+  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastDayNotFull)
+}
+
+module.exports = differenceInDays
+
 
 /***/ }),
 
@@ -346,7 +1146,36 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ \"./node_modules/date-fns/difference_in_milliseconds/index.js\")\n\nvar MILLISECONDS_IN_HOUR = 3600000\n\n/**\n * @category Hour Helpers\n * @summary Get the number of hours between the given dates.\n *\n * @description\n * Get the number of hours between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of hours\n *\n * @example\n * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?\n * var result = differenceInHours(\n *   new Date(2014, 6, 2, 19, 0),\n *   new Date(2014, 6, 2, 6, 50)\n * )\n * //=> 12\n */\nfunction differenceInHours (dirtyDateLeft, dirtyDateRight) {\n  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_HOUR\n  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)\n}\n\nmodule.exports = differenceInHours\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_hours/index.js?");
+var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js")
+
+var MILLISECONDS_IN_HOUR = 3600000
+
+/**
+ * @category Hour Helpers
+ * @summary Get the number of hours between the given dates.
+ *
+ * @description
+ * Get the number of hours between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of hours
+ *
+ * @example
+ * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
+ * var result = differenceInHours(
+ *   new Date(2014, 6, 2, 19, 0),
+ *   new Date(2014, 6, 2, 6, 50)
+ * )
+ * //=> 12
+ */
+function differenceInHours (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_HOUR
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInHours
+
 
 /***/ }),
 
@@ -357,7 +1186,49 @@ eval("var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_mi
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar differenceInCalendarISOYears = __webpack_require__(/*! ../difference_in_calendar_iso_years/index.js */ \"./node_modules/date-fns/difference_in_calendar_iso_years/index.js\")\nvar compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ \"./node_modules/date-fns/compare_asc/index.js\")\nvar subISOYears = __webpack_require__(/*! ../sub_iso_years/index.js */ \"./node_modules/date-fns/sub_iso_years/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Get the number of full ISO week-numbering years between the given dates.\n *\n * @description\n * Get the number of full ISO week-numbering years between the given dates.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of full ISO week-numbering years\n *\n * @example\n * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?\n * var result = differenceInISOYears(\n *   new Date(2012, 0, 1),\n *   new Date(2010, 0, 1)\n * )\n * //=> 1\n */\nfunction differenceInISOYears (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  var sign = compareAsc(dateLeft, dateRight)\n  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight))\n  dateLeft = subISOYears(dateLeft, sign * difference)\n\n  // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1\n  // if last calendar ISO year is not full\n  // If so, result must be decreased by 1 in absolute value\n  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight) === -sign\n  return sign * (difference - isLastISOYearNotFull)\n}\n\nmodule.exports = differenceInISOYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_iso_years/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarISOYears = __webpack_require__(/*! ../difference_in_calendar_iso_years/index.js */ "./node_modules/date-fns/difference_in_calendar_iso_years/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+var subISOYears = __webpack_require__(/*! ../sub_iso_years/index.js */ "./node_modules/date-fns/sub_iso_years/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the number of full ISO week-numbering years between the given dates.
+ *
+ * @description
+ * Get the number of full ISO week-numbering years between the given dates.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full ISO week-numbering years
+ *
+ * @example
+ * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
+ * var result = differenceInISOYears(
+ *   new Date(2012, 0, 1),
+ *   new Date(2010, 0, 1)
+ * )
+ * //=> 1
+ */
+function differenceInISOYears (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight))
+  dateLeft = subISOYears(dateLeft, sign * difference)
+
+  // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
+  // if last calendar ISO year is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastISOYearNotFull)
+}
+
+module.exports = differenceInISOYears
+
 
 /***/ }),
 
@@ -368,7 +1239,36 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Millisecond Helpers\n * @summary Get the number of milliseconds between the given dates.\n *\n * @description\n * Get the number of milliseconds between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of milliseconds\n *\n * @example\n * // How many milliseconds are between\n * // 2 July 2014 12:30:20.600 and 2 July 2014 12:30:21.700?\n * var result = differenceInMilliseconds(\n *   new Date(2014, 6, 2, 12, 30, 21, 700),\n *   new Date(2014, 6, 2, 12, 30, 20, 600)\n * )\n * //=> 1100\n */\nfunction differenceInMilliseconds (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n  return dateLeft.getTime() - dateRight.getTime()\n}\n\nmodule.exports = differenceInMilliseconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_milliseconds/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Get the number of milliseconds between the given dates.
+ *
+ * @description
+ * Get the number of milliseconds between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of milliseconds
+ *
+ * @example
+ * // How many milliseconds are between
+ * // 2 July 2014 12:30:20.600 and 2 July 2014 12:30:21.700?
+ * var result = differenceInMilliseconds(
+ *   new Date(2014, 6, 2, 12, 30, 21, 700),
+ *   new Date(2014, 6, 2, 12, 30, 20, 600)
+ * )
+ * //=> 1100
+ */
+function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+  return dateLeft.getTime() - dateRight.getTime()
+}
+
+module.exports = differenceInMilliseconds
+
 
 /***/ }),
 
@@ -379,7 +1279,36 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ \"./node_modules/date-fns/difference_in_milliseconds/index.js\")\n\nvar MILLISECONDS_IN_MINUTE = 60000\n\n/**\n * @category Minute Helpers\n * @summary Get the number of minutes between the given dates.\n *\n * @description\n * Get the number of minutes between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of minutes\n *\n * @example\n * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?\n * var result = differenceInMinutes(\n *   new Date(2014, 6, 2, 12, 20, 0),\n *   new Date(2014, 6, 2, 12, 7, 59)\n * )\n * //=> 12\n */\nfunction differenceInMinutes (dirtyDateLeft, dirtyDateRight) {\n  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_MINUTE\n  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)\n}\n\nmodule.exports = differenceInMinutes\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_minutes/index.js?");
+var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+
+/**
+ * @category Minute Helpers
+ * @summary Get the number of minutes between the given dates.
+ *
+ * @description
+ * Get the number of minutes between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of minutes
+ *
+ * @example
+ * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
+ * var result = differenceInMinutes(
+ *   new Date(2014, 6, 2, 12, 20, 0),
+ *   new Date(2014, 6, 2, 12, 7, 59)
+ * )
+ * //=> 12
+ */
+function differenceInMinutes (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_MINUTE
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInMinutes
+
 
 /***/ }),
 
@@ -390,7 +1319,45 @@ eval("var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_mi
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar differenceInCalendarMonths = __webpack_require__(/*! ../difference_in_calendar_months/index.js */ \"./node_modules/date-fns/difference_in_calendar_months/index.js\")\nvar compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ \"./node_modules/date-fns/compare_asc/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Get the number of full months between the given dates.\n *\n * @description\n * Get the number of full months between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of full months\n *\n * @example\n * // How many full months are between 31 January 2014 and 1 September 2014?\n * var result = differenceInMonths(\n *   new Date(2014, 8, 1),\n *   new Date(2014, 0, 31)\n * )\n * //=> 7\n */\nfunction differenceInMonths (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  var sign = compareAsc(dateLeft, dateRight)\n  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))\n  dateLeft.setMonth(dateLeft.getMonth() - sign * difference)\n\n  // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full\n  // If so, result must be decreased by 1 in absolute value\n  var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign\n  return sign * (difference - isLastMonthNotFull)\n}\n\nmodule.exports = differenceInMonths\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_months/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarMonths = __webpack_require__(/*! ../difference_in_calendar_months/index.js */ "./node_modules/date-fns/difference_in_calendar_months/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the number of full months between the given dates.
+ *
+ * @description
+ * Get the number of full months between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full months
+ *
+ * @example
+ * // How many full months are between 31 January 2014 and 1 September 2014?
+ * var result = differenceInMonths(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 0, 31)
+ * )
+ * //=> 7
+ */
+function differenceInMonths (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
+  dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
+
+  // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastMonthNotFull)
+}
+
+module.exports = differenceInMonths
+
 
 /***/ }),
 
@@ -401,7 +1368,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var differenceInMonths = __webpack_require__(/*! ../difference_in_months/index.js */ \"./node_modules/date-fns/difference_in_months/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Get the number of full quarters between the given dates.\n *\n * @description\n * Get the number of full quarters between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of full quarters\n *\n * @example\n * // How many full quarters are between 31 December 2013 and 2 July 2014?\n * var result = differenceInQuarters(\n *   new Date(2014, 6, 2),\n *   new Date(2013, 11, 31)\n * )\n * //=> 2\n */\nfunction differenceInQuarters (dirtyDateLeft, dirtyDateRight) {\n  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3\n  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)\n}\n\nmodule.exports = differenceInQuarters\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_quarters/index.js?");
+var differenceInMonths = __webpack_require__(/*! ../difference_in_months/index.js */ "./node_modules/date-fns/difference_in_months/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Get the number of full quarters between the given dates.
+ *
+ * @description
+ * Get the number of full quarters between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full quarters
+ *
+ * @example
+ * // How many full quarters are between 31 December 2013 and 2 July 2014?
+ * var result = differenceInQuarters(
+ *   new Date(2014, 6, 2),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 2
+ */
+function differenceInQuarters (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInQuarters
+
 
 /***/ }),
 
@@ -412,7 +1406,35 @@ eval("var differenceInMonths = __webpack_require__(/*! ../difference_in_months/i
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ \"./node_modules/date-fns/difference_in_milliseconds/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Get the number of seconds between the given dates.\n *\n * @description\n * Get the number of seconds between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of seconds\n *\n * @example\n * // How many seconds are between\n * // 2 July 2014 12:30:07.999 and 2 July 2014 12:30:20.000?\n * var result = differenceInSeconds(\n *   new Date(2014, 6, 2, 12, 30, 20, 0),\n *   new Date(2014, 6, 2, 12, 30, 7, 999)\n * )\n * //=> 12\n */\nfunction differenceInSeconds (dirtyDateLeft, dirtyDateRight) {\n  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000\n  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)\n}\n\nmodule.exports = differenceInSeconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_seconds/index.js?");
+var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Get the number of seconds between the given dates.
+ *
+ * @description
+ * Get the number of seconds between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of seconds
+ *
+ * @example
+ * // How many seconds are between
+ * // 2 July 2014 12:30:07.999 and 2 July 2014 12:30:20.000?
+ * var result = differenceInSeconds(
+ *   new Date(2014, 6, 2, 12, 30, 20, 0),
+ *   new Date(2014, 6, 2, 12, 30, 7, 999)
+ * )
+ * //=> 12
+ */
+function differenceInSeconds (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInSeconds
+
 
 /***/ }),
 
@@ -423,7 +1445,34 @@ eval("var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_mi
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var differenceInDays = __webpack_require__(/*! ../difference_in_days/index.js */ \"./node_modules/date-fns/difference_in_days/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Get the number of full weeks between the given dates.\n *\n * @description\n * Get the number of full weeks between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of full weeks\n *\n * @example\n * // How many full weeks are between 5 July 2014 and 20 July 2014?\n * var result = differenceInWeeks(\n *   new Date(2014, 6, 20),\n *   new Date(2014, 6, 5)\n * )\n * //=> 2\n */\nfunction differenceInWeeks (dirtyDateLeft, dirtyDateRight) {\n  var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7\n  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)\n}\n\nmodule.exports = differenceInWeeks\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_weeks/index.js?");
+var differenceInDays = __webpack_require__(/*! ../difference_in_days/index.js */ "./node_modules/date-fns/difference_in_days/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Get the number of full weeks between the given dates.
+ *
+ * @description
+ * Get the number of full weeks between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full weeks
+ *
+ * @example
+ * // How many full weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5)
+ * )
+ * //=> 2
+ */
+function differenceInWeeks (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInWeeks
+
 
 /***/ }),
 
@@ -434,7 +1483,45 @@ eval("var differenceInDays = __webpack_require__(/*! ../difference_in_days/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar differenceInCalendarYears = __webpack_require__(/*! ../difference_in_calendar_years/index.js */ \"./node_modules/date-fns/difference_in_calendar_years/index.js\")\nvar compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ \"./node_modules/date-fns/compare_asc/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Get the number of full years between the given dates.\n *\n * @description\n * Get the number of full years between the given dates.\n *\n * @param {Date|String|Number} dateLeft - the later date\n * @param {Date|String|Number} dateRight - the earlier date\n * @returns {Number} the number of full years\n *\n * @example\n * // How many full years are between 31 December 2013 and 11 February 2015?\n * var result = differenceInYears(\n *   new Date(2015, 1, 11),\n *   new Date(2013, 11, 31)\n * )\n * //=> 1\n */\nfunction differenceInYears (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n\n  var sign = compareAsc(dateLeft, dateRight)\n  var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))\n  dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference)\n\n  // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full\n  // If so, result must be decreased by 1 in absolute value\n  var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign\n  return sign * (difference - isLastYearNotFull)\n}\n\nmodule.exports = differenceInYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/difference_in_years/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarYears = __webpack_require__(/*! ../difference_in_calendar_years/index.js */ "./node_modules/date-fns/difference_in_calendar_years/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the number of full years between the given dates.
+ *
+ * @description
+ * Get the number of full years between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full years
+ *
+ * @example
+ * // How many full years are between 31 December 2013 and 11 February 2015?
+ * var result = differenceInYears(
+ *   new Date(2015, 1, 11),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 1
+ */
+function differenceInYears (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
+  dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference)
+
+  // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastYearNotFull)
+}
+
+module.exports = differenceInYears
+
 
 /***/ }),
 
@@ -445,7 +1532,210 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ \"./node_modules/date-fns/compare_desc/index.js\")\nvar parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar differenceInSeconds = __webpack_require__(/*! ../difference_in_seconds/index.js */ \"./node_modules/date-fns/difference_in_seconds/index.js\")\nvar differenceInMonths = __webpack_require__(/*! ../difference_in_months/index.js */ \"./node_modules/date-fns/difference_in_months/index.js\")\nvar enLocale = __webpack_require__(/*! ../locale/en/index.js */ \"./node_modules/date-fns/locale/en/index.js\")\n\nvar MINUTES_IN_DAY = 1440\nvar MINUTES_IN_ALMOST_TWO_DAYS = 2520\nvar MINUTES_IN_MONTH = 43200\nvar MINUTES_IN_TWO_MONTHS = 86400\n\n/**\n * @category Common Helpers\n * @summary Return the distance between the given dates in words.\n *\n * @description\n * Return the distance between the given dates in words.\n *\n * | Distance between dates                                            | Result              |\n * |-------------------------------------------------------------------|---------------------|\n * | 0 ... 30 secs                                                     | less than a minute  |\n * | 30 secs ... 1 min 30 secs                                         | 1 minute            |\n * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |\n * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |\n * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |\n * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |\n * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |\n * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |\n * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |\n * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |\n * | 1 yr ... 1 yr 3 months                                            | about 1 year        |\n * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |\n * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |\n * | N yrs ... N yrs 3 months                                          | about N years       |\n * | N yrs 3 months ... N yrs 9 months                                 | over N years        |\n * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |\n *\n * With `options.includeSeconds == true`:\n * | Distance between dates | Result               |\n * |------------------------|----------------------|\n * | 0 secs ... 5 secs      | less than 5 seconds  |\n * | 5 secs ... 10 secs     | less than 10 seconds |\n * | 10 secs ... 20 secs    | less than 20 seconds |\n * | 20 secs ... 40 secs    | half a minute        |\n * | 40 secs ... 60 secs    | less than a minute   |\n * | 60 secs ... 90 secs    | 1 minute             |\n *\n * @param {Date|String|Number} dateToCompare - the date to compare with\n * @param {Date|String|Number} date - the other date\n * @param {Object} [options] - the object with options\n * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed\n * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first\n * @param {Object} [options.locale=enLocale] - the locale object\n * @returns {String} the distance in words\n *\n * @example\n * // What is the distance between 2 July 2014 and 1 January 2015?\n * var result = distanceInWords(\n *   new Date(2014, 6, 2),\n *   new Date(2015, 0, 1)\n * )\n * //=> '6 months'\n *\n * @example\n * // What is the distance between 1 January 2015 00:00:15\n * // and 1 January 2015 00:00:00, including seconds?\n * var result = distanceInWords(\n *   new Date(2015, 0, 1, 0, 0, 15),\n *   new Date(2015, 0, 1, 0, 0, 0),\n *   {includeSeconds: true}\n * )\n * //=> 'less than 20 seconds'\n *\n * @example\n * // What is the distance from 1 January 2016\n * // to 1 January 2015, with a suffix?\n * var result = distanceInWords(\n *   new Date(2016, 0, 1),\n *   new Date(2015, 0, 1),\n *   {addSuffix: true}\n * )\n * //=> 'about 1 year ago'\n *\n * @example\n * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?\n * var eoLocale = require('date-fns/locale/eo')\n * var result = distanceInWords(\n *   new Date(2016, 7, 1),\n *   new Date(2015, 0, 1),\n *   {locale: eoLocale}\n * )\n * //=> 'pli ol 1 jaro'\n */\nfunction distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {\n  var options = dirtyOptions || {}\n\n  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)\n\n  var locale = options.locale\n  var localize = enLocale.distanceInWords.localize\n  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {\n    localize = locale.distanceInWords.localize\n  }\n\n  var localizeOptions = {\n    addSuffix: Boolean(options.addSuffix),\n    comparison: comparison\n  }\n\n  var dateLeft, dateRight\n  if (comparison > 0) {\n    dateLeft = parse(dirtyDateToCompare)\n    dateRight = parse(dirtyDate)\n  } else {\n    dateLeft = parse(dirtyDate)\n    dateRight = parse(dirtyDateToCompare)\n  }\n\n  var seconds = differenceInSeconds(dateRight, dateLeft)\n  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()\n  var minutes = Math.round(seconds / 60) - offset\n  var months\n\n  // 0 up to 2 mins\n  if (minutes < 2) {\n    if (options.includeSeconds) {\n      if (seconds < 5) {\n        return localize('lessThanXSeconds', 5, localizeOptions)\n      } else if (seconds < 10) {\n        return localize('lessThanXSeconds', 10, localizeOptions)\n      } else if (seconds < 20) {\n        return localize('lessThanXSeconds', 20, localizeOptions)\n      } else if (seconds < 40) {\n        return localize('halfAMinute', null, localizeOptions)\n      } else if (seconds < 60) {\n        return localize('lessThanXMinutes', 1, localizeOptions)\n      } else {\n        return localize('xMinutes', 1, localizeOptions)\n      }\n    } else {\n      if (minutes === 0) {\n        return localize('lessThanXMinutes', 1, localizeOptions)\n      } else {\n        return localize('xMinutes', minutes, localizeOptions)\n      }\n    }\n\n  // 2 mins up to 0.75 hrs\n  } else if (minutes < 45) {\n    return localize('xMinutes', minutes, localizeOptions)\n\n  // 0.75 hrs up to 1.5 hrs\n  } else if (minutes < 90) {\n    return localize('aboutXHours', 1, localizeOptions)\n\n  // 1.5 hrs up to 24 hrs\n  } else if (minutes < MINUTES_IN_DAY) {\n    var hours = Math.round(minutes / 60)\n    return localize('aboutXHours', hours, localizeOptions)\n\n  // 1 day up to 1.75 days\n  } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {\n    return localize('xDays', 1, localizeOptions)\n\n  // 1.75 days up to 30 days\n  } else if (minutes < MINUTES_IN_MONTH) {\n    var days = Math.round(minutes / MINUTES_IN_DAY)\n    return localize('xDays', days, localizeOptions)\n\n  // 1 month up to 2 months\n  } else if (minutes < MINUTES_IN_TWO_MONTHS) {\n    months = Math.round(minutes / MINUTES_IN_MONTH)\n    return localize('aboutXMonths', months, localizeOptions)\n  }\n\n  months = differenceInMonths(dateRight, dateLeft)\n\n  // 2 months up to 12 months\n  if (months < 12) {\n    var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)\n    return localize('xMonths', nearestMonth, localizeOptions)\n\n  // 1 year up to max Date\n  } else {\n    var monthsSinceStartOfYear = months % 12\n    var years = Math.floor(months / 12)\n\n    // N years up to 1 years 3 months\n    if (monthsSinceStartOfYear < 3) {\n      return localize('aboutXYears', years, localizeOptions)\n\n    // N years 3 months up to N years 9 months\n    } else if (monthsSinceStartOfYear < 9) {\n      return localize('overXYears', years, localizeOptions)\n\n    // N years 9 months up to N year 12 months\n    } else {\n      return localize('almostXYears', years + 1, localizeOptions)\n    }\n  }\n}\n\nmodule.exports = distanceInWords\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/distance_in_words/index.js?");
+var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ "./node_modules/date-fns/compare_desc/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInSeconds = __webpack_require__(/*! ../difference_in_seconds/index.js */ "./node_modules/date-fns/difference_in_seconds/index.js")
+var differenceInMonths = __webpack_require__(/*! ../difference_in_months/index.js */ "./node_modules/date-fns/difference_in_months/index.js")
+var enLocale = __webpack_require__(/*! ../locale/en/index.js */ "./node_modules/date-fns/locale/en/index.js")
+
+var MINUTES_IN_DAY = 1440
+var MINUTES_IN_ALMOST_TWO_DAYS = 2520
+var MINUTES_IN_MONTH = 43200
+var MINUTES_IN_TWO_MONTHS = 86400
+
+/**
+ * @category Common Helpers
+ * @summary Return the distance between the given dates in words.
+ *
+ * @description
+ * Return the distance between the given dates in words.
+ *
+ * | Distance between dates                                            | Result              |
+ * |-------------------------------------------------------------------|---------------------|
+ * | 0 ... 30 secs                                                     | less than a minute  |
+ * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
+ * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
+ * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
+ * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
+ * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
+ * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
+ * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
+ * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
+ * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
+ * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
+ * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
+ * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
+ * | N yrs ... N yrs 3 months                                          | about N years       |
+ * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
+ * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
+ *
+ * With `options.includeSeconds == true`:
+ * | Distance between dates | Result               |
+ * |------------------------|----------------------|
+ * | 0 secs ... 5 secs      | less than 5 seconds  |
+ * | 5 secs ... 10 secs     | less than 10 seconds |
+ * | 10 secs ... 20 secs    | less than 20 seconds |
+ * | 20 secs ... 40 secs    | half a minute        |
+ * | 40 secs ... 60 secs    | less than a minute   |
+ * | 60 secs ... 90 secs    | 1 minute             |
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date|String|Number} date - the other date
+ * @param {Object} [options] - the object with options
+ * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the distance in words
+ *
+ * @example
+ * // What is the distance between 2 July 2014 and 1 January 2015?
+ * var result = distanceInWords(
+ *   new Date(2014, 6, 2),
+ *   new Date(2015, 0, 1)
+ * )
+ * //=> '6 months'
+ *
+ * @example
+ * // What is the distance between 1 January 2015 00:00:15
+ * // and 1 January 2015 00:00:00, including seconds?
+ * var result = distanceInWords(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   new Date(2015, 0, 1, 0, 0, 0),
+ *   {includeSeconds: true}
+ * )
+ * //=> 'less than 20 seconds'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * var result = distanceInWords(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> 'about 1 year ago'
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWords(
+ *   new Date(2016, 7, 1),
+ *   new Date(2015, 0, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> 'pli ol 1 jaro'
+ */
+function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+  var options = dirtyOptions || {}
+
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+
+  var locale = options.locale
+  var localize = enLocale.distanceInWords.localize
+  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
+    localize = locale.distanceInWords.localize
+  }
+
+  var localizeOptions = {
+    addSuffix: Boolean(options.addSuffix),
+    comparison: comparison
+  }
+
+  var dateLeft, dateRight
+  if (comparison > 0) {
+    dateLeft = parse(dirtyDateToCompare)
+    dateRight = parse(dirtyDate)
+  } else {
+    dateLeft = parse(dirtyDate)
+    dateRight = parse(dirtyDateToCompare)
+  }
+
+  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
+  var minutes = Math.round(seconds / 60) - offset
+  var months
+
+  // 0 up to 2 mins
+  if (minutes < 2) {
+    if (options.includeSeconds) {
+      if (seconds < 5) {
+        return localize('lessThanXSeconds', 5, localizeOptions)
+      } else if (seconds < 10) {
+        return localize('lessThanXSeconds', 10, localizeOptions)
+      } else if (seconds < 20) {
+        return localize('lessThanXSeconds', 20, localizeOptions)
+      } else if (seconds < 40) {
+        return localize('halfAMinute', null, localizeOptions)
+      } else if (seconds < 60) {
+        return localize('lessThanXMinutes', 1, localizeOptions)
+      } else {
+        return localize('xMinutes', 1, localizeOptions)
+      }
+    } else {
+      if (minutes === 0) {
+        return localize('lessThanXMinutes', 1, localizeOptions)
+      } else {
+        return localize('xMinutes', minutes, localizeOptions)
+      }
+    }
+
+  // 2 mins up to 0.75 hrs
+  } else if (minutes < 45) {
+    return localize('xMinutes', minutes, localizeOptions)
+
+  // 0.75 hrs up to 1.5 hrs
+  } else if (minutes < 90) {
+    return localize('aboutXHours', 1, localizeOptions)
+
+  // 1.5 hrs up to 24 hrs
+  } else if (minutes < MINUTES_IN_DAY) {
+    var hours = Math.round(minutes / 60)
+    return localize('aboutXHours', hours, localizeOptions)
+
+  // 1 day up to 1.75 days
+  } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
+    return localize('xDays', 1, localizeOptions)
+
+  // 1.75 days up to 30 days
+  } else if (minutes < MINUTES_IN_MONTH) {
+    var days = Math.round(minutes / MINUTES_IN_DAY)
+    return localize('xDays', days, localizeOptions)
+
+  // 1 month up to 2 months
+  } else if (minutes < MINUTES_IN_TWO_MONTHS) {
+    months = Math.round(minutes / MINUTES_IN_MONTH)
+    return localize('aboutXMonths', months, localizeOptions)
+  }
+
+  months = differenceInMonths(dateRight, dateLeft)
+
+  // 2 months up to 12 months
+  if (months < 12) {
+    var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
+    return localize('xMonths', nearestMonth, localizeOptions)
+
+  // 1 year up to max Date
+  } else {
+    var monthsSinceStartOfYear = months % 12
+    var years = Math.floor(months / 12)
+
+    // N years up to 1 years 3 months
+    if (monthsSinceStartOfYear < 3) {
+      return localize('aboutXYears', years, localizeOptions)
+
+    // N years 3 months up to N years 9 months
+    } else if (monthsSinceStartOfYear < 9) {
+      return localize('overXYears', years, localizeOptions)
+
+    // N years 9 months up to N year 12 months
+    } else {
+      return localize('almostXYears', years + 1, localizeOptions)
+    }
+  }
+}
+
+module.exports = distanceInWords
+
 
 /***/ }),
 
@@ -456,7 +1746,183 @@ eval("var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ \"./
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ \"./node_modules/date-fns/compare_desc/index.js\")\nvar parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar differenceInSeconds = __webpack_require__(/*! ../difference_in_seconds/index.js */ \"./node_modules/date-fns/difference_in_seconds/index.js\")\nvar enLocale = __webpack_require__(/*! ../locale/en/index.js */ \"./node_modules/date-fns/locale/en/index.js\")\n\nvar MINUTES_IN_DAY = 1440\nvar MINUTES_IN_MONTH = 43200\nvar MINUTES_IN_YEAR = 525600\n\n/**\n * @category Common Helpers\n * @summary Return the distance between the given dates in words.\n *\n * @description\n * Return the distance between the given dates in words, using strict units.\n * This is like `distanceInWords`, but does not use helpers like 'almost', 'over',\n * 'less than' and the like.\n *\n * | Distance between dates | Result              |\n * |------------------------|---------------------|\n * | 0 ... 59 secs          | [0..59] seconds     |\n * | 1 ... 59 mins          | [1..59] minutes     |\n * | 1 ... 23 hrs           | [1..23] hours       |\n * | 1 ... 29 days          | [1..29] days        |\n * | 1 ... 11 months        | [1..11] months      |\n * | 1 ... N years          | [1..N]  years       |\n *\n * @param {Date|String|Number} dateToCompare - the date to compare with\n * @param {Date|String|Number} date - the other date\n * @param {Object} [options] - the object with options\n * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first\n * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit\n * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units\n * @param {Object} [options.locale=enLocale] - the locale object\n * @returns {String} the distance in words\n *\n * @example\n * // What is the distance between 2 July 2014 and 1 January 2015?\n * var result = distanceInWordsStrict(\n *   new Date(2014, 6, 2),\n *   new Date(2015, 0, 2)\n * )\n * //=> '6 months'\n *\n * @example\n * // What is the distance between 1 January 2015 00:00:15\n * // and 1 January 2015 00:00:00?\n * var result = distanceInWordsStrict(\n *   new Date(2015, 0, 1, 0, 0, 15),\n *   new Date(2015, 0, 1, 0, 0, 0),\n * )\n * //=> '15 seconds'\n *\n * @example\n * // What is the distance from 1 January 2016\n * // to 1 January 2015, with a suffix?\n * var result = distanceInWordsStrict(\n *   new Date(2016, 0, 1),\n *   new Date(2015, 0, 1),\n *   {addSuffix: true}\n * )\n * //=> '1 year ago'\n *\n * @example\n * // What is the distance from 1 January 2016\n * // to 1 January 2015, in minutes?\n * var result = distanceInWordsStrict(\n *   new Date(2016, 0, 1),\n *   new Date(2015, 0, 1),\n *   {unit: 'm'}\n * )\n * //=> '525600 minutes'\n *\n * @example\n * // What is the distance from 1 January 2016\n * // to 28 January 2015, in months, rounded up?\n * var result = distanceInWordsStrict(\n *   new Date(2015, 0, 28),\n *   new Date(2015, 0, 1),\n *   {unit: 'M', partialMethod: 'ceil'}\n * )\n * //=> '1 month'\n *\n * @example\n * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?\n * var eoLocale = require('date-fns/locale/eo')\n * var result = distanceInWordsStrict(\n *   new Date(2016, 7, 1),\n *   new Date(2015, 0, 1),\n *   {locale: eoLocale}\n * )\n * //=> '1 jaro'\n */\nfunction distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {\n  var options = dirtyOptions || {}\n\n  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)\n\n  var locale = options.locale\n  var localize = enLocale.distanceInWords.localize\n  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {\n    localize = locale.distanceInWords.localize\n  }\n\n  var localizeOptions = {\n    addSuffix: Boolean(options.addSuffix),\n    comparison: comparison\n  }\n\n  var dateLeft, dateRight\n  if (comparison > 0) {\n    dateLeft = parse(dirtyDateToCompare)\n    dateRight = parse(dirtyDate)\n  } else {\n    dateLeft = parse(dirtyDate)\n    dateRight = parse(dirtyDateToCompare)\n  }\n\n  var unit\n  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor']\n  var seconds = differenceInSeconds(dateRight, dateLeft)\n  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()\n  var minutes = mathPartial(seconds / 60) - offset\n  var hours, days, months, years\n\n  if (options.unit) {\n    unit = String(options.unit)\n  } else {\n    if (minutes < 1) {\n      unit = 's'\n    } else if (minutes < 60) {\n      unit = 'm'\n    } else if (minutes < MINUTES_IN_DAY) {\n      unit = 'h'\n    } else if (minutes < MINUTES_IN_MONTH) {\n      unit = 'd'\n    } else if (minutes < MINUTES_IN_YEAR) {\n      unit = 'M'\n    } else {\n      unit = 'Y'\n    }\n  }\n\n  // 0 up to 60 seconds\n  if (unit === 's') {\n    return localize('xSeconds', seconds, localizeOptions)\n\n  // 1 up to 60 mins\n  } else if (unit === 'm') {\n    return localize('xMinutes', minutes, localizeOptions)\n\n  // 1 up to 24 hours\n  } else if (unit === 'h') {\n    hours = mathPartial(minutes / 60)\n    return localize('xHours', hours, localizeOptions)\n\n  // 1 up to 30 days\n  } else if (unit === 'd') {\n    days = mathPartial(minutes / MINUTES_IN_DAY)\n    return localize('xDays', days, localizeOptions)\n\n  // 1 up to 12 months\n  } else if (unit === 'M') {\n    months = mathPartial(minutes / MINUTES_IN_MONTH)\n    return localize('xMonths', months, localizeOptions)\n\n  // 1 year up to max Date\n  } else if (unit === 'Y') {\n    years = mathPartial(minutes / MINUTES_IN_YEAR)\n    return localize('xYears', years, localizeOptions)\n  }\n\n  throw new Error('Unknown unit: ' + unit)\n}\n\nmodule.exports = distanceInWordsStrict\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/distance_in_words_strict/index.js?");
+var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ "./node_modules/date-fns/compare_desc/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInSeconds = __webpack_require__(/*! ../difference_in_seconds/index.js */ "./node_modules/date-fns/difference_in_seconds/index.js")
+var enLocale = __webpack_require__(/*! ../locale/en/index.js */ "./node_modules/date-fns/locale/en/index.js")
+
+var MINUTES_IN_DAY = 1440
+var MINUTES_IN_MONTH = 43200
+var MINUTES_IN_YEAR = 525600
+
+/**
+ * @category Common Helpers
+ * @summary Return the distance between the given dates in words.
+ *
+ * @description
+ * Return the distance between the given dates in words, using strict units.
+ * This is like `distanceInWords`, but does not use helpers like 'almost', 'over',
+ * 'less than' and the like.
+ *
+ * | Distance between dates | Result              |
+ * |------------------------|---------------------|
+ * | 0 ... 59 secs          | [0..59] seconds     |
+ * | 1 ... 59 mins          | [1..59] minutes     |
+ * | 1 ... 23 hrs           | [1..23] hours       |
+ * | 1 ... 29 days          | [1..29] days        |
+ * | 1 ... 11 months        | [1..11] months      |
+ * | 1 ... N years          | [1..N]  years       |
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date|String|Number} date - the other date
+ * @param {Object} [options] - the object with options
+ * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
+ * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the distance in words
+ *
+ * @example
+ * // What is the distance between 2 July 2014 and 1 January 2015?
+ * var result = distanceInWordsStrict(
+ *   new Date(2014, 6, 2),
+ *   new Date(2015, 0, 2)
+ * )
+ * //=> '6 months'
+ *
+ * @example
+ * // What is the distance between 1 January 2015 00:00:15
+ * // and 1 January 2015 00:00:00?
+ * var result = distanceInWordsStrict(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   new Date(2015, 0, 1, 0, 0, 0),
+ * )
+ * //=> '15 seconds'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * var result = distanceInWordsStrict(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> '1 year ago'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, in minutes?
+ * var result = distanceInWordsStrict(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {unit: 'm'}
+ * )
+ * //=> '525600 minutes'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 28 January 2015, in months, rounded up?
+ * var result = distanceInWordsStrict(
+ *   new Date(2015, 0, 28),
+ *   new Date(2015, 0, 1),
+ *   {unit: 'M', partialMethod: 'ceil'}
+ * )
+ * //=> '1 month'
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWordsStrict(
+ *   new Date(2016, 7, 1),
+ *   new Date(2015, 0, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> '1 jaro'
+ */
+function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+  var options = dirtyOptions || {}
+
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+
+  var locale = options.locale
+  var localize = enLocale.distanceInWords.localize
+  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
+    localize = locale.distanceInWords.localize
+  }
+
+  var localizeOptions = {
+    addSuffix: Boolean(options.addSuffix),
+    comparison: comparison
+  }
+
+  var dateLeft, dateRight
+  if (comparison > 0) {
+    dateLeft = parse(dirtyDateToCompare)
+    dateRight = parse(dirtyDate)
+  } else {
+    dateLeft = parse(dirtyDate)
+    dateRight = parse(dirtyDateToCompare)
+  }
+
+  var unit
+  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor']
+  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
+  var minutes = mathPartial(seconds / 60) - offset
+  var hours, days, months, years
+
+  if (options.unit) {
+    unit = String(options.unit)
+  } else {
+    if (minutes < 1) {
+      unit = 's'
+    } else if (minutes < 60) {
+      unit = 'm'
+    } else if (minutes < MINUTES_IN_DAY) {
+      unit = 'h'
+    } else if (minutes < MINUTES_IN_MONTH) {
+      unit = 'd'
+    } else if (minutes < MINUTES_IN_YEAR) {
+      unit = 'M'
+    } else {
+      unit = 'Y'
+    }
+  }
+
+  // 0 up to 60 seconds
+  if (unit === 's') {
+    return localize('xSeconds', seconds, localizeOptions)
+
+  // 1 up to 60 mins
+  } else if (unit === 'm') {
+    return localize('xMinutes', minutes, localizeOptions)
+
+  // 1 up to 24 hours
+  } else if (unit === 'h') {
+    hours = mathPartial(minutes / 60)
+    return localize('xHours', hours, localizeOptions)
+
+  // 1 up to 30 days
+  } else if (unit === 'd') {
+    days = mathPartial(minutes / MINUTES_IN_DAY)
+    return localize('xDays', days, localizeOptions)
+
+  // 1 up to 12 months
+  } else if (unit === 'M') {
+    months = mathPartial(minutes / MINUTES_IN_MONTH)
+    return localize('xMonths', months, localizeOptions)
+
+  // 1 year up to max Date
+  } else if (unit === 'Y') {
+    years = mathPartial(minutes / MINUTES_IN_YEAR)
+    return localize('xYears', years, localizeOptions)
+  }
+
+  throw new Error('Unknown unit: ' + unit)
+}
+
+module.exports = distanceInWordsStrict
+
 
 /***/ }),
 
@@ -467,7 +1933,92 @@ eval("var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ \"./
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var distanceInWords = __webpack_require__(/*! ../distance_in_words/index.js */ \"./node_modules/date-fns/distance_in_words/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Return the distance between the given date and now in words.\n *\n * @description\n * Return the distance between the given date and now in words.\n *\n * | Distance to now                                                   | Result              |\n * |-------------------------------------------------------------------|---------------------|\n * | 0 ... 30 secs                                                     | less than a minute  |\n * | 30 secs ... 1 min 30 secs                                         | 1 minute            |\n * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |\n * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |\n * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |\n * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |\n * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |\n * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |\n * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |\n * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |\n * | 1 yr ... 1 yr 3 months                                            | about 1 year        |\n * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |\n * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |\n * | N yrs ... N yrs 3 months                                          | about N years       |\n * | N yrs 3 months ... N yrs 9 months                                 | over N years        |\n * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |\n *\n * With `options.includeSeconds == true`:\n * | Distance to now     | Result               |\n * |---------------------|----------------------|\n * | 0 secs ... 5 secs   | less than 5 seconds  |\n * | 5 secs ... 10 secs  | less than 10 seconds |\n * | 10 secs ... 20 secs | less than 20 seconds |\n * | 20 secs ... 40 secs | half a minute        |\n * | 40 secs ... 60 secs | less than a minute   |\n * | 60 secs ... 90 secs | 1 minute             |\n *\n * @param {Date|String|Number} date - the given date\n * @param {Object} [options] - the object with options\n * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed\n * @param {Boolean} [options.addSuffix=false] - result specifies if the second date is earlier or later than the first\n * @param {Object} [options.locale=enLocale] - the locale object\n * @returns {String} the distance in words\n *\n * @example\n * // If today is 1 January 2015, what is the distance to 2 July 2014?\n * var result = distanceInWordsToNow(\n *   new Date(2014, 6, 2)\n * )\n * //=> '6 months'\n *\n * @example\n * // If now is 1 January 2015 00:00:00,\n * // what is the distance to 1 January 2015 00:00:15, including seconds?\n * var result = distanceInWordsToNow(\n *   new Date(2015, 0, 1, 0, 0, 15),\n *   {includeSeconds: true}\n * )\n * //=> 'less than 20 seconds'\n *\n * @example\n * // If today is 1 January 2015,\n * // what is the distance to 1 January 2016, with a suffix?\n * var result = distanceInWordsToNow(\n *   new Date(2016, 0, 1),\n *   {addSuffix: true}\n * )\n * //=> 'in about 1 year'\n *\n * @example\n * // If today is 1 January 2015,\n * // what is the distance to 1 August 2016 in Esperanto?\n * var eoLocale = require('date-fns/locale/eo')\n * var result = distanceInWordsToNow(\n *   new Date(2016, 7, 1),\n *   {locale: eoLocale}\n * )\n * //=> 'pli ol 1 jaro'\n */\nfunction distanceInWordsToNow (dirtyDate, dirtyOptions) {\n  return distanceInWords(Date.now(), dirtyDate, dirtyOptions)\n}\n\nmodule.exports = distanceInWordsToNow\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/distance_in_words_to_now/index.js?");
+var distanceInWords = __webpack_require__(/*! ../distance_in_words/index.js */ "./node_modules/date-fns/distance_in_words/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return the distance between the given date and now in words.
+ *
+ * @description
+ * Return the distance between the given date and now in words.
+ *
+ * | Distance to now                                                   | Result              |
+ * |-------------------------------------------------------------------|---------------------|
+ * | 0 ... 30 secs                                                     | less than a minute  |
+ * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
+ * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
+ * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
+ * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
+ * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
+ * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
+ * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
+ * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
+ * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
+ * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
+ * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
+ * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
+ * | N yrs ... N yrs 3 months                                          | about N years       |
+ * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
+ * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
+ *
+ * With `options.includeSeconds == true`:
+ * | Distance to now     | Result               |
+ * |---------------------|----------------------|
+ * | 0 secs ... 5 secs   | less than 5 seconds  |
+ * | 5 secs ... 10 secs  | less than 10 seconds |
+ * | 10 secs ... 20 secs | less than 20 seconds |
+ * | 20 secs ... 40 secs | half a minute        |
+ * | 40 secs ... 60 secs | less than a minute   |
+ * | 60 secs ... 90 secs | 1 minute             |
+ *
+ * @param {Date|String|Number} date - the given date
+ * @param {Object} [options] - the object with options
+ * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.addSuffix=false] - result specifies if the second date is earlier or later than the first
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the distance in words
+ *
+ * @example
+ * // If today is 1 January 2015, what is the distance to 2 July 2014?
+ * var result = distanceInWordsToNow(
+ *   new Date(2014, 6, 2)
+ * )
+ * //=> '6 months'
+ *
+ * @example
+ * // If now is 1 January 2015 00:00:00,
+ * // what is the distance to 1 January 2015 00:00:15, including seconds?
+ * var result = distanceInWordsToNow(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   {includeSeconds: true}
+ * )
+ * //=> 'less than 20 seconds'
+ *
+ * @example
+ * // If today is 1 January 2015,
+ * // what is the distance to 1 January 2016, with a suffix?
+ * var result = distanceInWordsToNow(
+ *   new Date(2016, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> 'in about 1 year'
+ *
+ * @example
+ * // If today is 1 January 2015,
+ * // what is the distance to 1 August 2016 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWordsToNow(
+ *   new Date(2016, 7, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> 'pli ol 1 jaro'
+ */
+function distanceInWordsToNow (dirtyDate, dirtyOptions) {
+  return distanceInWords(Date.now(), dirtyDate, dirtyOptions)
+}
+
+module.exports = distanceInWordsToNow
+
 
 /***/ }),
 
@@ -478,7 +2029,61 @@ eval("var distanceInWords = __webpack_require__(/*! ../distance_in_words/index.j
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Return the array of dates within the specified range.\n *\n * @description\n * Return the array of dates within the specified range.\n *\n * @param {Date|String|Number} startDate - the first date\n * @param {Date|String|Number} endDate - the last date\n * @param {Number} [step=1] - the step between each day\n * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate\n * @throws {Error} startDate cannot be after endDate\n *\n * @example\n * // Each day between 6 October 2014 and 10 October 2014:\n * var result = eachDay(\n *   new Date(2014, 9, 6),\n *   new Date(2014, 9, 10)\n * )\n * //=> [\n * //   Mon Oct 06 2014 00:00:00,\n * //   Tue Oct 07 2014 00:00:00,\n * //   Wed Oct 08 2014 00:00:00,\n * //   Thu Oct 09 2014 00:00:00,\n * //   Fri Oct 10 2014 00:00:00\n * // ]\n */\nfunction eachDay (dirtyStartDate, dirtyEndDate, dirtyStep) {\n  var startDate = parse(dirtyStartDate)\n  var endDate = parse(dirtyEndDate)\n  var step = dirtyStep !== undefined ? dirtyStep : 1\n\n  var endTime = endDate.getTime()\n\n  if (startDate.getTime() > endTime) {\n    throw new Error('The first date cannot be after the second date')\n  }\n\n  var dates = []\n\n  var currentDate = startDate\n  currentDate.setHours(0, 0, 0, 0)\n\n  while (currentDate.getTime() <= endTime) {\n    dates.push(parse(currentDate))\n    currentDate.setDate(currentDate.getDate() + step)\n  }\n\n  return dates\n}\n\nmodule.exports = eachDay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/each_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the array of dates within the specified range.
+ *
+ * @description
+ * Return the array of dates within the specified range.
+ *
+ * @param {Date|String|Number} startDate - the first date
+ * @param {Date|String|Number} endDate - the last date
+ * @param {Number} [step=1] - the step between each day
+ * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate
+ * @throws {Error} startDate cannot be after endDate
+ *
+ * @example
+ * // Each day between 6 October 2014 and 10 October 2014:
+ * var result = eachDay(
+ *   new Date(2014, 9, 6),
+ *   new Date(2014, 9, 10)
+ * )
+ * //=> [
+ * //   Mon Oct 06 2014 00:00:00,
+ * //   Tue Oct 07 2014 00:00:00,
+ * //   Wed Oct 08 2014 00:00:00,
+ * //   Thu Oct 09 2014 00:00:00,
+ * //   Fri Oct 10 2014 00:00:00
+ * // ]
+ */
+function eachDay (dirtyStartDate, dirtyEndDate, dirtyStep) {
+  var startDate = parse(dirtyStartDate)
+  var endDate = parse(dirtyEndDate)
+  var step = dirtyStep !== undefined ? dirtyStep : 1
+
+  var endTime = endDate.getTime()
+
+  if (startDate.getTime() > endTime) {
+    throw new Error('The first date cannot be after the second date')
+  }
+
+  var dates = []
+
+  var currentDate = startDate
+  currentDate.setHours(0, 0, 0, 0)
+
+  while (currentDate.getTime() <= endTime) {
+    dates.push(parse(currentDate))
+    currentDate.setDate(currentDate.getDate() + step)
+  }
+
+  return dates
+}
+
+module.exports = eachDay
+
 
 /***/ }),
 
@@ -489,7 +2094,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Return the end of a day for the given date.\n *\n * @description\n * Return the end of a day for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of a day\n *\n * @example\n * // The end of a day for 2 September 2014 11:55:00:\n * var result = endOfDay(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Sep 02 2014 23:59:59.999\n */\nfunction endOfDay (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfDay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the end of a day for the given date.
+ *
+ * @description
+ * Return the end of a day for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a day
+ *
+ * @example
+ * // The end of a day for 2 September 2014 11:55:00:
+ * var result = endOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 23:59:59.999
+ */
+function endOfDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfDay
+
 
 /***/ }),
 
@@ -500,7 +2130,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Return the end of an hour for the given date.\n *\n * @description\n * Return the end of an hour for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of an hour\n *\n * @example\n * // The end of an hour for 2 September 2014 11:55:00:\n * var result = endOfHour(new Date(2014, 8, 2, 11, 55))\n * //=> Tue Sep 02 2014 11:59:59.999\n */\nfunction endOfHour (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setMinutes(59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfHour\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_hour/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Return the end of an hour for the given date.
+ *
+ * @description
+ * Return the end of an hour for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an hour
+ *
+ * @example
+ * // The end of an hour for 2 September 2014 11:55:00:
+ * var result = endOfHour(new Date(2014, 8, 2, 11, 55))
+ * //=> Tue Sep 02 2014 11:59:59.999
+ */
+function endOfHour (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMinutes(59, 59, 999)
+  return date
+}
+
+module.exports = endOfHour
+
 
 /***/ }),
 
@@ -511,7 +2166,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var endOfWeek = __webpack_require__(/*! ../end_of_week/index.js */ \"./node_modules/date-fns/end_of_week/index.js\")\n\n/**\n * @category ISO Week Helpers\n * @summary Return the end of an ISO week for the given date.\n *\n * @description\n * Return the end of an ISO week for the given date.\n * The result will be in the local timezone.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of an ISO week\n *\n * @example\n * // The end of an ISO week for 2 September 2014 11:55:00:\n * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Sun Sep 07 2014 23:59:59.999\n */\nfunction endOfISOWeek (dirtyDate) {\n  return endOfWeek(dirtyDate, {weekStartsOn: 1})\n}\n\nmodule.exports = endOfISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_iso_week/index.js?");
+var endOfWeek = __webpack_require__(/*! ../end_of_week/index.js */ "./node_modules/date-fns/end_of_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Return the end of an ISO week for the given date.
+ *
+ * @description
+ * Return the end of an ISO week for the given date.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an ISO week
+ *
+ * @example
+ * // The end of an ISO week for 2 September 2014 11:55:00:
+ * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Sep 07 2014 23:59:59.999
+ */
+function endOfISOWeek (dirtyDate) {
+  return endOfWeek(dirtyDate, {weekStartsOn: 1})
+}
+
+module.exports = endOfISOWeek
+
 
 /***/ }),
 
@@ -522,7 +2202,40 @@ eval("var endOfWeek = __webpack_require__(/*! ../end_of_week/index.js */ \"./nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\")\nvar startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Return the end of an ISO week-numbering year for the given date.\n *\n * @description\n * Return the end of an ISO week-numbering year,\n * which always starts 3 days before the year's first Thursday.\n * The result will be in the local timezone.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of an ISO week-numbering year\n *\n * @example\n * // The end of an ISO week-numbering year for 2 July 2005:\n * var result = endOfISOYear(new Date(2005, 6, 2))\n * //=> Sun Jan 01 2006 23:59:59.999\n */\nfunction endOfISOYear (dirtyDate) {\n  var year = getISOYear(dirtyDate)\n  var fourthOfJanuaryOfNextYear = new Date(0)\n  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)\n  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)\n  var date = startOfISOWeek(fourthOfJanuaryOfNextYear)\n  date.setMilliseconds(date.getMilliseconds() - 1)\n  return date\n}\n\nmodule.exports = endOfISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_iso_year/index.js?");
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the end of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the end of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an ISO week-numbering year
+ *
+ * @example
+ * // The end of an ISO week-numbering year for 2 July 2005:
+ * var result = endOfISOYear(new Date(2005, 6, 2))
+ * //=> Sun Jan 01 2006 23:59:59.999
+ */
+function endOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuaryOfNextYear = new Date(0)
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuaryOfNextYear)
+  date.setMilliseconds(date.getMilliseconds() - 1)
+  return date
+}
+
+module.exports = endOfISOYear
+
 
 /***/ }),
 
@@ -533,7 +2246,32 @@ eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Return the end of a minute for the given date.\n *\n * @description\n * Return the end of a minute for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of a minute\n *\n * @example\n * // The end of a minute for 1 December 2014 22:15:45.400:\n * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))\n * //=> Mon Dec 01 2014 22:15:59.999\n */\nfunction endOfMinute (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setSeconds(59, 999)\n  return date\n}\n\nmodule.exports = endOfMinute\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_minute/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Return the end of a minute for the given date.
+ *
+ * @description
+ * Return the end of a minute for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a minute
+ *
+ * @example
+ * // The end of a minute for 1 December 2014 22:15:45.400:
+ * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:59.999
+ */
+function endOfMinute (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setSeconds(59, 999)
+  return date
+}
+
+module.exports = endOfMinute
+
 
 /***/ }),
 
@@ -544,7 +2282,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Return the end of a month for the given date.\n *\n * @description\n * Return the end of a month for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of a month\n *\n * @example\n * // The end of a month for 2 September 2014 11:55:00:\n * var result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Sep 30 2014 23:59:59.999\n */\nfunction endOfMonth (dirtyDate) {\n  var date = parse(dirtyDate)\n  var month = date.getMonth()\n  date.setFullYear(date.getFullYear(), month + 1, 0)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Return the end of a month for the given date.
+ *
+ * @description
+ * Return the end of a month for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a month
+ *
+ * @example
+ * // The end of a month for 2 September 2014 11:55:00:
+ * var result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 23:59:59.999
+ */
+function endOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var month = date.getMonth()
+  date.setFullYear(date.getFullYear(), month + 1, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfMonth
+
 
 /***/ }),
 
@@ -555,7 +2320,35 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Return the end of a year quarter for the given date.\n *\n * @description\n * Return the end of a year quarter for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of a quarter\n *\n * @example\n * // The end of a quarter for 2 September 2014 11:55:00:\n * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Sep 30 2014 23:59:59.999\n */\nfunction endOfQuarter (dirtyDate) {\n  var date = parse(dirtyDate)\n  var currentMonth = date.getMonth()\n  var month = currentMonth - currentMonth % 3 + 3\n  date.setMonth(month, 0)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_quarter/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Return the end of a year quarter for the given date.
+ *
+ * @description
+ * Return the end of a year quarter for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a quarter
+ *
+ * @example
+ * // The end of a quarter for 2 September 2014 11:55:00:
+ * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 23:59:59.999
+ */
+function endOfQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var currentMonth = date.getMonth()
+  var month = currentMonth - currentMonth % 3 + 3
+  date.setMonth(month, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfQuarter
+
 
 /***/ }),
 
@@ -566,7 +2359,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Return the end of a second for the given date.\n *\n * @description\n * Return the end of a second for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of a second\n *\n * @example\n * // The end of a second for 1 December 2014 22:15:45.400:\n * var result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))\n * //=> Mon Dec 01 2014 22:15:45.999\n */\nfunction endOfSecond (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setMilliseconds(999)\n  return date\n}\n\nmodule.exports = endOfSecond\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_second/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Return the end of a second for the given date.
+ *
+ * @description
+ * Return the end of a second for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a second
+ *
+ * @example
+ * // The end of a second for 1 December 2014 22:15:45.400:
+ * var result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:45.999
+ */
+function endOfSecond (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMilliseconds(999)
+  return date
+}
+
+module.exports = endOfSecond
+
 
 /***/ }),
 
@@ -577,7 +2395,28 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ \"./node_modules/date-fns/end_of_day/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Return the end of today.\n *\n * @description\n * Return the end of today.\n *\n * @returns {Date} the end of today\n *\n * @example\n * // If today is 6 October 2014:\n * var result = endOfToday()\n * //=> Mon Oct 6 2014 23:59:59.999\n */\nfunction endOfToday () {\n  return endOfDay(new Date())\n}\n\nmodule.exports = endOfToday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_today/index.js?");
+var endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ "./node_modules/date-fns/end_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the end of today.
+ *
+ * @description
+ * Return the end of today.
+ *
+ * @returns {Date} the end of today
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfToday()
+ * //=> Mon Oct 6 2014 23:59:59.999
+ */
+function endOfToday () {
+  return endOfDay(new Date())
+}
+
+module.exports = endOfToday
+
 
 /***/ }),
 
@@ -588,7 +2427,34 @@ eval("var endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ \"./node_
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/**\n * @category Day Helpers\n * @summary Return the end of tomorrow.\n *\n * @description\n * Return the end of tomorrow.\n *\n * @returns {Date} the end of tomorrow\n *\n * @example\n * // If today is 6 October 2014:\n * var result = endOfTomorrow()\n * //=> Tue Oct 7 2014 23:59:59.999\n */\nfunction endOfTomorrow () {\n  var now = new Date()\n  var year = now.getFullYear()\n  var month = now.getMonth()\n  var day = now.getDate()\n\n  var date = new Date(0)\n  date.setFullYear(year, month, day + 1)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfTomorrow\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_tomorrow/index.js?");
+/**
+ * @category Day Helpers
+ * @summary Return the end of tomorrow.
+ *
+ * @description
+ * Return the end of tomorrow.
+ *
+ * @returns {Date} the end of tomorrow
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfTomorrow()
+ * //=> Tue Oct 7 2014 23:59:59.999
+ */
+function endOfTomorrow () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day + 1)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfTomorrow
+
 
 /***/ }),
 
@@ -599,7 +2465,45 @@ eval("/**\n * @category Day Helpers\n * @summary Return the end of tomorrow.\n *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Return the end of a week for the given date.\n *\n * @description\n * Return the end of a week for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Date} the end of a week\n *\n * @example\n * // The end of a week for 2 September 2014 11:55:00:\n * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Sat Sep 06 2014 23:59:59.999\n *\n * @example\n * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:\n * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})\n * //=> Sun Sep 07 2014 23:59:59.999\n */\nfunction endOfWeek (dirtyDate, dirtyOptions) {\n  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0\n\n  var date = parse(dirtyDate)\n  var day = date.getDay()\n  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)\n\n  date.setDate(date.getDate() + diff)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_week/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Return the end of a week for the given date.
+ *
+ * @description
+ * Return the end of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the end of a week
+ *
+ * @example
+ * // The end of a week for 2 September 2014 11:55:00:
+ * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 23:59:59.999
+ *
+ * @example
+ * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:
+ * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
+ * //=> Sun Sep 07 2014 23:59:59.999
+ */
+function endOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+
+  date.setDate(date.getDate() + diff)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfWeek
+
 
 /***/ }),
 
@@ -610,7 +2514,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Return the end of a year for the given date.\n *\n * @description\n * Return the end of a year for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of a year\n *\n * @example\n * // The end of a year for 2 September 2014 11:55:00:\n * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))\n * //=> Wed Dec 31 2014 23:59:59.999\n */\nfunction endOfYear (dirtyDate) {\n  var date = parse(dirtyDate)\n  var year = date.getFullYear()\n  date.setFullYear(year + 1, 0, 0)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Return the end of a year for the given date.
+ *
+ * @description
+ * Return the end of a year for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a year
+ *
+ * @example
+ * // The end of a year for 2 September 2014 11:55:00:
+ * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Dec 31 2014 23:59:59.999
+ */
+function endOfYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  date.setFullYear(year + 1, 0, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfYear
+
 
 /***/ }),
 
@@ -621,7 +2552,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/**\n * @category Day Helpers\n * @summary Return the end of yesterday.\n *\n * @description\n * Return the end of yesterday.\n *\n * @returns {Date} the end of yesterday\n *\n * @example\n * // If today is 6 October 2014:\n * var result = endOfYesterday()\n * //=> Sun Oct 5 2014 23:59:59.999\n */\nfunction endOfYesterday () {\n  var now = new Date()\n  var year = now.getFullYear()\n  var month = now.getMonth()\n  var day = now.getDate()\n\n  var date = new Date(0)\n  date.setFullYear(year, month, day - 1)\n  date.setHours(23, 59, 59, 999)\n  return date\n}\n\nmodule.exports = endOfYesterday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/end_of_yesterday/index.js?");
+/**
+ * @category Day Helpers
+ * @summary Return the end of yesterday.
+ *
+ * @description
+ * Return the end of yesterday.
+ *
+ * @returns {Date} the end of yesterday
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfYesterday()
+ * //=> Sun Oct 5 2014 23:59:59.999
+ */
+function endOfYesterday () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day - 1)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfYesterday
+
 
 /***/ }),
 
@@ -632,7 +2590,335 @@ eval("/**\n * @category Day Helpers\n * @summary Return the end of yesterday.\n 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getDayOfYear = __webpack_require__(/*! ../get_day_of_year/index.js */ \"./node_modules/date-fns/get_day_of_year/index.js\")\nvar getISOWeek = __webpack_require__(/*! ../get_iso_week/index.js */ \"./node_modules/date-fns/get_iso_week/index.js\")\nvar getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\")\nvar parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar isValid = __webpack_require__(/*! ../is_valid/index.js */ \"./node_modules/date-fns/is_valid/index.js\")\nvar enLocale = __webpack_require__(/*! ../locale/en/index.js */ \"./node_modules/date-fns/locale/en/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Format the date.\n *\n * @description\n * Return the formatted date string in the given format.\n *\n * Accepted tokens:\n * | Unit                    | Token | Result examples                  |\n * |-------------------------|-------|----------------------------------|\n * | Month                   | M     | 1, 2, ..., 12                    |\n * |                         | Mo    | 1st, 2nd, ..., 12th              |\n * |                         | MM    | 01, 02, ..., 12                  |\n * |                         | MMM   | Jan, Feb, ..., Dec               |\n * |                         | MMMM  | January, February, ..., December |\n * | Quarter                 | Q     | 1, 2, 3, 4                       |\n * |                         | Qo    | 1st, 2nd, 3rd, 4th               |\n * | Day of month            | D     | 1, 2, ..., 31                    |\n * |                         | Do    | 1st, 2nd, ..., 31st              |\n * |                         | DD    | 01, 02, ..., 31                  |\n * | Day of year             | DDD   | 1, 2, ..., 366                   |\n * |                         | DDDo  | 1st, 2nd, ..., 366th             |\n * |                         | DDDD  | 001, 002, ..., 366               |\n * | Day of week             | d     | 0, 1, ..., 6                     |\n * |                         | do    | 0th, 1st, ..., 6th               |\n * |                         | dd    | Su, Mo, ..., Sa                  |\n * |                         | ddd   | Sun, Mon, ..., Sat               |\n * |                         | dddd  | Sunday, Monday, ..., Saturday    |\n * | Day of ISO week         | E     | 1, 2, ..., 7                     |\n * | ISO week                | W     | 1, 2, ..., 53                    |\n * |                         | Wo    | 1st, 2nd, ..., 53rd              |\n * |                         | WW    | 01, 02, ..., 53                  |\n * | Year                    | YY    | 00, 01, ..., 99                  |\n * |                         | YYYY  | 1900, 1901, ..., 2099            |\n * | ISO week-numbering year | GG    | 00, 01, ..., 99                  |\n * |                         | GGGG  | 1900, 1901, ..., 2099            |\n * | AM/PM                   | A     | AM, PM                           |\n * |                         | a     | am, pm                           |\n * |                         | aa    | a.m., p.m.                       |\n * | Hour                    | H     | 0, 1, ... 23                     |\n * |                         | HH    | 00, 01, ... 23                   |\n * |                         | h     | 1, 2, ..., 12                    |\n * |                         | hh    | 01, 02, ..., 12                  |\n * | Minute                  | m     | 0, 1, ..., 59                    |\n * |                         | mm    | 00, 01, ..., 59                  |\n * | Second                  | s     | 0, 1, ..., 59                    |\n * |                         | ss    | 00, 01, ..., 59                  |\n * | 1/10 of second          | S     | 0, 1, ..., 9                     |\n * | 1/100 of second         | SS    | 00, 01, ..., 99                  |\n * | Millisecond             | SSS   | 000, 001, ..., 999               |\n * | Timezone                | Z     | -01:00, +00:00, ... +12:00       |\n * |                         | ZZ    | -0100, +0000, ..., +1200         |\n * | Seconds timestamp       | X     | 512969520                        |\n * | Milliseconds timestamp  | x     | 512969520900                     |\n *\n * The characters wrapped in square brackets are escaped.\n *\n * The result may vary by locale.\n *\n * @param {Date|String|Number} date - the original date\n * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens\n * @param {Object} [options] - the object with options\n * @param {Object} [options.locale=enLocale] - the locale object\n * @returns {String} the formatted date string\n *\n * @example\n * // Represent 11 February 2014 in middle-endian format:\n * var result = format(\n *   new Date(2014, 1, 11),\n *   'MM/DD/YYYY'\n * )\n * //=> '02/11/2014'\n *\n * @example\n * // Represent 2 July 2014 in Esperanto:\n * var eoLocale = require('date-fns/locale/eo')\n * var result = format(\n *   new Date(2014, 6, 2),\n *   'Do [de] MMMM YYYY',\n *   {locale: eoLocale}\n * )\n * //=> '2-a de julio 2014'\n */\nfunction format (dirtyDate, dirtyFormatStr, dirtyOptions) {\n  var formatStr = dirtyFormatStr ? String(dirtyFormatStr) : 'YYYY-MM-DDTHH:mm:ss.SSSZ'\n  var options = dirtyOptions || {}\n\n  var locale = options.locale\n  var localeFormatters = enLocale.format.formatters\n  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp\n  if (locale && locale.format && locale.format.formatters) {\n    localeFormatters = locale.format.formatters\n\n    if (locale.format.formattingTokensRegExp) {\n      formattingTokensRegExp = locale.format.formattingTokensRegExp\n    }\n  }\n\n  var date = parse(dirtyDate)\n\n  if (!isValid(date)) {\n    return 'Invalid Date'\n  }\n\n  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)\n\n  return formatFn(date)\n}\n\nvar formatters = {\n  // Month: 1, 2, ..., 12\n  'M': function (date) {\n    return date.getMonth() + 1\n  },\n\n  // Month: 01, 02, ..., 12\n  'MM': function (date) {\n    return addLeadingZeros(date.getMonth() + 1, 2)\n  },\n\n  // Quarter: 1, 2, 3, 4\n  'Q': function (date) {\n    return Math.ceil((date.getMonth() + 1) / 3)\n  },\n\n  // Day of month: 1, 2, ..., 31\n  'D': function (date) {\n    return date.getDate()\n  },\n\n  // Day of month: 01, 02, ..., 31\n  'DD': function (date) {\n    return addLeadingZeros(date.getDate(), 2)\n  },\n\n  // Day of year: 1, 2, ..., 366\n  'DDD': function (date) {\n    return getDayOfYear(date)\n  },\n\n  // Day of year: 001, 002, ..., 366\n  'DDDD': function (date) {\n    return addLeadingZeros(getDayOfYear(date), 3)\n  },\n\n  // Day of week: 0, 1, ..., 6\n  'd': function (date) {\n    return date.getDay()\n  },\n\n  // Day of ISO week: 1, 2, ..., 7\n  'E': function (date) {\n    return date.getDay() || 7\n  },\n\n  // ISO week: 1, 2, ..., 53\n  'W': function (date) {\n    return getISOWeek(date)\n  },\n\n  // ISO week: 01, 02, ..., 53\n  'WW': function (date) {\n    return addLeadingZeros(getISOWeek(date), 2)\n  },\n\n  // Year: 00, 01, ..., 99\n  'YY': function (date) {\n    return addLeadingZeros(date.getFullYear(), 4).substr(2)\n  },\n\n  // Year: 1900, 1901, ..., 2099\n  'YYYY': function (date) {\n    return addLeadingZeros(date.getFullYear(), 4)\n  },\n\n  // ISO week-numbering year: 00, 01, ..., 99\n  'GG': function (date) {\n    return String(getISOYear(date)).substr(2)\n  },\n\n  // ISO week-numbering year: 1900, 1901, ..., 2099\n  'GGGG': function (date) {\n    return getISOYear(date)\n  },\n\n  // Hour: 0, 1, ... 23\n  'H': function (date) {\n    return date.getHours()\n  },\n\n  // Hour: 00, 01, ..., 23\n  'HH': function (date) {\n    return addLeadingZeros(date.getHours(), 2)\n  },\n\n  // Hour: 1, 2, ..., 12\n  'h': function (date) {\n    var hours = date.getHours()\n    if (hours === 0) {\n      return 12\n    } else if (hours > 12) {\n      return hours % 12\n    } else {\n      return hours\n    }\n  },\n\n  // Hour: 01, 02, ..., 12\n  'hh': function (date) {\n    return addLeadingZeros(formatters['h'](date), 2)\n  },\n\n  // Minute: 0, 1, ..., 59\n  'm': function (date) {\n    return date.getMinutes()\n  },\n\n  // Minute: 00, 01, ..., 59\n  'mm': function (date) {\n    return addLeadingZeros(date.getMinutes(), 2)\n  },\n\n  // Second: 0, 1, ..., 59\n  's': function (date) {\n    return date.getSeconds()\n  },\n\n  // Second: 00, 01, ..., 59\n  'ss': function (date) {\n    return addLeadingZeros(date.getSeconds(), 2)\n  },\n\n  // 1/10 of second: 0, 1, ..., 9\n  'S': function (date) {\n    return Math.floor(date.getMilliseconds() / 100)\n  },\n\n  // 1/100 of second: 00, 01, ..., 99\n  'SS': function (date) {\n    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)\n  },\n\n  // Millisecond: 000, 001, ..., 999\n  'SSS': function (date) {\n    return addLeadingZeros(date.getMilliseconds(), 3)\n  },\n\n  // Timezone: -01:00, +00:00, ... +12:00\n  'Z': function (date) {\n    return formatTimezone(date.getTimezoneOffset(), ':')\n  },\n\n  // Timezone: -0100, +0000, ... +1200\n  'ZZ': function (date) {\n    return formatTimezone(date.getTimezoneOffset())\n  },\n\n  // Seconds timestamp: 512969520\n  'X': function (date) {\n    return Math.floor(date.getTime() / 1000)\n  },\n\n  // Milliseconds timestamp: 512969520900\n  'x': function (date) {\n    return date.getTime()\n  }\n}\n\nfunction buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {\n  var array = formatStr.match(formattingTokensRegExp)\n  var length = array.length\n\n  var i\n  var formatter\n  for (i = 0; i < length; i++) {\n    formatter = localeFormatters[array[i]] || formatters[array[i]]\n    if (formatter) {\n      array[i] = formatter\n    } else {\n      array[i] = removeFormattingTokens(array[i])\n    }\n  }\n\n  return function (date) {\n    var output = ''\n    for (var i = 0; i < length; i++) {\n      if (array[i] instanceof Function) {\n        output += array[i](date, formatters)\n      } else {\n        output += array[i]\n      }\n    }\n    return output\n  }\n}\n\nfunction removeFormattingTokens (input) {\n  if (input.match(/\\[[\\s\\S]/)) {\n    return input.replace(/^\\[|]$/g, '')\n  }\n  return input.replace(/\\\\/g, '')\n}\n\nfunction formatTimezone (offset, delimeter) {\n  delimeter = delimeter || ''\n  var sign = offset > 0 ? '-' : '+'\n  var absOffset = Math.abs(offset)\n  var hours = Math.floor(absOffset / 60)\n  var minutes = absOffset % 60\n  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)\n}\n\nfunction addLeadingZeros (number, targetLength) {\n  var output = Math.abs(number).toString()\n  while (output.length < targetLength) {\n    output = '0' + output\n  }\n  return output\n}\n\nmodule.exports = format\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/format/index.js?");
+var getDayOfYear = __webpack_require__(/*! ../get_day_of_year/index.js */ "./node_modules/date-fns/get_day_of_year/index.js")
+var getISOWeek = __webpack_require__(/*! ../get_iso_week/index.js */ "./node_modules/date-fns/get_iso_week/index.js")
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var isValid = __webpack_require__(/*! ../is_valid/index.js */ "./node_modules/date-fns/is_valid/index.js")
+var enLocale = __webpack_require__(/*! ../locale/en/index.js */ "./node_modules/date-fns/locale/en/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Format the date.
+ *
+ * @description
+ * Return the formatted date string in the given format.
+ *
+ * Accepted tokens:
+ * | Unit                    | Token | Result examples                  |
+ * |-------------------------|-------|----------------------------------|
+ * | Month                   | M     | 1, 2, ..., 12                    |
+ * |                         | Mo    | 1st, 2nd, ..., 12th              |
+ * |                         | MM    | 01, 02, ..., 12                  |
+ * |                         | MMM   | Jan, Feb, ..., Dec               |
+ * |                         | MMMM  | January, February, ..., December |
+ * | Quarter                 | Q     | 1, 2, 3, 4                       |
+ * |                         | Qo    | 1st, 2nd, 3rd, 4th               |
+ * | Day of month            | D     | 1, 2, ..., 31                    |
+ * |                         | Do    | 1st, 2nd, ..., 31st              |
+ * |                         | DD    | 01, 02, ..., 31                  |
+ * | Day of year             | DDD   | 1, 2, ..., 366                   |
+ * |                         | DDDo  | 1st, 2nd, ..., 366th             |
+ * |                         | DDDD  | 001, 002, ..., 366               |
+ * | Day of week             | d     | 0, 1, ..., 6                     |
+ * |                         | do    | 0th, 1st, ..., 6th               |
+ * |                         | dd    | Su, Mo, ..., Sa                  |
+ * |                         | ddd   | Sun, Mon, ..., Sat               |
+ * |                         | dddd  | Sunday, Monday, ..., Saturday    |
+ * | Day of ISO week         | E     | 1, 2, ..., 7                     |
+ * | ISO week                | W     | 1, 2, ..., 53                    |
+ * |                         | Wo    | 1st, 2nd, ..., 53rd              |
+ * |                         | WW    | 01, 02, ..., 53                  |
+ * | Year                    | YY    | 00, 01, ..., 99                  |
+ * |                         | YYYY  | 1900, 1901, ..., 2099            |
+ * | ISO week-numbering year | GG    | 00, 01, ..., 99                  |
+ * |                         | GGGG  | 1900, 1901, ..., 2099            |
+ * | AM/PM                   | A     | AM, PM                           |
+ * |                         | a     | am, pm                           |
+ * |                         | aa    | a.m., p.m.                       |
+ * | Hour                    | H     | 0, 1, ... 23                     |
+ * |                         | HH    | 00, 01, ... 23                   |
+ * |                         | h     | 1, 2, ..., 12                    |
+ * |                         | hh    | 01, 02, ..., 12                  |
+ * | Minute                  | m     | 0, 1, ..., 59                    |
+ * |                         | mm    | 00, 01, ..., 59                  |
+ * | Second                  | s     | 0, 1, ..., 59                    |
+ * |                         | ss    | 00, 01, ..., 59                  |
+ * | 1/10 of second          | S     | 0, 1, ..., 9                     |
+ * | 1/100 of second         | SS    | 00, 01, ..., 99                  |
+ * | Millisecond             | SSS   | 000, 001, ..., 999               |
+ * | Timezone                | Z     | -01:00, +00:00, ... +12:00       |
+ * |                         | ZZ    | -0100, +0000, ..., +1200         |
+ * | Seconds timestamp       | X     | 512969520                        |
+ * | Milliseconds timestamp  | x     | 512969520900                     |
+ *
+ * The characters wrapped in square brackets are escaped.
+ *
+ * The result may vary by locale.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
+ * @param {Object} [options] - the object with options
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the formatted date string
+ *
+ * @example
+ * // Represent 11 February 2014 in middle-endian format:
+ * var result = format(
+ *   new Date(2014, 1, 11),
+ *   'MM/DD/YYYY'
+ * )
+ * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = format(
+ *   new Date(2014, 6, 2),
+ *   'Do [de] MMMM YYYY',
+ *   {locale: eoLocale}
+ * )
+ * //=> '2-a de julio 2014'
+ */
+function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
+  var formatStr = dirtyFormatStr ? String(dirtyFormatStr) : 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+  var options = dirtyOptions || {}
+
+  var locale = options.locale
+  var localeFormatters = enLocale.format.formatters
+  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
+  if (locale && locale.format && locale.format.formatters) {
+    localeFormatters = locale.format.formatters
+
+    if (locale.format.formattingTokensRegExp) {
+      formattingTokensRegExp = locale.format.formattingTokensRegExp
+    }
+  }
+
+  var date = parse(dirtyDate)
+
+  if (!isValid(date)) {
+    return 'Invalid Date'
+  }
+
+  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
+
+  return formatFn(date)
+}
+
+var formatters = {
+  // Month: 1, 2, ..., 12
+  'M': function (date) {
+    return date.getMonth() + 1
+  },
+
+  // Month: 01, 02, ..., 12
+  'MM': function (date) {
+    return addLeadingZeros(date.getMonth() + 1, 2)
+  },
+
+  // Quarter: 1, 2, 3, 4
+  'Q': function (date) {
+    return Math.ceil((date.getMonth() + 1) / 3)
+  },
+
+  // Day of month: 1, 2, ..., 31
+  'D': function (date) {
+    return date.getDate()
+  },
+
+  // Day of month: 01, 02, ..., 31
+  'DD': function (date) {
+    return addLeadingZeros(date.getDate(), 2)
+  },
+
+  // Day of year: 1, 2, ..., 366
+  'DDD': function (date) {
+    return getDayOfYear(date)
+  },
+
+  // Day of year: 001, 002, ..., 366
+  'DDDD': function (date) {
+    return addLeadingZeros(getDayOfYear(date), 3)
+  },
+
+  // Day of week: 0, 1, ..., 6
+  'd': function (date) {
+    return date.getDay()
+  },
+
+  // Day of ISO week: 1, 2, ..., 7
+  'E': function (date) {
+    return date.getDay() || 7
+  },
+
+  // ISO week: 1, 2, ..., 53
+  'W': function (date) {
+    return getISOWeek(date)
+  },
+
+  // ISO week: 01, 02, ..., 53
+  'WW': function (date) {
+    return addLeadingZeros(getISOWeek(date), 2)
+  },
+
+  // Year: 00, 01, ..., 99
+  'YY': function (date) {
+    return addLeadingZeros(date.getFullYear(), 4).substr(2)
+  },
+
+  // Year: 1900, 1901, ..., 2099
+  'YYYY': function (date) {
+    return addLeadingZeros(date.getFullYear(), 4)
+  },
+
+  // ISO week-numbering year: 00, 01, ..., 99
+  'GG': function (date) {
+    return String(getISOYear(date)).substr(2)
+  },
+
+  // ISO week-numbering year: 1900, 1901, ..., 2099
+  'GGGG': function (date) {
+    return getISOYear(date)
+  },
+
+  // Hour: 0, 1, ... 23
+  'H': function (date) {
+    return date.getHours()
+  },
+
+  // Hour: 00, 01, ..., 23
+  'HH': function (date) {
+    return addLeadingZeros(date.getHours(), 2)
+  },
+
+  // Hour: 1, 2, ..., 12
+  'h': function (date) {
+    var hours = date.getHours()
+    if (hours === 0) {
+      return 12
+    } else if (hours > 12) {
+      return hours % 12
+    } else {
+      return hours
+    }
+  },
+
+  // Hour: 01, 02, ..., 12
+  'hh': function (date) {
+    return addLeadingZeros(formatters['h'](date), 2)
+  },
+
+  // Minute: 0, 1, ..., 59
+  'm': function (date) {
+    return date.getMinutes()
+  },
+
+  // Minute: 00, 01, ..., 59
+  'mm': function (date) {
+    return addLeadingZeros(date.getMinutes(), 2)
+  },
+
+  // Second: 0, 1, ..., 59
+  's': function (date) {
+    return date.getSeconds()
+  },
+
+  // Second: 00, 01, ..., 59
+  'ss': function (date) {
+    return addLeadingZeros(date.getSeconds(), 2)
+  },
+
+  // 1/10 of second: 0, 1, ..., 9
+  'S': function (date) {
+    return Math.floor(date.getMilliseconds() / 100)
+  },
+
+  // 1/100 of second: 00, 01, ..., 99
+  'SS': function (date) {
+    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
+  },
+
+  // Millisecond: 000, 001, ..., 999
+  'SSS': function (date) {
+    return addLeadingZeros(date.getMilliseconds(), 3)
+  },
+
+  // Timezone: -01:00, +00:00, ... +12:00
+  'Z': function (date) {
+    return formatTimezone(date.getTimezoneOffset(), ':')
+  },
+
+  // Timezone: -0100, +0000, ... +1200
+  'ZZ': function (date) {
+    return formatTimezone(date.getTimezoneOffset())
+  },
+
+  // Seconds timestamp: 512969520
+  'X': function (date) {
+    return Math.floor(date.getTime() / 1000)
+  },
+
+  // Milliseconds timestamp: 512969520900
+  'x': function (date) {
+    return date.getTime()
+  }
+}
+
+function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
+  var array = formatStr.match(formattingTokensRegExp)
+  var length = array.length
+
+  var i
+  var formatter
+  for (i = 0; i < length; i++) {
+    formatter = localeFormatters[array[i]] || formatters[array[i]]
+    if (formatter) {
+      array[i] = formatter
+    } else {
+      array[i] = removeFormattingTokens(array[i])
+    }
+  }
+
+  return function (date) {
+    var output = ''
+    for (var i = 0; i < length; i++) {
+      if (array[i] instanceof Function) {
+        output += array[i](date, formatters)
+      } else {
+        output += array[i]
+      }
+    }
+    return output
+  }
+}
+
+function removeFormattingTokens (input) {
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|]$/g, '')
+  }
+  return input.replace(/\\/g, '')
+}
+
+function formatTimezone (offset, delimeter) {
+  delimeter = delimeter || ''
+  var sign = offset > 0 ? '-' : '+'
+  var absOffset = Math.abs(offset)
+  var hours = Math.floor(absOffset / 60)
+  var minutes = absOffset % 60
+  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
+}
+
+function addLeadingZeros (number, targetLength) {
+  var output = Math.abs(number).toString()
+  while (output.length < targetLength) {
+    output = '0' + output
+  }
+  return output
+}
+
+module.exports = format
+
 
 /***/ }),
 
@@ -643,7 +2929,31 @@ eval("var getDayOfYear = __webpack_require__(/*! ../get_day_of_year/index.js */ 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Get the day of the month of the given date.\n *\n * @description\n * Get the day of the month of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the day of month\n *\n * @example\n * // Which day of the month is 29 February 2012?\n * var result = getDate(new Date(2012, 1, 29))\n * //=> 29\n */\nfunction getDate (dirtyDate) {\n  var date = parse(dirtyDate)\n  var dayOfMonth = date.getDate()\n  return dayOfMonth\n}\n\nmodule.exports = getDate\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_date/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Get the day of the month of the given date.
+ *
+ * @description
+ * Get the day of the month of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of month
+ *
+ * @example
+ * // Which day of the month is 29 February 2012?
+ * var result = getDate(new Date(2012, 1, 29))
+ * //=> 29
+ */
+function getDate (dirtyDate) {
+  var date = parse(dirtyDate)
+  var dayOfMonth = date.getDate()
+  return dayOfMonth
+}
+
+module.exports = getDate
+
 
 /***/ }),
 
@@ -654,7 +2964,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Get the day of the week of the given date.\n *\n * @description\n * Get the day of the week of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the day of week\n *\n * @example\n * // Which day of the week is 29 February 2012?\n * var result = getDay(new Date(2012, 1, 29))\n * //=> 3\n */\nfunction getDay (dirtyDate) {\n  var date = parse(dirtyDate)\n  var day = date.getDay()\n  return day\n}\n\nmodule.exports = getDay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Get the day of the week of the given date.
+ *
+ * @description
+ * Get the day of the week of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of week
+ *
+ * @example
+ * // Which day of the week is 29 February 2012?
+ * var result = getDay(new Date(2012, 1, 29))
+ * //=> 3
+ */
+function getDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  return day
+}
+
+module.exports = getDay
+
 
 /***/ }),
 
@@ -665,7 +2999,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar startOfYear = __webpack_require__(/*! ../start_of_year/index.js */ \"./node_modules/date-fns/start_of_year/index.js\")\nvar differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ \"./node_modules/date-fns/difference_in_calendar_days/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Get the day of the year of the given date.\n *\n * @description\n * Get the day of the year of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the day of year\n *\n * @example\n * // Which day of the year is 2 July 2014?\n * var result = getDayOfYear(new Date(2014, 6, 2))\n * //=> 183\n */\nfunction getDayOfYear (dirtyDate) {\n  var date = parse(dirtyDate)\n  var diff = differenceInCalendarDays(date, startOfYear(date))\n  var dayOfYear = diff + 1\n  return dayOfYear\n}\n\nmodule.exports = getDayOfYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_day_of_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfYear = __webpack_require__(/*! ../start_of_year/index.js */ "./node_modules/date-fns/start_of_year/index.js")
+var differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Get the day of the year of the given date.
+ *
+ * @description
+ * Get the day of the year of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of year
+ *
+ * @example
+ * // Which day of the year is 2 July 2014?
+ * var result = getDayOfYear(new Date(2014, 6, 2))
+ * //=> 183
+ */
+function getDayOfYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var diff = differenceInCalendarDays(date, startOfYear(date))
+  var dayOfYear = diff + 1
+  return dayOfYear
+}
+
+module.exports = getDayOfYear
+
 
 /***/ }),
 
@@ -676,7 +3037,35 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Get the number of days in a month of the given date.\n *\n * @description\n * Get the number of days in a month of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the number of days in a month\n *\n * @example\n * // How many days are in February 2000?\n * var result = getDaysInMonth(new Date(2000, 1))\n * //=> 29\n */\nfunction getDaysInMonth (dirtyDate) {\n  var date = parse(dirtyDate)\n  var year = date.getFullYear()\n  var monthIndex = date.getMonth()\n  var lastDayOfMonth = new Date(0)\n  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)\n  lastDayOfMonth.setHours(0, 0, 0, 0)\n  return lastDayOfMonth.getDate()\n}\n\nmodule.exports = getDaysInMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_days_in_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the number of days in a month of the given date.
+ *
+ * @description
+ * Get the number of days in a month of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the number of days in a month
+ *
+ * @example
+ * // How many days are in February 2000?
+ * var result = getDaysInMonth(new Date(2000, 1))
+ * //=> 29
+ */
+function getDaysInMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  var monthIndex = date.getMonth()
+  var lastDayOfMonth = new Date(0)
+  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
+  lastDayOfMonth.setHours(0, 0, 0, 0)
+  return lastDayOfMonth.getDate()
+}
+
+module.exports = getDaysInMonth
+
 
 /***/ }),
 
@@ -687,7 +3076,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isLeapYear = __webpack_require__(/*! ../is_leap_year/index.js */ \"./node_modules/date-fns/is_leap_year/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Get the number of days in a year of the given date.\n *\n * @description\n * Get the number of days in a year of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the number of days in a year\n *\n * @example\n * // How many days are in 2012?\n * var result = getDaysInYear(new Date(2012, 0, 1))\n * //=> 366\n */\nfunction getDaysInYear (dirtyDate) {\n  return isLeapYear(dirtyDate) ? 366 : 365\n}\n\nmodule.exports = getDaysInYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_days_in_year/index.js?");
+var isLeapYear = __webpack_require__(/*! ../is_leap_year/index.js */ "./node_modules/date-fns/is_leap_year/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the number of days in a year of the given date.
+ *
+ * @description
+ * Get the number of days in a year of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the number of days in a year
+ *
+ * @example
+ * // How many days are in 2012?
+ * var result = getDaysInYear(new Date(2012, 0, 1))
+ * //=> 366
+ */
+function getDaysInYear (dirtyDate) {
+  return isLeapYear(dirtyDate) ? 366 : 365
+}
+
+module.exports = getDaysInYear
+
 
 /***/ }),
 
@@ -698,7 +3109,31 @@ eval("var isLeapYear = __webpack_require__(/*! ../is_leap_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Get the hours of the given date.\n *\n * @description\n * Get the hours of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the hours\n *\n * @example\n * // Get the hours of 29 February 2012 11:45:00:\n * var result = getHours(new Date(2012, 1, 29, 11, 45))\n * //=> 11\n */\nfunction getHours (dirtyDate) {\n  var date = parse(dirtyDate)\n  var hours = date.getHours()\n  return hours\n}\n\nmodule.exports = getHours\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_hours/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Get the hours of the given date.
+ *
+ * @description
+ * Get the hours of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the hours
+ *
+ * @example
+ * // Get the hours of 29 February 2012 11:45:00:
+ * var result = getHours(new Date(2012, 1, 29, 11, 45))
+ * //=> 11
+ */
+function getHours (dirtyDate) {
+  var date = parse(dirtyDate)
+  var hours = date.getHours()
+  return hours
+}
+
+module.exports = getHours
+
 
 /***/ }),
 
@@ -709,7 +3144,39 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Get the day of the ISO week of the given date.\n *\n * @description\n * Get the day of the ISO week of the given date,\n * which is 7 for Sunday, 1 for Monday etc.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the day of ISO week\n *\n * @example\n * // Which day of the ISO week is 26 February 2012?\n * var result = getISODay(new Date(2012, 1, 26))\n * //=> 7\n */\nfunction getISODay (dirtyDate) {\n  var date = parse(dirtyDate)\n  var day = date.getDay()\n\n  if (day === 0) {\n    day = 7\n  }\n\n  return day\n}\n\nmodule.exports = getISODay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_iso_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Get the day of the ISO week of the given date.
+ *
+ * @description
+ * Get the day of the ISO week of the given date,
+ * which is 7 for Sunday, 1 for Monday etc.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of ISO week
+ *
+ * @example
+ * // Which day of the ISO week is 26 February 2012?
+ * var result = getISODay(new Date(2012, 1, 26))
+ * //=> 7
+ */
+function getISODay (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+
+  if (day === 0) {
+    day = 7
+  }
+
+  return day
+}
+
+module.exports = getISODay
+
 
 /***/ }),
 
@@ -720,7 +3187,41 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\")\nvar startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ \"./node_modules/date-fns/start_of_iso_year/index.js\")\n\nvar MILLISECONDS_IN_WEEK = 604800000\n\n/**\n * @category ISO Week Helpers\n * @summary Get the ISO week of the given date.\n *\n * @description\n * Get the ISO week of the given date.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the ISO week\n *\n * @example\n * // Which week of the ISO-week numbering year is 2 January 2005?\n * var result = getISOWeek(new Date(2005, 0, 2))\n * //=> 53\n */\nfunction getISOWeek (dirtyDate) {\n  var date = parse(dirtyDate)\n  var diff = startOfISOWeek(date).getTime() - startOfISOYear(date).getTime()\n\n  // Round the number of days to the nearest integer\n  // because the number of milliseconds in a week is not constant\n  // (e.g. it's different in the week of the daylight saving time clock shift)\n  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1\n}\n\nmodule.exports = getISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_iso_week/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category ISO Week Helpers
+ * @summary Get the ISO week of the given date.
+ *
+ * @description
+ * Get the ISO week of the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the ISO week
+ *
+ * @example
+ * // Which week of the ISO-week numbering year is 2 January 2005?
+ * var result = getISOWeek(new Date(2005, 0, 2))
+ * //=> 53
+ */
+function getISOWeek (dirtyDate) {
+  var date = parse(dirtyDate)
+  var diff = startOfISOWeek(date).getTime() - startOfISOYear(date).getTime()
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
+}
+
+module.exports = getISOWeek
+
 
 /***/ }),
 
@@ -731,7 +3232,40 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ \"./node_modules/date-fns/start_of_iso_year/index.js\")\nvar addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ \"./node_modules/date-fns/add_weeks/index.js\")\n\nvar MILLISECONDS_IN_WEEK = 604800000\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Get the number of weeks in an ISO week-numbering year of the given date.\n *\n * @description\n * Get the number of weeks in an ISO week-numbering year of the given date.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the number of ISO weeks in a year\n *\n * @example\n * // How many weeks are in ISO week-numbering year 2015?\n * var result = getISOWeeksInYear(new Date(2015, 1, 11))\n * //=> 53\n */\nfunction getISOWeeksInYear (dirtyDate) {\n  var thisYear = startOfISOYear(dirtyDate)\n  var nextYear = startOfISOYear(addWeeks(thisYear, 60))\n  var diff = nextYear.valueOf() - thisYear.valueOf()\n  // Round the number of weeks to the nearest integer\n  // because the number of milliseconds in a week is not constant\n  // (e.g. it's different in the week of the daylight saving time clock shift)\n  return Math.round(diff / MILLISECONDS_IN_WEEK)\n}\n\nmodule.exports = getISOWeeksInYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_iso_weeks_in_year/index.js?");
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+var addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ "./node_modules/date-fns/add_weeks/index.js")
+
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the number of weeks in an ISO week-numbering year of the given date.
+ *
+ * @description
+ * Get the number of weeks in an ISO week-numbering year of the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the number of ISO weeks in a year
+ *
+ * @example
+ * // How many weeks are in ISO week-numbering year 2015?
+ * var result = getISOWeeksInYear(new Date(2015, 1, 11))
+ * //=> 53
+ */
+function getISOWeeksInYear (dirtyDate) {
+  var thisYear = startOfISOYear(dirtyDate)
+  var nextYear = startOfISOYear(addWeeks(thisYear, 60))
+  var diff = nextYear.valueOf() - thisYear.valueOf()
+  // Round the number of weeks to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round(diff / MILLISECONDS_IN_WEEK)
+}
+
+module.exports = getISOWeeksInYear
+
 
 /***/ }),
 
@@ -742,7 +3276,52 @@ eval("var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Get the ISO week-numbering year of the given date.\n *\n * @description\n * Get the ISO week-numbering year of the given date,\n * which always starts 3 days before the year's first Thursday.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the ISO week-numbering year\n *\n * @example\n * // Which ISO-week numbering year is 2 January 2005?\n * var result = getISOYear(new Date(2005, 0, 2))\n * //=> 2004\n */\nfunction getISOYear (dirtyDate) {\n  var date = parse(dirtyDate)\n  var year = date.getFullYear()\n\n  var fourthOfJanuaryOfNextYear = new Date(0)\n  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)\n  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)\n  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)\n\n  var fourthOfJanuaryOfThisYear = new Date(0)\n  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)\n  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)\n  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)\n\n  if (date.getTime() >= startOfNextYear.getTime()) {\n    return year + 1\n  } else if (date.getTime() >= startOfThisYear.getTime()) {\n    return year\n  } else {\n    return year - 1\n  }\n}\n\nmodule.exports = getISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_iso_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the ISO week-numbering year of the given date.
+ *
+ * @description
+ * Get the ISO week-numbering year of the given date,
+ * which always starts 3 days before the year's first Thursday.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the ISO week-numbering year
+ *
+ * @example
+ * // Which ISO-week numbering year is 2 January 2005?
+ * var result = getISOYear(new Date(2005, 0, 2))
+ * //=> 2004
+ */
+function getISOYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+
+  var fourthOfJanuaryOfNextYear = new Date(0)
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
+  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
+
+  var fourthOfJanuaryOfThisYear = new Date(0)
+  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
+  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
+  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
+
+  if (date.getTime() >= startOfNextYear.getTime()) {
+    return year + 1
+  } else if (date.getTime() >= startOfThisYear.getTime()) {
+    return year
+  } else {
+    return year - 1
+  }
+}
+
+module.exports = getISOYear
+
 
 /***/ }),
 
@@ -753,7 +3332,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Millisecond Helpers\n * @summary Get the milliseconds of the given date.\n *\n * @description\n * Get the milliseconds of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the milliseconds\n *\n * @example\n * // Get the milliseconds of 29 February 2012 11:45:05.123:\n * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))\n * //=> 123\n */\nfunction getMilliseconds (dirtyDate) {\n  var date = parse(dirtyDate)\n  var milliseconds = date.getMilliseconds()\n  return milliseconds\n}\n\nmodule.exports = getMilliseconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_milliseconds/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Get the milliseconds of the given date.
+ *
+ * @description
+ * Get the milliseconds of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the milliseconds
+ *
+ * @example
+ * // Get the milliseconds of 29 February 2012 11:45:05.123:
+ * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * //=> 123
+ */
+function getMilliseconds (dirtyDate) {
+  var date = parse(dirtyDate)
+  var milliseconds = date.getMilliseconds()
+  return milliseconds
+}
+
+module.exports = getMilliseconds
+
 
 /***/ }),
 
@@ -764,7 +3367,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Get the minutes of the given date.\n *\n * @description\n * Get the minutes of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the minutes\n *\n * @example\n * // Get the minutes of 29 February 2012 11:45:05:\n * var result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))\n * //=> 45\n */\nfunction getMinutes (dirtyDate) {\n  var date = parse(dirtyDate)\n  var minutes = date.getMinutes()\n  return minutes\n}\n\nmodule.exports = getMinutes\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_minutes/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Get the minutes of the given date.
+ *
+ * @description
+ * Get the minutes of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the minutes
+ *
+ * @example
+ * // Get the minutes of 29 February 2012 11:45:05:
+ * var result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
+ * //=> 45
+ */
+function getMinutes (dirtyDate) {
+  var date = parse(dirtyDate)
+  var minutes = date.getMinutes()
+  return minutes
+}
+
+module.exports = getMinutes
+
 
 /***/ }),
 
@@ -775,7 +3402,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Get the month of the given date.\n *\n * @description\n * Get the month of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the month\n *\n * @example\n * // Which month is 29 February 2012?\n * var result = getMonth(new Date(2012, 1, 29))\n * //=> 1\n */\nfunction getMonth (dirtyDate) {\n  var date = parse(dirtyDate)\n  var month = date.getMonth()\n  return month\n}\n\nmodule.exports = getMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the month of the given date.
+ *
+ * @description
+ * Get the month of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the month
+ *
+ * @example
+ * // Which month is 29 February 2012?
+ * var result = getMonth(new Date(2012, 1, 29))
+ * //=> 1
+ */
+function getMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var month = date.getMonth()
+  return month
+}
+
+module.exports = getMonth
+
 
 /***/ }),
 
@@ -786,7 +3437,69 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\nvar MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000\n\n/**\n * @category Range Helpers\n * @summary Get the number of days that overlap in two date ranges\n *\n * @description\n * Get the number of days that overlap in two date ranges\n *\n * @param {Date|String|Number} initialRangeStartDate - the start of the initial range\n * @param {Date|String|Number} initialRangeEndDate - the end of the initial range\n * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with\n * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with\n * @returns {Number} the number of days that overlap in two date ranges\n * @throws {Error} startDate of a date range cannot be after its endDate\n *\n * @example\n * // For overlapping date ranges adds 1 for each started overlapping day:\n * getOverlappingDaysInRanges(\n *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)\n * )\n * //=> 3\n *\n * @example\n * // For non-overlapping date ranges returns 0:\n * getOverlappingDaysInRanges(\n *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)\n * )\n * //=> 0\n */\nfunction getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {\n  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()\n  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()\n  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()\n  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()\n\n  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {\n    throw new Error('The start of the range cannot be after the end of the range')\n  }\n\n  var isOverlapping = initialStartTime < comparedEndTime && comparedStartTime < initialEndTime\n\n  if (!isOverlapping) {\n    return 0\n  }\n\n  var overlapStartDate = comparedStartTime < initialStartTime\n    ? initialStartTime\n    : comparedStartTime\n\n  var overlapEndDate = comparedEndTime > initialEndTime\n    ? initialEndTime\n    : comparedEndTime\n\n  var differenceInMs = overlapEndDate - overlapStartDate\n\n  return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)\n}\n\nmodule.exports = getOverlappingDaysInRanges\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_overlapping_days_in_ranges/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+
+/**
+ * @category Range Helpers
+ * @summary Get the number of days that overlap in two date ranges
+ *
+ * @description
+ * Get the number of days that overlap in two date ranges
+ *
+ * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
+ * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
+ * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
+ * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
+ * @returns {Number} the number of days that overlap in two date ranges
+ * @throws {Error} startDate of a date range cannot be after its endDate
+ *
+ * @example
+ * // For overlapping date ranges adds 1 for each started overlapping day:
+ * getOverlappingDaysInRanges(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
+ * )
+ * //=> 3
+ *
+ * @example
+ * // For non-overlapping date ranges returns 0:
+ * getOverlappingDaysInRanges(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
+ * )
+ * //=> 0
+ */
+function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
+  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
+  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
+  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
+  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+
+  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
+    throw new Error('The start of the range cannot be after the end of the range')
+  }
+
+  var isOverlapping = initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+
+  if (!isOverlapping) {
+    return 0
+  }
+
+  var overlapStartDate = comparedStartTime < initialStartTime
+    ? initialStartTime
+    : comparedStartTime
+
+  var overlapEndDate = comparedEndTime > initialEndTime
+    ? initialEndTime
+    : comparedEndTime
+
+  var differenceInMs = overlapEndDate - overlapStartDate
+
+  return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
+}
+
+module.exports = getOverlappingDaysInRanges
+
 
 /***/ }),
 
@@ -797,7 +3510,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Get the year quarter of the given date.\n *\n * @description\n * Get the year quarter of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the quarter\n *\n * @example\n * // Which quarter is 2 July 2014?\n * var result = getQuarter(new Date(2014, 6, 2))\n * //=> 3\n */\nfunction getQuarter (dirtyDate) {\n  var date = parse(dirtyDate)\n  var quarter = Math.floor(date.getMonth() / 3) + 1\n  return quarter\n}\n\nmodule.exports = getQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_quarter/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Get the year quarter of the given date.
+ *
+ * @description
+ * Get the year quarter of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the quarter
+ *
+ * @example
+ * // Which quarter is 2 July 2014?
+ * var result = getQuarter(new Date(2014, 6, 2))
+ * //=> 3
+ */
+function getQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var quarter = Math.floor(date.getMonth() / 3) + 1
+  return quarter
+}
+
+module.exports = getQuarter
+
 
 /***/ }),
 
@@ -808,7 +3545,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Get the seconds of the given date.\n *\n * @description\n * Get the seconds of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the seconds\n *\n * @example\n * // Get the seconds of 29 February 2012 11:45:05.123:\n * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))\n * //=> 5\n */\nfunction getSeconds (dirtyDate) {\n  var date = parse(dirtyDate)\n  var seconds = date.getSeconds()\n  return seconds\n}\n\nmodule.exports = getSeconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_seconds/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Get the seconds of the given date.
+ *
+ * @description
+ * Get the seconds of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the seconds
+ *
+ * @example
+ * // Get the seconds of 29 February 2012 11:45:05.123:
+ * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * //=> 5
+ */
+function getSeconds (dirtyDate) {
+  var date = parse(dirtyDate)
+  var seconds = date.getSeconds()
+  return seconds
+}
+
+module.exports = getSeconds
+
 
 /***/ }),
 
@@ -819,7 +3580,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Timestamp Helpers\n * @summary Get the milliseconds timestamp of the given date.\n *\n * @description\n * Get the milliseconds timestamp of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the timestamp\n *\n * @example\n * // Get the timestamp of 29 February 2012 11:45:05.123:\n * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))\n * //=> 1330515905123\n */\nfunction getTime (dirtyDate) {\n  var date = parse(dirtyDate)\n  var timestamp = date.getTime()\n  return timestamp\n}\n\nmodule.exports = getTime\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_time/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Timestamp Helpers
+ * @summary Get the milliseconds timestamp of the given date.
+ *
+ * @description
+ * Get the milliseconds timestamp of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the timestamp
+ *
+ * @example
+ * // Get the timestamp of 29 February 2012 11:45:05.123:
+ * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * //=> 1330515905123
+ */
+function getTime (dirtyDate) {
+  var date = parse(dirtyDate)
+  var timestamp = date.getTime()
+  return timestamp
+}
+
+module.exports = getTime
+
 
 /***/ }),
 
@@ -830,7 +3615,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Get the year of the given date.\n *\n * @description\n * Get the year of the given date.\n *\n * @param {Date|String|Number} date - the given date\n * @returns {Number} the year\n *\n * @example\n * // Which year is 2 July 2014?\n * var result = getYear(new Date(2014, 6, 2))\n * //=> 2014\n */\nfunction getYear (dirtyDate) {\n  var date = parse(dirtyDate)\n  var year = date.getFullYear()\n  return year\n}\n\nmodule.exports = getYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/get_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the year of the given date.
+ *
+ * @description
+ * Get the year of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the year
+ *
+ * @example
+ * // Which year is 2 July 2014?
+ * var result = getYear(new Date(2014, 6, 2))
+ * //=> 2014
+ */
+function getYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  return year
+}
+
+module.exports = getYear
+
 
 /***/ }),
 
@@ -841,7 +3650,163 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = {\n  addDays: __webpack_require__(/*! ./add_days/index.js */ \"./node_modules/date-fns/add_days/index.js\"),\n  addHours: __webpack_require__(/*! ./add_hours/index.js */ \"./node_modules/date-fns/add_hours/index.js\"),\n  addISOYears: __webpack_require__(/*! ./add_iso_years/index.js */ \"./node_modules/date-fns/add_iso_years/index.js\"),\n  addMilliseconds: __webpack_require__(/*! ./add_milliseconds/index.js */ \"./node_modules/date-fns/add_milliseconds/index.js\"),\n  addMinutes: __webpack_require__(/*! ./add_minutes/index.js */ \"./node_modules/date-fns/add_minutes/index.js\"),\n  addMonths: __webpack_require__(/*! ./add_months/index.js */ \"./node_modules/date-fns/add_months/index.js\"),\n  addQuarters: __webpack_require__(/*! ./add_quarters/index.js */ \"./node_modules/date-fns/add_quarters/index.js\"),\n  addSeconds: __webpack_require__(/*! ./add_seconds/index.js */ \"./node_modules/date-fns/add_seconds/index.js\"),\n  addWeeks: __webpack_require__(/*! ./add_weeks/index.js */ \"./node_modules/date-fns/add_weeks/index.js\"),\n  addYears: __webpack_require__(/*! ./add_years/index.js */ \"./node_modules/date-fns/add_years/index.js\"),\n  areRangesOverlapping: __webpack_require__(/*! ./are_ranges_overlapping/index.js */ \"./node_modules/date-fns/are_ranges_overlapping/index.js\"),\n  closestIndexTo: __webpack_require__(/*! ./closest_index_to/index.js */ \"./node_modules/date-fns/closest_index_to/index.js\"),\n  closestTo: __webpack_require__(/*! ./closest_to/index.js */ \"./node_modules/date-fns/closest_to/index.js\"),\n  compareAsc: __webpack_require__(/*! ./compare_asc/index.js */ \"./node_modules/date-fns/compare_asc/index.js\"),\n  compareDesc: __webpack_require__(/*! ./compare_desc/index.js */ \"./node_modules/date-fns/compare_desc/index.js\"),\n  differenceInCalendarDays: __webpack_require__(/*! ./difference_in_calendar_days/index.js */ \"./node_modules/date-fns/difference_in_calendar_days/index.js\"),\n  differenceInCalendarISOWeeks: __webpack_require__(/*! ./difference_in_calendar_iso_weeks/index.js */ \"./node_modules/date-fns/difference_in_calendar_iso_weeks/index.js\"),\n  differenceInCalendarISOYears: __webpack_require__(/*! ./difference_in_calendar_iso_years/index.js */ \"./node_modules/date-fns/difference_in_calendar_iso_years/index.js\"),\n  differenceInCalendarMonths: __webpack_require__(/*! ./difference_in_calendar_months/index.js */ \"./node_modules/date-fns/difference_in_calendar_months/index.js\"),\n  differenceInCalendarQuarters: __webpack_require__(/*! ./difference_in_calendar_quarters/index.js */ \"./node_modules/date-fns/difference_in_calendar_quarters/index.js\"),\n  differenceInCalendarWeeks: __webpack_require__(/*! ./difference_in_calendar_weeks/index.js */ \"./node_modules/date-fns/difference_in_calendar_weeks/index.js\"),\n  differenceInCalendarYears: __webpack_require__(/*! ./difference_in_calendar_years/index.js */ \"./node_modules/date-fns/difference_in_calendar_years/index.js\"),\n  differenceInDays: __webpack_require__(/*! ./difference_in_days/index.js */ \"./node_modules/date-fns/difference_in_days/index.js\"),\n  differenceInHours: __webpack_require__(/*! ./difference_in_hours/index.js */ \"./node_modules/date-fns/difference_in_hours/index.js\"),\n  differenceInISOYears: __webpack_require__(/*! ./difference_in_iso_years/index.js */ \"./node_modules/date-fns/difference_in_iso_years/index.js\"),\n  differenceInMilliseconds: __webpack_require__(/*! ./difference_in_milliseconds/index.js */ \"./node_modules/date-fns/difference_in_milliseconds/index.js\"),\n  differenceInMinutes: __webpack_require__(/*! ./difference_in_minutes/index.js */ \"./node_modules/date-fns/difference_in_minutes/index.js\"),\n  differenceInMonths: __webpack_require__(/*! ./difference_in_months/index.js */ \"./node_modules/date-fns/difference_in_months/index.js\"),\n  differenceInQuarters: __webpack_require__(/*! ./difference_in_quarters/index.js */ \"./node_modules/date-fns/difference_in_quarters/index.js\"),\n  differenceInSeconds: __webpack_require__(/*! ./difference_in_seconds/index.js */ \"./node_modules/date-fns/difference_in_seconds/index.js\"),\n  differenceInWeeks: __webpack_require__(/*! ./difference_in_weeks/index.js */ \"./node_modules/date-fns/difference_in_weeks/index.js\"),\n  differenceInYears: __webpack_require__(/*! ./difference_in_years/index.js */ \"./node_modules/date-fns/difference_in_years/index.js\"),\n  distanceInWords: __webpack_require__(/*! ./distance_in_words/index.js */ \"./node_modules/date-fns/distance_in_words/index.js\"),\n  distanceInWordsStrict: __webpack_require__(/*! ./distance_in_words_strict/index.js */ \"./node_modules/date-fns/distance_in_words_strict/index.js\"),\n  distanceInWordsToNow: __webpack_require__(/*! ./distance_in_words_to_now/index.js */ \"./node_modules/date-fns/distance_in_words_to_now/index.js\"),\n  eachDay: __webpack_require__(/*! ./each_day/index.js */ \"./node_modules/date-fns/each_day/index.js\"),\n  endOfDay: __webpack_require__(/*! ./end_of_day/index.js */ \"./node_modules/date-fns/end_of_day/index.js\"),\n  endOfHour: __webpack_require__(/*! ./end_of_hour/index.js */ \"./node_modules/date-fns/end_of_hour/index.js\"),\n  endOfISOWeek: __webpack_require__(/*! ./end_of_iso_week/index.js */ \"./node_modules/date-fns/end_of_iso_week/index.js\"),\n  endOfISOYear: __webpack_require__(/*! ./end_of_iso_year/index.js */ \"./node_modules/date-fns/end_of_iso_year/index.js\"),\n  endOfMinute: __webpack_require__(/*! ./end_of_minute/index.js */ \"./node_modules/date-fns/end_of_minute/index.js\"),\n  endOfMonth: __webpack_require__(/*! ./end_of_month/index.js */ \"./node_modules/date-fns/end_of_month/index.js\"),\n  endOfQuarter: __webpack_require__(/*! ./end_of_quarter/index.js */ \"./node_modules/date-fns/end_of_quarter/index.js\"),\n  endOfSecond: __webpack_require__(/*! ./end_of_second/index.js */ \"./node_modules/date-fns/end_of_second/index.js\"),\n  endOfToday: __webpack_require__(/*! ./end_of_today/index.js */ \"./node_modules/date-fns/end_of_today/index.js\"),\n  endOfTomorrow: __webpack_require__(/*! ./end_of_tomorrow/index.js */ \"./node_modules/date-fns/end_of_tomorrow/index.js\"),\n  endOfWeek: __webpack_require__(/*! ./end_of_week/index.js */ \"./node_modules/date-fns/end_of_week/index.js\"),\n  endOfYear: __webpack_require__(/*! ./end_of_year/index.js */ \"./node_modules/date-fns/end_of_year/index.js\"),\n  endOfYesterday: __webpack_require__(/*! ./end_of_yesterday/index.js */ \"./node_modules/date-fns/end_of_yesterday/index.js\"),\n  format: __webpack_require__(/*! ./format/index.js */ \"./node_modules/date-fns/format/index.js\"),\n  getDate: __webpack_require__(/*! ./get_date/index.js */ \"./node_modules/date-fns/get_date/index.js\"),\n  getDay: __webpack_require__(/*! ./get_day/index.js */ \"./node_modules/date-fns/get_day/index.js\"),\n  getDayOfYear: __webpack_require__(/*! ./get_day_of_year/index.js */ \"./node_modules/date-fns/get_day_of_year/index.js\"),\n  getDaysInMonth: __webpack_require__(/*! ./get_days_in_month/index.js */ \"./node_modules/date-fns/get_days_in_month/index.js\"),\n  getDaysInYear: __webpack_require__(/*! ./get_days_in_year/index.js */ \"./node_modules/date-fns/get_days_in_year/index.js\"),\n  getHours: __webpack_require__(/*! ./get_hours/index.js */ \"./node_modules/date-fns/get_hours/index.js\"),\n  getISODay: __webpack_require__(/*! ./get_iso_day/index.js */ \"./node_modules/date-fns/get_iso_day/index.js\"),\n  getISOWeek: __webpack_require__(/*! ./get_iso_week/index.js */ \"./node_modules/date-fns/get_iso_week/index.js\"),\n  getISOWeeksInYear: __webpack_require__(/*! ./get_iso_weeks_in_year/index.js */ \"./node_modules/date-fns/get_iso_weeks_in_year/index.js\"),\n  getISOYear: __webpack_require__(/*! ./get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\"),\n  getMilliseconds: __webpack_require__(/*! ./get_milliseconds/index.js */ \"./node_modules/date-fns/get_milliseconds/index.js\"),\n  getMinutes: __webpack_require__(/*! ./get_minutes/index.js */ \"./node_modules/date-fns/get_minutes/index.js\"),\n  getMonth: __webpack_require__(/*! ./get_month/index.js */ \"./node_modules/date-fns/get_month/index.js\"),\n  getOverlappingDaysInRanges: __webpack_require__(/*! ./get_overlapping_days_in_ranges/index.js */ \"./node_modules/date-fns/get_overlapping_days_in_ranges/index.js\"),\n  getQuarter: __webpack_require__(/*! ./get_quarter/index.js */ \"./node_modules/date-fns/get_quarter/index.js\"),\n  getSeconds: __webpack_require__(/*! ./get_seconds/index.js */ \"./node_modules/date-fns/get_seconds/index.js\"),\n  getTime: __webpack_require__(/*! ./get_time/index.js */ \"./node_modules/date-fns/get_time/index.js\"),\n  getYear: __webpack_require__(/*! ./get_year/index.js */ \"./node_modules/date-fns/get_year/index.js\"),\n  isAfter: __webpack_require__(/*! ./is_after/index.js */ \"./node_modules/date-fns/is_after/index.js\"),\n  isBefore: __webpack_require__(/*! ./is_before/index.js */ \"./node_modules/date-fns/is_before/index.js\"),\n  isDate: __webpack_require__(/*! ./is_date/index.js */ \"./node_modules/date-fns/is_date/index.js\"),\n  isEqual: __webpack_require__(/*! ./is_equal/index.js */ \"./node_modules/date-fns/is_equal/index.js\"),\n  isFirstDayOfMonth: __webpack_require__(/*! ./is_first_day_of_month/index.js */ \"./node_modules/date-fns/is_first_day_of_month/index.js\"),\n  isFriday: __webpack_require__(/*! ./is_friday/index.js */ \"./node_modules/date-fns/is_friday/index.js\"),\n  isFuture: __webpack_require__(/*! ./is_future/index.js */ \"./node_modules/date-fns/is_future/index.js\"),\n  isLastDayOfMonth: __webpack_require__(/*! ./is_last_day_of_month/index.js */ \"./node_modules/date-fns/is_last_day_of_month/index.js\"),\n  isLeapYear: __webpack_require__(/*! ./is_leap_year/index.js */ \"./node_modules/date-fns/is_leap_year/index.js\"),\n  isMonday: __webpack_require__(/*! ./is_monday/index.js */ \"./node_modules/date-fns/is_monday/index.js\"),\n  isPast: __webpack_require__(/*! ./is_past/index.js */ \"./node_modules/date-fns/is_past/index.js\"),\n  isSameDay: __webpack_require__(/*! ./is_same_day/index.js */ \"./node_modules/date-fns/is_same_day/index.js\"),\n  isSameHour: __webpack_require__(/*! ./is_same_hour/index.js */ \"./node_modules/date-fns/is_same_hour/index.js\"),\n  isSameISOWeek: __webpack_require__(/*! ./is_same_iso_week/index.js */ \"./node_modules/date-fns/is_same_iso_week/index.js\"),\n  isSameISOYear: __webpack_require__(/*! ./is_same_iso_year/index.js */ \"./node_modules/date-fns/is_same_iso_year/index.js\"),\n  isSameMinute: __webpack_require__(/*! ./is_same_minute/index.js */ \"./node_modules/date-fns/is_same_minute/index.js\"),\n  isSameMonth: __webpack_require__(/*! ./is_same_month/index.js */ \"./node_modules/date-fns/is_same_month/index.js\"),\n  isSameQuarter: __webpack_require__(/*! ./is_same_quarter/index.js */ \"./node_modules/date-fns/is_same_quarter/index.js\"),\n  isSameSecond: __webpack_require__(/*! ./is_same_second/index.js */ \"./node_modules/date-fns/is_same_second/index.js\"),\n  isSameWeek: __webpack_require__(/*! ./is_same_week/index.js */ \"./node_modules/date-fns/is_same_week/index.js\"),\n  isSameYear: __webpack_require__(/*! ./is_same_year/index.js */ \"./node_modules/date-fns/is_same_year/index.js\"),\n  isSaturday: __webpack_require__(/*! ./is_saturday/index.js */ \"./node_modules/date-fns/is_saturday/index.js\"),\n  isSunday: __webpack_require__(/*! ./is_sunday/index.js */ \"./node_modules/date-fns/is_sunday/index.js\"),\n  isThisHour: __webpack_require__(/*! ./is_this_hour/index.js */ \"./node_modules/date-fns/is_this_hour/index.js\"),\n  isThisISOWeek: __webpack_require__(/*! ./is_this_iso_week/index.js */ \"./node_modules/date-fns/is_this_iso_week/index.js\"),\n  isThisISOYear: __webpack_require__(/*! ./is_this_iso_year/index.js */ \"./node_modules/date-fns/is_this_iso_year/index.js\"),\n  isThisMinute: __webpack_require__(/*! ./is_this_minute/index.js */ \"./node_modules/date-fns/is_this_minute/index.js\"),\n  isThisMonth: __webpack_require__(/*! ./is_this_month/index.js */ \"./node_modules/date-fns/is_this_month/index.js\"),\n  isThisQuarter: __webpack_require__(/*! ./is_this_quarter/index.js */ \"./node_modules/date-fns/is_this_quarter/index.js\"),\n  isThisSecond: __webpack_require__(/*! ./is_this_second/index.js */ \"./node_modules/date-fns/is_this_second/index.js\"),\n  isThisWeek: __webpack_require__(/*! ./is_this_week/index.js */ \"./node_modules/date-fns/is_this_week/index.js\"),\n  isThisYear: __webpack_require__(/*! ./is_this_year/index.js */ \"./node_modules/date-fns/is_this_year/index.js\"),\n  isThursday: __webpack_require__(/*! ./is_thursday/index.js */ \"./node_modules/date-fns/is_thursday/index.js\"),\n  isToday: __webpack_require__(/*! ./is_today/index.js */ \"./node_modules/date-fns/is_today/index.js\"),\n  isTomorrow: __webpack_require__(/*! ./is_tomorrow/index.js */ \"./node_modules/date-fns/is_tomorrow/index.js\"),\n  isTuesday: __webpack_require__(/*! ./is_tuesday/index.js */ \"./node_modules/date-fns/is_tuesday/index.js\"),\n  isValid: __webpack_require__(/*! ./is_valid/index.js */ \"./node_modules/date-fns/is_valid/index.js\"),\n  isWednesday: __webpack_require__(/*! ./is_wednesday/index.js */ \"./node_modules/date-fns/is_wednesday/index.js\"),\n  isWeekend: __webpack_require__(/*! ./is_weekend/index.js */ \"./node_modules/date-fns/is_weekend/index.js\"),\n  isWithinRange: __webpack_require__(/*! ./is_within_range/index.js */ \"./node_modules/date-fns/is_within_range/index.js\"),\n  isYesterday: __webpack_require__(/*! ./is_yesterday/index.js */ \"./node_modules/date-fns/is_yesterday/index.js\"),\n  lastDayOfISOWeek: __webpack_require__(/*! ./last_day_of_iso_week/index.js */ \"./node_modules/date-fns/last_day_of_iso_week/index.js\"),\n  lastDayOfISOYear: __webpack_require__(/*! ./last_day_of_iso_year/index.js */ \"./node_modules/date-fns/last_day_of_iso_year/index.js\"),\n  lastDayOfMonth: __webpack_require__(/*! ./last_day_of_month/index.js */ \"./node_modules/date-fns/last_day_of_month/index.js\"),\n  lastDayOfQuarter: __webpack_require__(/*! ./last_day_of_quarter/index.js */ \"./node_modules/date-fns/last_day_of_quarter/index.js\"),\n  lastDayOfWeek: __webpack_require__(/*! ./last_day_of_week/index.js */ \"./node_modules/date-fns/last_day_of_week/index.js\"),\n  lastDayOfYear: __webpack_require__(/*! ./last_day_of_year/index.js */ \"./node_modules/date-fns/last_day_of_year/index.js\"),\n  max: __webpack_require__(/*! ./max/index.js */ \"./node_modules/date-fns/max/index.js\"),\n  min: __webpack_require__(/*! ./min/index.js */ \"./node_modules/date-fns/min/index.js\"),\n  parse: __webpack_require__(/*! ./parse/index.js */ \"./node_modules/date-fns/parse/index.js\"),\n  setDate: __webpack_require__(/*! ./set_date/index.js */ \"./node_modules/date-fns/set_date/index.js\"),\n  setDay: __webpack_require__(/*! ./set_day/index.js */ \"./node_modules/date-fns/set_day/index.js\"),\n  setDayOfYear: __webpack_require__(/*! ./set_day_of_year/index.js */ \"./node_modules/date-fns/set_day_of_year/index.js\"),\n  setHours: __webpack_require__(/*! ./set_hours/index.js */ \"./node_modules/date-fns/set_hours/index.js\"),\n  setISODay: __webpack_require__(/*! ./set_iso_day/index.js */ \"./node_modules/date-fns/set_iso_day/index.js\"),\n  setISOWeek: __webpack_require__(/*! ./set_iso_week/index.js */ \"./node_modules/date-fns/set_iso_week/index.js\"),\n  setISOYear: __webpack_require__(/*! ./set_iso_year/index.js */ \"./node_modules/date-fns/set_iso_year/index.js\"),\n  setMilliseconds: __webpack_require__(/*! ./set_milliseconds/index.js */ \"./node_modules/date-fns/set_milliseconds/index.js\"),\n  setMinutes: __webpack_require__(/*! ./set_minutes/index.js */ \"./node_modules/date-fns/set_minutes/index.js\"),\n  setMonth: __webpack_require__(/*! ./set_month/index.js */ \"./node_modules/date-fns/set_month/index.js\"),\n  setQuarter: __webpack_require__(/*! ./set_quarter/index.js */ \"./node_modules/date-fns/set_quarter/index.js\"),\n  setSeconds: __webpack_require__(/*! ./set_seconds/index.js */ \"./node_modules/date-fns/set_seconds/index.js\"),\n  setYear: __webpack_require__(/*! ./set_year/index.js */ \"./node_modules/date-fns/set_year/index.js\"),\n  startOfDay: __webpack_require__(/*! ./start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\"),\n  startOfHour: __webpack_require__(/*! ./start_of_hour/index.js */ \"./node_modules/date-fns/start_of_hour/index.js\"),\n  startOfISOWeek: __webpack_require__(/*! ./start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\"),\n  startOfISOYear: __webpack_require__(/*! ./start_of_iso_year/index.js */ \"./node_modules/date-fns/start_of_iso_year/index.js\"),\n  startOfMinute: __webpack_require__(/*! ./start_of_minute/index.js */ \"./node_modules/date-fns/start_of_minute/index.js\"),\n  startOfMonth: __webpack_require__(/*! ./start_of_month/index.js */ \"./node_modules/date-fns/start_of_month/index.js\"),\n  startOfQuarter: __webpack_require__(/*! ./start_of_quarter/index.js */ \"./node_modules/date-fns/start_of_quarter/index.js\"),\n  startOfSecond: __webpack_require__(/*! ./start_of_second/index.js */ \"./node_modules/date-fns/start_of_second/index.js\"),\n  startOfToday: __webpack_require__(/*! ./start_of_today/index.js */ \"./node_modules/date-fns/start_of_today/index.js\"),\n  startOfTomorrow: __webpack_require__(/*! ./start_of_tomorrow/index.js */ \"./node_modules/date-fns/start_of_tomorrow/index.js\"),\n  startOfWeek: __webpack_require__(/*! ./start_of_week/index.js */ \"./node_modules/date-fns/start_of_week/index.js\"),\n  startOfYear: __webpack_require__(/*! ./start_of_year/index.js */ \"./node_modules/date-fns/start_of_year/index.js\"),\n  startOfYesterday: __webpack_require__(/*! ./start_of_yesterday/index.js */ \"./node_modules/date-fns/start_of_yesterday/index.js\"),\n  subDays: __webpack_require__(/*! ./sub_days/index.js */ \"./node_modules/date-fns/sub_days/index.js\"),\n  subHours: __webpack_require__(/*! ./sub_hours/index.js */ \"./node_modules/date-fns/sub_hours/index.js\"),\n  subISOYears: __webpack_require__(/*! ./sub_iso_years/index.js */ \"./node_modules/date-fns/sub_iso_years/index.js\"),\n  subMilliseconds: __webpack_require__(/*! ./sub_milliseconds/index.js */ \"./node_modules/date-fns/sub_milliseconds/index.js\"),\n  subMinutes: __webpack_require__(/*! ./sub_minutes/index.js */ \"./node_modules/date-fns/sub_minutes/index.js\"),\n  subMonths: __webpack_require__(/*! ./sub_months/index.js */ \"./node_modules/date-fns/sub_months/index.js\"),\n  subQuarters: __webpack_require__(/*! ./sub_quarters/index.js */ \"./node_modules/date-fns/sub_quarters/index.js\"),\n  subSeconds: __webpack_require__(/*! ./sub_seconds/index.js */ \"./node_modules/date-fns/sub_seconds/index.js\"),\n  subWeeks: __webpack_require__(/*! ./sub_weeks/index.js */ \"./node_modules/date-fns/sub_weeks/index.js\"),\n  subYears: __webpack_require__(/*! ./sub_years/index.js */ \"./node_modules/date-fns/sub_years/index.js\")\n}\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/index.js?");
+module.exports = {
+  addDays: __webpack_require__(/*! ./add_days/index.js */ "./node_modules/date-fns/add_days/index.js"),
+  addHours: __webpack_require__(/*! ./add_hours/index.js */ "./node_modules/date-fns/add_hours/index.js"),
+  addISOYears: __webpack_require__(/*! ./add_iso_years/index.js */ "./node_modules/date-fns/add_iso_years/index.js"),
+  addMilliseconds: __webpack_require__(/*! ./add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js"),
+  addMinutes: __webpack_require__(/*! ./add_minutes/index.js */ "./node_modules/date-fns/add_minutes/index.js"),
+  addMonths: __webpack_require__(/*! ./add_months/index.js */ "./node_modules/date-fns/add_months/index.js"),
+  addQuarters: __webpack_require__(/*! ./add_quarters/index.js */ "./node_modules/date-fns/add_quarters/index.js"),
+  addSeconds: __webpack_require__(/*! ./add_seconds/index.js */ "./node_modules/date-fns/add_seconds/index.js"),
+  addWeeks: __webpack_require__(/*! ./add_weeks/index.js */ "./node_modules/date-fns/add_weeks/index.js"),
+  addYears: __webpack_require__(/*! ./add_years/index.js */ "./node_modules/date-fns/add_years/index.js"),
+  areRangesOverlapping: __webpack_require__(/*! ./are_ranges_overlapping/index.js */ "./node_modules/date-fns/are_ranges_overlapping/index.js"),
+  closestIndexTo: __webpack_require__(/*! ./closest_index_to/index.js */ "./node_modules/date-fns/closest_index_to/index.js"),
+  closestTo: __webpack_require__(/*! ./closest_to/index.js */ "./node_modules/date-fns/closest_to/index.js"),
+  compareAsc: __webpack_require__(/*! ./compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js"),
+  compareDesc: __webpack_require__(/*! ./compare_desc/index.js */ "./node_modules/date-fns/compare_desc/index.js"),
+  differenceInCalendarDays: __webpack_require__(/*! ./difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js"),
+  differenceInCalendarISOWeeks: __webpack_require__(/*! ./difference_in_calendar_iso_weeks/index.js */ "./node_modules/date-fns/difference_in_calendar_iso_weeks/index.js"),
+  differenceInCalendarISOYears: __webpack_require__(/*! ./difference_in_calendar_iso_years/index.js */ "./node_modules/date-fns/difference_in_calendar_iso_years/index.js"),
+  differenceInCalendarMonths: __webpack_require__(/*! ./difference_in_calendar_months/index.js */ "./node_modules/date-fns/difference_in_calendar_months/index.js"),
+  differenceInCalendarQuarters: __webpack_require__(/*! ./difference_in_calendar_quarters/index.js */ "./node_modules/date-fns/difference_in_calendar_quarters/index.js"),
+  differenceInCalendarWeeks: __webpack_require__(/*! ./difference_in_calendar_weeks/index.js */ "./node_modules/date-fns/difference_in_calendar_weeks/index.js"),
+  differenceInCalendarYears: __webpack_require__(/*! ./difference_in_calendar_years/index.js */ "./node_modules/date-fns/difference_in_calendar_years/index.js"),
+  differenceInDays: __webpack_require__(/*! ./difference_in_days/index.js */ "./node_modules/date-fns/difference_in_days/index.js"),
+  differenceInHours: __webpack_require__(/*! ./difference_in_hours/index.js */ "./node_modules/date-fns/difference_in_hours/index.js"),
+  differenceInISOYears: __webpack_require__(/*! ./difference_in_iso_years/index.js */ "./node_modules/date-fns/difference_in_iso_years/index.js"),
+  differenceInMilliseconds: __webpack_require__(/*! ./difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js"),
+  differenceInMinutes: __webpack_require__(/*! ./difference_in_minutes/index.js */ "./node_modules/date-fns/difference_in_minutes/index.js"),
+  differenceInMonths: __webpack_require__(/*! ./difference_in_months/index.js */ "./node_modules/date-fns/difference_in_months/index.js"),
+  differenceInQuarters: __webpack_require__(/*! ./difference_in_quarters/index.js */ "./node_modules/date-fns/difference_in_quarters/index.js"),
+  differenceInSeconds: __webpack_require__(/*! ./difference_in_seconds/index.js */ "./node_modules/date-fns/difference_in_seconds/index.js"),
+  differenceInWeeks: __webpack_require__(/*! ./difference_in_weeks/index.js */ "./node_modules/date-fns/difference_in_weeks/index.js"),
+  differenceInYears: __webpack_require__(/*! ./difference_in_years/index.js */ "./node_modules/date-fns/difference_in_years/index.js"),
+  distanceInWords: __webpack_require__(/*! ./distance_in_words/index.js */ "./node_modules/date-fns/distance_in_words/index.js"),
+  distanceInWordsStrict: __webpack_require__(/*! ./distance_in_words_strict/index.js */ "./node_modules/date-fns/distance_in_words_strict/index.js"),
+  distanceInWordsToNow: __webpack_require__(/*! ./distance_in_words_to_now/index.js */ "./node_modules/date-fns/distance_in_words_to_now/index.js"),
+  eachDay: __webpack_require__(/*! ./each_day/index.js */ "./node_modules/date-fns/each_day/index.js"),
+  endOfDay: __webpack_require__(/*! ./end_of_day/index.js */ "./node_modules/date-fns/end_of_day/index.js"),
+  endOfHour: __webpack_require__(/*! ./end_of_hour/index.js */ "./node_modules/date-fns/end_of_hour/index.js"),
+  endOfISOWeek: __webpack_require__(/*! ./end_of_iso_week/index.js */ "./node_modules/date-fns/end_of_iso_week/index.js"),
+  endOfISOYear: __webpack_require__(/*! ./end_of_iso_year/index.js */ "./node_modules/date-fns/end_of_iso_year/index.js"),
+  endOfMinute: __webpack_require__(/*! ./end_of_minute/index.js */ "./node_modules/date-fns/end_of_minute/index.js"),
+  endOfMonth: __webpack_require__(/*! ./end_of_month/index.js */ "./node_modules/date-fns/end_of_month/index.js"),
+  endOfQuarter: __webpack_require__(/*! ./end_of_quarter/index.js */ "./node_modules/date-fns/end_of_quarter/index.js"),
+  endOfSecond: __webpack_require__(/*! ./end_of_second/index.js */ "./node_modules/date-fns/end_of_second/index.js"),
+  endOfToday: __webpack_require__(/*! ./end_of_today/index.js */ "./node_modules/date-fns/end_of_today/index.js"),
+  endOfTomorrow: __webpack_require__(/*! ./end_of_tomorrow/index.js */ "./node_modules/date-fns/end_of_tomorrow/index.js"),
+  endOfWeek: __webpack_require__(/*! ./end_of_week/index.js */ "./node_modules/date-fns/end_of_week/index.js"),
+  endOfYear: __webpack_require__(/*! ./end_of_year/index.js */ "./node_modules/date-fns/end_of_year/index.js"),
+  endOfYesterday: __webpack_require__(/*! ./end_of_yesterday/index.js */ "./node_modules/date-fns/end_of_yesterday/index.js"),
+  format: __webpack_require__(/*! ./format/index.js */ "./node_modules/date-fns/format/index.js"),
+  getDate: __webpack_require__(/*! ./get_date/index.js */ "./node_modules/date-fns/get_date/index.js"),
+  getDay: __webpack_require__(/*! ./get_day/index.js */ "./node_modules/date-fns/get_day/index.js"),
+  getDayOfYear: __webpack_require__(/*! ./get_day_of_year/index.js */ "./node_modules/date-fns/get_day_of_year/index.js"),
+  getDaysInMonth: __webpack_require__(/*! ./get_days_in_month/index.js */ "./node_modules/date-fns/get_days_in_month/index.js"),
+  getDaysInYear: __webpack_require__(/*! ./get_days_in_year/index.js */ "./node_modules/date-fns/get_days_in_year/index.js"),
+  getHours: __webpack_require__(/*! ./get_hours/index.js */ "./node_modules/date-fns/get_hours/index.js"),
+  getISODay: __webpack_require__(/*! ./get_iso_day/index.js */ "./node_modules/date-fns/get_iso_day/index.js"),
+  getISOWeek: __webpack_require__(/*! ./get_iso_week/index.js */ "./node_modules/date-fns/get_iso_week/index.js"),
+  getISOWeeksInYear: __webpack_require__(/*! ./get_iso_weeks_in_year/index.js */ "./node_modules/date-fns/get_iso_weeks_in_year/index.js"),
+  getISOYear: __webpack_require__(/*! ./get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js"),
+  getMilliseconds: __webpack_require__(/*! ./get_milliseconds/index.js */ "./node_modules/date-fns/get_milliseconds/index.js"),
+  getMinutes: __webpack_require__(/*! ./get_minutes/index.js */ "./node_modules/date-fns/get_minutes/index.js"),
+  getMonth: __webpack_require__(/*! ./get_month/index.js */ "./node_modules/date-fns/get_month/index.js"),
+  getOverlappingDaysInRanges: __webpack_require__(/*! ./get_overlapping_days_in_ranges/index.js */ "./node_modules/date-fns/get_overlapping_days_in_ranges/index.js"),
+  getQuarter: __webpack_require__(/*! ./get_quarter/index.js */ "./node_modules/date-fns/get_quarter/index.js"),
+  getSeconds: __webpack_require__(/*! ./get_seconds/index.js */ "./node_modules/date-fns/get_seconds/index.js"),
+  getTime: __webpack_require__(/*! ./get_time/index.js */ "./node_modules/date-fns/get_time/index.js"),
+  getYear: __webpack_require__(/*! ./get_year/index.js */ "./node_modules/date-fns/get_year/index.js"),
+  isAfter: __webpack_require__(/*! ./is_after/index.js */ "./node_modules/date-fns/is_after/index.js"),
+  isBefore: __webpack_require__(/*! ./is_before/index.js */ "./node_modules/date-fns/is_before/index.js"),
+  isDate: __webpack_require__(/*! ./is_date/index.js */ "./node_modules/date-fns/is_date/index.js"),
+  isEqual: __webpack_require__(/*! ./is_equal/index.js */ "./node_modules/date-fns/is_equal/index.js"),
+  isFirstDayOfMonth: __webpack_require__(/*! ./is_first_day_of_month/index.js */ "./node_modules/date-fns/is_first_day_of_month/index.js"),
+  isFriday: __webpack_require__(/*! ./is_friday/index.js */ "./node_modules/date-fns/is_friday/index.js"),
+  isFuture: __webpack_require__(/*! ./is_future/index.js */ "./node_modules/date-fns/is_future/index.js"),
+  isLastDayOfMonth: __webpack_require__(/*! ./is_last_day_of_month/index.js */ "./node_modules/date-fns/is_last_day_of_month/index.js"),
+  isLeapYear: __webpack_require__(/*! ./is_leap_year/index.js */ "./node_modules/date-fns/is_leap_year/index.js"),
+  isMonday: __webpack_require__(/*! ./is_monday/index.js */ "./node_modules/date-fns/is_monday/index.js"),
+  isPast: __webpack_require__(/*! ./is_past/index.js */ "./node_modules/date-fns/is_past/index.js"),
+  isSameDay: __webpack_require__(/*! ./is_same_day/index.js */ "./node_modules/date-fns/is_same_day/index.js"),
+  isSameHour: __webpack_require__(/*! ./is_same_hour/index.js */ "./node_modules/date-fns/is_same_hour/index.js"),
+  isSameISOWeek: __webpack_require__(/*! ./is_same_iso_week/index.js */ "./node_modules/date-fns/is_same_iso_week/index.js"),
+  isSameISOYear: __webpack_require__(/*! ./is_same_iso_year/index.js */ "./node_modules/date-fns/is_same_iso_year/index.js"),
+  isSameMinute: __webpack_require__(/*! ./is_same_minute/index.js */ "./node_modules/date-fns/is_same_minute/index.js"),
+  isSameMonth: __webpack_require__(/*! ./is_same_month/index.js */ "./node_modules/date-fns/is_same_month/index.js"),
+  isSameQuarter: __webpack_require__(/*! ./is_same_quarter/index.js */ "./node_modules/date-fns/is_same_quarter/index.js"),
+  isSameSecond: __webpack_require__(/*! ./is_same_second/index.js */ "./node_modules/date-fns/is_same_second/index.js"),
+  isSameWeek: __webpack_require__(/*! ./is_same_week/index.js */ "./node_modules/date-fns/is_same_week/index.js"),
+  isSameYear: __webpack_require__(/*! ./is_same_year/index.js */ "./node_modules/date-fns/is_same_year/index.js"),
+  isSaturday: __webpack_require__(/*! ./is_saturday/index.js */ "./node_modules/date-fns/is_saturday/index.js"),
+  isSunday: __webpack_require__(/*! ./is_sunday/index.js */ "./node_modules/date-fns/is_sunday/index.js"),
+  isThisHour: __webpack_require__(/*! ./is_this_hour/index.js */ "./node_modules/date-fns/is_this_hour/index.js"),
+  isThisISOWeek: __webpack_require__(/*! ./is_this_iso_week/index.js */ "./node_modules/date-fns/is_this_iso_week/index.js"),
+  isThisISOYear: __webpack_require__(/*! ./is_this_iso_year/index.js */ "./node_modules/date-fns/is_this_iso_year/index.js"),
+  isThisMinute: __webpack_require__(/*! ./is_this_minute/index.js */ "./node_modules/date-fns/is_this_minute/index.js"),
+  isThisMonth: __webpack_require__(/*! ./is_this_month/index.js */ "./node_modules/date-fns/is_this_month/index.js"),
+  isThisQuarter: __webpack_require__(/*! ./is_this_quarter/index.js */ "./node_modules/date-fns/is_this_quarter/index.js"),
+  isThisSecond: __webpack_require__(/*! ./is_this_second/index.js */ "./node_modules/date-fns/is_this_second/index.js"),
+  isThisWeek: __webpack_require__(/*! ./is_this_week/index.js */ "./node_modules/date-fns/is_this_week/index.js"),
+  isThisYear: __webpack_require__(/*! ./is_this_year/index.js */ "./node_modules/date-fns/is_this_year/index.js"),
+  isThursday: __webpack_require__(/*! ./is_thursday/index.js */ "./node_modules/date-fns/is_thursday/index.js"),
+  isToday: __webpack_require__(/*! ./is_today/index.js */ "./node_modules/date-fns/is_today/index.js"),
+  isTomorrow: __webpack_require__(/*! ./is_tomorrow/index.js */ "./node_modules/date-fns/is_tomorrow/index.js"),
+  isTuesday: __webpack_require__(/*! ./is_tuesday/index.js */ "./node_modules/date-fns/is_tuesday/index.js"),
+  isValid: __webpack_require__(/*! ./is_valid/index.js */ "./node_modules/date-fns/is_valid/index.js"),
+  isWednesday: __webpack_require__(/*! ./is_wednesday/index.js */ "./node_modules/date-fns/is_wednesday/index.js"),
+  isWeekend: __webpack_require__(/*! ./is_weekend/index.js */ "./node_modules/date-fns/is_weekend/index.js"),
+  isWithinRange: __webpack_require__(/*! ./is_within_range/index.js */ "./node_modules/date-fns/is_within_range/index.js"),
+  isYesterday: __webpack_require__(/*! ./is_yesterday/index.js */ "./node_modules/date-fns/is_yesterday/index.js"),
+  lastDayOfISOWeek: __webpack_require__(/*! ./last_day_of_iso_week/index.js */ "./node_modules/date-fns/last_day_of_iso_week/index.js"),
+  lastDayOfISOYear: __webpack_require__(/*! ./last_day_of_iso_year/index.js */ "./node_modules/date-fns/last_day_of_iso_year/index.js"),
+  lastDayOfMonth: __webpack_require__(/*! ./last_day_of_month/index.js */ "./node_modules/date-fns/last_day_of_month/index.js"),
+  lastDayOfQuarter: __webpack_require__(/*! ./last_day_of_quarter/index.js */ "./node_modules/date-fns/last_day_of_quarter/index.js"),
+  lastDayOfWeek: __webpack_require__(/*! ./last_day_of_week/index.js */ "./node_modules/date-fns/last_day_of_week/index.js"),
+  lastDayOfYear: __webpack_require__(/*! ./last_day_of_year/index.js */ "./node_modules/date-fns/last_day_of_year/index.js"),
+  max: __webpack_require__(/*! ./max/index.js */ "./node_modules/date-fns/max/index.js"),
+  min: __webpack_require__(/*! ./min/index.js */ "./node_modules/date-fns/min/index.js"),
+  parse: __webpack_require__(/*! ./parse/index.js */ "./node_modules/date-fns/parse/index.js"),
+  setDate: __webpack_require__(/*! ./set_date/index.js */ "./node_modules/date-fns/set_date/index.js"),
+  setDay: __webpack_require__(/*! ./set_day/index.js */ "./node_modules/date-fns/set_day/index.js"),
+  setDayOfYear: __webpack_require__(/*! ./set_day_of_year/index.js */ "./node_modules/date-fns/set_day_of_year/index.js"),
+  setHours: __webpack_require__(/*! ./set_hours/index.js */ "./node_modules/date-fns/set_hours/index.js"),
+  setISODay: __webpack_require__(/*! ./set_iso_day/index.js */ "./node_modules/date-fns/set_iso_day/index.js"),
+  setISOWeek: __webpack_require__(/*! ./set_iso_week/index.js */ "./node_modules/date-fns/set_iso_week/index.js"),
+  setISOYear: __webpack_require__(/*! ./set_iso_year/index.js */ "./node_modules/date-fns/set_iso_year/index.js"),
+  setMilliseconds: __webpack_require__(/*! ./set_milliseconds/index.js */ "./node_modules/date-fns/set_milliseconds/index.js"),
+  setMinutes: __webpack_require__(/*! ./set_minutes/index.js */ "./node_modules/date-fns/set_minutes/index.js"),
+  setMonth: __webpack_require__(/*! ./set_month/index.js */ "./node_modules/date-fns/set_month/index.js"),
+  setQuarter: __webpack_require__(/*! ./set_quarter/index.js */ "./node_modules/date-fns/set_quarter/index.js"),
+  setSeconds: __webpack_require__(/*! ./set_seconds/index.js */ "./node_modules/date-fns/set_seconds/index.js"),
+  setYear: __webpack_require__(/*! ./set_year/index.js */ "./node_modules/date-fns/set_year/index.js"),
+  startOfDay: __webpack_require__(/*! ./start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js"),
+  startOfHour: __webpack_require__(/*! ./start_of_hour/index.js */ "./node_modules/date-fns/start_of_hour/index.js"),
+  startOfISOWeek: __webpack_require__(/*! ./start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js"),
+  startOfISOYear: __webpack_require__(/*! ./start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js"),
+  startOfMinute: __webpack_require__(/*! ./start_of_minute/index.js */ "./node_modules/date-fns/start_of_minute/index.js"),
+  startOfMonth: __webpack_require__(/*! ./start_of_month/index.js */ "./node_modules/date-fns/start_of_month/index.js"),
+  startOfQuarter: __webpack_require__(/*! ./start_of_quarter/index.js */ "./node_modules/date-fns/start_of_quarter/index.js"),
+  startOfSecond: __webpack_require__(/*! ./start_of_second/index.js */ "./node_modules/date-fns/start_of_second/index.js"),
+  startOfToday: __webpack_require__(/*! ./start_of_today/index.js */ "./node_modules/date-fns/start_of_today/index.js"),
+  startOfTomorrow: __webpack_require__(/*! ./start_of_tomorrow/index.js */ "./node_modules/date-fns/start_of_tomorrow/index.js"),
+  startOfWeek: __webpack_require__(/*! ./start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js"),
+  startOfYear: __webpack_require__(/*! ./start_of_year/index.js */ "./node_modules/date-fns/start_of_year/index.js"),
+  startOfYesterday: __webpack_require__(/*! ./start_of_yesterday/index.js */ "./node_modules/date-fns/start_of_yesterday/index.js"),
+  subDays: __webpack_require__(/*! ./sub_days/index.js */ "./node_modules/date-fns/sub_days/index.js"),
+  subHours: __webpack_require__(/*! ./sub_hours/index.js */ "./node_modules/date-fns/sub_hours/index.js"),
+  subISOYears: __webpack_require__(/*! ./sub_iso_years/index.js */ "./node_modules/date-fns/sub_iso_years/index.js"),
+  subMilliseconds: __webpack_require__(/*! ./sub_milliseconds/index.js */ "./node_modules/date-fns/sub_milliseconds/index.js"),
+  subMinutes: __webpack_require__(/*! ./sub_minutes/index.js */ "./node_modules/date-fns/sub_minutes/index.js"),
+  subMonths: __webpack_require__(/*! ./sub_months/index.js */ "./node_modules/date-fns/sub_months/index.js"),
+  subQuarters: __webpack_require__(/*! ./sub_quarters/index.js */ "./node_modules/date-fns/sub_quarters/index.js"),
+  subSeconds: __webpack_require__(/*! ./sub_seconds/index.js */ "./node_modules/date-fns/sub_seconds/index.js"),
+  subWeeks: __webpack_require__(/*! ./sub_weeks/index.js */ "./node_modules/date-fns/sub_weeks/index.js"),
+  subYears: __webpack_require__(/*! ./sub_years/index.js */ "./node_modules/date-fns/sub_years/index.js")
+}
+
 
 /***/ }),
 
@@ -852,7 +3817,32 @@ eval("module.exports = {\n  addDays: __webpack_require__(/*! ./add_days/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Is the first date after the second one?\n *\n * @description\n * Is the first date after the second one?\n *\n * @param {Date|String|Number} date - the date that should be after the other one to return true\n * @param {Date|String|Number} dateToCompare - the date to compare with\n * @returns {Boolean} the first date is after the second date\n *\n * @example\n * // Is 10 July 1989 after 11 February 1987?\n * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))\n * //=> true\n */\nfunction isAfter (dirtyDate, dirtyDateToCompare) {\n  var date = parse(dirtyDate)\n  var dateToCompare = parse(dirtyDateToCompare)\n  return date.getTime() > dateToCompare.getTime()\n}\n\nmodule.exports = isAfter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_after/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the first date after the second one?
+ *
+ * @description
+ * Is the first date after the second one?
+ *
+ * @param {Date|String|Number} date - the date that should be after the other one to return true
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @returns {Boolean} the first date is after the second date
+ *
+ * @example
+ * // Is 10 July 1989 after 11 February 1987?
+ * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> true
+ */
+function isAfter (dirtyDate, dirtyDateToCompare) {
+  var date = parse(dirtyDate)
+  var dateToCompare = parse(dirtyDateToCompare)
+  return date.getTime() > dateToCompare.getTime()
+}
+
+module.exports = isAfter
+
 
 /***/ }),
 
@@ -863,7 +3853,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Is the first date before the second one?\n *\n * @description\n * Is the first date before the second one?\n *\n * @param {Date|String|Number} date - the date that should be before the other one to return true\n * @param {Date|String|Number} dateToCompare - the date to compare with\n * @returns {Boolean} the first date is before the second date\n *\n * @example\n * // Is 10 July 1989 before 11 February 1987?\n * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))\n * //=> false\n */\nfunction isBefore (dirtyDate, dirtyDateToCompare) {\n  var date = parse(dirtyDate)\n  var dateToCompare = parse(dirtyDateToCompare)\n  return date.getTime() < dateToCompare.getTime()\n}\n\nmodule.exports = isBefore\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_before/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the first date before the second one?
+ *
+ * @description
+ * Is the first date before the second one?
+ *
+ * @param {Date|String|Number} date - the date that should be before the other one to return true
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @returns {Boolean} the first date is before the second date
+ *
+ * @example
+ * // Is 10 July 1989 before 11 February 1987?
+ * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> false
+ */
+function isBefore (dirtyDate, dirtyDateToCompare) {
+  var date = parse(dirtyDate)
+  var dateToCompare = parse(dirtyDateToCompare)
+  return date.getTime() < dateToCompare.getTime()
+}
+
+module.exports = isBefore
+
 
 /***/ }),
 
@@ -874,7 +3889,27 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/**\n * @category Common Helpers\n * @summary Is the given argument an instance of Date?\n *\n * @description\n * Is the given argument an instance of Date?\n *\n * @param {*} argument - the argument to check\n * @returns {Boolean} the given argument is an instance of Date\n *\n * @example\n * // Is 'mayonnaise' a Date?\n * var result = isDate('mayonnaise')\n * //=> false\n */\nfunction isDate (argument) {\n  return argument instanceof Date\n}\n\nmodule.exports = isDate\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_date/index.js?");
+/**
+ * @category Common Helpers
+ * @summary Is the given argument an instance of Date?
+ *
+ * @description
+ * Is the given argument an instance of Date?
+ *
+ * @param {*} argument - the argument to check
+ * @returns {Boolean} the given argument is an instance of Date
+ *
+ * @example
+ * // Is 'mayonnaise' a Date?
+ * var result = isDate('mayonnaise')
+ * //=> false
+ */
+function isDate (argument) {
+  return argument instanceof Date
+}
+
+module.exports = isDate
+
 
 /***/ }),
 
@@ -885,7 +3920,35 @@ eval("/**\n * @category Common Helpers\n * @summary Is the given argument an ins
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Are the given dates equal?\n *\n * @description\n * Are the given dates equal?\n *\n * @param {Date|String|Number} dateLeft - the first date to compare\n * @param {Date|String|Number} dateRight - the second date to compare\n * @returns {Boolean} the dates are equal\n *\n * @example\n * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?\n * var result = isEqual(\n *   new Date(2014, 6, 2, 6, 30, 45, 0)\n *   new Date(2014, 6, 2, 6, 30, 45, 500)\n * )\n * //=> false\n */\nfunction isEqual (dirtyLeftDate, dirtyRightDate) {\n  var dateLeft = parse(dirtyLeftDate)\n  var dateRight = parse(dirtyRightDate)\n  return dateLeft.getTime() === dateRight.getTime()\n}\n\nmodule.exports = isEqual\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_equal/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Are the given dates equal?
+ *
+ * @description
+ * Are the given dates equal?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Boolean} the dates are equal
+ *
+ * @example
+ * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
+ * var result = isEqual(
+ *   new Date(2014, 6, 2, 6, 30, 45, 0)
+ *   new Date(2014, 6, 2, 6, 30, 45, 500)
+ * )
+ * //=> false
+ */
+function isEqual (dirtyLeftDate, dirtyRightDate) {
+  var dateLeft = parse(dirtyLeftDate)
+  var dateRight = parse(dirtyRightDate)
+  return dateLeft.getTime() === dateRight.getTime()
+}
+
+module.exports = isEqual
+
 
 /***/ }),
 
@@ -896,7 +3959,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Is the given date the first day of a month?\n *\n * @description\n * Is the given date the first day of a month?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is the first day of a month\n *\n * @example\n * // Is 1 September 2014 the first day of a month?\n * var result = isFirstDayOfMonth(new Date(2014, 8, 1))\n * //=> true\n */\nfunction isFirstDayOfMonth (dirtyDate) {\n  return parse(dirtyDate).getDate() === 1\n}\n\nmodule.exports = isFirstDayOfMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_first_day_of_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Is the given date the first day of a month?
+ *
+ * @description
+ * Is the given date the first day of a month?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is the first day of a month
+ *
+ * @example
+ * // Is 1 September 2014 the first day of a month?
+ * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
+ * //=> true
+ */
+function isFirstDayOfMonth (dirtyDate) {
+  return parse(dirtyDate).getDate() === 1
+}
+
+module.exports = isFirstDayOfMonth
+
 
 /***/ }),
 
@@ -907,7 +3992,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Friday?\n *\n * @description\n * Is the given date Friday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Friday\n *\n * @example\n * // Is 26 September 2014 Friday?\n * var result = isFriday(new Date(2014, 8, 26))\n * //=> true\n */\nfunction isFriday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 5\n}\n\nmodule.exports = isFriday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_friday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Friday?
+ *
+ * @description
+ * Is the given date Friday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Friday
+ *
+ * @example
+ * // Is 26 September 2014 Friday?
+ * var result = isFriday(new Date(2014, 8, 26))
+ * //=> true
+ */
+function isFriday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 5
+}
+
+module.exports = isFriday
+
 
 /***/ }),
 
@@ -918,7 +4025,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Is the given date in the future?\n *\n * @description\n * Is the given date in the future?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in the future\n *\n * @example\n * // If today is 6 October 2014, is 31 December 2014 in the future?\n * var result = isFuture(new Date(2014, 11, 31))\n * //=> true\n */\nfunction isFuture (dirtyDate) {\n  return parse(dirtyDate).getTime() > new Date().getTime()\n}\n\nmodule.exports = isFuture\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_future/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the given date in the future?
+ *
+ * @description
+ * Is the given date in the future?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in the future
+ *
+ * @example
+ * // If today is 6 October 2014, is 31 December 2014 in the future?
+ * var result = isFuture(new Date(2014, 11, 31))
+ * //=> true
+ */
+function isFuture (dirtyDate) {
+  return parse(dirtyDate).getTime() > new Date().getTime()
+}
+
+module.exports = isFuture
+
 
 /***/ }),
 
@@ -929,7 +4058,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ \"./node_modules/date-fns/end_of_day/index.js\")\nvar endOfMonth = __webpack_require__(/*! ../end_of_month/index.js */ \"./node_modules/date-fns/end_of_month/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Is the given date the last day of a month?\n *\n * @description\n * Is the given date the last day of a month?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is the last day of a month\n *\n * @example\n * // Is 28 February 2014 the last day of a month?\n * var result = isLastDayOfMonth(new Date(2014, 1, 28))\n * //=> true\n */\nfunction isLastDayOfMonth (dirtyDate) {\n  var date = parse(dirtyDate)\n  return endOfDay(date).getTime() === endOfMonth(date).getTime()\n}\n\nmodule.exports = isLastDayOfMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_last_day_of_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ "./node_modules/date-fns/end_of_day/index.js")
+var endOfMonth = __webpack_require__(/*! ../end_of_month/index.js */ "./node_modules/date-fns/end_of_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Is the given date the last day of a month?
+ *
+ * @description
+ * Is the given date the last day of a month?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is the last day of a month
+ *
+ * @example
+ * // Is 28 February 2014 the last day of a month?
+ * var result = isLastDayOfMonth(new Date(2014, 1, 28))
+ * //=> true
+ */
+function isLastDayOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  return endOfDay(date).getTime() === endOfMonth(date).getTime()
+}
+
+module.exports = isLastDayOfMonth
+
 
 /***/ }),
 
@@ -940,7 +4094,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Is the given date in the leap year?\n *\n * @description\n * Is the given date in the leap year?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in the leap year\n *\n * @example\n * // Is 1 September 2012 in the leap year?\n * var result = isLeapYear(new Date(2012, 8, 1))\n * //=> true\n */\nfunction isLeapYear (dirtyDate) {\n  var date = parse(dirtyDate)\n  var year = date.getFullYear()\n  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0\n}\n\nmodule.exports = isLeapYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_leap_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Is the given date in the leap year?
+ *
+ * @description
+ * Is the given date in the leap year?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in the leap year
+ *
+ * @example
+ * // Is 1 September 2012 in the leap year?
+ * var result = isLeapYear(new Date(2012, 8, 1))
+ * //=> true
+ */
+function isLeapYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
+}
+
+module.exports = isLeapYear
+
 
 /***/ }),
 
@@ -951,7 +4129,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Monday?\n *\n * @description\n * Is the given date Monday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Monday\n *\n * @example\n * // Is 22 September 2014 Monday?\n * var result = isMonday(new Date(2014, 8, 22))\n * //=> true\n */\nfunction isMonday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 1\n}\n\nmodule.exports = isMonday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_monday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Monday?
+ *
+ * @description
+ * Is the given date Monday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Monday
+ *
+ * @example
+ * // Is 22 September 2014 Monday?
+ * var result = isMonday(new Date(2014, 8, 22))
+ * //=> true
+ */
+function isMonday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 1
+}
+
+module.exports = isMonday
+
 
 /***/ }),
 
@@ -962,7 +4162,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Is the given date in the past?\n *\n * @description\n * Is the given date in the past?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in the past\n *\n * @example\n * // If today is 6 October 2014, is 2 July 2014 in the past?\n * var result = isPast(new Date(2014, 6, 2))\n * //=> true\n */\nfunction isPast (dirtyDate) {\n  return parse(dirtyDate).getTime() < new Date().getTime()\n}\n\nmodule.exports = isPast\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_past/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the given date in the past?
+ *
+ * @description
+ * Is the given date in the past?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in the past
+ *
+ * @example
+ * // If today is 6 October 2014, is 2 July 2014 in the past?
+ * var result = isPast(new Date(2014, 6, 2))
+ * //=> true
+ */
+function isPast (dirtyDate) {
+  return parse(dirtyDate).getTime() < new Date().getTime()
+}
+
+module.exports = isPast
+
 
 /***/ }),
 
@@ -973,7 +4195,36 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Are the given dates in the same day?\n *\n * @description\n * Are the given dates in the same day?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same day\n *\n * @example\n * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?\n * var result = isSameDay(\n *   new Date(2014, 8, 4, 6, 0),\n *   new Date(2014, 8, 4, 18, 0)\n * )\n * //=> true\n */\nfunction isSameDay (dirtyDateLeft, dirtyDateRight) {\n  var dateLeftStartOfDay = startOfDay(dirtyDateLeft)\n  var dateRightStartOfDay = startOfDay(dirtyDateRight)\n\n  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()\n}\n\nmodule.exports = isSameDay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_day/index.js?");
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Are the given dates in the same day?
+ *
+ * @description
+ * Are the given dates in the same day?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same day
+ *
+ * @example
+ * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
+ * var result = isSameDay(
+ *   new Date(2014, 8, 4, 6, 0),
+ *   new Date(2014, 8, 4, 18, 0)
+ * )
+ * //=> true
+ */
+function isSameDay (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
+  var dateRightStartOfDay = startOfDay(dirtyDateRight)
+
+  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
+}
+
+module.exports = isSameDay
+
 
 /***/ }),
 
@@ -984,7 +4235,36 @@ eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfHour = __webpack_require__(/*! ../start_of_hour/index.js */ \"./node_modules/date-fns/start_of_hour/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Are the given dates in the same hour?\n *\n * @description\n * Are the given dates in the same hour?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same hour\n *\n * @example\n * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?\n * var result = isSameHour(\n *   new Date(2014, 8, 4, 6, 0),\n *   new Date(2014, 8, 4, 6, 30)\n * )\n * //=> true\n */\nfunction isSameHour (dirtyDateLeft, dirtyDateRight) {\n  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)\n  var dateRightStartOfHour = startOfHour(dirtyDateRight)\n\n  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()\n}\n\nmodule.exports = isSameHour\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_hour/index.js?");
+var startOfHour = __webpack_require__(/*! ../start_of_hour/index.js */ "./node_modules/date-fns/start_of_hour/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Are the given dates in the same hour?
+ *
+ * @description
+ * Are the given dates in the same hour?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same hour
+ *
+ * @example
+ * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?
+ * var result = isSameHour(
+ *   new Date(2014, 8, 4, 6, 0),
+ *   new Date(2014, 8, 4, 6, 30)
+ * )
+ * //=> true
+ */
+function isSameHour (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
+  var dateRightStartOfHour = startOfHour(dirtyDateRight)
+
+  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
+}
+
+module.exports = isSameHour
+
 
 /***/ }),
 
@@ -995,7 +4275,35 @@ eval("var startOfHour = __webpack_require__(/*! ../start_of_hour/index.js */ \".
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ \"./node_modules/date-fns/is_same_week/index.js\")\n\n/**\n * @category ISO Week Helpers\n * @summary Are the given dates in the same ISO week?\n *\n * @description\n * Are the given dates in the same ISO week?\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same ISO week\n *\n * @example\n * // Are 1 September 2014 and 7 September 2014 in the same ISO week?\n * var result = isSameISOWeek(\n *   new Date(2014, 8, 1),\n *   new Date(2014, 8, 7)\n * )\n * //=> true\n */\nfunction isSameISOWeek (dirtyDateLeft, dirtyDateRight) {\n  return isSameWeek(dirtyDateLeft, dirtyDateRight, {weekStartsOn: 1})\n}\n\nmodule.exports = isSameISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_iso_week/index.js?");
+var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ "./node_modules/date-fns/is_same_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Are the given dates in the same ISO week?
+ *
+ * @description
+ * Are the given dates in the same ISO week?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same ISO week
+ *
+ * @example
+ * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
+ * var result = isSameISOWeek(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 8, 7)
+ * )
+ * //=> true
+ */
+function isSameISOWeek (dirtyDateLeft, dirtyDateRight) {
+  return isSameWeek(dirtyDateLeft, dirtyDateRight, {weekStartsOn: 1})
+}
+
+module.exports = isSameISOWeek
+
 
 /***/ }),
 
@@ -1006,7 +4314,38 @@ eval("var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ \"./node_modules/date-fns/start_of_iso_year/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Are the given dates in the same ISO week-numbering year?\n *\n * @description\n * Are the given dates in the same ISO week-numbering year?\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same ISO week-numbering year\n *\n * @example\n * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?\n * var result = isSameISOYear(\n *   new Date(2003, 11, 29),\n *   new Date(2005, 0, 2)\n * )\n * //=> true\n */\nfunction isSameISOYear (dirtyDateLeft, dirtyDateRight) {\n  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)\n  var dateRightStartOfYear = startOfISOYear(dirtyDateRight)\n\n  return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()\n}\n\nmodule.exports = isSameISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_iso_year/index.js?");
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Are the given dates in the same ISO week-numbering year?
+ *
+ * @description
+ * Are the given dates in the same ISO week-numbering year?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same ISO week-numbering year
+ *
+ * @example
+ * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?
+ * var result = isSameISOYear(
+ *   new Date(2003, 11, 29),
+ *   new Date(2005, 0, 2)
+ * )
+ * //=> true
+ */
+function isSameISOYear (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)
+  var dateRightStartOfYear = startOfISOYear(dirtyDateRight)
+
+  return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
+}
+
+module.exports = isSameISOYear
+
 
 /***/ }),
 
@@ -1017,7 +4356,37 @@ eval("var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfMinute = __webpack_require__(/*! ../start_of_minute/index.js */ \"./node_modules/date-fns/start_of_minute/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Are the given dates in the same minute?\n *\n * @description\n * Are the given dates in the same minute?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same minute\n *\n * @example\n * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15\n * // in the same minute?\n * var result = isSameMinute(\n *   new Date(2014, 8, 4, 6, 30),\n *   new Date(2014, 8, 4, 6, 30, 15)\n * )\n * //=> true\n */\nfunction isSameMinute (dirtyDateLeft, dirtyDateRight) {\n  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)\n  var dateRightStartOfMinute = startOfMinute(dirtyDateRight)\n\n  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()\n}\n\nmodule.exports = isSameMinute\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_minute/index.js?");
+var startOfMinute = __webpack_require__(/*! ../start_of_minute/index.js */ "./node_modules/date-fns/start_of_minute/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Are the given dates in the same minute?
+ *
+ * @description
+ * Are the given dates in the same minute?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same minute
+ *
+ * @example
+ * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15
+ * // in the same minute?
+ * var result = isSameMinute(
+ *   new Date(2014, 8, 4, 6, 30),
+ *   new Date(2014, 8, 4, 6, 30, 15)
+ * )
+ * //=> true
+ */
+function isSameMinute (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
+  var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+
+  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
+}
+
+module.exports = isSameMinute
+
 
 /***/ }),
 
@@ -1028,7 +4397,36 @@ eval("var startOfMinute = __webpack_require__(/*! ../start_of_minute/index.js */
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Are the given dates in the same month?\n *\n * @description\n * Are the given dates in the same month?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same month\n *\n * @example\n * // Are 2 September 2014 and 25 September 2014 in the same month?\n * var result = isSameMonth(\n *   new Date(2014, 8, 2),\n *   new Date(2014, 8, 25)\n * )\n * //=> true\n */\nfunction isSameMonth (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n  return dateLeft.getFullYear() === dateRight.getFullYear() &&\n    dateLeft.getMonth() === dateRight.getMonth()\n}\n\nmodule.exports = isSameMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Are the given dates in the same month?
+ *
+ * @description
+ * Are the given dates in the same month?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same month
+ *
+ * @example
+ * // Are 2 September 2014 and 25 September 2014 in the same month?
+ * var result = isSameMonth(
+ *   new Date(2014, 8, 2),
+ *   new Date(2014, 8, 25)
+ * )
+ * //=> true
+ */
+function isSameMonth (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+  return dateLeft.getFullYear() === dateRight.getFullYear() &&
+    dateLeft.getMonth() === dateRight.getMonth()
+}
+
+module.exports = isSameMonth
+
 
 /***/ }),
 
@@ -1039,7 +4437,36 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfQuarter = __webpack_require__(/*! ../start_of_quarter/index.js */ \"./node_modules/date-fns/start_of_quarter/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Are the given dates in the same year quarter?\n *\n * @description\n * Are the given dates in the same year quarter?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same quarter\n *\n * @example\n * // Are 1 January 2014 and 8 March 2014 in the same quarter?\n * var result = isSameQuarter(\n *   new Date(2014, 0, 1),\n *   new Date(2014, 2, 8)\n * )\n * //=> true\n */\nfunction isSameQuarter (dirtyDateLeft, dirtyDateRight) {\n  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)\n  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)\n\n  return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()\n}\n\nmodule.exports = isSameQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_quarter/index.js?");
+var startOfQuarter = __webpack_require__(/*! ../start_of_quarter/index.js */ "./node_modules/date-fns/start_of_quarter/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Are the given dates in the same year quarter?
+ *
+ * @description
+ * Are the given dates in the same year quarter?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same quarter
+ *
+ * @example
+ * // Are 1 January 2014 and 8 March 2014 in the same quarter?
+ * var result = isSameQuarter(
+ *   new Date(2014, 0, 1),
+ *   new Date(2014, 2, 8)
+ * )
+ * //=> true
+ */
+function isSameQuarter (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
+  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
+
+  return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
+}
+
+module.exports = isSameQuarter
+
 
 /***/ }),
 
@@ -1050,7 +4477,37 @@ eval("var startOfQuarter = __webpack_require__(/*! ../start_of_quarter/index.js 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfSecond = __webpack_require__(/*! ../start_of_second/index.js */ \"./node_modules/date-fns/start_of_second/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Are the given dates in the same second?\n *\n * @description\n * Are the given dates in the same second?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same second\n *\n * @example\n * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500\n * // in the same second?\n * var result = isSameSecond(\n *   new Date(2014, 8, 4, 6, 30, 15),\n *   new Date(2014, 8, 4, 6, 30, 15, 500)\n * )\n * //=> true\n */\nfunction isSameSecond (dirtyDateLeft, dirtyDateRight) {\n  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)\n  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)\n\n  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()\n}\n\nmodule.exports = isSameSecond\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_second/index.js?");
+var startOfSecond = __webpack_require__(/*! ../start_of_second/index.js */ "./node_modules/date-fns/start_of_second/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Are the given dates in the same second?
+ *
+ * @description
+ * Are the given dates in the same second?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same second
+ *
+ * @example
+ * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500
+ * // in the same second?
+ * var result = isSameSecond(
+ *   new Date(2014, 8, 4, 6, 30, 15),
+ *   new Date(2014, 8, 4, 6, 30, 15, 500)
+ * )
+ * //=> true
+ */
+function isSameSecond (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
+  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+
+  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
+}
+
+module.exports = isSameSecond
+
 
 /***/ }),
 
@@ -1061,7 +4518,48 @@ eval("var startOfSecond = __webpack_require__(/*! ../start_of_second/index.js */
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ \"./node_modules/date-fns/start_of_week/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Are the given dates in the same week?\n *\n * @description\n * Are the given dates in the same week?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Boolean} the dates are in the same week\n *\n * @example\n * // Are 31 August 2014 and 4 September 2014 in the same week?\n * var result = isSameWeek(\n *   new Date(2014, 7, 31),\n *   new Date(2014, 8, 4)\n * )\n * //=> true\n *\n * @example\n * // If week starts with Monday,\n * // are 31 August 2014 and 4 September 2014 in the same week?\n * var result = isSameWeek(\n *   new Date(2014, 7, 31),\n *   new Date(2014, 8, 4),\n *   {weekStartsOn: 1}\n * )\n * //=> false\n */\nfunction isSameWeek (dirtyDateLeft, dirtyDateRight, dirtyOptions) {\n  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)\n  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)\n\n  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()\n}\n\nmodule.exports = isSameWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_week/index.js?");
+var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Are the given dates in the same week?
+ *
+ * @description
+ * Are the given dates in the same week?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Boolean} the dates are in the same week
+ *
+ * @example
+ * // Are 31 August 2014 and 4 September 2014 in the same week?
+ * var result = isSameWeek(
+ *   new Date(2014, 7, 31),
+ *   new Date(2014, 8, 4)
+ * )
+ * //=> true
+ *
+ * @example
+ * // If week starts with Monday,
+ * // are 31 August 2014 and 4 September 2014 in the same week?
+ * var result = isSameWeek(
+ *   new Date(2014, 7, 31),
+ *   new Date(2014, 8, 4),
+ *   {weekStartsOn: 1}
+ * )
+ * //=> false
+ */
+function isSameWeek (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
+  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
+
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
+}
+
+module.exports = isSameWeek
+
 
 /***/ }),
 
@@ -1072,7 +4570,35 @@ eval("var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ \".
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Are the given dates in the same year?\n *\n * @description\n * Are the given dates in the same year?\n *\n * @param {Date|String|Number} dateLeft - the first date to check\n * @param {Date|String|Number} dateRight - the second date to check\n * @returns {Boolean} the dates are in the same year\n *\n * @example\n * // Are 2 September 2014 and 25 September 2014 in the same year?\n * var result = isSameYear(\n *   new Date(2014, 8, 2),\n *   new Date(2014, 8, 25)\n * )\n * //=> true\n */\nfunction isSameYear (dirtyDateLeft, dirtyDateRight) {\n  var dateLeft = parse(dirtyDateLeft)\n  var dateRight = parse(dirtyDateRight)\n  return dateLeft.getFullYear() === dateRight.getFullYear()\n}\n\nmodule.exports = isSameYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_same_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Are the given dates in the same year?
+ *
+ * @description
+ * Are the given dates in the same year?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same year
+ *
+ * @example
+ * // Are 2 September 2014 and 25 September 2014 in the same year?
+ * var result = isSameYear(
+ *   new Date(2014, 8, 2),
+ *   new Date(2014, 8, 25)
+ * )
+ * //=> true
+ */
+function isSameYear (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+  return dateLeft.getFullYear() === dateRight.getFullYear()
+}
+
+module.exports = isSameYear
+
 
 /***/ }),
 
@@ -1083,7 +4609,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Saturday?\n *\n * @description\n * Is the given date Saturday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Saturday\n *\n * @example\n * // Is 27 September 2014 Saturday?\n * var result = isSaturday(new Date(2014, 8, 27))\n * //=> true\n */\nfunction isSaturday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 6\n}\n\nmodule.exports = isSaturday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_saturday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Saturday?
+ *
+ * @description
+ * Is the given date Saturday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Saturday
+ *
+ * @example
+ * // Is 27 September 2014 Saturday?
+ * var result = isSaturday(new Date(2014, 8, 27))
+ * //=> true
+ */
+function isSaturday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 6
+}
+
+module.exports = isSaturday
+
 
 /***/ }),
 
@@ -1094,7 +4642,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Sunday?\n *\n * @description\n * Is the given date Sunday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Sunday\n *\n * @example\n * // Is 21 September 2014 Sunday?\n * var result = isSunday(new Date(2014, 8, 21))\n * //=> true\n */\nfunction isSunday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 0\n}\n\nmodule.exports = isSunday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_sunday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Sunday?
+ *
+ * @description
+ * Is the given date Sunday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Sunday
+ *
+ * @example
+ * // Is 21 September 2014 Sunday?
+ * var result = isSunday(new Date(2014, 8, 21))
+ * //=> true
+ */
+function isSunday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 0
+}
+
+module.exports = isSunday
+
 
 /***/ }),
 
@@ -1105,7 +4675,30 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameHour = __webpack_require__(/*! ../is_same_hour/index.js */ \"./node_modules/date-fns/is_same_hour/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Is the given date in the same hour as the current date?\n *\n * @description\n * Is the given date in the same hour as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this hour\n *\n * @example\n * // If now is 25 September 2014 18:30:15.500,\n * // is 25 September 2014 18:00:00 in this hour?\n * var result = isThisHour(new Date(2014, 8, 25, 18))\n * //=> true\n */\nfunction isThisHour (dirtyDate) {\n  return isSameHour(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisHour\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_hour/index.js?");
+var isSameHour = __webpack_require__(/*! ../is_same_hour/index.js */ "./node_modules/date-fns/is_same_hour/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Is the given date in the same hour as the current date?
+ *
+ * @description
+ * Is the given date in the same hour as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this hour
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:00:00 in this hour?
+ * var result = isThisHour(new Date(2014, 8, 25, 18))
+ * //=> true
+ */
+function isThisHour (dirtyDate) {
+  return isSameHour(new Date(), dirtyDate)
+}
+
+module.exports = isThisHour
+
 
 /***/ }),
 
@@ -1116,7 +4709,31 @@ eval("var isSameHour = __webpack_require__(/*! ../is_same_hour/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameISOWeek = __webpack_require__(/*! ../is_same_iso_week/index.js */ \"./node_modules/date-fns/is_same_iso_week/index.js\")\n\n/**\n * @category ISO Week Helpers\n * @summary Is the given date in the same ISO week as the current date?\n *\n * @description\n * Is the given date in the same ISO week as the current date?\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this ISO week\n *\n * @example\n * // If today is 25 September 2014, is 22 September 2014 in this ISO week?\n * var result = isThisISOWeek(new Date(2014, 8, 22))\n * //=> true\n */\nfunction isThisISOWeek (dirtyDate) {\n  return isSameISOWeek(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_iso_week/index.js?");
+var isSameISOWeek = __webpack_require__(/*! ../is_same_iso_week/index.js */ "./node_modules/date-fns/is_same_iso_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Is the given date in the same ISO week as the current date?
+ *
+ * @description
+ * Is the given date in the same ISO week as the current date?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this ISO week
+ *
+ * @example
+ * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
+ * var result = isThisISOWeek(new Date(2014, 8, 22))
+ * //=> true
+ */
+function isThisISOWeek (dirtyDate) {
+  return isSameISOWeek(new Date(), dirtyDate)
+}
+
+module.exports = isThisISOWeek
+
 
 /***/ }),
 
@@ -1127,7 +4744,32 @@ eval("var isSameISOWeek = __webpack_require__(/*! ../is_same_iso_week/index.js *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameISOYear = __webpack_require__(/*! ../is_same_iso_year/index.js */ \"./node_modules/date-fns/is_same_iso_year/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Is the given date in the same ISO week-numbering year as the current date?\n *\n * @description\n * Is the given date in the same ISO week-numbering year as the current date?\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this ISO week-numbering year\n *\n * @example\n * // If today is 25 September 2014,\n * // is 30 December 2013 in this ISO week-numbering year?\n * var result = isThisISOYear(new Date(2013, 11, 30))\n * //=> true\n */\nfunction isThisISOYear (dirtyDate) {\n  return isSameISOYear(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_iso_year/index.js?");
+var isSameISOYear = __webpack_require__(/*! ../is_same_iso_year/index.js */ "./node_modules/date-fns/is_same_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Is the given date in the same ISO week-numbering year as the current date?
+ *
+ * @description
+ * Is the given date in the same ISO week-numbering year as the current date?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this ISO week-numbering year
+ *
+ * @example
+ * // If today is 25 September 2014,
+ * // is 30 December 2013 in this ISO week-numbering year?
+ * var result = isThisISOYear(new Date(2013, 11, 30))
+ * //=> true
+ */
+function isThisISOYear (dirtyDate) {
+  return isSameISOYear(new Date(), dirtyDate)
+}
+
+module.exports = isThisISOYear
+
 
 /***/ }),
 
@@ -1138,7 +4780,30 @@ eval("var isSameISOYear = __webpack_require__(/*! ../is_same_iso_year/index.js *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameMinute = __webpack_require__(/*! ../is_same_minute/index.js */ \"./node_modules/date-fns/is_same_minute/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Is the given date in the same minute as the current date?\n *\n * @description\n * Is the given date in the same minute as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this minute\n *\n * @example\n * // If now is 25 September 2014 18:30:15.500,\n * // is 25 September 2014 18:30:00 in this minute?\n * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))\n * //=> true\n */\nfunction isThisMinute (dirtyDate) {\n  return isSameMinute(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisMinute\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_minute/index.js?");
+var isSameMinute = __webpack_require__(/*! ../is_same_minute/index.js */ "./node_modules/date-fns/is_same_minute/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Is the given date in the same minute as the current date?
+ *
+ * @description
+ * Is the given date in the same minute as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this minute
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:30:00 in this minute?
+ * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
+ * //=> true
+ */
+function isThisMinute (dirtyDate) {
+  return isSameMinute(new Date(), dirtyDate)
+}
+
+module.exports = isThisMinute
+
 
 /***/ }),
 
@@ -1149,7 +4814,29 @@ eval("var isSameMinute = __webpack_require__(/*! ../is_same_minute/index.js */ \
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameMonth = __webpack_require__(/*! ../is_same_month/index.js */ \"./node_modules/date-fns/is_same_month/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Is the given date in the same month as the current date?\n *\n * @description\n * Is the given date in the same month as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this month\n *\n * @example\n * // If today is 25 September 2014, is 15 September 2014 in this month?\n * var result = isThisMonth(new Date(2014, 8, 15))\n * //=> true\n */\nfunction isThisMonth (dirtyDate) {\n  return isSameMonth(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_month/index.js?");
+var isSameMonth = __webpack_require__(/*! ../is_same_month/index.js */ "./node_modules/date-fns/is_same_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Is the given date in the same month as the current date?
+ *
+ * @description
+ * Is the given date in the same month as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this month
+ *
+ * @example
+ * // If today is 25 September 2014, is 15 September 2014 in this month?
+ * var result = isThisMonth(new Date(2014, 8, 15))
+ * //=> true
+ */
+function isThisMonth (dirtyDate) {
+  return isSameMonth(new Date(), dirtyDate)
+}
+
+module.exports = isThisMonth
+
 
 /***/ }),
 
@@ -1160,7 +4847,29 @@ eval("var isSameMonth = __webpack_require__(/*! ../is_same_month/index.js */ \".
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameQuarter = __webpack_require__(/*! ../is_same_quarter/index.js */ \"./node_modules/date-fns/is_same_quarter/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Is the given date in the same quarter as the current date?\n *\n * @description\n * Is the given date in the same quarter as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this quarter\n *\n * @example\n * // If today is 25 September 2014, is 2 July 2014 in this quarter?\n * var result = isThisQuarter(new Date(2014, 6, 2))\n * //=> true\n */\nfunction isThisQuarter (dirtyDate) {\n  return isSameQuarter(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_quarter/index.js?");
+var isSameQuarter = __webpack_require__(/*! ../is_same_quarter/index.js */ "./node_modules/date-fns/is_same_quarter/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Is the given date in the same quarter as the current date?
+ *
+ * @description
+ * Is the given date in the same quarter as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this quarter
+ *
+ * @example
+ * // If today is 25 September 2014, is 2 July 2014 in this quarter?
+ * var result = isThisQuarter(new Date(2014, 6, 2))
+ * //=> true
+ */
+function isThisQuarter (dirtyDate) {
+  return isSameQuarter(new Date(), dirtyDate)
+}
+
+module.exports = isThisQuarter
+
 
 /***/ }),
 
@@ -1171,7 +4880,30 @@ eval("var isSameQuarter = __webpack_require__(/*! ../is_same_quarter/index.js */
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameSecond = __webpack_require__(/*! ../is_same_second/index.js */ \"./node_modules/date-fns/is_same_second/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Is the given date in the same second as the current date?\n *\n * @description\n * Is the given date in the same second as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this second\n *\n * @example\n * // If now is 25 September 2014 18:30:15.500,\n * // is 25 September 2014 18:30:15.000 in this second?\n * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))\n * //=> true\n */\nfunction isThisSecond (dirtyDate) {\n  return isSameSecond(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisSecond\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_second/index.js?");
+var isSameSecond = __webpack_require__(/*! ../is_same_second/index.js */ "./node_modules/date-fns/is_same_second/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Is the given date in the same second as the current date?
+ *
+ * @description
+ * Is the given date in the same second as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this second
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:30:15.000 in this second?
+ * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
+ * //=> true
+ */
+function isThisSecond (dirtyDate) {
+  return isSameSecond(new Date(), dirtyDate)
+}
+
+module.exports = isThisSecond
+
 
 /***/ }),
 
@@ -1182,7 +4914,37 @@ eval("var isSameSecond = __webpack_require__(/*! ../is_same_second/index.js */ \
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ \"./node_modules/date-fns/is_same_week/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Is the given date in the same week as the current date?\n *\n * @description\n * Is the given date in the same week as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Boolean} the date is in this week\n *\n * @example\n * // If today is 25 September 2014, is 21 September 2014 in this week?\n * var result = isThisWeek(new Date(2014, 8, 21))\n * //=> true\n *\n * @example\n * // If today is 25 September 2014 and week starts with Monday\n * // is 21 September 2014 in this week?\n * var result = isThisWeek(new Date(2014, 8, 21), {weekStartsOn: 1})\n * //=> false\n */\nfunction isThisWeek (dirtyDate, dirtyOptions) {\n  return isSameWeek(new Date(), dirtyDate, dirtyOptions)\n}\n\nmodule.exports = isThisWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_week/index.js?");
+var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ "./node_modules/date-fns/is_same_week/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Is the given date in the same week as the current date?
+ *
+ * @description
+ * Is the given date in the same week as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Boolean} the date is in this week
+ *
+ * @example
+ * // If today is 25 September 2014, is 21 September 2014 in this week?
+ * var result = isThisWeek(new Date(2014, 8, 21))
+ * //=> true
+ *
+ * @example
+ * // If today is 25 September 2014 and week starts with Monday
+ * // is 21 September 2014 in this week?
+ * var result = isThisWeek(new Date(2014, 8, 21), {weekStartsOn: 1})
+ * //=> false
+ */
+function isThisWeek (dirtyDate, dirtyOptions) {
+  return isSameWeek(new Date(), dirtyDate, dirtyOptions)
+}
+
+module.exports = isThisWeek
+
 
 /***/ }),
 
@@ -1193,7 +4955,29 @@ eval("var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isSameYear = __webpack_require__(/*! ../is_same_year/index.js */ \"./node_modules/date-fns/is_same_year/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Is the given date in the same year as the current date?\n *\n * @description\n * Is the given date in the same year as the current date?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is in this year\n *\n * @example\n * // If today is 25 September 2014, is 2 July 2014 in this year?\n * var result = isThisYear(new Date(2014, 6, 2))\n * //=> true\n */\nfunction isThisYear (dirtyDate) {\n  return isSameYear(new Date(), dirtyDate)\n}\n\nmodule.exports = isThisYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_this_year/index.js?");
+var isSameYear = __webpack_require__(/*! ../is_same_year/index.js */ "./node_modules/date-fns/is_same_year/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Is the given date in the same year as the current date?
+ *
+ * @description
+ * Is the given date in the same year as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this year
+ *
+ * @example
+ * // If today is 25 September 2014, is 2 July 2014 in this year?
+ * var result = isThisYear(new Date(2014, 6, 2))
+ * //=> true
+ */
+function isThisYear (dirtyDate) {
+  return isSameYear(new Date(), dirtyDate)
+}
+
+module.exports = isThisYear
+
 
 /***/ }),
 
@@ -1204,7 +4988,29 @@ eval("var isSameYear = __webpack_require__(/*! ../is_same_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Thursday?\n *\n * @description\n * Is the given date Thursday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Thursday\n *\n * @example\n * // Is 25 September 2014 Thursday?\n * var result = isThursday(new Date(2014, 8, 25))\n * //=> true\n */\nfunction isThursday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 4\n}\n\nmodule.exports = isThursday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_thursday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Thursday?
+ *
+ * @description
+ * Is the given date Thursday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Thursday
+ *
+ * @example
+ * // Is 25 September 2014 Thursday?
+ * var result = isThursday(new Date(2014, 8, 25))
+ * //=> true
+ */
+function isThursday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 4
+}
+
+module.exports = isThursday
+
 
 /***/ }),
 
@@ -1215,7 +5021,29 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Is the given date today?\n *\n * @description\n * Is the given date today?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is today\n *\n * @example\n * // If today is 6 October 2014, is 6 October 14:00:00 today?\n * var result = isToday(new Date(2014, 9, 6, 14, 0))\n * //=> true\n */\nfunction isToday (dirtyDate) {\n  return startOfDay(dirtyDate).getTime() === startOfDay(new Date()).getTime()\n}\n\nmodule.exports = isToday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_today/index.js?");
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Is the given date today?
+ *
+ * @description
+ * Is the given date today?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is today
+ *
+ * @example
+ * // If today is 6 October 2014, is 6 October 14:00:00 today?
+ * var result = isToday(new Date(2014, 9, 6, 14, 0))
+ * //=> true
+ */
+function isToday (dirtyDate) {
+  return startOfDay(dirtyDate).getTime() === startOfDay(new Date()).getTime()
+}
+
+module.exports = isToday
+
 
 /***/ }),
 
@@ -1226,7 +5054,31 @@ eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Is the given date tomorrow?\n *\n * @description\n * Is the given date tomorrow?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is tomorrow\n *\n * @example\n * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?\n * var result = isTomorrow(new Date(2014, 9, 7, 14, 0))\n * //=> true\n */\nfunction isTomorrow (dirtyDate) {\n  var tomorrow = new Date()\n  tomorrow.setDate(tomorrow.getDate() + 1)\n  return startOfDay(dirtyDate).getTime() === startOfDay(tomorrow).getTime()\n}\n\nmodule.exports = isTomorrow\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_tomorrow/index.js?");
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Is the given date tomorrow?
+ *
+ * @description
+ * Is the given date tomorrow?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is tomorrow
+ *
+ * @example
+ * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
+ * var result = isTomorrow(new Date(2014, 9, 7, 14, 0))
+ * //=> true
+ */
+function isTomorrow (dirtyDate) {
+  var tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  return startOfDay(dirtyDate).getTime() === startOfDay(tomorrow).getTime()
+}
+
+module.exports = isTomorrow
+
 
 /***/ }),
 
@@ -1237,7 +5089,29 @@ eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Tuesday?\n *\n * @description\n * Is the given date Tuesday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Tuesday\n *\n * @example\n * // Is 23 September 2014 Tuesday?\n * var result = isTuesday(new Date(2014, 8, 23))\n * //=> true\n */\nfunction isTuesday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 2\n}\n\nmodule.exports = isTuesday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_tuesday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Tuesday?
+ *
+ * @description
+ * Is the given date Tuesday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Tuesday
+ *
+ * @example
+ * // Is 23 September 2014 Tuesday?
+ * var result = isTuesday(new Date(2014, 8, 23))
+ * //=> true
+ */
+function isTuesday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 2
+}
+
+module.exports = isTuesday
+
 
 /***/ }),
 
@@ -1248,7 +5122,42 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isDate = __webpack_require__(/*! ../is_date/index.js */ \"./node_modules/date-fns/is_date/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Is the given date valid?\n *\n * @description\n * Returns false if argument is Invalid Date and true otherwise.\n * Invalid Date is a Date, whose time value is NaN.\n *\n * Time value of Date: http://es5.github.io/#x15.9.1.1\n *\n * @param {Date} date - the date to check\n * @returns {Boolean} the date is valid\n * @throws {TypeError} argument must be an instance of Date\n *\n * @example\n * // For the valid date:\n * var result = isValid(new Date(2014, 1, 31))\n * //=> true\n *\n * @example\n * // For the invalid date:\n * var result = isValid(new Date(''))\n * //=> false\n */\nfunction isValid (dirtyDate) {\n  if (isDate(dirtyDate)) {\n    return !isNaN(dirtyDate)\n  } else {\n    throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')\n  }\n}\n\nmodule.exports = isValid\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_valid/index.js?");
+var isDate = __webpack_require__(/*! ../is_date/index.js */ "./node_modules/date-fns/is_date/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the given date valid?
+ *
+ * @description
+ * Returns false if argument is Invalid Date and true otherwise.
+ * Invalid Date is a Date, whose time value is NaN.
+ *
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {Date} date - the date to check
+ * @returns {Boolean} the date is valid
+ * @throws {TypeError} argument must be an instance of Date
+ *
+ * @example
+ * // For the valid date:
+ * var result = isValid(new Date(2014, 1, 31))
+ * //=> true
+ *
+ * @example
+ * // For the invalid date:
+ * var result = isValid(new Date(''))
+ * //=> false
+ */
+function isValid (dirtyDate) {
+  if (isDate(dirtyDate)) {
+    return !isNaN(dirtyDate)
+  } else {
+    throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')
+  }
+}
+
+module.exports = isValid
+
 
 /***/ }),
 
@@ -1259,7 +5168,29 @@ eval("var isDate = __webpack_require__(/*! ../is_date/index.js */ \"./node_modul
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Is the given date Wednesday?\n *\n * @description\n * Is the given date Wednesday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is Wednesday\n *\n * @example\n * // Is 24 September 2014 Wednesday?\n * var result = isWednesday(new Date(2014, 8, 24))\n * //=> true\n */\nfunction isWednesday (dirtyDate) {\n  return parse(dirtyDate).getDay() === 3\n}\n\nmodule.exports = isWednesday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_wednesday/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Wednesday?
+ *
+ * @description
+ * Is the given date Wednesday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Wednesday
+ *
+ * @example
+ * // Is 24 September 2014 Wednesday?
+ * var result = isWednesday(new Date(2014, 8, 24))
+ * //=> true
+ */
+function isWednesday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 3
+}
+
+module.exports = isWednesday
+
 
 /***/ }),
 
@@ -1270,7 +5201,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Does the given date fall on a weekend?\n *\n * @description\n * Does the given date fall on a weekend?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date falls on a weekend\n *\n * @example\n * // Does 5 October 2014 fall on a weekend?\n * var result = isWeekend(new Date(2014, 9, 5))\n * //=> true\n */\nfunction isWeekend (dirtyDate) {\n  var date = parse(dirtyDate)\n  var day = date.getDay()\n  return day === 0 || day === 6\n}\n\nmodule.exports = isWeekend\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_weekend/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Does the given date fall on a weekend?
+ *
+ * @description
+ * Does the given date fall on a weekend?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date falls on a weekend
+ *
+ * @example
+ * // Does 5 October 2014 fall on a weekend?
+ * var result = isWeekend(new Date(2014, 9, 5))
+ * //=> true
+ */
+function isWeekend (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  return day === 0 || day === 6
+}
+
+module.exports = isWeekend
+
 
 /***/ }),
 
@@ -1281,7 +5236,49 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Range Helpers\n * @summary Is the given date within the range?\n *\n * @description\n * Is the given date within the range?\n *\n * @param {Date|String|Number} date - the date to check\n * @param {Date|String|Number} startDate - the start of range\n * @param {Date|String|Number} endDate - the end of range\n * @returns {Boolean} the date is within the range\n * @throws {Error} startDate cannot be after endDate\n *\n * @example\n * // For the date within the range:\n * isWithinRange(\n *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)\n * )\n * //=> true\n *\n * @example\n * // For the date outside of the range:\n * isWithinRange(\n *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)\n * )\n * //=> false\n */\nfunction isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {\n  var time = parse(dirtyDate).getTime()\n  var startTime = parse(dirtyStartDate).getTime()\n  var endTime = parse(dirtyEndDate).getTime()\n\n  if (startTime > endTime) {\n    throw new Error('The start of the range cannot be after the end of the range')\n  }\n\n  return time >= startTime && time <= endTime\n}\n\nmodule.exports = isWithinRange\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_within_range/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Range Helpers
+ * @summary Is the given date within the range?
+ *
+ * @description
+ * Is the given date within the range?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @param {Date|String|Number} startDate - the start of range
+ * @param {Date|String|Number} endDate - the end of range
+ * @returns {Boolean} the date is within the range
+ * @throws {Error} startDate cannot be after endDate
+ *
+ * @example
+ * // For the date within the range:
+ * isWithinRange(
+ *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)
+ * )
+ * //=> true
+ *
+ * @example
+ * // For the date outside of the range:
+ * isWithinRange(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)
+ * )
+ * //=> false
+ */
+function isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {
+  var time = parse(dirtyDate).getTime()
+  var startTime = parse(dirtyStartDate).getTime()
+  var endTime = parse(dirtyEndDate).getTime()
+
+  if (startTime > endTime) {
+    throw new Error('The start of the range cannot be after the end of the range')
+  }
+
+  return time >= startTime && time <= endTime
+}
+
+module.exports = isWithinRange
+
 
 /***/ }),
 
@@ -1292,7 +5289,31 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Is the given date yesterday?\n *\n * @description\n * Is the given date yesterday?\n *\n * @param {Date|String|Number} date - the date to check\n * @returns {Boolean} the date is yesterday\n *\n * @example\n * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?\n * var result = isYesterday(new Date(2014, 9, 5, 14, 0))\n * //=> true\n */\nfunction isYesterday (dirtyDate) {\n  var yesterday = new Date()\n  yesterday.setDate(yesterday.getDate() - 1)\n  return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()\n}\n\nmodule.exports = isYesterday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/is_yesterday/index.js?");
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Is the given date yesterday?
+ *
+ * @description
+ * Is the given date yesterday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is yesterday
+ *
+ * @example
+ * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
+ * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
+ * //=> true
+ */
+function isYesterday (dirtyDate) {
+  var yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()
+}
+
+module.exports = isYesterday
+
 
 /***/ }),
 
@@ -1303,7 +5324,32 @@ eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var lastDayOfWeek = __webpack_require__(/*! ../last_day_of_week/index.js */ \"./node_modules/date-fns/last_day_of_week/index.js\")\n\n/**\n * @category ISO Week Helpers\n * @summary Return the last day of an ISO week for the given date.\n *\n * @description\n * Return the last day of an ISO week for the given date.\n * The result will be in the local timezone.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the last day of an ISO week\n *\n * @example\n * // The last day of an ISO week for 2 September 2014 11:55:00:\n * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Sun Sep 07 2014 00:00:00\n */\nfunction lastDayOfISOWeek (dirtyDate) {\n  return lastDayOfWeek(dirtyDate, {weekStartsOn: 1})\n}\n\nmodule.exports = lastDayOfISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/last_day_of_iso_week/index.js?");
+var lastDayOfWeek = __webpack_require__(/*! ../last_day_of_week/index.js */ "./node_modules/date-fns/last_day_of_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Return the last day of an ISO week for the given date.
+ *
+ * @description
+ * Return the last day of an ISO week for the given date.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of an ISO week
+ *
+ * @example
+ * // The last day of an ISO week for 2 September 2014 11:55:00:
+ * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function lastDayOfISOWeek (dirtyDate) {
+  return lastDayOfWeek(dirtyDate, {weekStartsOn: 1})
+}
+
+module.exports = lastDayOfISOWeek
+
 
 /***/ }),
 
@@ -1314,7 +5360,40 @@ eval("var lastDayOfWeek = __webpack_require__(/*! ../last_day_of_week/index.js *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\")\nvar startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Return the last day of an ISO week-numbering year for the given date.\n *\n * @description\n * Return the last day of an ISO week-numbering year,\n * which always starts 3 days before the year's first Thursday.\n * The result will be in the local timezone.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the end of an ISO week-numbering year\n *\n * @example\n * // The last day of an ISO week-numbering year for 2 July 2005:\n * var result = lastDayOfISOYear(new Date(2005, 6, 2))\n * //=> Sun Jan 01 2006 00:00:00\n */\nfunction lastDayOfISOYear (dirtyDate) {\n  var year = getISOYear(dirtyDate)\n  var fourthOfJanuary = new Date(0)\n  fourthOfJanuary.setFullYear(year + 1, 0, 4)\n  fourthOfJanuary.setHours(0, 0, 0, 0)\n  var date = startOfISOWeek(fourthOfJanuary)\n  date.setDate(date.getDate() - 1)\n  return date\n}\n\nmodule.exports = lastDayOfISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/last_day_of_iso_year/index.js?");
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the last day of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the last day of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an ISO week-numbering year
+ *
+ * @example
+ * // The last day of an ISO week-numbering year for 2 July 2005:
+ * var result = lastDayOfISOYear(new Date(2005, 6, 2))
+ * //=> Sun Jan 01 2006 00:00:00
+ */
+function lastDayOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(year + 1, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuary)
+  date.setDate(date.getDate() - 1)
+  return date
+}
+
+module.exports = lastDayOfISOYear
+
 
 /***/ }),
 
@@ -1325,7 +5404,34 @@ eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Return the last day of a month for the given date.\n *\n * @description\n * Return the last day of a month for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the last day of a month\n *\n * @example\n * // The last day of a month for 2 September 2014 11:55:00:\n * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Sep 30 2014 00:00:00\n */\nfunction lastDayOfMonth (dirtyDate) {\n  var date = parse(dirtyDate)\n  var month = date.getMonth()\n  date.setFullYear(date.getFullYear(), month + 1, 0)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = lastDayOfMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/last_day_of_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Return the last day of a month for the given date.
+ *
+ * @description
+ * Return the last day of a month for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of a month
+ *
+ * @example
+ * // The last day of a month for 2 September 2014 11:55:00:
+ * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 00:00:00
+ */
+function lastDayOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var month = date.getMonth()
+  date.setFullYear(date.getFullYear(), month + 1, 0)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = lastDayOfMonth
+
 
 /***/ }),
 
@@ -1336,7 +5442,35 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Return the last day of a year quarter for the given date.\n *\n * @description\n * Return the last day of a year quarter for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the last day of a quarter\n *\n * @example\n * // The last day of a quarter for 2 September 2014 11:55:00:\n * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Sep 30 2014 00:00:00\n */\nfunction lastDayOfQuarter (dirtyDate) {\n  var date = parse(dirtyDate)\n  var currentMonth = date.getMonth()\n  var month = currentMonth - currentMonth % 3 + 3\n  date.setMonth(month, 0)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = lastDayOfQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/last_day_of_quarter/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Return the last day of a year quarter for the given date.
+ *
+ * @description
+ * Return the last day of a year quarter for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of a quarter
+ *
+ * @example
+ * // The last day of a quarter for 2 September 2014 11:55:00:
+ * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 00:00:00
+ */
+function lastDayOfQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var currentMonth = date.getMonth()
+  var month = currentMonth - currentMonth % 3 + 3
+  date.setMonth(month, 0)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = lastDayOfQuarter
+
 
 /***/ }),
 
@@ -1347,7 +5481,45 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Return the last day of a week for the given date.\n *\n * @description\n * Return the last day of a week for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Date} the last day of a week\n *\n * @example\n * // The last day of a week for 2 September 2014 11:55:00:\n * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Sat Sep 06 2014 00:00:00\n *\n * @example\n * // If the week starts on Monday, the last day of the week for 2 September 2014 11:55:00:\n * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})\n * //=> Sun Sep 07 2014 00:00:00\n */\nfunction lastDayOfWeek (dirtyDate, dirtyOptions) {\n  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0\n\n  var date = parse(dirtyDate)\n  var day = date.getDay()\n  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)\n\n  date.setHours(0, 0, 0, 0)\n  date.setDate(date.getDate() + diff)\n  return date\n}\n\nmodule.exports = lastDayOfWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/last_day_of_week/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Return the last day of a week for the given date.
+ *
+ * @description
+ * Return the last day of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the last day of a week
+ *
+ * @example
+ * // The last day of a week for 2 September 2014 11:55:00:
+ * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 00:00:00
+ *
+ * @example
+ * // If the week starts on Monday, the last day of the week for 2 September 2014 11:55:00:
+ * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function lastDayOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+
+  date.setHours(0, 0, 0, 0)
+  date.setDate(date.getDate() + diff)
+  return date
+}
+
+module.exports = lastDayOfWeek
+
 
 /***/ }),
 
@@ -1358,7 +5530,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Return the last day of a year for the given date.\n *\n * @description\n * Return the last day of a year for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the last day of a year\n *\n * @example\n * // The last day of a year for 2 September 2014 11:55:00:\n * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))\n * //=> Wed Dec 31 2014 00:00:00\n */\nfunction lastDayOfYear (dirtyDate) {\n  var date = parse(dirtyDate)\n  var year = date.getFullYear()\n  date.setFullYear(year + 1, 0, 0)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = lastDayOfYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/last_day_of_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Return the last day of a year for the given date.
+ *
+ * @description
+ * Return the last day of a year for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of a year
+ *
+ * @example
+ * // The last day of a year for 2 September 2014 11:55:00:
+ * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Dec 31 2014 00:00:00
+ */
+function lastDayOfYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  date.setFullYear(year + 1, 0, 0)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = lastDayOfYear
+
 
 /***/ }),
 
@@ -1369,7 +5568,35 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var commonFormatterKeys = [\n  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', 'd',\n  'E', 'W', 'WW', 'YY', 'YYYY', 'GG', 'GGGG',\n  'H', 'HH', 'h', 'hh', 'm', 'mm',\n  's', 'ss', 'S', 'SS', 'SSS',\n  'Z', 'ZZ', 'X', 'x'\n]\n\nfunction buildFormattingTokensRegExp (formatters) {\n  var formatterKeys = []\n  for (var key in formatters) {\n    if (formatters.hasOwnProperty(key)) {\n      formatterKeys.push(key)\n    }\n  }\n\n  var formattingTokens = commonFormatterKeys\n    .concat(formatterKeys)\n    .sort()\n    .reverse()\n  var formattingTokensRegExp = new RegExp(\n    '(\\\\[[^\\\\[]*\\\\])|(\\\\\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'\n  )\n\n  return formattingTokensRegExp\n}\n\nmodule.exports = buildFormattingTokensRegExp\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/locale/_lib/build_formatting_tokens_reg_exp/index.js?");
+var commonFormatterKeys = [
+  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', 'd',
+  'E', 'W', 'WW', 'YY', 'YYYY', 'GG', 'GGGG',
+  'H', 'HH', 'h', 'hh', 'm', 'mm',
+  's', 'ss', 'S', 'SS', 'SSS',
+  'Z', 'ZZ', 'X', 'x'
+]
+
+function buildFormattingTokensRegExp (formatters) {
+  var formatterKeys = []
+  for (var key in formatters) {
+    if (formatters.hasOwnProperty(key)) {
+      formatterKeys.push(key)
+    }
+  }
+
+  var formattingTokens = commonFormatterKeys
+    .concat(formatterKeys)
+    .sort()
+    .reverse()
+  var formattingTokensRegExp = new RegExp(
+    '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
+  )
+
+  return formattingTokensRegExp
+}
+
+module.exports = buildFormattingTokensRegExp
+
 
 /***/ }),
 
@@ -1380,7 +5607,106 @@ eval("var commonFormatterKeys = [\n  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', '
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function buildDistanceInWordsLocale () {\n  var distanceInWordsLocale = {\n    lessThanXSeconds: {\n      one: 'less than a second',\n      other: 'less than {{count}} seconds'\n    },\n\n    xSeconds: {\n      one: '1 second',\n      other: '{{count}} seconds'\n    },\n\n    halfAMinute: 'half a minute',\n\n    lessThanXMinutes: {\n      one: 'less than a minute',\n      other: 'less than {{count}} minutes'\n    },\n\n    xMinutes: {\n      one: '1 minute',\n      other: '{{count}} minutes'\n    },\n\n    aboutXHours: {\n      one: 'about 1 hour',\n      other: 'about {{count}} hours'\n    },\n\n    xHours: {\n      one: '1 hour',\n      other: '{{count}} hours'\n    },\n\n    xDays: {\n      one: '1 day',\n      other: '{{count}} days'\n    },\n\n    aboutXMonths: {\n      one: 'about 1 month',\n      other: 'about {{count}} months'\n    },\n\n    xMonths: {\n      one: '1 month',\n      other: '{{count}} months'\n    },\n\n    aboutXYears: {\n      one: 'about 1 year',\n      other: 'about {{count}} years'\n    },\n\n    xYears: {\n      one: '1 year',\n      other: '{{count}} years'\n    },\n\n    overXYears: {\n      one: 'over 1 year',\n      other: 'over {{count}} years'\n    },\n\n    almostXYears: {\n      one: 'almost 1 year',\n      other: 'almost {{count}} years'\n    }\n  }\n\n  function localize (token, count, options) {\n    options = options || {}\n\n    var result\n    if (typeof distanceInWordsLocale[token] === 'string') {\n      result = distanceInWordsLocale[token]\n    } else if (count === 1) {\n      result = distanceInWordsLocale[token].one\n    } else {\n      result = distanceInWordsLocale[token].other.replace('{{count}}', count)\n    }\n\n    if (options.addSuffix) {\n      if (options.comparison > 0) {\n        return 'in ' + result\n      } else {\n        return result + ' ago'\n      }\n    }\n\n    return result\n  }\n\n  return {\n    localize: localize\n  }\n}\n\nmodule.exports = buildDistanceInWordsLocale\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/locale/en/build_distance_in_words_locale/index.js?");
+function buildDistanceInWordsLocale () {
+  var distanceInWordsLocale = {
+    lessThanXSeconds: {
+      one: 'less than a second',
+      other: 'less than {{count}} seconds'
+    },
+
+    xSeconds: {
+      one: '1 second',
+      other: '{{count}} seconds'
+    },
+
+    halfAMinute: 'half a minute',
+
+    lessThanXMinutes: {
+      one: 'less than a minute',
+      other: 'less than {{count}} minutes'
+    },
+
+    xMinutes: {
+      one: '1 minute',
+      other: '{{count}} minutes'
+    },
+
+    aboutXHours: {
+      one: 'about 1 hour',
+      other: 'about {{count}} hours'
+    },
+
+    xHours: {
+      one: '1 hour',
+      other: '{{count}} hours'
+    },
+
+    xDays: {
+      one: '1 day',
+      other: '{{count}} days'
+    },
+
+    aboutXMonths: {
+      one: 'about 1 month',
+      other: 'about {{count}} months'
+    },
+
+    xMonths: {
+      one: '1 month',
+      other: '{{count}} months'
+    },
+
+    aboutXYears: {
+      one: 'about 1 year',
+      other: 'about {{count}} years'
+    },
+
+    xYears: {
+      one: '1 year',
+      other: '{{count}} years'
+    },
+
+    overXYears: {
+      one: 'over 1 year',
+      other: 'over {{count}} years'
+    },
+
+    almostXYears: {
+      one: 'almost 1 year',
+      other: 'almost {{count}} years'
+    }
+  }
+
+  function localize (token, count, options) {
+    options = options || {}
+
+    var result
+    if (typeof distanceInWordsLocale[token] === 'string') {
+      result = distanceInWordsLocale[token]
+    } else if (count === 1) {
+      result = distanceInWordsLocale[token].one
+    } else {
+      result = distanceInWordsLocale[token].other.replace('{{count}}', count)
+    }
+
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        return 'in ' + result
+      } else {
+        return result + ' ago'
+      }
+    }
+
+    return result
+  }
+
+  return {
+    localize: localize
+  }
+}
+
+module.exports = buildDistanceInWordsLocale
+
 
 /***/ }),
 
@@ -1391,7 +5717,95 @@ eval("function buildDistanceInWordsLocale () {\n  var distanceInWordsLocale = {\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var buildFormattingTokensRegExp = __webpack_require__(/*! ../../_lib/build_formatting_tokens_reg_exp/index.js */ \"./node_modules/date-fns/locale/_lib/build_formatting_tokens_reg_exp/index.js\")\n\nfunction buildFormatLocale () {\n  // Note: in English, the names of days of the week and months are capitalized.\n  // If you are making a new locale based on this one, check if the same is true for the language you're working on.\n  // Generally, formatted dates should look like they are in the middle of a sentence,\n  // e.g. in Spanish language the weekdays and months should be in the lowercase.\n  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']\n  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']\n  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']\n  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']\n  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']\n  var meridiemUppercase = ['AM', 'PM']\n  var meridiemLowercase = ['am', 'pm']\n  var meridiemFull = ['a.m.', 'p.m.']\n\n  var formatters = {\n    // Month: Jan, Feb, ..., Dec\n    'MMM': function (date) {\n      return months3char[date.getMonth()]\n    },\n\n    // Month: January, February, ..., December\n    'MMMM': function (date) {\n      return monthsFull[date.getMonth()]\n    },\n\n    // Day of week: Su, Mo, ..., Sa\n    'dd': function (date) {\n      return weekdays2char[date.getDay()]\n    },\n\n    // Day of week: Sun, Mon, ..., Sat\n    'ddd': function (date) {\n      return weekdays3char[date.getDay()]\n    },\n\n    // Day of week: Sunday, Monday, ..., Saturday\n    'dddd': function (date) {\n      return weekdaysFull[date.getDay()]\n    },\n\n    // AM, PM\n    'A': function (date) {\n      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]\n    },\n\n    // am, pm\n    'a': function (date) {\n      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]\n    },\n\n    // a.m., p.m.\n    'aa': function (date) {\n      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]\n    }\n  }\n\n  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.\n  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W']\n  ordinalFormatters.forEach(function (formatterToken) {\n    formatters[formatterToken + 'o'] = function (date, formatters) {\n      return ordinal(formatters[formatterToken](date))\n    }\n  })\n\n  return {\n    formatters: formatters,\n    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)\n  }\n}\n\nfunction ordinal (number) {\n  var rem100 = number % 100\n  if (rem100 > 20 || rem100 < 10) {\n    switch (rem100 % 10) {\n      case 1:\n        return number + 'st'\n      case 2:\n        return number + 'nd'\n      case 3:\n        return number + 'rd'\n    }\n  }\n  return number + 'th'\n}\n\nmodule.exports = buildFormatLocale\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/locale/en/build_format_locale/index.js?");
+var buildFormattingTokensRegExp = __webpack_require__(/*! ../../_lib/build_formatting_tokens_reg_exp/index.js */ "./node_modules/date-fns/locale/_lib/build_formatting_tokens_reg_exp/index.js")
+
+function buildFormatLocale () {
+  // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  var meridiemUppercase = ['AM', 'PM']
+  var meridiemLowercase = ['am', 'pm']
+  var meridiemFull = ['a.m.', 'p.m.']
+
+  var formatters = {
+    // Month: Jan, Feb, ..., Dec
+    'MMM': function (date) {
+      return months3char[date.getMonth()]
+    },
+
+    // Month: January, February, ..., December
+    'MMMM': function (date) {
+      return monthsFull[date.getMonth()]
+    },
+
+    // Day of week: Su, Mo, ..., Sa
+    'dd': function (date) {
+      return weekdays2char[date.getDay()]
+    },
+
+    // Day of week: Sun, Mon, ..., Sat
+    'ddd': function (date) {
+      return weekdays3char[date.getDay()]
+    },
+
+    // Day of week: Sunday, Monday, ..., Saturday
+    'dddd': function (date) {
+      return weekdaysFull[date.getDay()]
+    },
+
+    // AM, PM
+    'A': function (date) {
+      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
+    },
+
+    // am, pm
+    'a': function (date) {
+      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
+    },
+
+    // a.m., p.m.
+    'aa': function (date) {
+      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+    }
+  }
+
+  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
+  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W']
+  ordinalFormatters.forEach(function (formatterToken) {
+    formatters[formatterToken + 'o'] = function (date, formatters) {
+      return ordinal(formatters[formatterToken](date))
+    }
+  })
+
+  return {
+    formatters: formatters,
+    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+  }
+}
+
+function ordinal (number) {
+  var rem100 = number % 100
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + 'st'
+      case 2:
+        return number + 'nd'
+      case 3:
+        return number + 'rd'
+    }
+  }
+  return number + 'th'
+}
+
+module.exports = buildFormatLocale
+
 
 /***/ }),
 
@@ -1402,7 +5816,18 @@ eval("var buildFormattingTokensRegExp = __webpack_require__(/*! ../../_lib/build
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var buildDistanceInWordsLocale = __webpack_require__(/*! ./build_distance_in_words_locale/index.js */ \"./node_modules/date-fns/locale/en/build_distance_in_words_locale/index.js\")\nvar buildFormatLocale = __webpack_require__(/*! ./build_format_locale/index.js */ \"./node_modules/date-fns/locale/en/build_format_locale/index.js\")\n\n/**\n * @category Locales\n * @summary English locale.\n */\nmodule.exports = {\n  distanceInWords: buildDistanceInWordsLocale(),\n  format: buildFormatLocale()\n}\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/locale/en/index.js?");
+var buildDistanceInWordsLocale = __webpack_require__(/*! ./build_distance_in_words_locale/index.js */ "./node_modules/date-fns/locale/en/build_distance_in_words_locale/index.js")
+var buildFormatLocale = __webpack_require__(/*! ./build_format_locale/index.js */ "./node_modules/date-fns/locale/en/build_format_locale/index.js")
+
+/**
+ * @category Locales
+ * @summary English locale.
+ */
+module.exports = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
 
 /***/ }),
 
@@ -1413,7 +5838,39 @@ eval("var buildDistanceInWordsLocale = __webpack_require__(/*! ./build_distance_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Return the latest of the given dates.\n *\n * @description\n * Return the latest of the given dates.\n *\n * @param {...(Date|String|Number)} dates - the dates to compare\n * @returns {Date} the latest of the dates\n *\n * @example\n * // Which of these dates is the latest?\n * var result = max(\n *   new Date(1989, 6, 10),\n *   new Date(1987, 1, 11),\n *   new Date(1995, 6, 2),\n *   new Date(1990, 0, 1)\n * )\n * //=> Sun Jul 02 1995 00:00:00\n */\nfunction max () {\n  var dirtyDates = Array.prototype.slice.call(arguments)\n  var dates = dirtyDates.map(function (dirtyDate) {\n    return parse(dirtyDate)\n  })\n  var latestTimestamp = Math.max.apply(null, dates)\n  return new Date(latestTimestamp)\n}\n\nmodule.exports = max\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/max/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return the latest of the given dates.
+ *
+ * @description
+ * Return the latest of the given dates.
+ *
+ * @param {...(Date|String|Number)} dates - the dates to compare
+ * @returns {Date} the latest of the dates
+ *
+ * @example
+ * // Which of these dates is the latest?
+ * var result = max(
+ *   new Date(1989, 6, 10),
+ *   new Date(1987, 1, 11),
+ *   new Date(1995, 6, 2),
+ *   new Date(1990, 0, 1)
+ * )
+ * //=> Sun Jul 02 1995 00:00:00
+ */
+function max () {
+  var dirtyDates = Array.prototype.slice.call(arguments)
+  var dates = dirtyDates.map(function (dirtyDate) {
+    return parse(dirtyDate)
+  })
+  var latestTimestamp = Math.max.apply(null, dates)
+  return new Date(latestTimestamp)
+}
+
+module.exports = max
+
 
 /***/ }),
 
@@ -1424,7 +5881,39 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Common Helpers\n * @summary Return the earliest of the given dates.\n *\n * @description\n * Return the earliest of the given dates.\n *\n * @param {...(Date|String|Number)} dates - the dates to compare\n * @returns {Date} the earliest of the dates\n *\n * @example\n * // Which of these dates is the earliest?\n * var result = min(\n *   new Date(1989, 6, 10),\n *   new Date(1987, 1, 11),\n *   new Date(1995, 6, 2),\n *   new Date(1990, 0, 1)\n * )\n * //=> Wed Feb 11 1987 00:00:00\n */\nfunction min () {\n  var dirtyDates = Array.prototype.slice.call(arguments)\n  var dates = dirtyDates.map(function (dirtyDate) {\n    return parse(dirtyDate)\n  })\n  var earliestTimestamp = Math.min.apply(null, dates)\n  return new Date(earliestTimestamp)\n}\n\nmodule.exports = min\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/min/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return the earliest of the given dates.
+ *
+ * @description
+ * Return the earliest of the given dates.
+ *
+ * @param {...(Date|String|Number)} dates - the dates to compare
+ * @returns {Date} the earliest of the dates
+ *
+ * @example
+ * // Which of these dates is the earliest?
+ * var result = min(
+ *   new Date(1989, 6, 10),
+ *   new Date(1987, 1, 11),
+ *   new Date(1995, 6, 2),
+ *   new Date(1990, 0, 1)
+ * )
+ * //=> Wed Feb 11 1987 00:00:00
+ */
+function min () {
+  var dirtyDates = Array.prototype.slice.call(arguments)
+  var dates = dirtyDates.map(function (dirtyDate) {
+    return parse(dirtyDate)
+  })
+  var earliestTimestamp = Math.min.apply(null, dates)
+  return new Date(earliestTimestamp)
+}
+
+module.exports = min
+
 
 /***/ }),
 
@@ -1435,7 +5924,327 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var isDate = __webpack_require__(/*! ../is_date/index.js */ \"./node_modules/date-fns/is_date/index.js\")\n\nvar MILLISECONDS_IN_HOUR = 3600000\nvar MILLISECONDS_IN_MINUTE = 60000\nvar DEFAULT_ADDITIONAL_DIGITS = 2\n\nvar parseTokenDateTimeDelimeter = /[T ]/\nvar parseTokenPlainTime = /:/\n\n// year tokens\nvar parseTokenYY = /^(\\d{2})$/\nvar parseTokensYYY = [\n  /^([+-]\\d{2})$/, // 0 additional digits\n  /^([+-]\\d{3})$/, // 1 additional digit\n  /^([+-]\\d{4})$/ // 2 additional digits\n]\n\nvar parseTokenYYYY = /^(\\d{4})/\nvar parseTokensYYYYY = [\n  /^([+-]\\d{4})/, // 0 additional digits\n  /^([+-]\\d{5})/, // 1 additional digit\n  /^([+-]\\d{6})/ // 2 additional digits\n]\n\n// date tokens\nvar parseTokenMM = /^-(\\d{2})$/\nvar parseTokenDDD = /^-?(\\d{3})$/\nvar parseTokenMMDD = /^-?(\\d{2})-?(\\d{2})$/\nvar parseTokenWww = /^-?W(\\d{2})$/\nvar parseTokenWwwD = /^-?W(\\d{2})-?(\\d{1})$/\n\n// time tokens\nvar parseTokenHH = /^(\\d{2}([.,]\\d*)?)$/\nvar parseTokenHHMM = /^(\\d{2}):?(\\d{2}([.,]\\d*)?)$/\nvar parseTokenHHMMSS = /^(\\d{2}):?(\\d{2}):?(\\d{2}([.,]\\d*)?)$/\n\n// timezone tokens\nvar parseTokenTimezone = /([Z+-].*)$/\nvar parseTokenTimezoneZ = /^(Z)$/\nvar parseTokenTimezoneHH = /^([+-])(\\d{2})$/\nvar parseTokenTimezoneHHMM = /^([+-])(\\d{2}):?(\\d{2})$/\n\n/**\n * @category Common Helpers\n * @summary Convert the given argument to an instance of Date.\n *\n * @description\n * Convert the given argument to an instance of Date.\n *\n * If the argument is an instance of Date, the function returns its clone.\n *\n * If the argument is a number, it is treated as a timestamp.\n *\n * If an argument is a string, the function tries to parse it.\n * Function accepts complete ISO 8601 formats as well as partial implementations.\n * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601\n *\n * If all above fails, the function passes the given argument to Date constructor.\n *\n * @param {Date|String|Number} argument - the value to convert\n * @param {Object} [options] - the object with options\n * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format\n * @returns {Date} the parsed date in the local time zone\n *\n * @example\n * // Convert string '2014-02-11T11:30:30' to date:\n * var result = parse('2014-02-11T11:30:30')\n * //=> Tue Feb 11 2014 11:30:30\n *\n * @example\n * // Parse string '+02014101',\n * // if the additional number of digits in the extended year format is 1:\n * var result = parse('+02014101', {additionalDigits: 1})\n * //=> Fri Apr 11 2014 00:00:00\n */\nfunction parse (argument, dirtyOptions) {\n  if (isDate(argument)) {\n    // Prevent the date to lose the milliseconds when passed to new Date() in IE10\n    return new Date(argument.getTime())\n  } else if (typeof argument !== 'string') {\n    return new Date(argument)\n  }\n\n  var options = dirtyOptions || {}\n  var additionalDigits = options.additionalDigits\n  if (additionalDigits == null) {\n    additionalDigits = DEFAULT_ADDITIONAL_DIGITS\n  } else {\n    additionalDigits = Number(additionalDigits)\n  }\n\n  var dateStrings = splitDateString(argument)\n\n  var parseYearResult = parseYear(dateStrings.date, additionalDigits)\n  var year = parseYearResult.year\n  var restDateString = parseYearResult.restDateString\n\n  var date = parseDate(restDateString, year)\n\n  if (date) {\n    var timestamp = date.getTime()\n    var time = 0\n    var offset\n\n    if (dateStrings.time) {\n      time = parseTime(dateStrings.time)\n    }\n\n    if (dateStrings.timezone) {\n      offset = parseTimezone(dateStrings.timezone)\n    } else {\n      // get offset accurate to hour in timezones that change offset\n      offset = new Date(timestamp + time).getTimezoneOffset()\n      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()\n    }\n\n    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)\n  } else {\n    return new Date(argument)\n  }\n}\n\nfunction splitDateString (dateString) {\n  var dateStrings = {}\n  var array = dateString.split(parseTokenDateTimeDelimeter)\n  var timeString\n\n  if (parseTokenPlainTime.test(array[0])) {\n    dateStrings.date = null\n    timeString = array[0]\n  } else {\n    dateStrings.date = array[0]\n    timeString = array[1]\n  }\n\n  if (timeString) {\n    var token = parseTokenTimezone.exec(timeString)\n    if (token) {\n      dateStrings.time = timeString.replace(token[1], '')\n      dateStrings.timezone = token[1]\n    } else {\n      dateStrings.time = timeString\n    }\n  }\n\n  return dateStrings\n}\n\nfunction parseYear (dateString, additionalDigits) {\n  var parseTokenYYY = parseTokensYYY[additionalDigits]\n  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits]\n\n  var token\n\n  // YYYY or ±YYYYY\n  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)\n  if (token) {\n    var yearString = token[1]\n    return {\n      year: parseInt(yearString, 10),\n      restDateString: dateString.slice(yearString.length)\n    }\n  }\n\n  // YY or ±YYY\n  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString)\n  if (token) {\n    var centuryString = token[1]\n    return {\n      year: parseInt(centuryString, 10) * 100,\n      restDateString: dateString.slice(centuryString.length)\n    }\n  }\n\n  // Invalid ISO-formatted year\n  return {\n    year: null\n  }\n}\n\nfunction parseDate (dateString, year) {\n  // Invalid ISO-formatted year\n  if (year === null) {\n    return null\n  }\n\n  var token\n  var date\n  var month\n  var week\n\n  // YYYY\n  if (dateString.length === 0) {\n    date = new Date(0)\n    date.setUTCFullYear(year)\n    return date\n  }\n\n  // YYYY-MM\n  token = parseTokenMM.exec(dateString)\n  if (token) {\n    date = new Date(0)\n    month = parseInt(token[1], 10) - 1\n    date.setUTCFullYear(year, month)\n    return date\n  }\n\n  // YYYY-DDD or YYYYDDD\n  token = parseTokenDDD.exec(dateString)\n  if (token) {\n    date = new Date(0)\n    var dayOfYear = parseInt(token[1], 10)\n    date.setUTCFullYear(year, 0, dayOfYear)\n    return date\n  }\n\n  // YYYY-MM-DD or YYYYMMDD\n  token = parseTokenMMDD.exec(dateString)\n  if (token) {\n    date = new Date(0)\n    month = parseInt(token[1], 10) - 1\n    var day = parseInt(token[2], 10)\n    date.setUTCFullYear(year, month, day)\n    return date\n  }\n\n  // YYYY-Www or YYYYWww\n  token = parseTokenWww.exec(dateString)\n  if (token) {\n    week = parseInt(token[1], 10) - 1\n    return dayOfISOYear(year, week)\n  }\n\n  // YYYY-Www-D or YYYYWwwD\n  token = parseTokenWwwD.exec(dateString)\n  if (token) {\n    week = parseInt(token[1], 10) - 1\n    var dayOfWeek = parseInt(token[2], 10) - 1\n    return dayOfISOYear(year, week, dayOfWeek)\n  }\n\n  // Invalid ISO-formatted date\n  return null\n}\n\nfunction parseTime (timeString) {\n  var token\n  var hours\n  var minutes\n\n  // hh\n  token = parseTokenHH.exec(timeString)\n  if (token) {\n    hours = parseFloat(token[1].replace(',', '.'))\n    return (hours % 24) * MILLISECONDS_IN_HOUR\n  }\n\n  // hh:mm or hhmm\n  token = parseTokenHHMM.exec(timeString)\n  if (token) {\n    hours = parseInt(token[1], 10)\n    minutes = parseFloat(token[2].replace(',', '.'))\n    return (hours % 24) * MILLISECONDS_IN_HOUR +\n      minutes * MILLISECONDS_IN_MINUTE\n  }\n\n  // hh:mm:ss or hhmmss\n  token = parseTokenHHMMSS.exec(timeString)\n  if (token) {\n    hours = parseInt(token[1], 10)\n    minutes = parseInt(token[2], 10)\n    var seconds = parseFloat(token[3].replace(',', '.'))\n    return (hours % 24) * MILLISECONDS_IN_HOUR +\n      minutes * MILLISECONDS_IN_MINUTE +\n      seconds * 1000\n  }\n\n  // Invalid ISO-formatted time\n  return null\n}\n\nfunction parseTimezone (timezoneString) {\n  var token\n  var absoluteOffset\n\n  // Z\n  token = parseTokenTimezoneZ.exec(timezoneString)\n  if (token) {\n    return 0\n  }\n\n  // ±hh\n  token = parseTokenTimezoneHH.exec(timezoneString)\n  if (token) {\n    absoluteOffset = parseInt(token[2], 10) * 60\n    return (token[1] === '+') ? -absoluteOffset : absoluteOffset\n  }\n\n  // ±hh:mm or ±hhmm\n  token = parseTokenTimezoneHHMM.exec(timezoneString)\n  if (token) {\n    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)\n    return (token[1] === '+') ? -absoluteOffset : absoluteOffset\n  }\n\n  return 0\n}\n\nfunction dayOfISOYear (isoYear, week, day) {\n  week = week || 0\n  day = day || 0\n  var date = new Date(0)\n  date.setUTCFullYear(isoYear, 0, 4)\n  var fourthOfJanuaryDay = date.getUTCDay() || 7\n  var diff = week * 7 + day + 1 - fourthOfJanuaryDay\n  date.setUTCDate(date.getUTCDate() + diff)\n  return date\n}\n\nmodule.exports = parse\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/parse/index.js?");
+var isDate = __webpack_require__(/*! ../is_date/index.js */ "./node_modules/date-fns/is_date/index.js")
+
+var MILLISECONDS_IN_HOUR = 3600000
+var MILLISECONDS_IN_MINUTE = 60000
+var DEFAULT_ADDITIONAL_DIGITS = 2
+
+var parseTokenDateTimeDelimeter = /[T ]/
+var parseTokenPlainTime = /:/
+
+// year tokens
+var parseTokenYY = /^(\d{2})$/
+var parseTokensYYY = [
+  /^([+-]\d{2})$/, // 0 additional digits
+  /^([+-]\d{3})$/, // 1 additional digit
+  /^([+-]\d{4})$/ // 2 additional digits
+]
+
+var parseTokenYYYY = /^(\d{4})/
+var parseTokensYYYYY = [
+  /^([+-]\d{4})/, // 0 additional digits
+  /^([+-]\d{5})/, // 1 additional digit
+  /^([+-]\d{6})/ // 2 additional digits
+]
+
+// date tokens
+var parseTokenMM = /^-(\d{2})$/
+var parseTokenDDD = /^-?(\d{3})$/
+var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/
+var parseTokenWww = /^-?W(\d{2})$/
+var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/
+
+// time tokens
+var parseTokenHH = /^(\d{2}([.,]\d*)?)$/
+var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/
+var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/
+
+// timezone tokens
+var parseTokenTimezone = /([Z+-].*)$/
+var parseTokenTimezoneZ = /^(Z)$/
+var parseTokenTimezoneHH = /^([+-])(\d{2})$/
+var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
+
+/**
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If an argument is a string, the function tries to parse it.
+ * Function accepts complete ISO 8601 formats as well as partial implementations.
+ * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ *
+ * If all above fails, the function passes the given argument to Date constructor.
+ *
+ * @param {Date|String|Number} argument - the value to convert
+ * @param {Object} [options] - the object with options
+ * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @returns {Date} the parsed date in the local time zone
+ *
+ * @example
+ * // Convert string '2014-02-11T11:30:30' to date:
+ * var result = parse('2014-02-11T11:30:30')
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Parse string '+02014101',
+ * // if the additional number of digits in the extended year format is 1:
+ * var result = parse('+02014101', {additionalDigits: 1})
+ * //=> Fri Apr 11 2014 00:00:00
+ */
+function parse (argument, dirtyOptions) {
+  if (isDate(argument)) {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(argument.getTime())
+  } else if (typeof argument !== 'string') {
+    return new Date(argument)
+  }
+
+  var options = dirtyOptions || {}
+  var additionalDigits = options.additionalDigits
+  if (additionalDigits == null) {
+    additionalDigits = DEFAULT_ADDITIONAL_DIGITS
+  } else {
+    additionalDigits = Number(additionalDigits)
+  }
+
+  var dateStrings = splitDateString(argument)
+
+  var parseYearResult = parseYear(dateStrings.date, additionalDigits)
+  var year = parseYearResult.year
+  var restDateString = parseYearResult.restDateString
+
+  var date = parseDate(restDateString, year)
+
+  if (date) {
+    var timestamp = date.getTime()
+    var time = 0
+    var offset
+
+    if (dateStrings.time) {
+      time = parseTime(dateStrings.time)
+    }
+
+    if (dateStrings.timezone) {
+      offset = parseTimezone(dateStrings.timezone)
+    } else {
+      // get offset accurate to hour in timezones that change offset
+      offset = new Date(timestamp + time).getTimezoneOffset()
+      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
+    }
+
+    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
+  } else {
+    return new Date(argument)
+  }
+}
+
+function splitDateString (dateString) {
+  var dateStrings = {}
+  var array = dateString.split(parseTokenDateTimeDelimeter)
+  var timeString
+
+  if (parseTokenPlainTime.test(array[0])) {
+    dateStrings.date = null
+    timeString = array[0]
+  } else {
+    dateStrings.date = array[0]
+    timeString = array[1]
+  }
+
+  if (timeString) {
+    var token = parseTokenTimezone.exec(timeString)
+    if (token) {
+      dateStrings.time = timeString.replace(token[1], '')
+      dateStrings.timezone = token[1]
+    } else {
+      dateStrings.time = timeString
+    }
+  }
+
+  return dateStrings
+}
+
+function parseYear (dateString, additionalDigits) {
+  var parseTokenYYY = parseTokensYYY[additionalDigits]
+  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits]
+
+  var token
+
+  // YYYY or ±YYYYY
+  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)
+  if (token) {
+    var yearString = token[1]
+    return {
+      year: parseInt(yearString, 10),
+      restDateString: dateString.slice(yearString.length)
+    }
+  }
+
+  // YY or ±YYY
+  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString)
+  if (token) {
+    var centuryString = token[1]
+    return {
+      year: parseInt(centuryString, 10) * 100,
+      restDateString: dateString.slice(centuryString.length)
+    }
+  }
+
+  // Invalid ISO-formatted year
+  return {
+    year: null
+  }
+}
+
+function parseDate (dateString, year) {
+  // Invalid ISO-formatted year
+  if (year === null) {
+    return null
+  }
+
+  var token
+  var date
+  var month
+  var week
+
+  // YYYY
+  if (dateString.length === 0) {
+    date = new Date(0)
+    date.setUTCFullYear(year)
+    return date
+  }
+
+  // YYYY-MM
+  token = parseTokenMM.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
+    date.setUTCFullYear(year, month)
+    return date
+  }
+
+  // YYYY-DDD or YYYYDDD
+  token = parseTokenDDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    var dayOfYear = parseInt(token[1], 10)
+    date.setUTCFullYear(year, 0, dayOfYear)
+    return date
+  }
+
+  // YYYY-MM-DD or YYYYMMDD
+  token = parseTokenMMDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
+    var day = parseInt(token[2], 10)
+    date.setUTCFullYear(year, month, day)
+    return date
+  }
+
+  // YYYY-Www or YYYYWww
+  token = parseTokenWww.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
+    return dayOfISOYear(year, week)
+  }
+
+  // YYYY-Www-D or YYYYWwwD
+  token = parseTokenWwwD.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
+    var dayOfWeek = parseInt(token[2], 10) - 1
+    return dayOfISOYear(year, week, dayOfWeek)
+  }
+
+  // Invalid ISO-formatted date
+  return null
+}
+
+function parseTime (timeString) {
+  var token
+  var hours
+  var minutes
+
+  // hh
+  token = parseTokenHH.exec(timeString)
+  if (token) {
+    hours = parseFloat(token[1].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR
+  }
+
+  // hh:mm or hhmm
+  token = parseTokenHHMM.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseFloat(token[2].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE
+  }
+
+  // hh:mm:ss or hhmmss
+  token = parseTokenHHMMSS.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseInt(token[2], 10)
+    var seconds = parseFloat(token[3].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE +
+      seconds * 1000
+  }
+
+  // Invalid ISO-formatted time
+  return null
+}
+
+function parseTimezone (timezoneString) {
+  var token
+  var absoluteOffset
+
+  // Z
+  token = parseTokenTimezoneZ.exec(timezoneString)
+  if (token) {
+    return 0
+  }
+
+  // ±hh
+  token = parseTokenTimezoneHH.exec(timezoneString)
+  if (token) {
+    absoluteOffset = parseInt(token[2], 10) * 60
+    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+  }
+
+  // ±hh:mm or ±hhmm
+  token = parseTokenTimezoneHHMM.exec(timezoneString)
+  if (token) {
+    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
+    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+  }
+
+  return 0
+}
+
+function dayOfISOYear (isoYear, week, day) {
+  week = week || 0
+  day = day || 0
+  var date = new Date(0)
+  date.setUTCFullYear(isoYear, 0, 4)
+  var fourthOfJanuaryDay = date.getUTCDay() || 7
+  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
+  date.setUTCDate(date.getUTCDate() + diff)
+  return date
+}
+
+module.exports = parse
+
 
 /***/ }),
 
@@ -1446,7 +6255,33 @@ eval("var isDate = __webpack_require__(/*! ../is_date/index.js */ \"./node_modul
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Set the day of the month to the given date.\n *\n * @description\n * Set the day of the month to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} dayOfMonth - the day of the month of the new date\n * @returns {Date} the new date with the day of the month setted\n *\n * @example\n * // Set the 30th day of the month to 1 September 2014:\n * var result = setDate(new Date(2014, 8, 1), 30)\n * //=> Tue Sep 30 2014 00:00:00\n */\nfunction setDate (dirtyDate, dirtyDayOfMonth) {\n  var date = parse(dirtyDate)\n  var dayOfMonth = Number(dirtyDayOfMonth)\n  date.setDate(dayOfMonth)\n  return date\n}\n\nmodule.exports = setDate\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_date/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Set the day of the month to the given date.
+ *
+ * @description
+ * Set the day of the month to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} dayOfMonth - the day of the month of the new date
+ * @returns {Date} the new date with the day of the month setted
+ *
+ * @example
+ * // Set the 30th day of the month to 1 September 2014:
+ * var result = setDate(new Date(2014, 8, 1), 30)
+ * //=> Tue Sep 30 2014 00:00:00
+ */
+function setDate (dirtyDate, dirtyDayOfMonth) {
+  var date = parse(dirtyDate)
+  var dayOfMonth = Number(dirtyDayOfMonth)
+  date.setDate(dayOfMonth)
+  return date
+}
+
+module.exports = setDate
+
 
 /***/ }),
 
@@ -1457,7 +6292,47 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar addDays = __webpack_require__(/*! ../add_days/index.js */ \"./node_modules/date-fns/add_days/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Set the day of the week to the given date.\n *\n * @description\n * Set the day of the week to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} day - the day of the week of the new date\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Date} the new date with the day of the week setted\n *\n * @example\n * // Set Sunday to 1 September 2014:\n * var result = setDay(new Date(2014, 8, 1), 0)\n * //=> Sun Aug 31 2014 00:00:00\n *\n * @example\n * // If week starts with Monday, set Sunday to 1 September 2014:\n * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsOn: 1})\n * //=> Sun Sep 07 2014 00:00:00\n */\nfunction setDay (dirtyDate, dirtyDay, dirtyOptions) {\n  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0\n  var date = parse(dirtyDate)\n  var day = Number(dirtyDay)\n  var currentDay = date.getDay()\n\n  var remainder = day % 7\n  var dayIndex = (remainder + 7) % 7\n\n  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay\n  return addDays(date, diff)\n}\n\nmodule.exports = setDay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Set the day of the week to the given date.
+ *
+ * @description
+ * Set the day of the week to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} day - the day of the week of the new date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the new date with the day of the week setted
+ *
+ * @example
+ * // Set Sunday to 1 September 2014:
+ * var result = setDay(new Date(2014, 8, 1), 0)
+ * //=> Sun Aug 31 2014 00:00:00
+ *
+ * @example
+ * // If week starts with Monday, set Sunday to 1 September 2014:
+ * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsOn: 1})
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function setDay (dirtyDate, dirtyDay, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+  var date = parse(dirtyDate)
+  var day = Number(dirtyDay)
+  var currentDay = date.getDay()
+
+  var remainder = day % 7
+  var dayIndex = (remainder + 7) % 7
+
+  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  return addDays(date, diff)
+}
+
+module.exports = setDay
+
 
 /***/ }),
 
@@ -1468,7 +6343,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Set the day of the year to the given date.\n *\n * @description\n * Set the day of the year to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} dayOfYear - the day of the year of the new date\n * @returns {Date} the new date with the day of the year setted\n *\n * @example\n * // Set the 2nd day of the year to 2 July 2014:\n * var result = setDayOfYear(new Date(2014, 6, 2), 2)\n * //=> Thu Jan 02 2014 00:00:00\n */\nfunction setDayOfYear (dirtyDate, dirtyDayOfYear) {\n  var date = parse(dirtyDate)\n  var dayOfYear = Number(dirtyDayOfYear)\n  date.setMonth(0)\n  date.setDate(dayOfYear)\n  return date\n}\n\nmodule.exports = setDayOfYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_day_of_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Set the day of the year to the given date.
+ *
+ * @description
+ * Set the day of the year to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} dayOfYear - the day of the year of the new date
+ * @returns {Date} the new date with the day of the year setted
+ *
+ * @example
+ * // Set the 2nd day of the year to 2 July 2014:
+ * var result = setDayOfYear(new Date(2014, 6, 2), 2)
+ * //=> Thu Jan 02 2014 00:00:00
+ */
+function setDayOfYear (dirtyDate, dirtyDayOfYear) {
+  var date = parse(dirtyDate)
+  var dayOfYear = Number(dirtyDayOfYear)
+  date.setMonth(0)
+  date.setDate(dayOfYear)
+  return date
+}
+
+module.exports = setDayOfYear
+
 
 /***/ }),
 
@@ -1479,7 +6381,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Set the hours to the given date.\n *\n * @description\n * Set the hours to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} hours - the hours of the new date\n * @returns {Date} the new date with the hours setted\n *\n * @example\n * // Set 4 hours to 1 September 2014 11:30:00:\n * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)\n * //=> Mon Sep 01 2014 04:30:00\n */\nfunction setHours (dirtyDate, dirtyHours) {\n  var date = parse(dirtyDate)\n  var hours = Number(dirtyHours)\n  date.setHours(hours)\n  return date\n}\n\nmodule.exports = setHours\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_hours/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Set the hours to the given date.
+ *
+ * @description
+ * Set the hours to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} hours - the hours of the new date
+ * @returns {Date} the new date with the hours setted
+ *
+ * @example
+ * // Set 4 hours to 1 September 2014 11:30:00:
+ * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
+ * //=> Mon Sep 01 2014 04:30:00
+ */
+function setHours (dirtyDate, dirtyHours) {
+  var date = parse(dirtyDate)
+  var hours = Number(dirtyHours)
+  date.setHours(hours)
+  return date
+}
+
+module.exports = setHours
+
 
 /***/ }),
 
@@ -1490,7 +6418,38 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar addDays = __webpack_require__(/*! ../add_days/index.js */ \"./node_modules/date-fns/add_days/index.js\")\nvar getISODay = __webpack_require__(/*! ../get_iso_day/index.js */ \"./node_modules/date-fns/get_iso_day/index.js\")\n\n/**\n * @category Weekday Helpers\n * @summary Set the day of the ISO week to the given date.\n *\n * @description\n * Set the day of the ISO week to the given date.\n * ISO week starts with Monday.\n * 7 is the index of Sunday, 1 is the index of Monday etc.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} day - the day of the ISO week of the new date\n * @returns {Date} the new date with the day of the ISO week setted\n *\n * @example\n * // Set Sunday to 1 September 2014:\n * var result = setISODay(new Date(2014, 8, 1), 7)\n * //=> Sun Sep 07 2014 00:00:00\n */\nfunction setISODay (dirtyDate, dirtyDay) {\n  var date = parse(dirtyDate)\n  var day = Number(dirtyDay)\n  var currentDay = getISODay(date)\n  var diff = day - currentDay\n  return addDays(date, diff)\n}\n\nmodule.exports = setISODay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_iso_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+var getISODay = __webpack_require__(/*! ../get_iso_day/index.js */ "./node_modules/date-fns/get_iso_day/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Set the day of the ISO week to the given date.
+ *
+ * @description
+ * Set the day of the ISO week to the given date.
+ * ISO week starts with Monday.
+ * 7 is the index of Sunday, 1 is the index of Monday etc.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} day - the day of the ISO week of the new date
+ * @returns {Date} the new date with the day of the ISO week setted
+ *
+ * @example
+ * // Set Sunday to 1 September 2014:
+ * var result = setISODay(new Date(2014, 8, 1), 7)
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function setISODay (dirtyDate, dirtyDay) {
+  var date = parse(dirtyDate)
+  var day = Number(dirtyDay)
+  var currentDay = getISODay(date)
+  var diff = day - currentDay
+  return addDays(date, diff)
+}
+
+module.exports = setISODay
+
 
 /***/ }),
 
@@ -1501,7 +6460,37 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar getISOWeek = __webpack_require__(/*! ../get_iso_week/index.js */ \"./node_modules/date-fns/get_iso_week/index.js\")\n\n/**\n * @category ISO Week Helpers\n * @summary Set the ISO week to the given date.\n *\n * @description\n * Set the ISO week to the given date, saving the weekday number.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} isoWeek - the ISO week of the new date\n * @returns {Date} the new date with the ISO week setted\n *\n * @example\n * // Set the 53rd ISO week to 7 August 2004:\n * var result = setISOWeek(new Date(2004, 7, 7), 53)\n * //=> Sat Jan 01 2005 00:00:00\n */\nfunction setISOWeek (dirtyDate, dirtyISOWeek) {\n  var date = parse(dirtyDate)\n  var isoWeek = Number(dirtyISOWeek)\n  var diff = getISOWeek(date) - isoWeek\n  date.setDate(date.getDate() - diff * 7)\n  return date\n}\n\nmodule.exports = setISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_iso_week/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var getISOWeek = __webpack_require__(/*! ../get_iso_week/index.js */ "./node_modules/date-fns/get_iso_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Set the ISO week to the given date.
+ *
+ * @description
+ * Set the ISO week to the given date, saving the weekday number.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} isoWeek - the ISO week of the new date
+ * @returns {Date} the new date with the ISO week setted
+ *
+ * @example
+ * // Set the 53rd ISO week to 7 August 2004:
+ * var result = setISOWeek(new Date(2004, 7, 7), 53)
+ * //=> Sat Jan 01 2005 00:00:00
+ */
+function setISOWeek (dirtyDate, dirtyISOWeek) {
+  var date = parse(dirtyDate)
+  var isoWeek = Number(dirtyISOWeek)
+  var diff = getISOWeek(date) - isoWeek
+  date.setDate(date.getDate() - diff * 7)
+  return date
+}
+
+module.exports = setISOWeek
+
 
 /***/ }),
 
@@ -1512,7 +6501,43 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ \"./node_modules/date-fns/start_of_iso_year/index.js\")\nvar differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ \"./node_modules/date-fns/difference_in_calendar_days/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Set the ISO week-numbering year to the given date.\n *\n * @description\n * Set the ISO week-numbering year to the given date,\n * saving the week number and the weekday number.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} isoYear - the ISO week-numbering year of the new date\n * @returns {Date} the new date with the ISO week-numbering year setted\n *\n * @example\n * // Set ISO week-numbering year 2007 to 29 December 2008:\n * var result = setISOYear(new Date(2008, 11, 29), 2007)\n * //=> Mon Jan 01 2007 00:00:00\n */\nfunction setISOYear (dirtyDate, dirtyISOYear) {\n  var date = parse(dirtyDate)\n  var isoYear = Number(dirtyISOYear)\n  var diff = differenceInCalendarDays(date, startOfISOYear(date))\n  var fourthOfJanuary = new Date(0)\n  fourthOfJanuary.setFullYear(isoYear, 0, 4)\n  fourthOfJanuary.setHours(0, 0, 0, 0)\n  date = startOfISOYear(fourthOfJanuary)\n  date.setDate(date.getDate() + diff)\n  return date\n}\n\nmodule.exports = setISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_iso_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+var differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Set the ISO week-numbering year to the given date.
+ *
+ * @description
+ * Set the ISO week-numbering year to the given date,
+ * saving the week number and the weekday number.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} isoYear - the ISO week-numbering year of the new date
+ * @returns {Date} the new date with the ISO week-numbering year setted
+ *
+ * @example
+ * // Set ISO week-numbering year 2007 to 29 December 2008:
+ * var result = setISOYear(new Date(2008, 11, 29), 2007)
+ * //=> Mon Jan 01 2007 00:00:00
+ */
+function setISOYear (dirtyDate, dirtyISOYear) {
+  var date = parse(dirtyDate)
+  var isoYear = Number(dirtyISOYear)
+  var diff = differenceInCalendarDays(date, startOfISOYear(date))
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(isoYear, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  date = startOfISOYear(fourthOfJanuary)
+  date.setDate(date.getDate() + diff)
+  return date
+}
+
+module.exports = setISOYear
+
 
 /***/ }),
 
@@ -1523,7 +6548,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Millisecond Helpers\n * @summary Set the milliseconds to the given date.\n *\n * @description\n * Set the milliseconds to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} milliseconds - the milliseconds of the new date\n * @returns {Date} the new date with the milliseconds setted\n *\n * @example\n * // Set 300 milliseconds to 1 September 2014 11:30:40.500:\n * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)\n * //=> Mon Sep 01 2014 11:30:40.300\n */\nfunction setMilliseconds (dirtyDate, dirtyMilliseconds) {\n  var date = parse(dirtyDate)\n  var milliseconds = Number(dirtyMilliseconds)\n  date.setMilliseconds(milliseconds)\n  return date\n}\n\nmodule.exports = setMilliseconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_milliseconds/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Set the milliseconds to the given date.
+ *
+ * @description
+ * Set the milliseconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} milliseconds - the milliseconds of the new date
+ * @returns {Date} the new date with the milliseconds setted
+ *
+ * @example
+ * // Set 300 milliseconds to 1 September 2014 11:30:40.500:
+ * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
+ * //=> Mon Sep 01 2014 11:30:40.300
+ */
+function setMilliseconds (dirtyDate, dirtyMilliseconds) {
+  var date = parse(dirtyDate)
+  var milliseconds = Number(dirtyMilliseconds)
+  date.setMilliseconds(milliseconds)
+  return date
+}
+
+module.exports = setMilliseconds
+
 
 /***/ }),
 
@@ -1534,7 +6585,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Set the minutes to the given date.\n *\n * @description\n * Set the minutes to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} minutes - the minutes of the new date\n * @returns {Date} the new date with the minutes setted\n *\n * @example\n * // Set 45 minutes to 1 September 2014 11:30:40:\n * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)\n * //=> Mon Sep 01 2014 11:45:40\n */\nfunction setMinutes (dirtyDate, dirtyMinutes) {\n  var date = parse(dirtyDate)\n  var minutes = Number(dirtyMinutes)\n  date.setMinutes(minutes)\n  return date\n}\n\nmodule.exports = setMinutes\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_minutes/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Set the minutes to the given date.
+ *
+ * @description
+ * Set the minutes to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} minutes - the minutes of the new date
+ * @returns {Date} the new date with the minutes setted
+ *
+ * @example
+ * // Set 45 minutes to 1 September 2014 11:30:40:
+ * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
+ * //=> Mon Sep 01 2014 11:45:40
+ */
+function setMinutes (dirtyDate, dirtyMinutes) {
+  var date = parse(dirtyDate)
+  var minutes = Number(dirtyMinutes)
+  date.setMinutes(minutes)
+  return date
+}
+
+module.exports = setMinutes
+
 
 /***/ }),
 
@@ -1545,7 +6622,43 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar getDaysInMonth = __webpack_require__(/*! ../get_days_in_month/index.js */ \"./node_modules/date-fns/get_days_in_month/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Set the month to the given date.\n *\n * @description\n * Set the month to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} month - the month of the new date\n * @returns {Date} the new date with the month setted\n *\n * @example\n * // Set February to 1 September 2014:\n * var result = setMonth(new Date(2014, 8, 1), 1)\n * //=> Sat Feb 01 2014 00:00:00\n */\nfunction setMonth (dirtyDate, dirtyMonth) {\n  var date = parse(dirtyDate)\n  var month = Number(dirtyMonth)\n  var year = date.getFullYear()\n  var day = date.getDate()\n\n  var dateWithDesiredMonth = new Date(0)\n  dateWithDesiredMonth.setFullYear(year, month, 15)\n  dateWithDesiredMonth.setHours(0, 0, 0, 0)\n  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)\n  // Set the last day of the new month\n  // if the original date was the last day of the longer month\n  date.setMonth(month, Math.min(day, daysInMonth))\n  return date\n}\n\nmodule.exports = setMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var getDaysInMonth = __webpack_require__(/*! ../get_days_in_month/index.js */ "./node_modules/date-fns/get_days_in_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Set the month to the given date.
+ *
+ * @description
+ * Set the month to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} month - the month of the new date
+ * @returns {Date} the new date with the month setted
+ *
+ * @example
+ * // Set February to 1 September 2014:
+ * var result = setMonth(new Date(2014, 8, 1), 1)
+ * //=> Sat Feb 01 2014 00:00:00
+ */
+function setMonth (dirtyDate, dirtyMonth) {
+  var date = parse(dirtyDate)
+  var month = Number(dirtyMonth)
+  var year = date.getFullYear()
+  var day = date.getDate()
+
+  var dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(year, month, 15)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  // Set the last day of the new month
+  // if the original date was the last day of the longer month
+  date.setMonth(month, Math.min(day, daysInMonth))
+  return date
+}
+
+module.exports = setMonth
+
 
 /***/ }),
 
@@ -1556,7 +6669,35 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\nvar setMonth = __webpack_require__(/*! ../set_month/index.js */ \"./node_modules/date-fns/set_month/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Set the year quarter to the given date.\n *\n * @description\n * Set the year quarter to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} quarter - the quarter of the new date\n * @returns {Date} the new date with the quarter setted\n *\n * @example\n * // Set the 2nd quarter to 2 July 2014:\n * var result = setQuarter(new Date(2014, 6, 2), 2)\n * //=> Wed Apr 02 2014 00:00:00\n */\nfunction setQuarter (dirtyDate, dirtyQuarter) {\n  var date = parse(dirtyDate)\n  var quarter = Number(dirtyQuarter)\n  var oldQuarter = Math.floor(date.getMonth() / 3) + 1\n  var diff = quarter - oldQuarter\n  return setMonth(date, date.getMonth() + diff * 3)\n}\n\nmodule.exports = setQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_quarter/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var setMonth = __webpack_require__(/*! ../set_month/index.js */ "./node_modules/date-fns/set_month/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Set the year quarter to the given date.
+ *
+ * @description
+ * Set the year quarter to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} quarter - the quarter of the new date
+ * @returns {Date} the new date with the quarter setted
+ *
+ * @example
+ * // Set the 2nd quarter to 2 July 2014:
+ * var result = setQuarter(new Date(2014, 6, 2), 2)
+ * //=> Wed Apr 02 2014 00:00:00
+ */
+function setQuarter (dirtyDate, dirtyQuarter) {
+  var date = parse(dirtyDate)
+  var quarter = Number(dirtyQuarter)
+  var oldQuarter = Math.floor(date.getMonth() / 3) + 1
+  var diff = quarter - oldQuarter
+  return setMonth(date, date.getMonth() + diff * 3)
+}
+
+module.exports = setQuarter
+
 
 /***/ }),
 
@@ -1567,7 +6708,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Set the seconds to the given date.\n *\n * @description\n * Set the seconds to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} seconds - the seconds of the new date\n * @returns {Date} the new date with the seconds setted\n *\n * @example\n * // Set 45 seconds to 1 September 2014 11:30:40:\n * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)\n * //=> Mon Sep 01 2014 11:30:45\n */\nfunction setSeconds (dirtyDate, dirtySeconds) {\n  var date = parse(dirtyDate)\n  var seconds = Number(dirtySeconds)\n  date.setSeconds(seconds)\n  return date\n}\n\nmodule.exports = setSeconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_seconds/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Set the seconds to the given date.
+ *
+ * @description
+ * Set the seconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} seconds - the seconds of the new date
+ * @returns {Date} the new date with the seconds setted
+ *
+ * @example
+ * // Set 45 seconds to 1 September 2014 11:30:40:
+ * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
+ * //=> Mon Sep 01 2014 11:30:45
+ */
+function setSeconds (dirtyDate, dirtySeconds) {
+  var date = parse(dirtyDate)
+  var seconds = Number(dirtySeconds)
+  date.setSeconds(seconds)
+  return date
+}
+
+module.exports = setSeconds
+
 
 /***/ }),
 
@@ -1578,7 +6745,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Set the year to the given date.\n *\n * @description\n * Set the year to the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} year - the year of the new date\n * @returns {Date} the new date with the year setted\n *\n * @example\n * // Set year 2013 to 1 September 2014:\n * var result = setYear(new Date(2014, 8, 1), 2013)\n * //=> Sun Sep 01 2013 00:00:00\n */\nfunction setYear (dirtyDate, dirtyYear) {\n  var date = parse(dirtyDate)\n  var year = Number(dirtyYear)\n  date.setFullYear(year)\n  return date\n}\n\nmodule.exports = setYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/set_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Set the year to the given date.
+ *
+ * @description
+ * Set the year to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} year - the year of the new date
+ * @returns {Date} the new date with the year setted
+ *
+ * @example
+ * // Set year 2013 to 1 September 2014:
+ * var result = setYear(new Date(2014, 8, 1), 2013)
+ * //=> Sun Sep 01 2013 00:00:00
+ */
+function setYear (dirtyDate, dirtyYear) {
+  var date = parse(dirtyDate)
+  var year = Number(dirtyYear)
+  date.setFullYear(year)
+  return date
+}
+
+module.exports = setYear
+
 
 /***/ }),
 
@@ -1589,7 +6782,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Return the start of a day for the given date.\n *\n * @description\n * Return the start of a day for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of a day\n *\n * @example\n * // The start of a day for 2 September 2014 11:55:00:\n * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Sep 02 2014 00:00:00\n */\nfunction startOfDay (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfDay\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_day/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of a day for the given date.
+ *
+ * @description
+ * Return the start of a day for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a day
+ *
+ * @example
+ * // The start of a day for 2 September 2014 11:55:00:
+ * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 00:00:00
+ */
+function startOfDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfDay
+
 
 /***/ }),
 
@@ -1600,7 +6818,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Return the start of an hour for the given date.\n *\n * @description\n * Return the start of an hour for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of an hour\n *\n * @example\n * // The start of an hour for 2 September 2014 11:55:00:\n * var result = startOfHour(new Date(2014, 8, 2, 11, 55))\n * //=> Tue Sep 02 2014 11:00:00\n */\nfunction startOfHour (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setMinutes(0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfHour\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_hour/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Return the start of an hour for the given date.
+ *
+ * @description
+ * Return the start of an hour for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an hour
+ *
+ * @example
+ * // The start of an hour for 2 September 2014 11:55:00:
+ * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
+ * //=> Tue Sep 02 2014 11:00:00
+ */
+function startOfHour (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMinutes(0, 0, 0)
+  return date
+}
+
+module.exports = startOfHour
+
 
 /***/ }),
 
@@ -1611,7 +6854,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ \"./node_modules/date-fns/start_of_week/index.js\")\n\n/**\n * @category ISO Week Helpers\n * @summary Return the start of an ISO week for the given date.\n *\n * @description\n * Return the start of an ISO week for the given date.\n * The result will be in the local timezone.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of an ISO week\n *\n * @example\n * // The start of an ISO week for 2 September 2014 11:55:00:\n * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Mon Sep 01 2014 00:00:00\n */\nfunction startOfISOWeek (dirtyDate) {\n  return startOfWeek(dirtyDate, {weekStartsOn: 1})\n}\n\nmodule.exports = startOfISOWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_iso_week/index.js?");
+var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Return the start of an ISO week for the given date.
+ *
+ * @description
+ * Return the start of an ISO week for the given date.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an ISO week
+ *
+ * @example
+ * // The start of an ISO week for 2 September 2014 11:55:00:
+ * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function startOfISOWeek (dirtyDate) {
+  return startOfWeek(dirtyDate, {weekStartsOn: 1})
+}
+
+module.exports = startOfISOWeek
+
 
 /***/ }),
 
@@ -1622,7 +6890,39 @@ eval("var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ \".
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./node_modules/date-fns/get_iso_year/index.js\")\nvar startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ \"./node_modules/date-fns/start_of_iso_week/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Return the start of an ISO week-numbering year for the given date.\n *\n * @description\n * Return the start of an ISO week-numbering year,\n * which always starts 3 days before the year's first Thursday.\n * The result will be in the local timezone.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of an ISO year\n *\n * @example\n * // The start of an ISO week-numbering year for 2 July 2005:\n * var result = startOfISOYear(new Date(2005, 6, 2))\n * //=> Mon Jan 03 2005 00:00:00\n */\nfunction startOfISOYear (dirtyDate) {\n  var year = getISOYear(dirtyDate)\n  var fourthOfJanuary = new Date(0)\n  fourthOfJanuary.setFullYear(year, 0, 4)\n  fourthOfJanuary.setHours(0, 0, 0, 0)\n  var date = startOfISOWeek(fourthOfJanuary)\n  return date\n}\n\nmodule.exports = startOfISOYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_iso_year/index.js?");
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the start of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the start of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an ISO year
+ *
+ * @example
+ * // The start of an ISO week-numbering year for 2 July 2005:
+ * var result = startOfISOYear(new Date(2005, 6, 2))
+ * //=> Mon Jan 03 2005 00:00:00
+ */
+function startOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(year, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuary)
+  return date
+}
+
+module.exports = startOfISOYear
+
 
 /***/ }),
 
@@ -1633,7 +6933,32 @@ eval("var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Return the start of a minute for the given date.\n *\n * @description\n * Return the start of a minute for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of a minute\n *\n * @example\n * // The start of a minute for 1 December 2014 22:15:45.400:\n * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))\n * //=> Mon Dec 01 2014 22:15:00\n */\nfunction startOfMinute (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setSeconds(0, 0)\n  return date\n}\n\nmodule.exports = startOfMinute\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_minute/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Return the start of a minute for the given date.
+ *
+ * @description
+ * Return the start of a minute for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a minute
+ *
+ * @example
+ * // The start of a minute for 1 December 2014 22:15:45.400:
+ * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:00
+ */
+function startOfMinute (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setSeconds(0, 0)
+  return date
+}
+
+module.exports = startOfMinute
+
 
 /***/ }),
 
@@ -1644,7 +6969,33 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Return the start of a month for the given date.\n *\n * @description\n * Return the start of a month for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of a month\n *\n * @example\n * // The start of a month for 2 September 2014 11:55:00:\n * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Mon Sep 01 2014 00:00:00\n */\nfunction startOfMonth (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setDate(1)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfMonth\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_month/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Return the start of a month for the given date.
+ *
+ * @description
+ * Return the start of a month for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a month
+ *
+ * @example
+ * // The start of a month for 2 September 2014 11:55:00:
+ * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function startOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setDate(1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfMonth
+
 
 /***/ }),
 
@@ -1655,7 +7006,35 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Return the start of a year quarter for the given date.\n *\n * @description\n * Return the start of a year quarter for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of a quarter\n *\n * @example\n * // The start of a quarter for 2 September 2014 11:55:00:\n * var result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Tue Jul 01 2014 00:00:00\n */\nfunction startOfQuarter (dirtyDate) {\n  var date = parse(dirtyDate)\n  var currentMonth = date.getMonth()\n  var month = currentMonth - currentMonth % 3\n  date.setMonth(month, 1)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfQuarter\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_quarter/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Return the start of a year quarter for the given date.
+ *
+ * @description
+ * Return the start of a year quarter for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a quarter
+ *
+ * @example
+ * // The start of a quarter for 2 September 2014 11:55:00:
+ * var result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Jul 01 2014 00:00:00
+ */
+function startOfQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var currentMonth = date.getMonth()
+  var month = currentMonth - currentMonth % 3
+  date.setMonth(month, 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfQuarter
+
 
 /***/ }),
 
@@ -1666,7 +7045,32 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Return the start of a second for the given date.\n *\n * @description\n * Return the start of a second for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of a second\n *\n * @example\n * // The start of a second for 1 December 2014 22:15:45.400:\n * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))\n * //=> Mon Dec 01 2014 22:15:45.000\n */\nfunction startOfSecond (dirtyDate) {\n  var date = parse(dirtyDate)\n  date.setMilliseconds(0)\n  return date\n}\n\nmodule.exports = startOfSecond\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_second/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Return the start of a second for the given date.
+ *
+ * @description
+ * Return the start of a second for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a second
+ *
+ * @example
+ * // The start of a second for 1 December 2014 22:15:45.400:
+ * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:45.000
+ */
+function startOfSecond (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMilliseconds(0)
+  return date
+}
+
+module.exports = startOfSecond
+
 
 /***/ }),
 
@@ -1677,7 +7081,28 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./node_modules/date-fns/start_of_day/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Return the start of today.\n *\n * @description\n * Return the start of today.\n *\n * @returns {Date} the start of today\n *\n * @example\n * // If today is 6 October 2014:\n * var result = startOfToday()\n * //=> Mon Oct 6 2014 00:00:00\n */\nfunction startOfToday () {\n  return startOfDay(new Date())\n}\n\nmodule.exports = startOfToday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_today/index.js?");
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of today.
+ *
+ * @description
+ * Return the start of today.
+ *
+ * @returns {Date} the start of today
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfToday()
+ * //=> Mon Oct 6 2014 00:00:00
+ */
+function startOfToday () {
+  return startOfDay(new Date())
+}
+
+module.exports = startOfToday
+
 
 /***/ }),
 
@@ -1688,7 +7113,34 @@ eval("var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ \"./n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/**\n * @category Day Helpers\n * @summary Return the start of tomorrow.\n *\n * @description\n * Return the start of tomorrow.\n *\n * @returns {Date} the start of tomorrow\n *\n * @example\n * // If today is 6 October 2014:\n * var result = startOfTomorrow()\n * //=> Tue Oct 7 2014 00:00:00\n */\nfunction startOfTomorrow () {\n  var now = new Date()\n  var year = now.getFullYear()\n  var month = now.getMonth()\n  var day = now.getDate()\n\n  var date = new Date(0)\n  date.setFullYear(year, month, day + 1)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfTomorrow\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_tomorrow/index.js?");
+/**
+ * @category Day Helpers
+ * @summary Return the start of tomorrow.
+ *
+ * @description
+ * Return the start of tomorrow.
+ *
+ * @returns {Date} the start of tomorrow
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfTomorrow()
+ * //=> Tue Oct 7 2014 00:00:00
+ */
+function startOfTomorrow () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day + 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfTomorrow
+
 
 /***/ }),
 
@@ -1699,7 +7151,45 @@ eval("/**\n * @category Day Helpers\n * @summary Return the start of tomorrow.\n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Return the start of a week for the given date.\n *\n * @description\n * Return the start of a week for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @param {Object} [options] - the object with options\n * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)\n * @returns {Date} the start of a week\n *\n * @example\n * // The start of a week for 2 September 2014 11:55:00:\n * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))\n * //=> Sun Aug 31 2014 00:00:00\n *\n * @example\n * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:\n * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})\n * //=> Mon Sep 01 2014 00:00:00\n */\nfunction startOfWeek (dirtyDate, dirtyOptions) {\n  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0\n\n  var date = parse(dirtyDate)\n  var day = date.getDay()\n  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn\n\n  date.setDate(date.getDate() - diff)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfWeek\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_week/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Return the start of a week for the given date.
+ *
+ * @description
+ * Return the start of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the start of a week
+ *
+ * @example
+ * // The start of a week for 2 September 2014 11:55:00:
+ * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Aug 31 2014 00:00:00
+ *
+ * @example
+ * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
+ * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function startOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+
+  date.setDate(date.getDate() - diff)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfWeek
+
 
 /***/ }),
 
@@ -1710,7 +7200,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/date-fns/parse/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Return the start of a year for the given date.\n *\n * @description\n * Return the start of a year for the given date.\n * The result will be in the local timezone.\n *\n * @param {Date|String|Number} date - the original date\n * @returns {Date} the start of a year\n *\n * @example\n * // The start of a year for 2 September 2014 11:55:00:\n * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))\n * //=> Wed Jan 01 2014 00:00:00\n */\nfunction startOfYear (dirtyDate) {\n  var cleanDate = parse(dirtyDate)\n  var date = new Date(0)\n  date.setFullYear(cleanDate.getFullYear(), 0, 1)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfYear\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_year/index.js?");
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Return the start of a year for the given date.
+ *
+ * @description
+ * Return the start of a year for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a year
+ *
+ * @example
+ * // The start of a year for 2 September 2014 11:55:00:
+ * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Jan 01 2014 00:00:00
+ */
+function startOfYear (dirtyDate) {
+  var cleanDate = parse(dirtyDate)
+  var date = new Date(0)
+  date.setFullYear(cleanDate.getFullYear(), 0, 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfYear
+
 
 /***/ }),
 
@@ -1721,7 +7238,34 @@ eval("var parse = __webpack_require__(/*! ../parse/index.js */ \"./node_modules/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/**\n * @category Day Helpers\n * @summary Return the start of yesterday.\n *\n * @description\n * Return the start of yesterday.\n *\n * @returns {Date} the start of yesterday\n *\n * @example\n * // If today is 6 October 2014:\n * var result = startOfYesterday()\n * //=> Sun Oct 5 2014 00:00:00\n */\nfunction startOfYesterday () {\n  var now = new Date()\n  var year = now.getFullYear()\n  var month = now.getMonth()\n  var day = now.getDate()\n\n  var date = new Date(0)\n  date.setFullYear(year, month, day - 1)\n  date.setHours(0, 0, 0, 0)\n  return date\n}\n\nmodule.exports = startOfYesterday\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/start_of_yesterday/index.js?");
+/**
+ * @category Day Helpers
+ * @summary Return the start of yesterday.
+ *
+ * @description
+ * Return the start of yesterday.
+ *
+ * @returns {Date} the start of yesterday
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfYesterday()
+ * //=> Sun Oct 5 2014 00:00:00
+ */
+function startOfYesterday () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day - 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfYesterday
+
 
 /***/ }),
 
@@ -1732,7 +7276,31 @@ eval("/**\n * @category Day Helpers\n * @summary Return the start of yesterday.\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addDays = __webpack_require__(/*! ../add_days/index.js */ \"./node_modules/date-fns/add_days/index.js\")\n\n/**\n * @category Day Helpers\n * @summary Subtract the specified number of days from the given date.\n *\n * @description\n * Subtract the specified number of days from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of days to be subtracted\n * @returns {Date} the new date with the days subtracted\n *\n * @example\n * // Subtract 10 days from 1 September 2014:\n * var result = subDays(new Date(2014, 8, 1), 10)\n * //=> Fri Aug 22 2014 00:00:00\n */\nfunction subDays (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addDays(dirtyDate, -amount)\n}\n\nmodule.exports = subDays\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_days/index.js?");
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Subtract the specified number of days from the given date.
+ *
+ * @description
+ * Subtract the specified number of days from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be subtracted
+ * @returns {Date} the new date with the days subtracted
+ *
+ * @example
+ * // Subtract 10 days from 1 September 2014:
+ * var result = subDays(new Date(2014, 8, 1), 10)
+ * //=> Fri Aug 22 2014 00:00:00
+ */
+function subDays (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addDays(dirtyDate, -amount)
+}
+
+module.exports = subDays
+
 
 /***/ }),
 
@@ -1743,7 +7311,31 @@ eval("var addDays = __webpack_require__(/*! ../add_days/index.js */ \"./node_mod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addHours = __webpack_require__(/*! ../add_hours/index.js */ \"./node_modules/date-fns/add_hours/index.js\")\n\n/**\n * @category Hour Helpers\n * @summary Subtract the specified number of hours from the given date.\n *\n * @description\n * Subtract the specified number of hours from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of hours to be subtracted\n * @returns {Date} the new date with the hours subtracted\n *\n * @example\n * // Subtract 2 hours from 11 July 2014 01:00:00:\n * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)\n * //=> Thu Jul 10 2014 23:00:00\n */\nfunction subHours (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addHours(dirtyDate, -amount)\n}\n\nmodule.exports = subHours\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_hours/index.js?");
+var addHours = __webpack_require__(/*! ../add_hours/index.js */ "./node_modules/date-fns/add_hours/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Subtract the specified number of hours from the given date.
+ *
+ * @description
+ * Subtract the specified number of hours from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of hours to be subtracted
+ * @returns {Date} the new date with the hours subtracted
+ *
+ * @example
+ * // Subtract 2 hours from 11 July 2014 01:00:00:
+ * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
+ * //=> Thu Jul 10 2014 23:00:00
+ */
+function subHours (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addHours(dirtyDate, -amount)
+}
+
+module.exports = subHours
+
 
 /***/ }),
 
@@ -1754,7 +7346,33 @@ eval("var addHours = __webpack_require__(/*! ../add_hours/index.js */ \"./node_m
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addISOYears = __webpack_require__(/*! ../add_iso_years/index.js */ \"./node_modules/date-fns/add_iso_years/index.js\")\n\n/**\n * @category ISO Week-Numbering Year Helpers\n * @summary Subtract the specified number of ISO week-numbering years from the given date.\n *\n * @description\n * Subtract the specified number of ISO week-numbering years from the given date.\n *\n * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of ISO week-numbering years to be subtracted\n * @returns {Date} the new date with the ISO week-numbering years subtracted\n *\n * @example\n * // Subtract 5 ISO week-numbering years from 1 September 2014:\n * var result = subISOYears(new Date(2014, 8, 1), 5)\n * //=> Mon Aug 31 2009 00:00:00\n */\nfunction subISOYears (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addISOYears(dirtyDate, -amount)\n}\n\nmodule.exports = subISOYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_iso_years/index.js?");
+var addISOYears = __webpack_require__(/*! ../add_iso_years/index.js */ "./node_modules/date-fns/add_iso_years/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Subtract the specified number of ISO week-numbering years from the given date.
+ *
+ * @description
+ * Subtract the specified number of ISO week-numbering years from the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
+ * @returns {Date} the new date with the ISO week-numbering years subtracted
+ *
+ * @example
+ * // Subtract 5 ISO week-numbering years from 1 September 2014:
+ * var result = subISOYears(new Date(2014, 8, 1), 5)
+ * //=> Mon Aug 31 2009 00:00:00
+ */
+function subISOYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addISOYears(dirtyDate, -amount)
+}
+
+module.exports = subISOYears
+
 
 /***/ }),
 
@@ -1765,7 +7383,31 @@ eval("var addISOYears = __webpack_require__(/*! ../add_iso_years/index.js */ \".
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ \"./node_modules/date-fns/add_milliseconds/index.js\")\n\n/**\n * @category Millisecond Helpers\n * @summary Subtract the specified number of milliseconds from the given date.\n *\n * @description\n * Subtract the specified number of milliseconds from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of milliseconds to be subtracted\n * @returns {Date} the new date with the milliseconds subtracted\n *\n * @example\n * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:\n * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)\n * //=> Thu Jul 10 2014 12:45:29.250\n */\nfunction subMilliseconds (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMilliseconds(dirtyDate, -amount)\n}\n\nmodule.exports = subMilliseconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_milliseconds/index.js?");
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Subtract the specified number of milliseconds from the given date.
+ *
+ * @description
+ * Subtract the specified number of milliseconds from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @returns {Date} the new date with the milliseconds subtracted
+ *
+ * @example
+ * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:
+ * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:29.250
+ */
+function subMilliseconds (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, -amount)
+}
+
+module.exports = subMilliseconds
+
 
 /***/ }),
 
@@ -1776,7 +7418,31 @@ eval("var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMinutes = __webpack_require__(/*! ../add_minutes/index.js */ \"./node_modules/date-fns/add_minutes/index.js\")\n\n/**\n * @category Minute Helpers\n * @summary Subtract the specified number of minutes from the given date.\n *\n * @description\n * Subtract the specified number of minutes from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of minutes to be subtracted\n * @returns {Date} the new date with the mintues subtracted\n *\n * @example\n * // Subtract 30 minutes from 10 July 2014 12:00:00:\n * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)\n * //=> Thu Jul 10 2014 11:30:00\n */\nfunction subMinutes (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMinutes(dirtyDate, -amount)\n}\n\nmodule.exports = subMinutes\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_minutes/index.js?");
+var addMinutes = __webpack_require__(/*! ../add_minutes/index.js */ "./node_modules/date-fns/add_minutes/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Subtract the specified number of minutes from the given date.
+ *
+ * @description
+ * Subtract the specified number of minutes from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of minutes to be subtracted
+ * @returns {Date} the new date with the mintues subtracted
+ *
+ * @example
+ * // Subtract 30 minutes from 10 July 2014 12:00:00:
+ * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
+ * //=> Thu Jul 10 2014 11:30:00
+ */
+function subMinutes (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMinutes(dirtyDate, -amount)
+}
+
+module.exports = subMinutes
+
 
 /***/ }),
 
@@ -1787,7 +7453,31 @@ eval("var addMinutes = __webpack_require__(/*! ../add_minutes/index.js */ \"./no
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addMonths = __webpack_require__(/*! ../add_months/index.js */ \"./node_modules/date-fns/add_months/index.js\")\n\n/**\n * @category Month Helpers\n * @summary Subtract the specified number of months from the given date.\n *\n * @description\n * Subtract the specified number of months from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of months to be subtracted\n * @returns {Date} the new date with the months subtracted\n *\n * @example\n * // Subtract 5 months from 1 February 2015:\n * var result = subMonths(new Date(2015, 1, 1), 5)\n * //=> Mon Sep 01 2014 00:00:00\n */\nfunction subMonths (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addMonths(dirtyDate, -amount)\n}\n\nmodule.exports = subMonths\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_months/index.js?");
+var addMonths = __webpack_require__(/*! ../add_months/index.js */ "./node_modules/date-fns/add_months/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Subtract the specified number of months from the given date.
+ *
+ * @description
+ * Subtract the specified number of months from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be subtracted
+ * @returns {Date} the new date with the months subtracted
+ *
+ * @example
+ * // Subtract 5 months from 1 February 2015:
+ * var result = subMonths(new Date(2015, 1, 1), 5)
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function subMonths (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMonths(dirtyDate, -amount)
+}
+
+module.exports = subMonths
+
 
 /***/ }),
 
@@ -1798,7 +7488,31 @@ eval("var addMonths = __webpack_require__(/*! ../add_months/index.js */ \"./node
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addQuarters = __webpack_require__(/*! ../add_quarters/index.js */ \"./node_modules/date-fns/add_quarters/index.js\")\n\n/**\n * @category Quarter Helpers\n * @summary Subtract the specified number of year quarters from the given date.\n *\n * @description\n * Subtract the specified number of year quarters from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of quarters to be subtracted\n * @returns {Date} the new date with the quarters subtracted\n *\n * @example\n * // Subtract 3 quarters from 1 September 2014:\n * var result = subQuarters(new Date(2014, 8, 1), 3)\n * //=> Sun Dec 01 2013 00:00:00\n */\nfunction subQuarters (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addQuarters(dirtyDate, -amount)\n}\n\nmodule.exports = subQuarters\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_quarters/index.js?");
+var addQuarters = __webpack_require__(/*! ../add_quarters/index.js */ "./node_modules/date-fns/add_quarters/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Subtract the specified number of year quarters from the given date.
+ *
+ * @description
+ * Subtract the specified number of year quarters from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of quarters to be subtracted
+ * @returns {Date} the new date with the quarters subtracted
+ *
+ * @example
+ * // Subtract 3 quarters from 1 September 2014:
+ * var result = subQuarters(new Date(2014, 8, 1), 3)
+ * //=> Sun Dec 01 2013 00:00:00
+ */
+function subQuarters (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addQuarters(dirtyDate, -amount)
+}
+
+module.exports = subQuarters
+
 
 /***/ }),
 
@@ -1809,7 +7523,31 @@ eval("var addQuarters = __webpack_require__(/*! ../add_quarters/index.js */ \"./
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addSeconds = __webpack_require__(/*! ../add_seconds/index.js */ \"./node_modules/date-fns/add_seconds/index.js\")\n\n/**\n * @category Second Helpers\n * @summary Subtract the specified number of seconds from the given date.\n *\n * @description\n * Subtract the specified number of seconds from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of seconds to be subtracted\n * @returns {Date} the new date with the seconds subtracted\n *\n * @example\n * // Subtract 30 seconds from 10 July 2014 12:45:00:\n * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)\n * //=> Thu Jul 10 2014 12:44:30\n */\nfunction subSeconds (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addSeconds(dirtyDate, -amount)\n}\n\nmodule.exports = subSeconds\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_seconds/index.js?");
+var addSeconds = __webpack_require__(/*! ../add_seconds/index.js */ "./node_modules/date-fns/add_seconds/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Subtract the specified number of seconds from the given date.
+ *
+ * @description
+ * Subtract the specified number of seconds from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of seconds to be subtracted
+ * @returns {Date} the new date with the seconds subtracted
+ *
+ * @example
+ * // Subtract 30 seconds from 10 July 2014 12:45:00:
+ * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * //=> Thu Jul 10 2014 12:44:30
+ */
+function subSeconds (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addSeconds(dirtyDate, -amount)
+}
+
+module.exports = subSeconds
+
 
 /***/ }),
 
@@ -1820,7 +7558,31 @@ eval("var addSeconds = __webpack_require__(/*! ../add_seconds/index.js */ \"./no
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ \"./node_modules/date-fns/add_weeks/index.js\")\n\n/**\n * @category Week Helpers\n * @summary Subtract the specified number of weeks from the given date.\n *\n * @description\n * Subtract the specified number of weeks from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of weeks to be subtracted\n * @returns {Date} the new date with the weeks subtracted\n *\n * @example\n * // Subtract 4 weeks from 1 September 2014:\n * var result = subWeeks(new Date(2014, 8, 1), 4)\n * //=> Mon Aug 04 2014 00:00:00\n */\nfunction subWeeks (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addWeeks(dirtyDate, -amount)\n}\n\nmodule.exports = subWeeks\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_weeks/index.js?");
+var addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ "./node_modules/date-fns/add_weeks/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Subtract the specified number of weeks from the given date.
+ *
+ * @description
+ * Subtract the specified number of weeks from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of weeks to be subtracted
+ * @returns {Date} the new date with the weeks subtracted
+ *
+ * @example
+ * // Subtract 4 weeks from 1 September 2014:
+ * var result = subWeeks(new Date(2014, 8, 1), 4)
+ * //=> Mon Aug 04 2014 00:00:00
+ */
+function subWeeks (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addWeeks(dirtyDate, -amount)
+}
+
+module.exports = subWeeks
+
 
 /***/ }),
 
@@ -1831,7 +7593,31 @@ eval("var addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ \"./node_m
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var addYears = __webpack_require__(/*! ../add_years/index.js */ \"./node_modules/date-fns/add_years/index.js\")\n\n/**\n * @category Year Helpers\n * @summary Subtract the specified number of years from the given date.\n *\n * @description\n * Subtract the specified number of years from the given date.\n *\n * @param {Date|String|Number} date - the date to be changed\n * @param {Number} amount - the amount of years to be subtracted\n * @returns {Date} the new date with the years subtracted\n *\n * @example\n * // Subtract 5 years from 1 September 2014:\n * var result = subYears(new Date(2014, 8, 1), 5)\n * //=> Tue Sep 01 2009 00:00:00\n */\nfunction subYears (dirtyDate, dirtyAmount) {\n  var amount = Number(dirtyAmount)\n  return addYears(dirtyDate, -amount)\n}\n\nmodule.exports = subYears\n\n\n//# sourceURL=webpack:///./node_modules/date-fns/sub_years/index.js?");
+var addYears = __webpack_require__(/*! ../add_years/index.js */ "./node_modules/date-fns/add_years/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Subtract the specified number of years from the given date.
+ *
+ * @description
+ * Subtract the specified number of years from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be subtracted
+ * @returns {Date} the new date with the years subtracted
+ *
+ * @example
+ * // Subtract 5 years from 1 September 2014:
+ * var result = subYears(new Date(2014, 8, 1), 5)
+ * //=> Tue Sep 01 2009 00:00:00
+ */
+function subYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addYears(dirtyDate, -amount)
+}
+
+module.exports = subYears
+
 
 /***/ }),
 
@@ -1843,7 +7629,68 @@ eval("var addYears = __webpack_require__(/*! ../add_years/index.js */ \"./node_m
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.scss */ \"./src/styles/style.scss\");\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _modules_miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/miscTools */ \"./src/modules/miscTools.js\");\n/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/forms */ \"./src/modules/forms.js\");\n/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/modals */ \"./src/modules/modals.js\");\n/* harmony import */ var _modules_calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calendar */ \"./src/modules/calendar.js\");\n/* harmony import */ var _modules_sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/sidebar */ \"./src/modules/sidebar.js\");\n/* harmony import */ var _modules_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/list */ \"./src/modules/list.js\");\n\n\n\n\n\n\n\nvar projectList = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getLS\"])('projectList');\nvar newTaskButton = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#new-task-button');\nObject(_modules_forms__WEBPACK_IMPORTED_MODULE_2__[\"generateForm\"])('task', newTaskButton);\nvar taskForm = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#task-form');\nvar tfModal = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#task-form-modal');\nvar newProjectButton = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#new-project-button');\nObject(_modules_forms__WEBPACK_IMPORTED_MODULE_2__[\"generateForm\"])('project', newProjectButton);\nvar projectForm = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#project-form');\nvar pfModal = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#project-form-modal');\nvar newSubtaskButton = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#new-subtask-button');\nObject(_modules_forms__WEBPACK_IMPORTED_MODULE_2__[\"generateSubtaskForm\"])(newSubtaskButton);\nvar subtaskForm = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#subtask-form');\n\nnewTaskButton.onclick = function () {\n  if (projectList === null || projectList.length === 0) {\n    return alert('Please start a new project first.');\n  }\n\n  taskForm.reset();\n  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_3__[\"openModal\"])(tfModal);\n};\n\nnewProjectButton.onclick = function () {\n  projectForm.reset();\n  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_3__[\"openModal\"])(pfModal);\n};\n\nObject(_modules_forms__WEBPACK_IMPORTED_MODULE_2__[\"addFormSubmission\"])(taskForm);\nObject(_modules_forms__WEBPACK_IMPORTED_MODULE_2__[\"addFormSubmission\"])(projectForm);\nObject(_modules_forms__WEBPACK_IMPORTED_MODULE_2__[\"addFormSubmission\"])(subtaskForm);\nvar changeViewBtn = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#change-view-btn');\nvar articles = document.querySelectorAll('article');\n\nchangeViewBtn.onclick = function () {\n  changeViewBtn.textContent = changeViewBtn.textContent === 'List View' ? 'Calendar View' : 'List View';\n  articles.forEach(function (art) {\n    return art.classList.toggle('hidden');\n  });\n};\n\nObject(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setSelDate\"])();\nObject(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"updateMonth\"])();\nObject(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"addMYSelection\"])([_modules_calendar__WEBPACK_IMPORTED_MODULE_4__[\"renderCalendar\"], _modules_list__WEBPACK_IMPORTED_MODULE_6__[\"renderList\"]]);\nObject(_modules_sidebar__WEBPACK_IMPORTED_MODULE_5__[\"compileOngoingPL\"])();\nObject(_modules_calendar__WEBPACK_IMPORTED_MODULE_4__[\"renderCalendar\"])();\nObject(_modules_list__WEBPACK_IMPORTED_MODULE_6__[\"renderList\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.scss */ "./src/styles/style.scss");
+/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_style_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modules_miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/miscTools */ "./src/modules/miscTools.js");
+/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/forms */ "./src/modules/forms.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/modals */ "./src/modules/modals.js");
+/* harmony import */ var _modules_calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calendar */ "./src/modules/calendar.js");
+/* harmony import */ var _modules_sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/sidebar */ "./src/modules/sidebar.js");
+/* harmony import */ var _modules_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/list */ "./src/modules/list.js");
+
+
+
+
+
+
+
+var projectList = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["getLS"])('projectList');
+var newTaskButton = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#new-task-button');
+Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["generateForm"])('task', newTaskButton);
+var taskForm = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#task-form');
+var tfModal = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#task-form-modal');
+var newProjectButton = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#new-project-button');
+Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["generateForm"])('project', newProjectButton);
+var projectForm = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#project-form');
+var pfModal = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#project-form-modal');
+var newSubtaskButton = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#new-subtask-button');
+Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["generateSubtaskForm"])(newSubtaskButton);
+var subtaskForm = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#subtask-form');
+
+newTaskButton.onclick = function () {
+  if (projectList === null || projectList.length === 0) {
+    return alert('Please start a new project first.');
+  }
+
+  taskForm.reset();
+  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_3__["openModal"])(tfModal);
+};
+
+newProjectButton.onclick = function () {
+  projectForm.reset();
+  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_3__["openModal"])(pfModal);
+};
+
+Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["addFormSubmission"])(taskForm);
+Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["addFormSubmission"])(projectForm);
+Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["addFormSubmission"])(subtaskForm);
+var changeViewBtn = Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#change-view-btn');
+var articles = document.querySelectorAll('article');
+
+changeViewBtn.onclick = function () {
+  changeViewBtn.textContent = changeViewBtn.textContent === 'List View' ? 'Calendar View' : 'List View';
+  articles.forEach(function (art) {
+    return art.classList.toggle('hidden');
+  });
+};
+
+Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["setSelDate"])();
+Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["updateMonth"])();
+Object(_modules_miscTools__WEBPACK_IMPORTED_MODULE_1__["addMYSelection"])([_modules_calendar__WEBPACK_IMPORTED_MODULE_4__["renderCalendar"], _modules_list__WEBPACK_IMPORTED_MODULE_6__["renderList"]]);
+Object(_modules_sidebar__WEBPACK_IMPORTED_MODULE_5__["compileOngoingPL"])();
+Object(_modules_calendar__WEBPACK_IMPORTED_MODULE_4__["renderCalendar"])();
+Object(_modules_list__WEBPACK_IMPORTED_MODULE_6__["renderList"])();
 
 /***/ }),
 
@@ -1855,7 +7702,160 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderCalendar\", function() { return renderCalendar; });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/index.js\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ \"./src/modules/miscTools.js\");\n/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ \"./src/modules/modals.js\");\n\n\n\nvar tasks = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getLS\"])('taskList');\nvar projects = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getLS\"])('projectList');\nvar container = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#container');\nvar calendar = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('article', [['id', 'calendar']]);\ncontainer.appendChild(calendar);\n\nvar generateCalTop = function generateCalTop() {\n  var weekdays = generateWeekdays();\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(calendar, [weekdays]);\n};\n\nvar generateWeekdays = function generateWeekdays() {\n  var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];\n  var weekdays = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['id', 'weekdays']]);\n  dayNames.forEach(function (name) {\n    var weekday = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithText\"])('div', name);\n    weekdays.appendChild(weekday);\n  });\n  return weekdays;\n};\n\nvar setCalDayAttrs = function setCalDayAttrs(calDay, date) {\n  if (Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"isToday\"])(date)) calDay.setAttribute('id', 'today');\n\n  if (Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"isSameDay\"])(date, Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])())) {\n    calDay.setAttribute('id', 'selected-date');\n  }\n\n  if (date.getMonth() !== Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])().getMonth()) {\n    calDay.className += ' diff-month';\n  }\n};\n\nvar addCalendarDay = function addCalendarDay(date, week) {\n  var calDay = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', 'calendar-day'], ['name', date]]);\n  setCalDayAttrs(calDay, date);\n  calDay.innerHTML = \"<p>\".concat(date.getDate(), \"</p>\");\n  week.appendChild(calDay);\n};\n\nvar firstWeekday = function firstWeekday() {\n  return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"getDay\"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"startOfMonth\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])()));\n};\n\nvar isExtendedMonth = function isExtendedMonth() {\n  return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"getDaysInMonth\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])()) > 29 && firstWeekday() > 5 || Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"getDaysInMonth\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])()) > 30 && firstWeekday() > 4;\n};\n\nvar calculateCalendarDays = function calculateCalendarDays() {\n  if (Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"getDaysInMonth\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])()) < 29 && firstWeekday() < 1) {\n    return 27;\n  } else {\n    return isExtendedMonth() ? 41 : 34;\n  }\n};\n\nvar getDateFor = function getDateFor(calDay) {\n  return calDay.getAttribute('name');\n};\n\nvar selectDate = function selectDate(calDay) {\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setSelDate\"])(getDateFor(calDay));\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"updateMonth\"])();\n  return renderCalendar(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])());\n};\n\nvar addDateSelection = function addDateSelection() {\n  var calDays = document.querySelectorAll('.calendar-day');\n  calDays.forEach(function (cd) {\n    if (!Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"isSameDay\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])(), getDateFor(cd))) {\n      cd.onclick = function () {\n        return selectDate(cd);\n      };\n    }\n  });\n};\n\nvar addWeeks = function addWeeks() {\n  var calendar = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#calendar');\n\n  for (var i = 0; i < (calculateCalendarDays() + 1) / 7; i++) {\n    var week = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', 'week']]);\n    calendar.appendChild(week);\n  }\n};\n\nvar displayOnCal = function displayOnCal(list) {\n  list.forEach(function (obj) {\n    var idName = obj.id;\n    addToCalendar(obj, createObjDiv(obj), idName);\n\n    if (obj.dueDate) {\n      addToCalendar(obj, createObjDiv(obj), idName, \"due\");\n    }\n  });\n};\n\nvar createObjDiv = function createObjDiv(obj) {\n  var className = obj.id[0] === 't' ? 'task-div' : 'project-div';\n  return Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', \"\".concat(className, \" \").concat(obj.priority.toLowerCase(), \" \").concat(obj.id)]]);\n};\n\nvar addToCalendar = function addToCalendar(obj, objDiv, idName) {\n  var due = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;\n  var calendarDays = document.querySelectorAll('.calendar-day');\n  objDiv.textContent = (due ? 'DUE: ' : '') + obj.title;\n  var objDate = due ? obj.dueDate : obj.date;\n  var compDate = new Date(objDate.split(' ')[0]).setHours(24);\n  calendarDays.forEach(function (calDay) {\n    if (new Date(getDateFor(calDay)).getTime() === new Date(compDate).getTime()) {\n      calDay.appendChild(objDiv);\n\n      objDiv.onclick = function () {\n        Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"clearChildrenFrom\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\".modal-text\"));\n        Object(_modals__WEBPACK_IMPORTED_MODULE_2__[\"generateModal\"])(objDiv.classList[2]);\n      };\n    }\n  });\n};\n\nvar setCurrentMonth = function setCurrentMonth() {\n  addWeeks();\n  var weeks = document.querySelectorAll('.week');\n  var weekStart = 1 - Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"getDay\"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"startOfMonth\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])()));\n  var d = 0;\n\n  for (var i = weekStart; i <= calculateCalendarDays() + weekStart; i++) {\n    var date = new Date(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])().getFullYear(), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])().getMonth(), i);\n    addCalendarDay(date, weeks[Math.floor(d / 7)]);\n    d++;\n  }\n};\n\nvar renderCalendar = function renderCalendar() {\n  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;\n  if (date) Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setSelDate\"])(date);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"clearChildrenFrom\"])(calendar);\n  generateCalTop();\n  setCurrentMonth();\n  addDateSelection();\n  if (projects) displayOnCal(projects);\n  if (tasks) displayOnCal(tasks);\n};\n\n\n\n//# sourceURL=webpack:///./src/modules/calendar.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderCalendar", function() { return renderCalendar; });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ "./src/modules/miscTools.js");
+/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ "./src/modules/modals.js");
+
+
+
+var tasks = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getLS"])('taskList');
+var projects = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getLS"])('projectList');
+var container = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#container');
+var calendar = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('article', [['id', 'calendar']]);
+container.appendChild(calendar);
+
+var generateCalTop = function generateCalTop() {
+  var weekdays = generateWeekdays();
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(calendar, [weekdays]);
+};
+
+var generateWeekdays = function generateWeekdays() {
+  var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
+  var weekdays = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['id', 'weekdays']]);
+  dayNames.forEach(function (name) {
+    var weekday = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithText"])('div', name);
+    weekdays.appendChild(weekday);
+  });
+  return weekdays;
+};
+
+var setCalDayAttrs = function setCalDayAttrs(calDay, date) {
+  if (Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["isToday"])(date)) calDay.setAttribute('id', 'today');
+
+  if (Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["isSameDay"])(date, Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])())) {
+    calDay.setAttribute('id', 'selected-date');
+  }
+
+  if (date.getMonth() !== Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])().getMonth()) {
+    calDay.className += ' diff-month';
+  }
+};
+
+var addCalendarDay = function addCalendarDay(date, week) {
+  var calDay = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', 'calendar-day'], ['name', date]]);
+  setCalDayAttrs(calDay, date);
+  calDay.innerHTML = "<p>".concat(date.getDate(), "</p>");
+  week.appendChild(calDay);
+};
+
+var firstWeekday = function firstWeekday() {
+  return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["getDay"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["startOfMonth"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])()));
+};
+
+var isExtendedMonth = function isExtendedMonth() {
+  return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["getDaysInMonth"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])()) > 29 && firstWeekday() > 5 || Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["getDaysInMonth"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])()) > 30 && firstWeekday() > 4;
+};
+
+var calculateCalendarDays = function calculateCalendarDays() {
+  if (Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["getDaysInMonth"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])()) < 29 && firstWeekday() < 1) {
+    return 27;
+  } else {
+    return isExtendedMonth() ? 41 : 34;
+  }
+};
+
+var getDateFor = function getDateFor(calDay) {
+  return calDay.getAttribute('name');
+};
+
+var selectDate = function selectDate(calDay) {
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setSelDate"])(getDateFor(calDay));
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["updateMonth"])();
+  return renderCalendar(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])());
+};
+
+var addDateSelection = function addDateSelection() {
+  var calDays = document.querySelectorAll('.calendar-day');
+  calDays.forEach(function (cd) {
+    if (!Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["isSameDay"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])(), getDateFor(cd))) {
+      cd.onclick = function () {
+        return selectDate(cd);
+      };
+    }
+  });
+};
+
+var addWeeks = function addWeeks() {
+  var calendar = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#calendar');
+
+  for (var i = 0; i < (calculateCalendarDays() + 1) / 7; i++) {
+    var week = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', 'week']]);
+    calendar.appendChild(week);
+  }
+};
+
+var displayOnCal = function displayOnCal(list) {
+  list.forEach(function (obj) {
+    var idName = obj.id;
+    addToCalendar(obj, createObjDiv(obj), idName);
+
+    if (obj.dueDate) {
+      addToCalendar(obj, createObjDiv(obj), idName, "due");
+    }
+  });
+};
+
+var createObjDiv = function createObjDiv(obj) {
+  var className = obj.id[0] === 't' ? 'task-div' : 'project-div';
+  return Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', "".concat(className, " ").concat(obj.priority.toLowerCase(), " ").concat(obj.id)]]);
+};
+
+var addToCalendar = function addToCalendar(obj, objDiv, idName) {
+  var due = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  var calendarDays = document.querySelectorAll('.calendar-day');
+  objDiv.textContent = (due ? 'DUE: ' : '') + obj.title;
+  var objDate = due ? obj.dueDate : obj.date;
+  var compDate = new Date(objDate.split(' ')[0]).setHours(24);
+  calendarDays.forEach(function (calDay) {
+    if (new Date(getDateFor(calDay)).getTime() === new Date(compDate).getTime()) {
+      calDay.appendChild(objDiv);
+
+      objDiv.onclick = function () {
+        Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["clearChildrenFrom"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])(".modal-text"));
+        Object(_modals__WEBPACK_IMPORTED_MODULE_2__["generateModal"])(objDiv.classList[2]);
+      };
+    }
+  });
+};
+
+var setCurrentMonth = function setCurrentMonth() {
+  addWeeks();
+  var weeks = document.querySelectorAll('.week');
+  var weekStart = 1 - Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["getDay"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["startOfMonth"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])()));
+  var d = 0;
+
+  for (var i = weekStart; i <= calculateCalendarDays() + weekStart; i++) {
+    var date = new Date(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])().getFullYear(), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])().getMonth(), i);
+    addCalendarDay(date, weeks[Math.floor(d / 7)]);
+    d++;
+  }
+};
+
+var renderCalendar = function renderCalendar() {
+  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  if (date) Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setSelDate"])(date);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["clearChildrenFrom"])(calendar);
+  generateCalTop();
+  setCurrentMonth();
+  addDateSelection();
+  if (projects) displayOnCal(projects);
+  if (tasks) displayOnCal(tasks);
+};
+
+
 
 /***/ }),
 
@@ -1867,7 +7867,188 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"generateForm\", function() { return generateForm; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"generateSubtaskForm\", function() { return generateSubtaskForm; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addFormSubmission\", function() { return addFormSubmission; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"populateForm\", function() { return populateForm; });\n/* harmony import */ var _listBuilding__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listBuilding */ \"./src/modules/listBuilding.js\");\n/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ \"./src/modules/miscTools.js\");\n/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ \"./src/modules/modals.js\");\n\n\n\nvar tasks = JSON.parse(window.localStorage.getItem('taskList'));\nvar projects = JSON.parse(window.localStorage.getItem('projectList'));\n\nvar addLabelInput = function addLabelInput(form, lbl, type, name, required) {\n  var label = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('label', [['for', name]], Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"capitalize\"])(lbl));\n  var input = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('input', [['type', type], ['name', name], [required, '']]);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(form, [label, input]);\n  if (type !== 'text' && type !== 'date') placeBreak(form);\n};\n\nvar addPriorityList = function addPriorityList(form, name) {\n  var label = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('label', [['for', 'Priority']], 'Priority');\n  var select = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('select', [['name', name]]);\n  ['Low', 'Medium', 'High'].map(function (prty) {\n    return setOptionFor(select, prty);\n  });\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(form, [label, select]);\n  placeBreak(form);\n};\n\nvar addProjectList = function addProjectList(form) {\n  var label = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('label', [['for', 'Projects']]);\n  label.textContent = 'Choose Project';\n  var select = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('select', [['name', 't-project']]);\n\n  if (projects) {\n    projects.map(function (p) {\n      return setOptionFor(select, p);\n    });\n  }\n\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(form, [label, select]);\n  placeBreak(form);\n};\n\nvar setOptionFor = function setOptionFor(select, obj) {\n  var option = document.createElement('option');\n\n  if (obj.id) {\n    option.setAttribute('value', \"\".concat(obj.id));\n    option.textContent = obj.title;\n  } else {\n    option.textContent = obj;\n  }\n\n  return select.appendChild(option);\n};\n\nvar placeBreak = function placeBreak(form) {\n  return form.innerHTML += '<br>';\n};\n\nvar addSaveButton = function addSaveButton(form, objName) {\n  var saveButton = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('button', [['id', \"save-\".concat(objName)]]);\n  saveButton.textContent = \"Save \".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"capitalize\"])(objName));\n  placeBreak(form);\n  form.appendChild(saveButton);\n};\n\nvar addForm = function addForm(form, button) {\n  var obj = form.id.split('-')[0];\n  var modal = Object(_modals__WEBPACK_IMPORTED_MODULE_2__[\"createFormModal\"])(\"\".concat(obj, \"-form-modal\"), form);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"insertAfter\"])(modal, button);\n};\n\nvar generateForm = function generateForm(objName, button) {\n  var form = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('form', [['id', \"\".concat(objName, \"-form\")]]);\n  var dueBool = objName === 'project' ? 'required' : undefined;\n  var hiddenId = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('input', [['type', 'hidden'], ['name', \"\".concat(objName[0], \"-id\")]]);\n  form.appendChild(hiddenId);\n  if (objName === 'task') addProjectList(form);\n  addLabelInput(form, objName, 'text', \"\".concat(objName[0], \"-title\"), 'required');\n  addPriorityList(form, \"\".concat(objName[0], \"-priority\"));\n  addLabelInput(form, 'Start Date', 'date', \"\".concat(objName[0], \"-date\"), 'required');\n  addLabelInput(form, 'Time', 'time', \"\".concat(objName[0], \"-time\"));\n  addLabelInput(form, 'Due Date', 'date', \"\".concat(objName[0], \"-due-date\"), dueBool);\n  addLabelInput(form, 'Due Time', 'time', \"\".concat(objName[0], \"-due-time\"));\n  addLabelInput(form, 'Description', 'text', \"\".concat(objName[0], \"-description\"));\n  addSaveButton(form, objName);\n  addForm(form, button);\n};\n\nvar generateSubtaskForm = function generateSubtaskForm(button) {\n  var form = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('form', [['id', 'subtask-form']]);\n  var hiddenTaskId = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('input', [['type', 'hidden'], ['name', 's-taskId']]);\n  var heading = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('h3', [[\"id\", 's-heading']]);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(form, [hiddenTaskId, heading]);\n  addLabelInput(form, 'subtask', 'text', 's-title', 'required');\n  placeBreak(form);\n  addSaveButton(form, 'subtask');\n  addForm(form, button);\n};\n\nvar createTask = function createTask() {\n  return Object(_listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"Task\"])(\"t\".concat(_listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"taskCount\"]), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-title'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-description'), \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-date'), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getTime\"])('t-time')), \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-due-date'), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getTime\"])('t-due-time')), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-priority'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-project'));\n};\n\nvar createProject = function createProject() {\n  return Object(_listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"Project\"])(\"p\".concat(_listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"projectCount\"]), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('p-title'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('p-description'), \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('p-date'), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getTime\"])('p-time')), \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('p-due-date'), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getTime\"])('p-due-time')), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('p-priority'));\n};\n\nvar populateForm = function populateForm(obj) {\n  var pf = obj.id[0];\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-id\"), obj.id);\n  if (pf === 't') Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-project\"), obj.projectId);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-priority\"), obj.priority);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-title\"), obj.title);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-description\"), obj.description);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-date\"), obj.date.split(' ')[0]);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-time\"), obj.date.split(' ')[1]);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-due-date\"), obj.dueDate.split(' ')[0]);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])(\"\".concat(pf, \"-due-time\"), obj.dueDate.split(' ')[1]);\n};\n\nvar updateObj = function updateObj(obj) {\n  var pf = obj.id[0];\n  var list = pf === 't' ? tasks : projects;\n  var lsList = pf === 't' ? 'taskList' : 'projectList';\n  obj.title = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])(\"\".concat(pf, \"-title\"));\n  obj.description = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])(\"\".concat(pf, \"-description\"));\n  obj.date = \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])(\"\".concat(pf, \"-date\")), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getTime\"])(\"\".concat(pf, \"-time\")));\n  obj.dueDate = \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])(\"\".concat(pf, \"-due-date\")), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getTime\"])(\"\".concat(pf, \"-due-time\")));\n  obj.priority = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])(\"\".concat(pf, \"-priority\"));\n  if (pf === 't') obj.projectId = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])(\"\".concat(pf, \"-project\"));\n  localStorage.setItem(lsList, JSON.stringify(list));\n};\n\nvar saveTask = function saveTask() {\n  if (tasks) {\n    var _task = tasks.find(function (t) {\n      return t.id === Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('t-id');\n    });\n\n    if (_task) return updateObj(_task);\n  }\n\n  var task = createTask();\n  _listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"manageList\"].addTaskToProject(task);\n};\n\nvar saveProject = function saveProject() {\n  if (projects) {\n    var _project = projects.find(function (p) {\n      return p.id === Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('p-id');\n    });\n\n    if (_project) return updateObj(_project);\n  }\n\n  var project = createProject();\n  _listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"manageList\"].addProject(project);\n};\n\nvar saveSubtask = function saveSubtask() {\n  var subtask = Object(_listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"Subtask\"])(\"s\".concat(_listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"subtaskCount\"]), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('s-title'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getValue\"])('s-taskId'));\n  _listBuilding__WEBPACK_IMPORTED_MODULE_0__[\"manageList\"].addSubtaskToTask(subtask);\n};\n\nvar addFormSubmission = function addFormSubmission(form) {\n  form.onsubmit = function () {\n    if (form.id === 'subtask-form') {\n      saveSubtask();\n    } else {\n      form.id === 'task-form' ? saveTask() : saveProject();\n    }\n\n    Object(_modals__WEBPACK_IMPORTED_MODULE_2__[\"closeModal\"])(form.parentElement.parentElement);\n  };\n};\n\n\n\n//# sourceURL=webpack:///./src/modules/forms.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateForm", function() { return generateForm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateSubtaskForm", function() { return generateSubtaskForm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addFormSubmission", function() { return addFormSubmission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "populateForm", function() { return populateForm; });
+/* harmony import */ var _listBuilding__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listBuilding */ "./src/modules/listBuilding.js");
+/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ "./src/modules/miscTools.js");
+/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ "./src/modules/modals.js");
+
+
+
+var tasks = JSON.parse(window.localStorage.getItem('taskList'));
+var projects = JSON.parse(window.localStorage.getItem('projectList'));
+
+var addLabelInput = function addLabelInput(form, lbl, type, name, required) {
+  var label = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('label', [['for', name]], Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(lbl));
+  var input = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('input', [['type', type], ['name', name], [required, '']]);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(form, [label, input]);
+  if (type !== 'text' && type !== 'date') placeBreak(form);
+};
+
+var addPriorityList = function addPriorityList(form, name) {
+  var label = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('label', [['for', 'Priority']], 'Priority');
+  var select = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('select', [['name', name]]);
+  ['Low', 'Medium', 'High'].map(function (prty) {
+    return setOptionFor(select, prty);
+  });
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(form, [label, select]);
+  placeBreak(form);
+};
+
+var addProjectList = function addProjectList(form) {
+  var label = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('label', [['for', 'Projects']]);
+  label.textContent = 'Choose Project';
+  var select = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('select', [['name', 't-project']]);
+
+  if (projects) {
+    projects.map(function (p) {
+      return setOptionFor(select, p);
+    });
+  }
+
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(form, [label, select]);
+  placeBreak(form);
+};
+
+var setOptionFor = function setOptionFor(select, obj) {
+  var option = document.createElement('option');
+
+  if (obj.id) {
+    option.setAttribute('value', "".concat(obj.id));
+    option.textContent = obj.title;
+  } else {
+    option.textContent = obj;
+  }
+
+  return select.appendChild(option);
+};
+
+var placeBreak = function placeBreak(form) {
+  return form.innerHTML += '<br>';
+};
+
+var addSaveButton = function addSaveButton(form, objName) {
+  var saveButton = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('button', [['id', "save-".concat(objName)]]);
+  saveButton.textContent = "Save ".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(objName));
+  placeBreak(form);
+  form.appendChild(saveButton);
+};
+
+var addForm = function addForm(form, button) {
+  var obj = form.id.split('-')[0];
+  var modal = Object(_modals__WEBPACK_IMPORTED_MODULE_2__["createFormModal"])("".concat(obj, "-form-modal"), form);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["insertAfter"])(modal, button);
+};
+
+var generateForm = function generateForm(objName, button) {
+  var form = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('form', [['id', "".concat(objName, "-form")]]);
+  var dueBool = objName === 'project' ? 'required' : undefined;
+  var hiddenId = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('input', [['type', 'hidden'], ['name', "".concat(objName[0], "-id")]]);
+  form.appendChild(hiddenId);
+  if (objName === 'task') addProjectList(form);
+  addLabelInput(form, objName, 'text', "".concat(objName[0], "-title"), 'required');
+  addPriorityList(form, "".concat(objName[0], "-priority"));
+  addLabelInput(form, 'Start Date', 'date', "".concat(objName[0], "-date"), 'required');
+  addLabelInput(form, 'Time', 'time', "".concat(objName[0], "-time"));
+  addLabelInput(form, 'Due Date', 'date', "".concat(objName[0], "-due-date"), dueBool);
+  addLabelInput(form, 'Due Time', 'time', "".concat(objName[0], "-due-time"));
+  addLabelInput(form, 'Description', 'text', "".concat(objName[0], "-description"));
+  addSaveButton(form, objName);
+  addForm(form, button);
+};
+
+var generateSubtaskForm = function generateSubtaskForm(button) {
+  var form = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('form', [['id', 'subtask-form']]);
+  var hiddenTaskId = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('input', [['type', 'hidden'], ['name', 's-taskId']]);
+  var heading = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('h3', [["id", 's-heading']]);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(form, [hiddenTaskId, heading]);
+  addLabelInput(form, 'subtask', 'text', 's-title', 'required');
+  placeBreak(form);
+  addSaveButton(form, 'subtask');
+  addForm(form, button);
+};
+
+var createTask = function createTask() {
+  return Object(_listBuilding__WEBPACK_IMPORTED_MODULE_0__["Task"])("t".concat(_listBuilding__WEBPACK_IMPORTED_MODULE_0__["taskCount"]), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-title'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-description'), "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-date'), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getTime"])('t-time')), "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-due-date'), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getTime"])('t-due-time')), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-priority'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-project'));
+};
+
+var createProject = function createProject() {
+  return Object(_listBuilding__WEBPACK_IMPORTED_MODULE_0__["Project"])("p".concat(_listBuilding__WEBPACK_IMPORTED_MODULE_0__["projectCount"]), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('p-title'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('p-description'), "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('p-date'), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getTime"])('p-time')), "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('p-due-date'), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getTime"])('p-due-time')), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('p-priority'));
+};
+
+var populateForm = function populateForm(obj) {
+  var pf = obj.id[0];
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-id"), obj.id);
+  if (pf === 't') Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-project"), obj.projectId);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-priority"), obj.priority);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-title"), obj.title);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-description"), obj.description);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-date"), obj.date.split(' ')[0]);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-time"), obj.date.split(' ')[1]);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-due-date"), obj.dueDate.split(' ')[0]);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])("".concat(pf, "-due-time"), obj.dueDate.split(' ')[1]);
+};
+
+var updateObj = function updateObj(obj) {
+  var pf = obj.id[0];
+  var list = pf === 't' ? tasks : projects;
+  var lsList = pf === 't' ? 'taskList' : 'projectList';
+  obj.title = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])("".concat(pf, "-title"));
+  obj.description = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])("".concat(pf, "-description"));
+  obj.date = "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])("".concat(pf, "-date")), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getTime"])("".concat(pf, "-time")));
+  obj.dueDate = "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])("".concat(pf, "-due-date")), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getTime"])("".concat(pf, "-due-time")));
+  obj.priority = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])("".concat(pf, "-priority"));
+  if (pf === 't') obj.projectId = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])("".concat(pf, "-project"));
+  localStorage.setItem(lsList, JSON.stringify(list));
+};
+
+var saveTask = function saveTask() {
+  if (tasks) {
+    var _task = tasks.find(function (t) {
+      return t.id === Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('t-id');
+    });
+
+    if (_task) return updateObj(_task);
+  }
+
+  var task = createTask();
+  _listBuilding__WEBPACK_IMPORTED_MODULE_0__["manageList"].addTaskToProject(task);
+};
+
+var saveProject = function saveProject() {
+  if (projects) {
+    var _project = projects.find(function (p) {
+      return p.id === Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('p-id');
+    });
+
+    if (_project) return updateObj(_project);
+  }
+
+  var project = createProject();
+  _listBuilding__WEBPACK_IMPORTED_MODULE_0__["manageList"].addProject(project);
+};
+
+var saveSubtask = function saveSubtask() {
+  var subtask = Object(_listBuilding__WEBPACK_IMPORTED_MODULE_0__["Subtask"])("s".concat(_listBuilding__WEBPACK_IMPORTED_MODULE_0__["subtaskCount"]), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('s-title'), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getValue"])('s-taskId'));
+  _listBuilding__WEBPACK_IMPORTED_MODULE_0__["manageList"].addSubtaskToTask(subtask);
+};
+
+var addFormSubmission = function addFormSubmission(form) {
+  form.onsubmit = function () {
+    if (form.id === 'subtask-form') {
+      saveSubtask();
+    } else {
+      form.id === 'task-form' ? saveTask() : saveProject();
+    }
+
+    Object(_modals__WEBPACK_IMPORTED_MODULE_2__["closeModal"])(form.parentElement.parentElement);
+  };
+};
+
+
 
 /***/ }),
 
@@ -1879,7 +8060,77 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderList\", function() { return renderList; });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/index.js\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ \"./src/modules/miscTools.js\");\n/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ \"./src/modules/modals.js\");\n\n\n\nvar tasks = JSON.parse(window.localStorage.getItem('taskList'));\nvar projects = JSON.parse(window.localStorage.getItem('projectList'));\nvar container = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#container');\nvar listView = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('article', [['id', 'list-view'], ['class', 'hidden']]);\ncontainer.appendChild(listView);\n\nvar generateProjList = function generateProjList(status) {\n  var heading = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithText\"])('h3', \"Projects \".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"capitalize\"])(status), \" This Month\"));\n  var projSection = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('section', [['class', 'project-list']]);\n  var projList = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"sortByDate\"])(projects.filter(function (p) {\n    return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"isSameMonth\"])(new Date(status === \"starting\" ? p.date : p.dueDate), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getSelDate\"])());\n  }));\n  projSection.appendChild(heading);\n  projList.forEach(function (p) {\n    return projSection.appendChild(createObjEntry(p));\n  });\n  return projSection;\n};\n\nvar displayProjects = function displayProjects() {\n  var startList = generateProjList('starting');\n  var dueList = generateProjList('due');\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(listView, [startList, dueList]);\n};\n\nvar addTaskList = function addTaskList(obj, entry) {\n  var listOfTasks = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', 'task-list']]);\n  obj.tasks.forEach(function (task) {\n    var t = tasks.find(function (obj) {\n      return obj.id === task.id;\n    });\n    listOfTasks.appendChild(createObjEntry(t, entry));\n  });\n  entry.appendChild(listOfTasks);\n};\n\nvar createObjEntry = function createObjEntry(obj) {\n  var mainEntry = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;\n  var objName = obj.id[0] === 't' ? 'task' : 'project';\n  var entry = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', \"\".concat(objName, \"-entry\")]]);\n  var dot = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', \"dot \".concat(obj.priority.toLowerCase())]]);\n  var title = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', 'title']], obj.title);\n  if (new Date(obj.dueDate) != 'Invalid Date') title.textContent += \" (Due \".concat(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"format\"])(obj.dueDate, 'M/DD/YY'), \")\");\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(entry, [dot, title]);\n\n  title.onclick = function () {\n    Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"clearChildrenFrom\"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('.modal-text'));\n    Object(_modals__WEBPACK_IMPORTED_MODULE_2__[\"generateModal\"])(obj.id);\n  };\n\n  mainEntry ? mainEntry.lastChild.appendChild(entry) : addTaskList(obj, entry);\n  return entry;\n};\n\nvar renderList = function renderList() {\n  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;\n  if (date) Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setSelDate\"])(date);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"clearChildrenFrom\"])(listView);\n  displayProjects();\n};\n\n\n\n//# sourceURL=webpack:///./src/modules/list.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderList", function() { return renderList; });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ "./src/modules/miscTools.js");
+/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ "./src/modules/modals.js");
+
+
+
+var tasks = JSON.parse(window.localStorage.getItem('taskList'));
+var projects = JSON.parse(window.localStorage.getItem('projectList'));
+var container = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#container');
+var listView = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('article', [['id', 'list-view'], ['class', 'hidden']]);
+container.appendChild(listView);
+
+var generateProjList = function generateProjList(status) {
+  var heading = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithText"])('h3', "Projects ".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(status), " This Month"));
+  var projSection = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('section', [['class', 'project-list']]);
+  var projList = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["sortByDate"])(projects.filter(function (p) {
+    return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["isSameMonth"])(new Date(status === "starting" ? p.date : p.dueDate), Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getSelDate"])());
+  }));
+  projSection.appendChild(heading);
+  projList.forEach(function (p) {
+    return projSection.appendChild(createObjEntry(p));
+  });
+  return projSection;
+};
+
+var displayProjects = function displayProjects() {
+  var startList = generateProjList('starting');
+  var dueList = generateProjList('due');
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(listView, [startList, dueList]);
+};
+
+var addTaskList = function addTaskList(obj, entry) {
+  var listOfTasks = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', 'task-list']]);
+  obj.tasks.forEach(function (task) {
+    var t = tasks.find(function (obj) {
+      return obj.id === task.id;
+    });
+    listOfTasks.appendChild(createObjEntry(t, entry));
+  });
+  entry.appendChild(listOfTasks);
+};
+
+var createObjEntry = function createObjEntry(obj) {
+  var mainEntry = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+  var objName = obj.id[0] === 't' ? 'task' : 'project';
+  var entry = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', "".concat(objName, "-entry")]]);
+  var dot = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', "dot ".concat(obj.priority.toLowerCase())]]);
+  var title = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', 'title']], obj.title);
+  if (new Date(obj.dueDate) != 'Invalid Date') title.textContent += " (Due ".concat(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["format"])(obj.dueDate, 'M/DD/YY'), ")");
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(entry, [dot, title]);
+
+  title.onclick = function () {
+    Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["clearChildrenFrom"])(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('.modal-text'));
+    Object(_modals__WEBPACK_IMPORTED_MODULE_2__["generateModal"])(obj.id);
+  };
+
+  mainEntry ? mainEntry.lastChild.appendChild(entry) : addTaskList(obj, entry);
+  return entry;
+};
+
+var renderList = function renderList() {
+  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  if (date) Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setSelDate"])(date);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["clearChildrenFrom"])(listView);
+  displayProjects();
+};
+
+
 
 /***/ }),
 
@@ -1891,7 +8142,122 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Task\", function() { return Task; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Project\", function() { return Project; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Subtask\", function() { return Subtask; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"manageList\", function() { return manageList; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"taskCount\", function() { return taskCount; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"projectCount\", function() { return projectCount; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"subtaskCount\", function() { return subtaskCount; });\nvar subtaskCount = parseInt(window.localStorage.getItem('subtaskCount')) || 0;\nvar tasks = JSON.parse(window.localStorage.getItem('taskList')) || [];\nvar taskCount = parseInt(window.localStorage.getItem('taskCount')) || 0;\nvar projects = JSON.parse(window.localStorage.getItem('projectList')) || [];\nvar projectCount = parseInt(window.localStorage.getItem('projectCount')) || 0;\n\nvar Subtask = function Subtask(id, title, taskId) {\n  var completed = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;\n  return {\n    id: id,\n    title: title,\n    taskId: taskId,\n    completed: completed\n  };\n};\n\nvar Task = function Task(id, title, description, date, dueDate, priority, projectId) {\n  var subtasks = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : [];\n  var completed = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : false;\n  return {\n    id: id,\n    title: title,\n    description: description,\n    date: date,\n    dueDate: dueDate,\n    priority: priority,\n    projectId: projectId,\n    subtasks: subtasks,\n    completed: completed\n  };\n};\n\nvar Project = function Project(id, title, description, date, dueDate, priority) {\n  var tasks = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : [];\n  var completed = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : false;\n  return {\n    id: id,\n    title: title,\n    description: description,\n    date: date,\n    dueDate: dueDate,\n    priority: priority,\n    tasks: tasks,\n    completed: completed\n  };\n};\n\nvar manageList = function () {\n  var addTask = function addTask(t) {\n    tasks.push(t);\n    localStorage.setItem('taskList', JSON.stringify(tasks));\n    localStorage.setItem('taskCount', taskCount + 1);\n  };\n\n  var addProject = function addProject(p) {\n    projects.push(p);\n    localStorage.setItem('projectList', JSON.stringify(projects));\n    localStorage.setItem('projectCount', projectCount + 1);\n  };\n\n  var addTaskToProject = function addTaskToProject(t) {\n    addTask(t);\n    var p = projects.find(function (p) {\n      return p.id === t.projectId;\n    });\n    p.tasks.push(t);\n    localStorage.setItem('projectList', JSON.stringify(projects));\n  };\n\n  var addSubtaskToTask = function addSubtaskToTask(s) {\n    var t = tasks.find(function (t) {\n      return t.id === s.taskId;\n    });\n    t.subtasks.push(s);\n    localStorage.setItem('subtaskCount', subtaskCount + 1);\n    localStorage.setItem('taskList', JSON.stringify(tasks));\n  };\n\n  var deleteTask = function deleteTask(id) {\n    tasks = tasks.filter(function (t) {\n      return t.id !== id;\n    });\n    localStorage.setItem('taskList', JSON.stringify(tasks));\n  };\n\n  var deleteProject = function deleteProject(id) {\n    var p = projects.find(function (project) {\n      return project.id === id;\n    });\n    p.tasks.forEach(function (task) {\n      return deleteTask(task.id);\n    });\n    projects = projects.filter(function (project) {\n      return project.id !== id;\n    });\n    localStorage.setItem('projectList', JSON.stringify(projects));\n  };\n\n  return {\n    addProject: addProject,\n    addTaskToProject: addTaskToProject,\n    addSubtaskToTask: addSubtaskToTask,\n    deleteTask: deleteTask,\n    deleteProject: deleteProject\n  };\n}();\n\n\n\n//# sourceURL=webpack:///./src/modules/listBuilding.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Task", function() { return Task; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Project", function() { return Project; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Subtask", function() { return Subtask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "manageList", function() { return manageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "taskCount", function() { return taskCount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "projectCount", function() { return projectCount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subtaskCount", function() { return subtaskCount; });
+var subtaskCount = parseInt(window.localStorage.getItem('subtaskCount')) || 0;
+var tasks = JSON.parse(window.localStorage.getItem('taskList')) || [];
+var taskCount = parseInt(window.localStorage.getItem('taskCount')) || 0;
+var projects = JSON.parse(window.localStorage.getItem('projectList')) || [];
+var projectCount = parseInt(window.localStorage.getItem('projectCount')) || 0;
+
+var Subtask = function Subtask(id, title, taskId) {
+  var completed = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  return {
+    id: id,
+    title: title,
+    taskId: taskId,
+    completed: completed
+  };
+};
+
+var Task = function Task(id, title, description, date, dueDate, priority, projectId) {
+  var subtasks = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : [];
+  var completed = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : false;
+  return {
+    id: id,
+    title: title,
+    description: description,
+    date: date,
+    dueDate: dueDate,
+    priority: priority,
+    projectId: projectId,
+    subtasks: subtasks,
+    completed: completed
+  };
+};
+
+var Project = function Project(id, title, description, date, dueDate, priority) {
+  var tasks = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : [];
+  var completed = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : false;
+  return {
+    id: id,
+    title: title,
+    description: description,
+    date: date,
+    dueDate: dueDate,
+    priority: priority,
+    tasks: tasks,
+    completed: completed
+  };
+};
+
+var manageList = function () {
+  var addTask = function addTask(t) {
+    tasks.push(t);
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+    localStorage.setItem('taskCount', taskCount + 1);
+  };
+
+  var addProject = function addProject(p) {
+    projects.push(p);
+    localStorage.setItem('projectList', JSON.stringify(projects));
+    localStorage.setItem('projectCount', projectCount + 1);
+  };
+
+  var addTaskToProject = function addTaskToProject(t) {
+    addTask(t);
+    var p = projects.find(function (p) {
+      return p.id === t.projectId;
+    });
+    p.tasks.push(t);
+    localStorage.setItem('projectList', JSON.stringify(projects));
+  };
+
+  var addSubtaskToTask = function addSubtaskToTask(s) {
+    var t = tasks.find(function (t) {
+      return t.id === s.taskId;
+    });
+    t.subtasks.push(s);
+    localStorage.setItem('subtaskCount', subtaskCount + 1);
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+  };
+
+  var deleteTask = function deleteTask(id) {
+    tasks = tasks.filter(function (t) {
+      return t.id !== id;
+    });
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+  };
+
+  var deleteProject = function deleteProject(id) {
+    var p = projects.find(function (project) {
+      return project.id === id;
+    });
+    p.tasks.forEach(function (task) {
+      return deleteTask(task.id);
+    });
+    projects = projects.filter(function (project) {
+      return project.id !== id;
+    });
+    localStorage.setItem('projectList', JSON.stringify(projects));
+  };
+
+  return {
+    addProject: addProject,
+    addTaskToProject: addTaskToProject,
+    addSubtaskToTask: addSubtaskToTask,
+    deleteTask: deleteTask,
+    deleteProject: deleteProject
+  };
+}();
+
+
 
 /***/ }),
 
@@ -1903,7 +8269,144 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"selectQuery\", function() { return selectQuery; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getLS\", function() { return getLS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setLS\", function() { return setLS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"appendChildren\", function() { return appendChildren; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showDate\", function() { return showDate; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setElemWithAttrs\", function() { return setElemWithAttrs; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setElemWithText\", function() { return setElemWithText; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setValue\", function() { return setValue; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getValue\", function() { return getValue; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getTime\", function() { return getTime; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"insertAfter\", function() { return insertAfter; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"capitalize\", function() { return capitalize; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sortByDate\", function() { return sortByDate; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addMYSelection\", function() { return addMYSelection; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getSelDate\", function() { return getSelDate; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setSelDate\", function() { return setSelDate; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"updateMonth\", function() { return updateMonth; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"clearChildrenFrom\", function() { return clearChildrenFrom; });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/index.js\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar getLS = function getLS(listName) {\n  return JSON.parse(window.localStorage.getItem(listName));\n};\n\nvar setLS = function setLS(listName, list) {\n  return localStorage.setItem(listName, JSON.stringify(list));\n};\n\nvar noTime = function noTime(date) {\n  return new Date(date).toISOString().substr(0, 10);\n};\n\nvar getSelDate = function getSelDate() {\n  var selectedDate = new Date(JSON.parse(window.localStorage.getItem('selectedDate')));\n  return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"addHours\"])(selectedDate, 5);\n};\n\nvar setSelDate = function setSelDate() {\n  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;\n  var selectedDate = date ? noTime(date) : noTime(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"startOfToday\"])());\n  localStorage.setItem('selectedDate', JSON.stringify(selectedDate));\n};\n\nvar selectQuery = function selectQuery(target) {\n  return document.querySelector(target);\n};\n\nvar capitalize = function capitalize(string) {\n  return string[0].toUpperCase() + string.slice(1);\n};\n\nvar updateMonth = function updateMonth() {\n  var title = selectQuery(\".date-title\");\n  title.textContent = Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"format\"])(getSelDate(), 'MMMM YYYY');\n};\n\nvar showDate = function showDate(elem, date) {\n  var dateDisplay = date ? date : new Date();\n  return elem.textContent = Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"format\"])(dateDisplay, 'MMMM Do, YYYY');\n};\n\nvar setElemWithAttrs = function setElemWithAttrs(tag, attrs) {\n  var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;\n  var elem = document.createElement(tag);\n  attrs.forEach(function (attr) {\n    elem.setAttribute(attr[0], attr[1]);\n  });\n  if (text) elem.textContent = text;\n  return elem;\n};\n\nvar setElemWithText = function setElemWithText(tag, text) {\n  var elem = document.createElement(tag);\n  elem.textContent = text;\n  return elem;\n};\n\nvar appendChildren = function appendChildren(elem, children) {\n  children.forEach(function (child) {\n    return elem.appendChild(child);\n  });\n};\n\nvar insertAfter = function insertAfter(elem, referenceNode) {\n  referenceNode.parentNode.insertBefore(elem, referenceNode.nextSibling);\n};\n\nvar setValue = function setValue(name, val) {\n  document.getElementsByName(name)[0].value = val;\n};\n\nvar getValue = function getValue(name) {\n  return document.getElementsByName(name)[0].value;\n};\n\nvar getTime = function getTime(name) {\n  return getValue(name).length === 0 ? \"00:00\" : getValue(name);\n};\n\nvar sortByDate = function sortByDate(list) {\n  return list.sort(function (a, b) {\n    return new Date(a.date) - new Date(b.date);\n  });\n};\n\nvar clearChildrenFrom = function clearChildrenFrom(element) {\n  var children = Array.from(element.children);\n  children.map(function (child) {\n    return element.removeChild(child);\n  });\n};\n\nvar changeMonthYear = function changeMonthYear(attr, timeDiff, callbacks) {\n  var element = selectQuery(attr);\n\n  element.onclick = function () {\n    var date = getSelDate();\n    setSelDate(new Date(date.getFullYear(), date.getMonth() + timeDiff));\n    updateMonth();\n    return callbacks.forEach(function (cb) {\n      return cb(getSelDate());\n    });\n  };\n};\n\nvar addMYSelection = function addMYSelection(callbacks) {\n  changeMonthYear('.year-back', -12, callbacks);\n  changeMonthYear('.month-back', -1, callbacks);\n  changeMonthYear('.year-forward', +12, callbacks);\n  changeMonthYear('.month-forward', +1, callbacks);\n};\n\n\n/*\n*/\n\n//# sourceURL=webpack:///./src/modules/miscTools.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectQuery", function() { return selectQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLS", function() { return getLS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLS", function() { return setLS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appendChildren", function() { return appendChildren; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showDate", function() { return showDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setElemWithAttrs", function() { return setElemWithAttrs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setElemWithText", function() { return setElemWithText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setValue", function() { return setValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getValue", function() { return getValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTime", function() { return getTime; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "insertAfter", function() { return insertAfter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capitalize", function() { return capitalize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortByDate", function() { return sortByDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMYSelection", function() { return addMYSelection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelDate", function() { return getSelDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSelDate", function() { return setSelDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMonth", function() { return updateMonth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearChildrenFrom", function() { return clearChildrenFrom; });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var getLS = function getLS(listName) {
+  return JSON.parse(window.localStorage.getItem(listName));
+};
+
+var setLS = function setLS(listName, list) {
+  return localStorage.setItem(listName, JSON.stringify(list));
+};
+
+var noTime = function noTime(date) {
+  return new Date(date).toISOString().substr(0, 10);
+};
+
+var getSelDate = function getSelDate() {
+  var selectedDate = new Date(JSON.parse(window.localStorage.getItem('selectedDate')));
+  return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["addHours"])(selectedDate, 5);
+};
+
+var setSelDate = function setSelDate() {
+  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  var selectedDate = date ? noTime(date) : noTime(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["startOfToday"])());
+  localStorage.setItem('selectedDate', JSON.stringify(selectedDate));
+};
+
+var selectQuery = function selectQuery(target) {
+  return document.querySelector(target);
+};
+
+var capitalize = function capitalize(string) {
+  return string[0].toUpperCase() + string.slice(1);
+};
+
+var updateMonth = function updateMonth() {
+  var title = selectQuery(".date-title");
+  title.textContent = Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["format"])(getSelDate(), 'MMMM YYYY');
+};
+
+var showDate = function showDate(elem, date) {
+  var dateDisplay = date ? date : new Date();
+  return elem.textContent = Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["format"])(dateDisplay, 'MMMM Do, YYYY');
+};
+
+var setElemWithAttrs = function setElemWithAttrs(tag, attrs) {
+  var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+  var elem = document.createElement(tag);
+  attrs.forEach(function (attr) {
+    elem.setAttribute(attr[0], attr[1]);
+  });
+  if (text) elem.textContent = text;
+  return elem;
+};
+
+var setElemWithText = function setElemWithText(tag, text) {
+  var elem = document.createElement(tag);
+  elem.textContent = text;
+  return elem;
+};
+
+var appendChildren = function appendChildren(elem, children) {
+  children.forEach(function (child) {
+    return elem.appendChild(child);
+  });
+};
+
+var insertAfter = function insertAfter(elem, referenceNode) {
+  referenceNode.parentNode.insertBefore(elem, referenceNode.nextSibling);
+};
+
+var setValue = function setValue(name, val) {
+  document.getElementsByName(name)[0].value = val;
+};
+
+var getValue = function getValue(name) {
+  return document.getElementsByName(name)[0].value;
+};
+
+var getTime = function getTime(name) {
+  return getValue(name).length === 0 ? "00:00" : getValue(name);
+};
+
+var sortByDate = function sortByDate(list) {
+  return list.sort(function (a, b) {
+    return new Date(a.date) - new Date(b.date);
+  });
+};
+
+var clearChildrenFrom = function clearChildrenFrom(element) {
+  var children = Array.from(element.children);
+  children.map(function (child) {
+    return element.removeChild(child);
+  });
+};
+
+var changeMonthYear = function changeMonthYear(attr, timeDiff, callbacks) {
+  var element = selectQuery(attr);
+
+  element.onclick = function () {
+    var date = getSelDate();
+    setSelDate(new Date(date.getFullYear(), date.getMonth() + timeDiff));
+    updateMonth();
+    return callbacks.forEach(function (cb) {
+      return cb(getSelDate());
+    });
+  };
+};
+
+var addMYSelection = function addMYSelection(callbacks) {
+  changeMonthYear('.year-back', -12, callbacks);
+  changeMonthYear('.month-back', -1, callbacks);
+  changeMonthYear('.year-forward', +12, callbacks);
+  changeMonthYear('.month-forward', +1, callbacks);
+};
+
+
+/*
+*/
 
 /***/ }),
 
@@ -1915,7 +8418,212 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createFormModal\", function() { return createFormModal; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"openModal\", function() { return openModal; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"closeModal\", function() { return closeModal; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"generateModal\", function() { return generateModal; });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/index.js\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ \"./src/modules/miscTools.js\");\n/* harmony import */ var _listBuilding__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./listBuilding */ \"./src/modules/listBuilding.js\");\n/* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms */ \"./src/modules/forms.js\");\n\n\n\n\nvar tasks = JSON.parse(window.localStorage.getItem('taskList'));\nvar projects = JSON.parse(window.localStorage.getItem('projectList'));\n\nvar generateModal = function generateModal(objId) {\n  var modal = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\"#tp-modal\");\n  setObjContent(modal, objId);\n  openModal(modal);\n\n  modal.firstElementChild.firstElementChild.onclick = function () {\n    return closeModal(modal);\n  };\n};\n\nvar getObjId = function getObjId(modal) {\n  return modal.classList[1];\n}; // revise form modals to make these couple of methods obsolete?\n\n\nvar createFormModal = function createFormModal(objId, form) {\n  var modal = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', 'modal'], ['id', objId]]);\n  addModalContent(modal, form);\n\n  modal.firstChild.firstChild.onclick = function () {\n    closeModal(modal);\n  };\n\n  return modal;\n};\n\nvar addModalContent = function addModalContent(modal, form) {\n  var modalContent = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', 'modal-content']]);\n  var closer = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('span', [['class', 'close-modal']]);\n  closer.innerHTML = '&times<br><br>';\n  modalContent.appendChild(closer);\n  modal.appendChild(modalContent);\n  modalContent.appendChild(form);\n};\n\nvar findObj = function findObj(id) {\n  var list = id[0] === 't' ? tasks : projects;\n  return list.find(function (obj) {\n    return id === obj.id;\n  });\n};\n\nvar findProject = function findProject(obj) {\n  if (obj.projectId) findObj(obj.projectId);\n};\n\nvar setObjContent = function setObjContent(modal, objId) {\n  var obj = findObj(objId);\n  var otherObj = objId[0] === 't' ? obj : undefined;\n  var modalText = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\".modal-text\");\n  modalText.innerHTML += setObjText(obj);\n  addObjChecklist(obj);\n  addObjButton(objId, modal, otherObj);\n  addEditButton(modal, obj);\n  addDeleteButton(objId, modal);\n};\n\nvar setObjText = function setObjText(obj) {\n  var project = findProject(obj);\n  return \"<p>Title: \".concat(obj.title, \"</p>\\n    <p>Completed: \").concat(obj.completed ? 'yes' : 'no', \"</p>\\n    <p>Larger Project: \").concat(project ? project.title : '---', \" </p>\\n    <p>Start Date: \").concat(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"format\"])(obj.date, 'MMMM Do, YYYY'), \"</p>\\n    <p>Due Date: \").concat(obj.dueDate ? Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"format\"])(obj.dueDate, 'MMMM Do, YYYY') : '---', \"</p>\\n    <p>Description: \").concat(obj.description ? obj.description : '---', \"</p>\\n    <p>To Do:</p>\");\n};\n\nvar projTasks = function projTasks(project) {\n  var list = [];\n  project.tasks.map(function (task) {\n    list.push(tasks.find(function (t) {\n      return task.id === t.id;\n    }));\n  });\n  return list;\n};\n\nvar isCompleted = function isCompleted(item) {\n  return item.completed === true;\n};\n\nvar setStatus = function setStatus(checkbox, item) {\n  checkbox.innerHTML = (item.completed ? '&#9745 ' : '&#9744 ') + item.title;\n};\n\nvar resetLists = function resetLists() {\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setLS\"])('taskList', tasks);\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setLS\"])('projectList', projects);\n};\n\nvar addObjChecklist = function addObjChecklist(obj) {\n  var modalText = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\".modal-text\");\n  var list = obj.subtasks || projTasks(obj);\n  var checklist = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('ul', [['class', 'checklist']]);\n  if (list[0]) buildChecklist(obj, list, checklist);\n  modalText.appendChild(checklist);\n};\n\nvar buildChecklist = function buildChecklist(obj, list, checklist) {\n  list.map(function (st) {\n    var item = st.projectId ? findObj(st.id) : st;\n    var checkbox = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('li', [['class', 'checkbox']]);\n    setStatus(checkbox, item);\n    checklist.appendChild(checkbox);\n\n    checkbox.onclick = function () {\n      item.completed = !item.completed;\n      setStatus(checkbox, item);\n      obj.completed = list.every(isCompleted);\n      resetLists();\n    };\n  });\n  return checklist;\n};\n\nvar openModal = function openModal(modal) {\n  return modal.style.display = 'block';\n};\n\nvar closeModal = function closeModal(modal) {\n  event.stopPropagation();\n  modal.style.display = 'none';\n};\n\nvar createButton = function createButton(objId, modal, action) {\n  var objName;\n  var modalText = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\".modal-text\");\n\n  if (objId[0] === 't') {\n    objName = 'task';\n  } else if (objId[0] === 'p') {\n    objName = 'project';\n  } else {\n    objName = 'subtask';\n  }\n\n  var button = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('button', [['class', \"\".concat(action, \"-\").concat(objName)]], \"\".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"capitalize\"])(action), \" \").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"capitalize\"])(objName)));\n  modalText.appendChild(button);\n  return button;\n};\n\nvar addObjButton = function addObjButton(objId, modal) {\n  var task = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;\n  var objName = objId[0] === 'p' ? 'task' : 'subtask';\n  var button = createButton(objId, modal, 'add');\n  button.textContent = \"Add \".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"capitalize\"])(objName));\n\n  button.onclick = function () {\n    closeModal(modal);\n    Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\"#\".concat(objName, \"-form\")).reset();\n\n    if (objName === 'subtask') {\n      Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#s-heading').textContent = \"Add subtask for: \".concat(task.title);\n      Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setValue\"])('s-taskId', task.id);\n    }\n\n    openModal(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\"#\".concat(objName, \"-form-modal\")));\n  };\n};\n\nvar addEditButton = function addEditButton(modal, obj) {\n  var objName = obj.id[0] === 't' ? 'task' : 'project';\n  var editButton = createButton(obj.id, modal, 'edit');\n  var form = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\"#\".concat(objName, \"-form\"));\n\n  editButton.onclick = function () {\n    closeModal(modal);\n    openModal(form.parentNode.parentNode);\n    Object(_forms__WEBPACK_IMPORTED_MODULE_3__[\"populateForm\"])(obj);\n  };\n};\n\nvar addDeleteButton = function addDeleteButton(objId, modal) {\n  var deleteButton = createButton(objId, modal, 'delete');\n\n  deleteButton.onclick = function () {\n    if (confirm('Are you sure you want to delete?')) {\n      getObjId(modal)[0] === 't' ? _listBuilding__WEBPACK_IMPORTED_MODULE_2__[\"manageList\"].deleteTask(objId) : _listBuilding__WEBPACK_IMPORTED_MODULE_2__[\"manageList\"].deleteProject(objId);\n      location.reload();\n    }\n  };\n};\n\n\n/*\nconst addModalContent = (modal, form) => {\n  let modalContent = setElemWithAttrs('div', [['class', 'modal-content']]);\n  let closer = setElemWithAttrs('span', [['class', 'close-modal']]);\n  closer.innerHTML = '&times<br><br>';\n  modalContent.appendChild(closer);\n  modal.appendChild(modalContent);\n  form ? modalContent.appendChild(form) : setObjContent(modal);\n};\n*/\n\n//# sourceURL=webpack:///./src/modules/modals.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFormModal", function() { return createFormModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openModal", function() { return openModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeModal", function() { return closeModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateModal", function() { return generateModal; });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ "./src/modules/miscTools.js");
+/* harmony import */ var _listBuilding__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./listBuilding */ "./src/modules/listBuilding.js");
+/* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms */ "./src/modules/forms.js");
+
+
+
+
+var tasks = JSON.parse(window.localStorage.getItem('taskList'));
+var projects = JSON.parse(window.localStorage.getItem('projectList'));
+
+var generateModal = function generateModal(objId) {
+  var modal = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])("#tp-modal");
+  setObjContent(modal, objId);
+  openModal(modal);
+
+  modal.firstElementChild.firstElementChild.onclick = function () {
+    return closeModal(modal);
+  };
+};
+
+var getObjId = function getObjId(modal) {
+  return modal.classList[1];
+}; // revise form modals to make these couple of methods obsolete?
+
+
+var createFormModal = function createFormModal(objId, form) {
+  var modal = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', 'modal'], ['id', objId]]);
+  addModalContent(modal, form);
+
+  modal.firstChild.firstChild.onclick = function () {
+    closeModal(modal);
+  };
+
+  return modal;
+};
+
+var addModalContent = function addModalContent(modal, form) {
+  var modalContent = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', 'modal-content']]);
+  var closer = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('span', [['class', 'close-modal']]);
+  closer.innerHTML = '&times<br><br>';
+  modalContent.appendChild(closer);
+  modal.appendChild(modalContent);
+  modalContent.appendChild(form);
+};
+
+var findObj = function findObj(id) {
+  var list = id[0] === 't' ? tasks : projects;
+  return list.find(function (obj) {
+    return id === obj.id;
+  });
+};
+
+var findProject = function findProject(obj) {
+  if (obj.projectId) findObj(obj.projectId);
+};
+
+var setObjContent = function setObjContent(modal, objId) {
+  var obj = findObj(objId);
+  var otherObj = objId[0] === 't' ? obj : undefined;
+  var modalText = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])(".modal-text");
+  modalText.innerHTML += setObjText(obj);
+  addObjChecklist(obj);
+  addObjButton(objId, modal, otherObj);
+  addEditButton(modal, obj);
+  addDeleteButton(objId, modal);
+};
+
+var setObjText = function setObjText(obj) {
+  var project = findProject(obj);
+  return "<p>Title: ".concat(obj.title, "</p>\n    <p>Completed: ").concat(obj.completed ? 'yes' : 'no', "</p>\n    <p>Larger Project: ").concat(project ? project.title : '---', " </p>\n    <p>Start Date: ").concat(Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["format"])(obj.date, 'MMMM Do, YYYY'), "</p>\n    <p>Due Date: ").concat(obj.dueDate ? Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["format"])(obj.dueDate, 'MMMM Do, YYYY') : '---', "</p>\n    <p>Description: ").concat(obj.description ? obj.description : '---', "</p>\n    <p>To Do:</p>");
+};
+
+var projTasks = function projTasks(project) {
+  var list = [];
+  project.tasks.map(function (task) {
+    list.push(tasks.find(function (t) {
+      return task.id === t.id;
+    }));
+  });
+  return list;
+};
+
+var isCompleted = function isCompleted(item) {
+  return item.completed === true;
+};
+
+var setStatus = function setStatus(checkbox, item) {
+  checkbox.innerHTML = (item.completed ? '&#9745 ' : '&#9744 ') + item.title;
+};
+
+var resetLists = function resetLists() {
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setLS"])('taskList', tasks);
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setLS"])('projectList', projects);
+};
+
+var addObjChecklist = function addObjChecklist(obj) {
+  var modalText = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])(".modal-text");
+  var list = obj.subtasks || projTasks(obj);
+  var checklist = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('ul', [['class', 'checklist']]);
+  if (list[0]) buildChecklist(obj, list, checklist);
+  modalText.appendChild(checklist);
+};
+
+var buildChecklist = function buildChecklist(obj, list, checklist) {
+  list.map(function (st) {
+    var item = st.projectId ? findObj(st.id) : st;
+    var checkbox = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('li', [['class', 'checkbox']]);
+    setStatus(checkbox, item);
+    checklist.appendChild(checkbox);
+
+    checkbox.onclick = function () {
+      item.completed = !item.completed;
+      setStatus(checkbox, item);
+      obj.completed = list.every(isCompleted);
+      resetLists();
+    };
+  });
+  return checklist;
+};
+
+var openModal = function openModal(modal) {
+  return modal.style.display = 'block';
+};
+
+var closeModal = function closeModal(modal) {
+  event.stopPropagation();
+  modal.style.display = 'none';
+};
+
+var createButton = function createButton(objId, modal, action) {
+  var objName;
+  var modalText = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])(".modal-text");
+
+  if (objId[0] === 't') {
+    objName = 'task';
+  } else if (objId[0] === 'p') {
+    objName = 'project';
+  } else {
+    objName = 'subtask';
+  }
+
+  var button = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('button', [['class', "".concat(action, "-").concat(objName)]], "".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(action), " ").concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(objName)));
+  modalText.appendChild(button);
+  return button;
+};
+
+var addObjButton = function addObjButton(objId, modal) {
+  var task = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+  var objName = objId[0] === 'p' ? 'task' : 'subtask';
+  var button = createButton(objId, modal, 'add');
+  button.textContent = "Add ".concat(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(objName));
+
+  button.onclick = function () {
+    closeModal(modal);
+    Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])("#".concat(objName, "-form")).reset();
+
+    if (objName === 'subtask') {
+      Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#s-heading').textContent = "Add subtask for: ".concat(task.title);
+      Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setValue"])('s-taskId', task.id);
+    }
+
+    openModal(Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])("#".concat(objName, "-form-modal")));
+  };
+};
+
+var addEditButton = function addEditButton(modal, obj) {
+  var objName = obj.id[0] === 't' ? 'task' : 'project';
+  var editButton = createButton(obj.id, modal, 'edit');
+  var form = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])("#".concat(objName, "-form"));
+
+  editButton.onclick = function () {
+    closeModal(modal);
+    openModal(form.parentNode.parentNode);
+    Object(_forms__WEBPACK_IMPORTED_MODULE_3__["populateForm"])(obj);
+  };
+};
+
+var addDeleteButton = function addDeleteButton(objId, modal) {
+  var deleteButton = createButton(objId, modal, 'delete');
+
+  deleteButton.onclick = function () {
+    if (confirm('Are you sure you want to delete?')) {
+      getObjId(modal)[0] === 't' ? _listBuilding__WEBPACK_IMPORTED_MODULE_2__["manageList"].deleteTask(objId) : _listBuilding__WEBPACK_IMPORTED_MODULE_2__["manageList"].deleteProject(objId);
+      location.reload();
+    }
+  };
+};
+
+
+/*
+const addModalContent = (modal, form) => {
+  let modalContent = setElemWithAttrs('div', [['class', 'modal-content']]);
+  let closer = setElemWithAttrs('span', [['class', 'close-modal']]);
+  closer.innerHTML = '&times<br><br>';
+  modalContent.appendChild(closer);
+  modal.appendChild(modalContent);
+  form ? modalContent.appendChild(form) : setObjContent(modal);
+};
+*/
 
 /***/ }),
 
@@ -1927,7 +8635,56 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"compileOngoingPL\", function() { return compileOngoingPL; });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/index.js\");\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ \"./src/modules/miscTools.js\");\n/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ \"./src/modules/modals.js\");\n\n\n //const tasks = getLS('taskList');\n\nvar projects = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"getLS\"])('projectList');\n\nvar compileOngoingPL = function compileOngoingPL() {\n  var list = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#project-list');\n  var ongoingPL = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"sortByDate\"])(projects.filter(function (p) {\n    return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__[\"isFuture\"])(p.dueDate);\n  }));\n  ongoingPL.forEach(function (p) {\n    var projectEntry = createEntry(p, 'h4');\n    var ogList = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])('#ongoing-list');\n    ogList.insertBefore(projectEntry, list);\n\n    projectEntry.onclick = function () {\n      return openEntry(p, ogList);\n    };\n  });\n};\n\nvar createEntry = function createEntry(obj, elem) {\n  var objName = obj.id[0] === 'p' ? 'project' : 'task';\n  var entry = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', \"\".concat(objName, \"-entry-sidebar\")]]);\n  var priority = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"setElemWithAttrs\"])('div', [['class', \"dot \".concat(obj.priority.toLowerCase())]]);\n  var heading = document.createElement(\"\".concat(elem));\n  heading.textContent = obj.title;\n  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"appendChildren\"])(entry, [priority, heading]);\n  return entry;\n};\n\nvar openEntry = function openEntry(p, list) {\n  var modal = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__[\"selectQuery\"])(\"#\".concat(p.id));\n\n  if (!modal) {\n    modal = Object(_modals__WEBPACK_IMPORTED_MODULE_2__[\"createModal\"])(\"\".concat(p.id));\n    list.appendChild(modal);\n  }\n\n  Object(_modals__WEBPACK_IMPORTED_MODULE_2__[\"openModal\"])(modal);\n};\n\n\n\n//# sourceURL=webpack:///./src/modules/sidebar.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compileOngoingPL", function() { return compileOngoingPL; });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _miscTools__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscTools */ "./src/modules/miscTools.js");
+/* harmony import */ var _modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals */ "./src/modules/modals.js");
+
+
+ //const tasks = getLS('taskList');
+
+var projects = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["getLS"])('projectList');
+
+var compileOngoingPL = function compileOngoingPL() {
+  var list = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#project-list');
+  var ongoingPL = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["sortByDate"])(projects.filter(function (p) {
+    return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["isFuture"])(p.dueDate);
+  }));
+  ongoingPL.forEach(function (p) {
+    var projectEntry = createEntry(p, 'h4');
+    var ogList = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])('#ongoing-list');
+    ogList.insertBefore(projectEntry, list);
+
+    projectEntry.onclick = function () {
+      return openEntry(p, ogList);
+    };
+  });
+};
+
+var createEntry = function createEntry(obj, elem) {
+  var objName = obj.id[0] === 'p' ? 'project' : 'task';
+  var entry = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', "".concat(objName, "-entry-sidebar")]]);
+  var priority = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["setElemWithAttrs"])('div', [['class', "dot ".concat(obj.priority.toLowerCase())]]);
+  var heading = document.createElement("".concat(elem));
+  heading.textContent = obj.title;
+  Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["appendChildren"])(entry, [priority, heading]);
+  return entry;
+};
+
+var openEntry = function openEntry(p, list) {
+  var modal = Object(_miscTools__WEBPACK_IMPORTED_MODULE_1__["selectQuery"])("#".concat(p.id));
+
+  if (!modal) {
+    modal = Object(_modals__WEBPACK_IMPORTED_MODULE_2__["createModal"])("".concat(p.id));
+    list.appendChild(modal);
+  }
+
+  Object(_modals__WEBPACK_IMPORTED_MODULE_2__["openModal"])(modal);
+};
+
+
 
 /***/ }),
 
@@ -1938,8 +8695,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/styles/style.scss?");
+// extracted by mini-css-extract-plugin
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=main.js.map

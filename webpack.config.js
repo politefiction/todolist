@@ -4,24 +4,23 @@ const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
     entry: './src/index.js',
-    mode: 'development',
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-        }),
-    ],
     module: {
         rules: [{
-            test: /\.(css|scss)$/,
+            test: /\.scss$/,
             use: [
-                { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
+                { loader: devMode ? 
+                    'style-loader' : 
+                    MiniCssExtractPlugin.loader, 
+                        options: { hmr: devMode } 
+                },
                 'css-loader', 
-                'sass-loader'
+                { loader: 'sass-loader',
+                    options: { implementation: require("node-sass")}
+                }
                 
             ]
         },
@@ -36,4 +35,11 @@ module.exports = {
             }
         }]
     },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        }),
+    ],
+    devtool: 'source-map',
 }
