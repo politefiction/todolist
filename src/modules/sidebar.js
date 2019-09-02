@@ -8,7 +8,6 @@ import {
 } from './miscTools';
 import { openModal, createModal } from './modals';
 
-//const tasks = getLS('taskList');
 const projects = getLS('projectList');
 
 const compileOngoingPL = () => {

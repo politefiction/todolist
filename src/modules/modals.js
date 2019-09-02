@@ -12,20 +12,19 @@ import { populateForm } from './forms';
 const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
-const generateModal = (objId) => {
-  let modal = selectQuery("#tp-modal");
+const generateModal = objId => {
+  let modal = selectQuery('#tp-modal');
   setObjContent(modal, objId);
   openModal(modal);
   modal.firstElementChild.firstElementChild.onclick = () => closeModal(modal);
-}
+};
 
 const getObjId = modal => {
   return modal.classList[1];
-}
+};
 
-// revise form modals to make these couple of methods obsolete?
 const createFormModal = (objId, form) => {
-  let modal = setElemWithAttrs('div', [['class', 'modal'], ['id', objId]])
+  let modal = setElemWithAttrs('div', [['class', 'modal'], ['id', objId]]);
   addModalContent(modal, form);
   modal.firstChild.firstChild.onclick = () => {
     closeModal(modal);
@@ -39,7 +38,7 @@ const addModalContent = (modal, form) => {
   closer.innerHTML = '&times<br><br>';
   modalContent.appendChild(closer);
   modal.appendChild(modalContent);
-  modalContent.appendChild(form)
+  modalContent.appendChild(form);
 };
 
 const findObj = id => {
@@ -53,8 +52,8 @@ const findProject = obj => {
 
 const setObjContent = (modal, objId) => {
   let obj = findObj(objId);
-  let otherObj = (objId[0] === 't' ? obj : undefined);
-  let modalText = selectQuery(".modal-text");
+  let otherObj = objId[0] === 't' ? obj : undefined;
+  let modalText = selectQuery('.modal-text');
   modalText.innerHTML += setObjText(obj);
   addObjChecklist(obj);
   addObjButton(objId, modal, otherObj);
@@ -94,8 +93,8 @@ const resetLists = () => {
   setLS('projectList', projects);
 };
 
-const addObjChecklist = (obj) => {
-  let modalText = selectQuery(".modal-text");
+const addObjChecklist = obj => {
+  let modalText = selectQuery('.modal-text');
   let list = obj.subtasks || projTasks(obj);
   let checklist = setElemWithAttrs('ul', [['class', 'checklist']]);
   if (list[0]) buildChecklist(obj, list, checklist);
@@ -116,9 +115,9 @@ const buildChecklist = (obj, list, checklist) => {
     };
   });
   return checklist;
-}
+};
 
-const openModal = modal => modal.style.display = 'block';
+const openModal = modal => (modal.style.display = 'block');
 
 const closeModal = modal => {
   event.stopPropagation();
@@ -127,7 +126,7 @@ const closeModal = modal => {
 
 const createButton = (objId, modal, action) => {
   let objName;
-  let modalText = selectQuery(".modal-text")
+  let modalText = selectQuery('.modal-text');
   if (objId[0] === 't') {
     objName = 'task';
   } else if (objId[0] === 'p') {
@@ -135,17 +134,19 @@ const createButton = (objId, modal, action) => {
   } else {
     objName = 'subtask';
   }
-  let button = setElemWithAttrs('button', 
+  let button = setElemWithAttrs(
+    'button',
     [['class', `${action}-${objName}`]],
-    `${capitalize(action)} ${capitalize(objName)}`);
+    `${capitalize(action)} ${capitalize(objName)}`
+  );
   modalText.appendChild(button);
   return button;
 };
 
-const addObjButton = (objId, modal, task=undefined) => {
-  let objName = (objId[0] === 'p' ? 'task' : 'subtask');
+const addObjButton = (objId, modal, task = undefined) => {
+  let objName = objId[0] === 'p' ? 'task' : 'subtask';
   let button = createButton(objId, modal, 'add');
-  button.textContent = `Add ${capitalize(objName)}`
+  button.textContent = `Add ${capitalize(objName)}`;
   button.onclick = () => {
     closeModal(modal);
     selectQuery(`#${objName}-form`).reset();
@@ -154,8 +155,8 @@ const addObjButton = (objId, modal, task=undefined) => {
       setValue('s-taskId', task.id);
     }
     openModal(selectQuery(`#${objName}-form-modal`));
-  }
-}
+  };
+};
 
 const addEditButton = (modal, obj) => {
   let objName = obj.id[0] === 't' ? 'task' : 'project';
@@ -181,14 +182,3 @@ const addDeleteButton = (objId, modal) => {
 };
 
 export { createFormModal, openModal, closeModal, generateModal };
-
-/*
-const addModalContent = (modal, form) => {
-  let modalContent = setElemWithAttrs('div', [['class', 'modal-content']]);
-  let closer = setElemWithAttrs('span', [['class', 'close-modal']]);
-  closer.innerHTML = '&times<br><br>';
-  modalContent.appendChild(closer);
-  modal.appendChild(modalContent);
-  form ? modalContent.appendChild(form) : setObjContent(modal);
-};
-*/

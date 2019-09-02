@@ -104,7 +104,7 @@ const generateSubtaskForm = button => {
     ['type', 'hidden'],
     ['name', 's-taskId']
   ]);
-  let heading = setElemWithAttrs('h3', [["id", 's-heading']])
+  let heading = setElemWithAttrs('h3', [['id', 's-heading']]);
   appendChildren(form, [hiddenTaskId, heading]);
   addLabelInput(form, 'subtask', 'text', 's-title', 'required');
   placeBreak(form);

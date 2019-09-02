@@ -3,7 +3,7 @@ import {
   getDaysInMonth,
   isToday,
   isSameDay,
-  startOfMonth,
+  startOfMonth
 } from 'date-fns';
 import {
   setElemWithAttrs,
@@ -14,7 +14,7 @@ import {
   getSelDate,
   setSelDate,
   updateMonth,
-  clearChildrenFrom,
+  clearChildrenFrom
 } from './miscTools';
 import { generateModal } from './modals';
 
@@ -77,7 +77,7 @@ const calculateCalendarDays = () => {
   }
 };
 
-const getDateFor = (calDay) => calDay.getAttribute('name');
+const getDateFor = calDay => calDay.getAttribute('name');
 
 const selectDate = calDay => {
   setSelDate(getDateFor(calDay));
@@ -107,7 +107,7 @@ const displayOnCal = list => {
     let idName = obj.id;
     addToCalendar(obj, createObjDiv(obj), idName);
     if (obj.dueDate) {
-      addToCalendar(obj, createObjDiv(obj), idName, "due");
+      addToCalendar(obj, createObjDiv(obj), idName, 'due');
     }
   });
 };
@@ -125,12 +125,14 @@ const addToCalendar = (obj, objDiv, idName, due = false) => {
   let objDate = due ? obj.dueDate : obj.date;
   let compDate = new Date(objDate.split(' ')[0]).setHours(24);
   calendarDays.forEach(calDay => {
-    if (new Date(getDateFor(calDay)).getTime() === new Date(compDate).getTime()) {
+    if (
+      new Date(getDateFor(calDay)).getTime() === new Date(compDate).getTime()
+    ) {
       calDay.appendChild(objDiv);
-      objDiv.onclick = () => { 
-        clearChildrenFrom(selectQuery(".modal-text"));
-        generateModal(objDiv.classList[2]); 
-      }
+      objDiv.onclick = () => {
+        clearChildrenFrom(selectQuery('.modal-text'));
+        generateModal(objDiv.classList[2]);
+      };
     }
   });
 };
@@ -147,7 +149,7 @@ const setCurrentMonth = () => {
   }
 };
 
-const renderCalendar = (date=undefined) => {
+const renderCalendar = (date = undefined) => {
   if (date) setSelDate(date);
   clearChildrenFrom(calendar);
   generateCalTop();

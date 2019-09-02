@@ -8,19 +8,21 @@ const setLS = (listName, list) => {
   return localStorage.setItem(listName, JSON.stringify(list));
 };
 
-const noTime = (date) => {
-  return new Date(date).toISOString().substr(0,10);
-}
+const noTime = date => {
+  return new Date(date).toISOString().substr(0, 10);
+};
 
 const getSelDate = () => {
-  let selectedDate = new Date (JSON.parse(window.localStorage.getItem('selectedDate')))
+  let selectedDate = new Date(
+    JSON.parse(window.localStorage.getItem('selectedDate'))
+  );
   return addHours(selectedDate, 5);
-}
+};
 
-const setSelDate = (date=undefined) => {
-  let selectedDate = (date ? noTime(date) : noTime(startOfToday()));
-  localStorage.setItem('selectedDate', JSON.stringify(selectedDate))
-}
+const setSelDate = (date = undefined) => {
+  let selectedDate = date ? noTime(date) : noTime(startOfToday());
+  localStorage.setItem('selectedDate', JSON.stringify(selectedDate));
+};
 
 const selectQuery = target => {
   return document.querySelector(target);
@@ -31,9 +33,9 @@ const capitalize = string => {
 };
 
 const updateMonth = () => {
-  let title = selectQuery(".date-title");
-  title.textContent = format(getSelDate(), 'MMMM YYYY')
-}
+  let title = selectQuery('.date-title');
+  title.textContent = format(getSelDate(), 'MMMM YYYY');
+};
 
 const showDate = (elem, date) => {
   let dateDisplay = date ? date : new Date();
@@ -84,8 +86,7 @@ const sortByDate = list => {
 const clearChildrenFrom = element => {
   let children = Array.from(element.children);
   children.map(child => element.removeChild(child));
-}
-
+};
 
 const changeMonthYear = (attr, timeDiff, callbacks) => {
   let element = selectQuery(attr);
@@ -97,7 +98,7 @@ const changeMonthYear = (attr, timeDiff, callbacks) => {
   };
 };
 
-const addMYSelection = (callbacks) => {
+const addMYSelection = callbacks => {
   changeMonthYear('.year-back', -12, callbacks);
   changeMonthYear('.month-back', -1, callbacks);
   changeMonthYear('.year-forward', +12, callbacks);
@@ -124,6 +125,3 @@ export {
   updateMonth,
   clearChildrenFrom
 };
-
-/*
-*/

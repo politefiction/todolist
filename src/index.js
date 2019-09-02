@@ -1,5 +1,11 @@
 import './styles/style.scss';
-import { selectQuery, getLS, setSelDate, addMYSelection, updateMonth } from './modules/miscTools';
+import {
+  selectQuery,
+  getLS,
+  setSelDate,
+  addMYSelection,
+  updateMonth
+} from './modules/miscTools';
 import {
   generateForm,
   generateSubtaskForm,
@@ -54,7 +60,7 @@ changeViewBtn.onclick = () => {
 
 setSelDate();
 updateMonth();
-addMYSelection([renderCalendar, renderList])
+addMYSelection([renderCalendar, renderList]);
 
 compileOngoingPL();
 renderCalendar();

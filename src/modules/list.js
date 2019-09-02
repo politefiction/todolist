@@ -16,23 +16,30 @@ const tasks = JSON.parse(window.localStorage.getItem('taskList'));
 const projects = JSON.parse(window.localStorage.getItem('projectList'));
 
 const container = selectQuery('#container');
-let listView = setElemWithAttrs('article', [['id', 'list-view'], ['class', 'hidden']]);
+let listView = setElemWithAttrs('article', [
+  ['id', 'list-view'],
+  ['class', 'hidden']
+]);
 container.appendChild(listView);
 
-const generateProjList = (status) => {
-  let heading = setElemWithText('h3', `Projects ${capitalize(status)} This Month`);
+const generateProjList = status => {
+  let heading = setElemWithText(
+    'h3',
+    `Projects ${capitalize(status)} This Month`
+  );
   let projSection = setElemWithAttrs('section', [['class', 'project-list']]);
   let projList = sortByDate(
     projects.filter(p => {
       return isSameMonth(
-        new Date(status === "starting" ? p.date : p.dueDate), 
-        getSelDate());
+        new Date(status === 'starting' ? p.date : p.dueDate),
+        getSelDate()
+      );
     })
-  )
-  projSection.appendChild(heading)
+  );
+  projSection.appendChild(heading);
   projList.forEach(p => projSection.appendChild(createObjEntry(p)));
   return projSection;
-}
+};
 
 const displayProjects = () => {
   let startList = generateProjList('starting');
@@ -62,13 +69,11 @@ const createObjEntry = (obj, mainEntry = undefined) => {
   appendChildren(entry, [dot, title]);
 
   title.onclick = () => {
-    clearChildrenFrom(selectQuery('.modal-text'))
+    clearChildrenFrom(selectQuery('.modal-text'));
     generateModal(obj.id);
-  }
+  };
 
-  mainEntry ?
-    mainEntry.lastChild.appendChild(entry) : 
-    addTaskList(obj, entry);
+  mainEntry ? mainEntry.lastChild.appendChild(entry) : addTaskList(obj, entry);
 
   return entry;
 };
