@@ -1,6 +1,7 @@
 body {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background: whitesmoke; }
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100%;
+  width: 100%; }
 
 #header {
   display: block;
@@ -19,6 +20,13 @@ button {
   color: white;
   background: #4682b4;
   cursor: pointer; }
+  button:hover {
+    background: #7aadd3;
+    transition-duration: 0.2s;
+    transition-timing-function: ease; }
+
+#new-subtask-button {
+  display: none; }
 
 #container {
   float: left;
@@ -34,22 +42,19 @@ button {
 aside {
   position: relative;
   float: left;
-  margin-top: 10px;
+  margin-top: -9px;
   border: 2px solid #A3A0A6;
   border-radius: 2px;
   width: 200px;
-  height: 70vh;
+  height: 100%;
   padding: 1%; }
   aside p {
     display: block; }
 
 #ongoing-list {
   display: block;
-  border: 1px solid #A3A0A6;
   padding: 0 5px 5px 5px;
   margin-bottom: 20px; }
-  #ongoing-list #new-subtask-button {
-    display: none; }
 
 .project-entry-sidebar {
   font-size: 18px;
@@ -64,50 +69,61 @@ aside {
   width: 80%;
   height: auto;
   background: white;
-  border: 3px solid gray; }
+  border: 1px solid #A3A0A6;
+  border-radius: 2px; }
   #task-form input, #task-form select, #project-form input, #project-form select, #subtask-form input, #subtask-form select {
     margin: 10px 15px;
     height: 25px;
     width: 200px; }
 
 /* list and calendar */
-.date-title {
-  text-align: center; }
+.heading, #calendar, #list-view {
+  min-width: 756px;
+  max-width: 966px; }
 
 .heading {
-  height: 50px; }
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 50px;
+  margin: 5px 20px 15px 20px; }
 
-#cal-title, #list-title {
-  text-align: center; }
+.date-title {
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 7; }
 
 .back-date, .forward-date {
-  display: inline-flex;
-  color: grey; }
+  display: grid;
+  grid-template-columns: auto auto;
+  color: #A3A0A6; }
   .back-date div, .forward-date div {
+    text-align: center;
     font-size: 1.5em;
     margin: 5px;
-    padding: 2px 5px;
-    border: 1px solid #A3A0A6;
-    border-radius: 10px;
+    padding: 5px 5px 2px 5px;
+    border: 0.5px solid #A3A0A6;
+    border-radius: 20px;
     cursor: pointer; }
+    .back-date div:hover, .forward-date div:hover {
+      background: #A3A0A6;
+      color: white;
+      transition-duration: 0.2s;
+      transition-timing-function: ease; }
 
 .back-date {
-  float: left; }
+  grid-column-start: 1;
+  grid-column-end: 2; }
 
 .forward-date {
-  float: right; }
+  grid-column-start: 7;
+  grid-column-end: 8; }
 
 /* main calendar */
 #calendar {
   border: 1px solid #A3A0A6;
+  border-top: none;
   border-radius: 2px;
-  margin: 0 20px;
-  min-width: 756px;
-  max-width: 966px; }
-
-#caldendar-heading {
-  display: inline-flex;
-  height: 20px; }
+  margin: 0 20px; }
 
 .week, #weekdays {
   display: grid;
@@ -117,7 +133,7 @@ aside {
 #weekdays div {
   border: 1px solid black;
   background: #4682b4;
-  color: white;
+  color: whitesmoke;
   height: 20px;
   width: auto;
   text-align: center; }
@@ -126,11 +142,17 @@ aside {
 .calendar-day {
   width: auto;
   height: 12vh;
-  border: 1px solid #A3A0A6;
-  padding: 3px; }
+  border: 0.5px solid #A3A0A6;
+  padding: 3px;
+  background: white; }
   .calendar-day p {
     margin-top: -2px;
     width: 100%; }
+  .calendar-day:hover {
+    background: #d3d3d3;
+    transition-duration: 0.1s;
+    transition-timing-function: ease;
+    cursor: pointer; }
 
 #today, #selected-date {
   font-weight: bold; }
@@ -140,15 +162,14 @@ aside {
 
 #selected-date {
   background: #4682b4;
-  color: white; }
+  color: whitesmoke; }
 
 .diff-month {
   background: darkgray;
-  border: 1px solid rgba(28, 29, 29, 0.418); }
+  border: 0.5px solid rgba(28, 29, 29, 0.418); }
 
 /* list view */
 #list-view {
-  max-width: 966px;
   margin: 0 20px; }
 
 #list-heading {
@@ -218,8 +239,7 @@ aside {
   color: black;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  width: 60vw;
   height: 50%;
   z-index: 3; }
 
@@ -233,12 +253,12 @@ aside {
   width: 30px;
   height: 30px;
   margin: -25px -25px 0 0;
+  padding-top: 5px;
   z-index: 5;
   cursor: pointer; }
 
 .checklist li {
   list-style-type: none;
-  border: 1px solid lightgray;
   width: 250px;
   margin-left: -10px;
   padding: 5px 5px; }
