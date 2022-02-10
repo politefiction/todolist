@@ -23,7 +23,7 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "webpack4": "git+https://github.com/boraturant/minicssextractplugin_cssorderproblem.git"
   }
 }
